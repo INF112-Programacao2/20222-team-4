@@ -1,10 +1,15 @@
 # e-Cart 
-## Sistema de gerenciamento para lojas
+Sistema de gerenciamento para lojas
 
 ## QT Creator - IDE utilizada
 ### Tutorial de Instalação
 - https://youtu.be/QQDGb4AkY4c
 
+## SQLite Studio - Banco de dados
+### Link de instalação
+- https://sqlitestudio.pl/
+### Tutorial para utilizar no Qt Creator
+- https://youtu.be/t6RRjJNQPmg
 
 ## 🤓 User Stories 
 - Como um gerente de uma loja de roupas eu quero um sistema capaz de organizar meu estoque para ter maior controle de entrada e saída.
