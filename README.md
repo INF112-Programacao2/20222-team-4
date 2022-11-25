@@ -1,3 +1,11 @@
+# e-Cart 
+## Sistema de gerenciamento para lojas
+
+## QT Creator - IDE utilizada
+### Tutorial de Instalação
+- https://youtu.be/QQDGb4AkY4c
+
+
 ## 🤓 User Stories 
 - Como um gerente de uma loja de roupas eu quero um sistema capaz de organizar meu estoque para ter maior controle de entrada e saída.
 - Como um vendedor eu quero um sistema que cadastre todas as vendas de um vendedor para distribuir a comissão.
