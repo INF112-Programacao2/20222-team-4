@@ -13,7 +13,7 @@ Sistema de gerenciamento para lojas
 
 ## Diagrama de Classes
 <h1 align="center">
-    <img alt="Diagrama de Classes" title="Diagrama de Classes" src="[https://github.com/thiggasz/Projeto-React-Grupo2/blob/main/src/pages/images/tela-inicial.png](https://raw.githubusercontent.com/INF112-Programacao2/20222-team-4/main/diagramaDeClassesGrupo4-Matheus-Vitoria-Rafael.png)" />
+    <img alt="Diagrama de Classes" title="Diagrama de Classes" src="https://github.com/INF112-Programacao2/20222-team-4/blob/main/diagramaDeClassesGrupo4-Matheus-Vitoria-Rafael.png" />
 </h1>
 
 
