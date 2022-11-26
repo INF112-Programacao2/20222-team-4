@@ -11,6 +11,9 @@ Sistema de gerenciamento para lojas
 ### Tutorial para utilizar no Qt Creator
 - https://youtu.be/t6RRjJNQPmg
 
+## Diagrama de Classes
+https://raw.githubusercontent.com/INF112-Programacao2/20222-team-4/main/diagramaDeClassesGrupo4-Matheus-Vitoria-Rafael.png
+
 ## 🤓 User Stories 
 - Como um gerente de uma loja de roupas eu quero um sistema capaz de organizar meu estoque para ter maior controle de entrada e saída.
 - Como um vendedor eu quero um sistema que cadastre todas as vendas de um vendedor para distribuir a comissão.
