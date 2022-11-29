@@ -16,8 +16,6 @@ JanelaLogin::JanelaLogin(QWidget *parent)
     if (!bancoDeDados.open()){
         QMessageBox::warning(this, "Erro","Nao foi possivel abrir o banco de dados!");
 
-    } else {
-        QMessageBox::information(this, "Sucesso","Banco de dados aberto com SUCESSO!");
     }
 }
 
@@ -27,13 +25,11 @@ JanelaLogin::~JanelaLogin()
 }
 
 
-void JanelaLogin::on_pushButton_clicked()
+
+void JanelaLogin::on_btn_login_clicked()
 {
-
-            this->close();
-            j_principal = new JanelaPrincipal(this);
-            j_principal->show();
-
-
+    this->close();
+    j_principal = new JanelaPrincipal(this);
+    j_principal->show();
 }
 

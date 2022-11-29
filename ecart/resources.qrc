@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/imgs">
+        <file>logo1.png</file>
+        <file>01 Online Shopping 1.png</file>
+    </qresource>
+</RCC>

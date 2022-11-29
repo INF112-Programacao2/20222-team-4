@@ -21,7 +21,8 @@ public:
     ~JanelaLogin();
 
 private slots:
-    void on_pushButton_clicked();
+
+    void on_btn_login_clicked();
 
 private:
     Ui::JanelaLogin *ui;
