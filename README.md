@@ -40,3 +40,28 @@ Critérios de Aceitação:
   - Vendedor
 - Cliente
 - Vendas
+
+## Desenvolvido com ♥ por: 
+
+<table>
+  <tr>
+    <td align="center">
+        <a href="https://github.com/rafaelcaetite" target="_blank">
+            <img src="https://avatars.githubusercontent.com/u/102500171?v=4" width="80px" ><br>
+            Rafael Martins
+        </a>
+    </td>
+ <td align="center">
+        <a href="https://github.com/vitoriaoliferreira" target="_blank">
+            <img src="https://avatars.githubusercontent.com/u/86208082?v=4" width="80px" ><br>
+            Vitoria Ferreira
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/Matheus515" target="_blank">
+            <img src="https://avatars.githubusercontent.com/u/110204282?v=4" width="80px" ><br>
+            Matheus Otavio
+        </a>
+    </td>
+   </td>
+  </tr>
