@@ -6,6 +6,7 @@
 #include <QDebug>
 #include <QFileInfo>
 #include "janelaprincipal.h"
+#include "primeiroacesso.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -24,8 +25,12 @@ private slots:
 
     void on_btn_login_clicked();
 
+    void on_btn_primeiro_acesso_clicked();
+
 private:
     Ui::JanelaLogin *ui;
     JanelaPrincipal *j_principal;
+    PrimeiroAcesso *p_acesso;
+
 };
 #endif // JANELALOGIN_H

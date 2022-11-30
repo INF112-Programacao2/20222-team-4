@@ -33,3 +33,11 @@ void JanelaLogin::on_btn_login_clicked()
     j_principal->show();
 }
 
+
+void JanelaLogin::on_btn_primeiro_acesso_clicked()
+{
+    this->close();
+    p_acesso = new PrimeiroAcesso(this);
+    p_acesso->show();
+}
+

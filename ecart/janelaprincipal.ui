@@ -7,25 +7,274 @@
     <x>0</x>
     <y>0</y>
     <width>751</width>
-    <height>349</height>
+    <height>414</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <property name="styleSheet">
+   <string notr="true">#JanelaPrincipal {
+
+background: #d6cadd;
+
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">#centralwidget {
+background: #d6cadd;
+}</string>
+   </property>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>70</y>
+      <width>281</width>
+      <height>271</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="resources.qrc">:/imgs/shop.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>10</y>
+      <width>701</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Zabal DEMO Black</family>
+      <pointsize>-1</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #800080;
+font-size: 30px;</string>
+    </property>
+    <property name="text">
+     <string>Olá, seja bem vindo(a), Usuário!</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>320</y>
+      <width>131</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Zabal DEMO Black</family>
+      <pointsize>-1</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #800080;
+font-size: 20px;</string>
+    </property>
+    <property name="text">
+     <string>Boas vendas!</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>170</y>
+      <width>421</width>
+      <height>149</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="2" column="0">
+      <widget class="QPushButton" name="btn_consultar_estoque">
+       <property name="font">
+        <font>
+         <family>Zabal DEMO Black</family>
+         <pointsize>-1</pointsize>
+         <italic>false</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color:  #800080;
+border-radius: 10px;
+border: none;
+font: 900 9pt &quot;Zabal DEMO Black&quot;;
+color: #fff;
+font-size: 20px;
+padding-top: 10px;
+padding-bottom: 10px;
+</string>
+       </property>
+       <property name="text">
+        <string>Consultar Estoque</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QPushButton" name="btn_cadastrar_cliente">
+       <property name="font">
+        <font>
+         <family>Zabal DEMO Black</family>
+         <pointsize>-1</pointsize>
+         <italic>false</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color:  #800080;
+border-radius: 10px;
+border: none;
+font: 900 9pt &quot;Zabal DEMO Black&quot;;
+color: #fff;
+font-size: 20px;
+padding-top: 10px;
+padding-bottom: 10px;
+</string>
+       </property>
+       <property name="text">
+        <string>Cadastrar Cliente</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QPushButton" name="btn_registrar_venda">
+       <property name="font">
+        <font>
+         <family>Zabal DEMO Black</family>
+         <pointsize>-1</pointsize>
+         <italic>false</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color:  #800080;
+border-radius: 10px;
+border: none;
+font: 900 9pt &quot;Zabal DEMO Black&quot;;
+color: #fff;
+font-size: 20px;
+padding-top: 10px;
+padding-bottom: 10px;
+</string>
+       </property>
+       <property name="text">
+        <string>Registrar Venda</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QPushButton" name="btn_controle_de_caixa">
+       <property name="font">
+        <font>
+         <family>Zabal DEMO Black</family>
+         <pointsize>-1</pointsize>
+         <italic>false</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color:  #800080;
+border-radius: 10px;
+border: none;
+font: 900 9pt &quot;Zabal DEMO Black&quot;;
+color: #fff;
+font-size: 20px;
+padding-top: 10px;
+padding-bottom: 10px;
+</string>
+       </property>
+       <property name="text">
+        <string>Controle de Caixa</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
      <width>751</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">#menubar {
+background-color: #800080;
+color: #fff;
+	font: 900 9pt &quot;Zabal DEMO Black&quot;;
+}</string>
+   </property>
+   <widget class="QMenu" name="menuGest_o">
+    <property name="title">
+     <string>Gestão</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="actionFuncion_rios"/>
+   </widget>
+   <widget class="QMenu" name="menuEstoque">
+    <property name="title">
+     <string>Estoque</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="actionGerenciar_estoque"/>
+    <addaction name="actionConsultar_Estoque"/>
+   </widget>
+   <addaction name="menuGest_o"/>
+   <addaction name="menuEstoque"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionFuncion_rios">
+   <property name="text">
+    <string>Funcionários</string>
+   </property>
+  </action>
+  <action name="actionConsultar_Estoque">
+   <property name="text">
+    <string>Consultar estoque</string>
+   </property>
+  </action>
+  <action name="actionGerenciar_estoque">
+   <property name="text">
+    <string>Gerenciar estoque</string>
+   </property>
+  </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

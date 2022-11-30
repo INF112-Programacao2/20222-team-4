@@ -2,5 +2,7 @@
     <qresource prefix="/imgs">
         <file>logo1.png</file>
         <file>01 Online Shopping 1.png</file>
+        <file>shop.png</file>
+        <file>cel.png</file>
     </qresource>
 </RCC>

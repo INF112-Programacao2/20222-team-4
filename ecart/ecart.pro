@@ -11,19 +11,25 @@ CONFIG += c++17
 
 SOURCES += \
     cadastrofuncionarios.cpp \
+    funcionarios.cpp \
     janelaprincipal.cpp \
     main.cpp \
-    janelalogin.cpp
+    janelalogin.cpp \
+    primeiroacesso.cpp
 
 HEADERS += \
     cadastrofuncionarios.h \
+    funcionarios.h \
     janelalogin.h \
-    janelaprincipal.h
+    janelaprincipal.h \
+    primeiroacesso.h
 
 FORMS += \
     cadastrofuncionarios.ui \
+    funcionarios.ui \
     janelalogin.ui \
-    janelaprincipal.ui
+    janelaprincipal.ui \
+    primeiroacesso.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

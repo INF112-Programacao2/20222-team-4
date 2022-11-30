@@ -12,7 +12,6 @@
 #include <QtCore/QVariant>
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
@@ -29,22 +28,18 @@ class Ui_JanelaLogin
 {
 public:
     QWidget *centralwidget;
-    QWidget *layoutWidget;
-    QVBoxLayout *verticalLayout_2;
-    QVBoxLayout *verticalLayout;
-    QHBoxLayout *horizontalLayout_2;
+    QLabel *label_4;
     QLabel *label;
+    QWidget *layoutWidget;
+    QVBoxLayout *verticalLayout_3;
+    QVBoxLayout *verticalLayout;
     QLineEdit *txt_username;
-    QHBoxLayout *horizontalLayout_3;
-    QLabel *label_2;
     QLineEdit *txt_password;
-    QHBoxLayout *horizontalLayout;
-    QSpacerItem *horizontalSpacer;
+    QSpacerItem *verticalSpacer_2;
+    QSpacerItem *verticalSpacer;
+    QVBoxLayout *verticalLayout_2;
     QPushButton *btn_login;
     QPushButton *btn_primeiro_acesso;
-    QSpacerItem *horizontalSpacer_2;
-    QLabel *label_3;
-    QLabel *label_4;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -52,96 +47,130 @@ public:
     {
         if (JanelaLogin->objectName().isEmpty())
             JanelaLogin->setObjectName("JanelaLogin");
-        JanelaLogin->resize(614, 363);
-        QIcon icon(QIcon::fromTheme(QString::fromUtf8("accessories-dictionary")));
+        JanelaLogin->resize(726, 374);
+        QIcon icon;
+        QString iconThemeName = QString::fromUtf8("accessories-dictionary");
+        if (QIcon::hasThemeIcon(iconThemeName)) {
+            icon = QIcon::fromTheme(iconThemeName);
+        } else {
+            icon.addFile(QString::fromUtf8("."), QSize(), QIcon::Normal, QIcon::Off);
+        }
         JanelaLogin->setWindowIcon(icon);
+        JanelaLogin->setStyleSheet(QString::fromUtf8("#JanelaLogin {\n"
+"background: #d6cadd;\n"
+"}"));
         centralwidget = new QWidget(JanelaLogin);
         centralwidget->setObjectName("centralwidget");
         centralwidget->setStyleSheet(QString::fromUtf8("#centralwidget {\n"
 "background: #d6cadd;\n"
 "}"));
+        label_4 = new QLabel(centralwidget);
+        label_4->setObjectName("label_4");
+        label_4->setGeometry(QRect(0, 30, 261, 271));
+        label_4->setPixmap(QPixmap(QString::fromUtf8(":/imgs/01 Online Shopping 1.png")));
+        label_4->setScaledContents(true);
+        label = new QLabel(centralwidget);
+        label->setObjectName("label");
+        label->setGeometry(QRect(310, 20, 331, 91));
+        QFont font;
+        font.setFamilies({QString::fromUtf8("Zabal DEMO Black")});
+        font.setBold(true);
+        label->setFont(font);
+        label->setStyleSheet(QString::fromUtf8("color: #800080;\n"
+"font-size: 30px;"));
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName("layoutWidget");
-        layoutWidget->setGeometry(QRect(10, 130, 311, 141));
-        verticalLayout_2 = new QVBoxLayout(layoutWidget);
-        verticalLayout_2->setObjectName("verticalLayout_2");
-        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
+        layoutWidget->setGeometry(QRect(280, 100, 401, 200));
+        verticalLayout_3 = new QVBoxLayout(layoutWidget);
+        verticalLayout_3->setObjectName("verticalLayout_3");
+        verticalLayout_3->setContentsMargins(0, 0, 0, 0);
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName("verticalLayout");
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName("horizontalLayout_2");
-        label = new QLabel(layoutWidget);
-        label->setObjectName("label");
-
-        horizontalLayout_2->addWidget(label);
-
         txt_username = new QLineEdit(layoutWidget);
         txt_username->setObjectName("txt_username");
+        txt_username->setCursor(QCursor(Qt::IBeamCursor));
+        txt_username->setStyleSheet(QString::fromUtf8("background:#d6cadd;\n"
+"border: none;\n"
+"border-bottom-width: 2px; \n"
+"border-bottom-style: solid;\n"
+"border-bottom-color: #800080;\n"
+"color: #800080;\n"
+"padding-bottom: 7px;\n"
+"font-size: 18px"));
 
-        horizontalLayout_2->addWidget(txt_username);
-
-
-        verticalLayout->addLayout(horizontalLayout_2);
-
-        horizontalLayout_3 = new QHBoxLayout();
-        horizontalLayout_3->setObjectName("horizontalLayout_3");
-        label_2 = new QLabel(layoutWidget);
-        label_2->setObjectName("label_2");
-
-        horizontalLayout_3->addWidget(label_2);
+        verticalLayout->addWidget(txt_username);
 
         txt_password = new QLineEdit(layoutWidget);
         txt_password->setObjectName("txt_password");
+        txt_password->setStyleSheet(QString::fromUtf8("background:#d6cadd;\n"
+"border: none;\n"
+"border-bottom-width: 2px; \n"
+"border-bottom-style: solid;\n"
+"border-bottom-color: #800080;\n"
+"color: #800080;\n"
+"padding-bottom: 7px;\n"
+"font-size: 18px"));
         txt_password->setEchoMode(QLineEdit::Password);
 
-        horizontalLayout_3->addWidget(txt_password);
+        verticalLayout->addWidget(txt_password);
+
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout->addItem(verticalSpacer_2);
+
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout->addItem(verticalSpacer);
 
 
-        verticalLayout->addLayout(horizontalLayout_3);
+        verticalLayout_3->addLayout(verticalLayout);
 
-
-        verticalLayout_2->addLayout(verticalLayout);
-
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName("horizontalLayout");
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout->addItem(horizontalSpacer);
-
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setObjectName("verticalLayout_2");
         btn_login = new QPushButton(layoutWidget);
         btn_login->setObjectName("btn_login");
+        QFont font1;
+        font1.setFamilies({QString::fromUtf8("Zabal DEMO Black")});
+        font1.setBold(true);
+        font1.setItalic(false);
+        btn_login->setFont(font1);
+        btn_login->setCursor(QCursor(Qt::PointingHandCursor));
+        btn_login->setStyleSheet(QString::fromUtf8("background-color:  #800080;\n"
+"border-radius: 10px;\n"
+"border: none;\n"
+"font: 900 9pt \"Zabal DEMO Black\";\n"
+"color: #fff;\n"
+"font-size: 20px;\n"
+"padding-top: 10px;\n"
+"padding-bottom: 10px;\n"
+""));
 
-        horizontalLayout->addWidget(btn_login);
+        verticalLayout_2->addWidget(btn_login);
 
         btn_primeiro_acesso = new QPushButton(layoutWidget);
         btn_primeiro_acesso->setObjectName("btn_primeiro_acesso");
+        btn_primeiro_acesso->setFont(font1);
         btn_primeiro_acesso->setCursor(QCursor(Qt::PointingHandCursor));
-        btn_primeiro_acesso->setStyleSheet(QString::fromUtf8("border: none;\n"
-"color: #000;"));
+        btn_primeiro_acesso->setStyleSheet(QString::fromUtf8("background: none;\n"
+"border-radius: 10px;\n"
+"border: 2px solid #800080;\n"
+"font: 900 9pt \"Zabal DEMO Black\";\n"
+"color: #800080;\n"
+"font-size: 20px;\n"
+"padding-top: 10px;\n"
+"padding-bottom: 10px;\n"
+"\n"
+""));
 
-        horizontalLayout->addWidget(btn_primeiro_acesso);
-
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout->addItem(horizontalSpacer_2);
+        verticalLayout_2->addWidget(btn_primeiro_acesso);
 
 
-        verticalLayout_2->addLayout(horizontalLayout);
+        verticalLayout_3->addLayout(verticalLayout_2);
 
-        label_3 = new QLabel(centralwidget);
-        label_3->setObjectName("label_3");
-        label_3->setGeometry(QRect(100, 60, 121, 61));
-        label_3->setPixmap(QPixmap(QString::fromUtf8(":/imgs/logo1.png")));
-        label_3->setScaledContents(true);
-        label_4 = new QLabel(centralwidget);
-        label_4->setObjectName("label_4");
-        label_4->setGeometry(QRect(360, 60, 241, 231));
-        label_4->setPixmap(QPixmap(QString::fromUtf8(":/imgs/01 Online Shopping 1.png")));
-        label_4->setScaledContents(true);
         JanelaLogin->setCentralWidget(centralwidget);
         menubar = new QMenuBar(JanelaLogin);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 614, 21));
+        menubar->setGeometry(QRect(0, 0, 726, 21));
         JanelaLogin->setMenuBar(menubar);
         statusbar = new QStatusBar(JanelaLogin);
         statusbar->setObjectName("statusbar");
@@ -155,12 +184,12 @@ public:
     void retranslateUi(QMainWindow *JanelaLogin)
     {
         JanelaLogin->setWindowTitle(QCoreApplication::translate("JanelaLogin", "JanelaLogin", nullptr));
-        label->setText(QCoreApplication::translate("JanelaLogin", "Username", nullptr));
-        label_2->setText(QCoreApplication::translate("JanelaLogin", "Senha       ", nullptr));
+        label_4->setText(QString());
+        label->setText(QCoreApplication::translate("JanelaLogin", "Ol\303\241, seja bem vindo(a)!", nullptr));
+        txt_username->setPlaceholderText(QCoreApplication::translate("JanelaLogin", "Username", nullptr));
+        txt_password->setPlaceholderText(QCoreApplication::translate("JanelaLogin", "Senha", nullptr));
         btn_login->setText(QCoreApplication::translate("JanelaLogin", "Login", nullptr));
         btn_primeiro_acesso->setText(QCoreApplication::translate("JanelaLogin", "Primeiro Acesso", nullptr));
-        label_3->setText(QString());
-        label_4->setText(QString());
     } // retranslateUi
 
 };
