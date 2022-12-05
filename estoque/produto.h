@@ -1,23 +1,31 @@
+#ifndef PRODUTO_H
+#define PRODUTO_H
+
 #include <string>
 
-class Produto {
+class Produto
+{
 
-    private: 
-        std::string _nome_produto;
-        int _id;
-        double _preco;
+private:
+    int generateIds; //lembrar de inicializar esse contador no cpp
+    int id; // lembrar que no .cpp essa variavel recebe a generateIds
 
-    public:
-        Produto(std::string nome_produto, int id, double preco);
-        ~Produto();
+    std::string nomeProduto;
+    double preco;
+    int quantidade;
 
-        std::string set_nome_produto();
-        double get_preco();
-        int set_id();
+public:
+    Produto(std::string nomeProduto, double preco, int quantidade);
 
-        std::string get_nome_produto();
-        double get_preco();
-        int get_id();
-    
+    std::string setNome();
+    double setPreco();
+    int setQuantidade();
 
+    std::string getNome();
+    double getPreco(); 
+    int getId();
+    int getQuantidade();
+    ~Produto();
 };
+
+#endif

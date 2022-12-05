@@ -32,14 +32,14 @@ public:
     QLabel *label_3;
     QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_3;
-    QLineEdit *txt_nome_adm;
-    QLineEdit *txt_email_adm;
-    QLineEdit *txt_email_adm_2;
+    QLineEdit *txt_nome_funcionario;
+    QLineEdit *txt_salario_base;
+    QLineEdit *txt_horas_semanais;
     QLabel *label;
     QWidget *widget;
     QHBoxLayout *horizontalLayout;
     QPushButton *btn_cadastrar;
-    QPushButton *btn_cadastrar_2;
+    QPushButton *btn_cancelar;
     QMenuBar *menubar;
     QMenu *menuIn_cio;
     QStatusBar *statusbar;
@@ -76,10 +76,10 @@ public:
         verticalLayout_3 = new QVBoxLayout(layoutWidget);
         verticalLayout_3->setObjectName("verticalLayout_3");
         verticalLayout_3->setContentsMargins(0, 0, 0, 0);
-        txt_nome_adm = new QLineEdit(layoutWidget);
-        txt_nome_adm->setObjectName("txt_nome_adm");
-        txt_nome_adm->setCursor(QCursor(Qt::IBeamCursor));
-        txt_nome_adm->setStyleSheet(QString::fromUtf8("background:#d6cadd;\n"
+        txt_nome_funcionario = new QLineEdit(layoutWidget);
+        txt_nome_funcionario->setObjectName("txt_nome_funcionario");
+        txt_nome_funcionario->setCursor(QCursor(Qt::IBeamCursor));
+        txt_nome_funcionario->setStyleSheet(QString::fromUtf8("background:#d6cadd;\n"
 "border: none;\n"
 "border-bottom-width: 2px; \n"
 "border-bottom-style: solid;\n"
@@ -88,12 +88,12 @@ public:
 "padding-bottom: 7px;\n"
 "font-size: 18px"));
 
-        verticalLayout_3->addWidget(txt_nome_adm);
+        verticalLayout_3->addWidget(txt_nome_funcionario);
 
-        txt_email_adm = new QLineEdit(layoutWidget);
-        txt_email_adm->setObjectName("txt_email_adm");
-        txt_email_adm->setCursor(QCursor(Qt::IBeamCursor));
-        txt_email_adm->setStyleSheet(QString::fromUtf8("background:#d6cadd;\n"
+        txt_salario_base = new QLineEdit(layoutWidget);
+        txt_salario_base->setObjectName("txt_salario_base");
+        txt_salario_base->setCursor(QCursor(Qt::IBeamCursor));
+        txt_salario_base->setStyleSheet(QString::fromUtf8("background:#d6cadd;\n"
 "border: none;\n"
 "border-bottom-width: 2px; \n"
 "border-bottom-style: solid;\n"
@@ -102,12 +102,12 @@ public:
 "padding-bottom: 7px;\n"
 "font-size: 18px"));
 
-        verticalLayout_3->addWidget(txt_email_adm);
+        verticalLayout_3->addWidget(txt_salario_base);
 
-        txt_email_adm_2 = new QLineEdit(layoutWidget);
-        txt_email_adm_2->setObjectName("txt_email_adm_2");
-        txt_email_adm_2->setCursor(QCursor(Qt::IBeamCursor));
-        txt_email_adm_2->setStyleSheet(QString::fromUtf8("background:#d6cadd;\n"
+        txt_horas_semanais = new QLineEdit(layoutWidget);
+        txt_horas_semanais->setObjectName("txt_horas_semanais");
+        txt_horas_semanais->setCursor(QCursor(Qt::IBeamCursor));
+        txt_horas_semanais->setStyleSheet(QString::fromUtf8("background:#d6cadd;\n"
 "border: none;\n"
 "border-bottom-width: 2px; \n"
 "border-bottom-style: solid;\n"
@@ -116,7 +116,7 @@ public:
 "padding-bottom: 7px;\n"
 "font-size: 18px"));
 
-        verticalLayout_3->addWidget(txt_email_adm_2);
+        verticalLayout_3->addWidget(txt_horas_semanais);
 
         label = new QLabel(centralwidget);
         label->setObjectName("label");
@@ -149,11 +149,11 @@ public:
 
         horizontalLayout->addWidget(btn_cadastrar);
 
-        btn_cadastrar_2 = new QPushButton(widget);
-        btn_cadastrar_2->setObjectName("btn_cadastrar_2");
-        btn_cadastrar_2->setFont(font1);
-        btn_cadastrar_2->setCursor(QCursor(Qt::PointingHandCursor));
-        btn_cadastrar_2->setStyleSheet(QString::fromUtf8("background:none;\n"
+        btn_cancelar = new QPushButton(widget);
+        btn_cancelar->setObjectName("btn_cancelar");
+        btn_cancelar->setFont(font1);
+        btn_cancelar->setCursor(QCursor(Qt::PointingHandCursor));
+        btn_cancelar->setStyleSheet(QString::fromUtf8("background:none;\n"
 "border-radius: 10px;\n"
 "border: 2px solid #800080;\n"
 "font: 900 9pt \"Zabal DEMO Black\";\n"
@@ -163,7 +163,7 @@ public:
 "padding-bottom: 10px;\n"
 ""));
 
-        horizontalLayout->addWidget(btn_cadastrar_2);
+        horizontalLayout->addWidget(btn_cancelar);
 
         CadastroFuncionarios->setCentralWidget(centralwidget);
         menubar = new QMenuBar(CadastroFuncionarios);
@@ -192,15 +192,15 @@ public:
     {
         CadastroFuncionarios->setWindowTitle(QCoreApplication::translate("CadastroFuncionarios", "MainWindow", nullptr));
         label_3->setText(QCoreApplication::translate("CadastroFuncionarios", "Cadastro de funcion\303\241rio", nullptr));
-        txt_nome_adm->setText(QString());
-        txt_nome_adm->setPlaceholderText(QCoreApplication::translate("CadastroFuncionarios", "Nome", nullptr));
-        txt_email_adm->setText(QString());
-        txt_email_adm->setPlaceholderText(QCoreApplication::translate("CadastroFuncionarios", "Sal\303\241rio Base", nullptr));
-        txt_email_adm_2->setText(QString());
-        txt_email_adm_2->setPlaceholderText(QCoreApplication::translate("CadastroFuncionarios", "Horas Semanais", nullptr));
+        txt_nome_funcionario->setText(QString());
+        txt_nome_funcionario->setPlaceholderText(QCoreApplication::translate("CadastroFuncionarios", "Nome", nullptr));
+        txt_salario_base->setText(QString());
+        txt_salario_base->setPlaceholderText(QCoreApplication::translate("CadastroFuncionarios", "Sal\303\241rio Base", nullptr));
+        txt_horas_semanais->setText(QString());
+        txt_horas_semanais->setPlaceholderText(QCoreApplication::translate("CadastroFuncionarios", "Horas Semanais", nullptr));
         label->setText(QString());
         btn_cadastrar->setText(QCoreApplication::translate("CadastroFuncionarios", "Cadastrar", nullptr));
-        btn_cadastrar_2->setText(QCoreApplication::translate("CadastroFuncionarios", "Cancelar", nullptr));
+        btn_cancelar->setText(QCoreApplication::translate("CadastroFuncionarios", "Cancelar", nullptr));
         menuIn_cio->setTitle(QCoreApplication::translate("CadastroFuncionarios", "In\303\255cio", nullptr));
     } // retranslateUi
 

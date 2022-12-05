@@ -1,0 +1,12 @@
+release/cadastrofuncionarios.o
+release/funcionarios.o
+release/janelaprincipal.o
+release/main.o
+release/janelalogin.o
+release/primeiroacesso.o
+release/qrc_resources.o
+release/moc_cadastrofuncionarios.o
+release/moc_funcionarios.o
+release/moc_janelalogin.o
+release/moc_janelaprincipal.o
+release/moc_primeiroacesso.o

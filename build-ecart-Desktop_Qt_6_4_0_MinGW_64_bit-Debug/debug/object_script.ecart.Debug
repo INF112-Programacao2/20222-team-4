@@ -1,0 +1,12 @@
+debug/cadastrofuncionarios.o
+debug/funcionarios.o
+debug/janelaprincipal.o
+debug/main.o
+debug/janelalogin.o
+debug/primeiroacesso.o
+debug/qrc_resources.o
+debug/moc_cadastrofuncionarios.o
+debug/moc_funcionarios.o
+debug/moc_janelalogin.o
+debug/moc_janelaprincipal.o
+debug/moc_primeiroacesso.o

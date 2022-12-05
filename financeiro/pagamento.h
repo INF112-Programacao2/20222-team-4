@@ -1,18 +1,28 @@
+#ifndef PAGAMENTO_H
+#define PAGAMENTO_H
+
 #include "funcionario.h"
 
-class Pagamento //vai herdar vendas ou funcionarios 
+class Pagamento 
 {
 private:
-
-    double _valor_comissao;
-    double _salario_base;
-    int _horas_extras;
+    double valorComissao;
+    double salarioBase;
+    int horasExtras;
 
 public:
-    Pagamento();
+    Pagamento(double valorComissao, double salarioBase, int horasExtras);
+    double setValorComissao();
+    double setSalarioBase();
+    int setHorasExtras();
+
+    double getValorComissao();
+    double getSalarioBase();
+    int getHorasExtras();
+
+
     ~Pagamento();
 
-    // calcular o salario no final do mes;
-    double salarioFinal(double valor_comissao, double salario_base, int horas_extras);
-
 };
+
+#endif

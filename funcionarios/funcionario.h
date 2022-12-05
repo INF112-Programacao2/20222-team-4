@@ -1,29 +1,41 @@
+#ifndef FUNCIONARIO_H
+#define FUNCIONARIO_H
+
 #include <string>
 
 class Funcionario {
     private:
-    std::string _nome;
-    int _matricula;
-    double _porcentagem_comissao;
-    double _salario_base;
-    double _horas_semanais;
-
     
+    static int generateMatricula;
+    int matricula;
+    
+
+    protected:
+    std::string nome;
+    long long int documento;
+    double porcentagemComissao;
+    double salarioBase;
+    double horasSemanais;
+
     public:
-    Funcionario(std::string nome, int matricula, double porcentagem_comissao, double salario_base, double horas_semanais); // construtor
-    ~Funcionario(); // desconstrutor
+    Funcionario(std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais); // construtor
+    
 
-    std::string set_nome();
-    int set_matricula();
-    double set_porcentagem_comissao();
-    double set_salario_base();
-    double set_horas_semanais();
+    std::string setNome();
+    int setDocumento();
+    double setPorcentagemComissao();
+    double setSalarioBase();
+    double setHorasSemanais();
 
 
-    std::string get_nome();
-    int get_matricula();
-    double get_porcentagem_comissao();
-    double get_salario_base();
-    double get_horas_semanais();
+    std::string getNome();
+    long long int getDocumento();
+    double getPorcentagemComissao();
+    double getSalarioBase();
+    double getHorasSemanais();
+    int getMatricula();
 
+    ~Funcionario(); 
 };
+
+#endif

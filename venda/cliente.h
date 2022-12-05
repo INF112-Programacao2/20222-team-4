@@ -1,25 +1,39 @@
+#ifndef CLIENTE_H
+#define CLIENTE_H
+
 #include <string>
 
 class Cliente {
     private:
-        std::string _nome_cliente;
-        int _cpf_cliente;
-        int _total_compras;
-        double _desconto;
-    
+        static int generateIds;
+        int id;
+
+    protected:
+        std::string nome;
+        int documento;
+        int totalCompras;
+        double desconto;
+
     public:
         Cliente ();
+        
+    //getters
+        std::string getNome();
+        int getDocumento();
+        int getTotalCompras();
+        double getDesconto();
+        int getId();
+    //setters
+        int setDocumento();
+        int setTotalCompras();
+        double setDesconto();
+
+        
+        // acho que e melhor tirar essa funcao
+       // void cadastra_cliente(std::string nome, int cpf_cliente, int total_compras, double desconto);
+
         ~Cliente();
-
-        std::string get_nome();
-        int set_cpf_cliente();
-        int set_total_compras();
-        double set_desconto();
-
-        int get_cpf_cliente();
-        int get_total_compras();
-        double get_desconto();
-
-        void cadastra_cliente(std::string nome, int cpf_cliente, int total_compras, double desconto);
  
 };
+
+#endif

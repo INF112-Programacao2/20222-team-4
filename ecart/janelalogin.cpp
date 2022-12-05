@@ -2,6 +2,7 @@
 #include "ui_janelalogin.h"
 #include "janelaprincipal.h"
 #include <QMessageBox>
+#include <QtSQL>
 
 static QSqlDatabase bancoDeDados=QSqlDatabase::addDatabase("QSQLITE");
 
@@ -28,14 +29,13 @@ JanelaLogin::~JanelaLogin()
 
 void JanelaLogin::on_btn_login_clicked()
 {
-    this->close();
-    j_principal = new JanelaPrincipal(this);
-    j_principal->show();
+
+
 }
 
 
-void JanelaLogin::on_btn_primeiro_acesso_clicked()
-{
+void JanelaLogin::on_btn_primeiro_acesso_clicked(){
+
     this->close();
     p_acesso = new PrimeiroAcesso(this);
     p_acesso->show();

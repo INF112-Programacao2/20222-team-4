@@ -38,7 +38,7 @@ public:
     QPushButton *btn_consultar_estoque;
     QPushButton *btn_cadastrar_cliente;
     QPushButton *btn_registrar_venda;
-    QPushButton *btn_registrar_venda_3;
+    QPushButton *btn_controle_de_caixa;
     QMenuBar *menubar;
     QMenu *menuGest_o;
     QMenu *menuEstoque;
@@ -67,7 +67,7 @@ public:
 "}"));
         label = new QLabel(centralwidget);
         label->setObjectName("label");
-        label->setGeometry(QRect(460, 90, 271, 251));
+        label->setGeometry(QRect(450, 70, 281, 271));
         label->setPixmap(QPixmap(QString::fromUtf8(":/imgs/shop.png")));
         label->setScaledContents(true);
         label_2 = new QLabel(centralwidget);
@@ -81,7 +81,7 @@ public:
 "font-size: 30px;"));
         label_3 = new QLabel(centralwidget);
         label_3->setObjectName("label_3");
-        label_3->setGeometry(QRect(540, 320, 131, 51));
+        label_3->setGeometry(QRect(530, 320, 131, 51));
         label_3->setFont(font);
         label_3->setStyleSheet(QString::fromUtf8("color: #800080;\n"
 "font-size: 20px;"));
@@ -143,11 +143,11 @@ public:
 
         gridLayout->addWidget(btn_registrar_venda, 0, 0, 1, 1);
 
-        btn_registrar_venda_3 = new QPushButton(widget);
-        btn_registrar_venda_3->setObjectName("btn_registrar_venda_3");
-        btn_registrar_venda_3->setFont(font1);
-        btn_registrar_venda_3->setCursor(QCursor(Qt::PointingHandCursor));
-        btn_registrar_venda_3->setStyleSheet(QString::fromUtf8("background-color:  #800080;\n"
+        btn_controle_de_caixa = new QPushButton(widget);
+        btn_controle_de_caixa->setObjectName("btn_controle_de_caixa");
+        btn_controle_de_caixa->setFont(font1);
+        btn_controle_de_caixa->setCursor(QCursor(Qt::PointingHandCursor));
+        btn_controle_de_caixa->setStyleSheet(QString::fromUtf8("background-color:  #800080;\n"
 "border-radius: 10px;\n"
 "border: none;\n"
 "font: 900 9pt \"Zabal DEMO Black\";\n"
@@ -157,7 +157,7 @@ public:
 "padding-bottom: 10px;\n"
 ""));
 
-        gridLayout->addWidget(btn_registrar_venda_3, 2, 1, 1, 1);
+        gridLayout->addWidget(btn_controle_de_caixa, 2, 1, 1, 1);
 
         JanelaPrincipal->setCentralWidget(centralwidget);
         menubar = new QMenuBar(JanelaPrincipal);
@@ -202,7 +202,7 @@ public:
         btn_consultar_estoque->setText(QCoreApplication::translate("JanelaPrincipal", "Consultar Estoque", nullptr));
         btn_cadastrar_cliente->setText(QCoreApplication::translate("JanelaPrincipal", "Cadastrar Cliente", nullptr));
         btn_registrar_venda->setText(QCoreApplication::translate("JanelaPrincipal", "Registrar Venda", nullptr));
-        btn_registrar_venda_3->setText(QCoreApplication::translate("JanelaPrincipal", "Controle de Caixa", nullptr));
+        btn_controle_de_caixa->setText(QCoreApplication::translate("JanelaPrincipal", "Controle de Caixa", nullptr));
         menuGest_o->setTitle(QCoreApplication::translate("JanelaPrincipal", "Gest\303\243o", nullptr));
         menuEstoque->setTitle(QCoreApplication::translate("JanelaPrincipal", "Estoque", nullptr));
     } // retranslateUi
