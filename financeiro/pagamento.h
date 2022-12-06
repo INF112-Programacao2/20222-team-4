@@ -7,22 +7,16 @@ class Pagamento
 {
 private:
     Funcionario funcionario;
-    double valorComissao;
-    double salarioBase;
-    int horasExtras;
+    double pagamento;
 
 public:
-    Pagamento(Funcionario funcionario, double valorComissao, double salarioBase, int horasExtras);
+    Pagamento(Funcionario funcionario, double pagamento);
 
     Funcionario setFuncionario();
-    double setValorComissao();
-    double setSalarioBase();
-    int setHorasExtras();
+    double setPagamento();
 
-    double getValorComissao();
-    double getSalarioBase();
-    int getHorasExtras();
     Funcionario getFuncionario();
+    double getPagamento();
 
     ~Pagamento();
 };

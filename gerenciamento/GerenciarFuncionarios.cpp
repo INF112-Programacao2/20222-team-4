@@ -1,5 +1,6 @@
 #include "GerenciarFuncionarios.h"
 
+
 GerenciarFuncionarios::GerenciarFuncionarios()
 {
 }
@@ -52,18 +53,25 @@ void buscarGerente(Gerente &gerente)
 double calculaPagamento(Funcionario funcionario)
 {
     double salario;
-    double horasSemanais, horasExtras, comissao, salarioBase;
+    double horasSemanais, horasExtras, vendasTotais, comissao, salarioBase;
 
     horasSemanais=funcionario.getHorasSemanais();
     salarioBase=funcionario.getSalarioBase();
+    vendasTotais =funcionario.getVendasTotais(); //falta colocar as vendas totais dentro da classe funcionario.
     
-    std::cout << "Horas extras do funcionario: ";
+    std::cout << "Horas extras do funcionario: \n";
     std::cin >> horasExtras;
-    
+    std::cout << "Porcentagem de comissao do funcionario: \n";
+    std::cin >> comissao;
 
+    salario = salarioBase * (horasSemanais+horasExtras) + (vendasTotais * comissao); 
+
+    return salario;
 }
-void realizaPagamento(Pagamento &pagamento)
+
+void realizaPagamento(Funcionario funcionario, double pagamento)
 {
+    
 
 }
 
