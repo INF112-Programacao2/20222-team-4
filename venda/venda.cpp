@@ -4,12 +4,12 @@ Venda::Venda() {}
 
 int Venda::generateIds = 0;
 
-Venda::Venda(double valorTotal, Vendedor vendedor, Produto produto, Cliente cliente)
+Venda::Venda(Vendedor vendedor, Produto produto, Cliente cliente, double desconto)
 {
-    this->valorTotal = valorTotal;
     this->vendedor = vendedor;
     this->produto = produto;
     this->cliente = cliente;
+    this->desconto = desconto;
     this->id = Venda::generateIds;
 
     Venda::generateIds++;
@@ -27,6 +27,16 @@ int Venda::getId()
 double Venda::setValorTotal(double valorTotal)
 {
     this->valorTotal;
+}
+
+double Venda::setDesconto(double desconto)
+{
+    this->desconto;
+}
+
+double Venda::getDesconto()
+{
+    return this->desconto;
 }
 
 Venda::~Venda()

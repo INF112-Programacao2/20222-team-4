@@ -16,12 +16,15 @@ private:
     Vendedor vendedor;
     Produto idProduto;
     Cliente cliente;
+    double desconto;
 
 public:
-    Venda(double valorTotal, Vendedor vendedor, Produto idProduto, Cliente cliente);
+    Venda(Vendedor vendedor, Produto idProduto, Cliente cliente, double desconto);
 
     double setValorTotal();
+    double setDesconto();
     double getValorTotal();
+    double getDesconto();
     double getId();
     
     ~Venda();

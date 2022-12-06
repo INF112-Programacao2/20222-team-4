@@ -3,15 +3,18 @@
 
 #include "funcionario.h"
 
-class Pagamento 
+class Pagamento
 {
 private:
+    Funcionario funcionario;
     double valorComissao;
     double salarioBase;
     int horasExtras;
 
 public:
-    Pagamento(double valorComissao, double salarioBase, int horasExtras);
+    Pagamento(Funcionario funcionario, double valorComissao, double salarioBase, int horasExtras);
+
+    Funcionario setFuncionario();
     double setValorComissao();
     double setSalarioBase();
     int setHorasExtras();
@@ -19,10 +22,9 @@ public:
     double getValorComissao();
     double getSalarioBase();
     int getHorasExtras();
-
+    Funcionario getFuncionario();
 
     ~Pagamento();
-
 };
 
 #endif
