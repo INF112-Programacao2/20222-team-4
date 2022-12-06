@@ -12,21 +12,20 @@ class Cliente {
         std::string nome;
         int documento;
         int totalCompras;
-        double desconto;
 
     public:
-        Cliente ();
+        Cliente (std::string nome, long long int documento, int totalCompras);
         
     //getters
         std::string getNome();
         int getDocumento();
         int getTotalCompras();
-        double getDesconto();
         int getId();
     //setters
-        int setDocumento();
-        int setTotalCompras();
-        double setDesconto();
+        std::string setNome(std::string nome);
+        int setDocumento(long long int documento);
+        int setTotalCompras(int totalCompras);
+
 
         
         // acho que e melhor tirar essa funcao

@@ -39,6 +39,8 @@ double Venda::getDesconto()
     return this->desconto;
 }
 
+
+
 Venda::~Venda()
 {
 }

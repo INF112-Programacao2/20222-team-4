@@ -19,10 +19,12 @@ private:
     double desconto;
 
 public:
-    Venda(Vendedor vendedor, Produto idProduto, Cliente cliente, double desconto);
+    Venda(Vendedor vendedor, Produto idProduto, Cliente cliente, double desconto, double valorTotal);
 
-    double setValorTotal();
-    double setDesconto();
+    double setValorTotal(double valorTotal);
+    double setDesconto(double desconto);
+
+    
     double getValorTotal();
     double getDesconto();
     double getId();

@@ -1,6 +1,5 @@
 #include "GerenciarFuncionarios.h"
 
-
 GerenciarFuncionarios::GerenciarFuncionarios()
 {
 }
@@ -50,32 +49,47 @@ void buscarGerente(Gerente &gerente)
     return -1;
 }
 
+void deleteGerente(Gerente &gerente)
+{
+    for (int i = 0; i < GerenciarFuncionarios::listaGerentes.size(); i++)
+    {
+        if (GerenciarFuncionarios::listaGerentes[i].getId() == gerente.getId())
+        {
+            GerenciarFuncionarios::listaGerentes.erase(i);
+        }
+    }
+}
+void deleteVendedor(Vendedor &vendedor)
+{
+    for (int i = 0; i < GerenciarFuncionarios::listaVendedores.size(); i++)
+    {
+        if (GerenciarFuncionarios::listaVendedores[i].getId() == vendedor.getId())
+        {
+            GerenciarFuncionarios::listaVendedores.erase(i);
+        }
+    }
+
+}
+
 double calculaPagamento(Funcionario funcionario)
 {
     double salario;
     double horasSemanais, horasExtras, vendasTotais, comissao, salarioBase;
 
-    horasSemanais=funcionario.getHorasSemanais();
-    salarioBase=funcionario.getSalarioBase();
-    vendasTotais =funcionario.getVendasTotais(); //falta colocar as vendas totais dentro da classe funcionario.
-    
+    horasSemanais = funcionario.getHorasSemanais();
+    salarioBase = funcionario.getSalarioBase();
+    vendasTotais = funcionario.getVendasTotais(); // falta colocar as vendas totais dentro da classe funcionario.
+
     std::cout << "Horas extras do funcionario: \n";
     std::cin >> horasExtras;
     std::cout << "Porcentagem de comissao do funcionario: \n";
     std::cin >> comissao;
 
-    salario = salarioBase * (horasSemanais+horasExtras) + (vendasTotais * comissao); 
+    salario = salarioBase * (horasSemanais + horasExtras) + (vendasTotais * (comissao / 100.0));
 
-    return salario;
-}
-
-void realizaPagamento(Funcionario funcionario, double pagamento)
-{
-    
-
+    // colocar o funcionario + salario dentro de um objeto pagamento;
 }
 
 GerenciarFuncionarios::~GerenciarFuncionarios()
 {
-
 }

@@ -41,6 +41,10 @@ double Funcionario::setHorasSemanais(double horasSemanais)
 {
     this->horasSemanais = horasSemanais;
 }
+double Funcionario::setTotalVendas(double totalVendas)
+{
+    this->totalVendas = totalVendas;
+}
 
 std::string Funcionario::getNome()
 {
@@ -69,6 +73,11 @@ int Funcionario::getMatricula()
     return this->matricula;
 }
 
-Funcionario::~Funcionario(){
+int Funcionario::getTotalVendas()
+{
+    return this->totalVendas;
+}
 
+Funcionario::~Funcionario()
+{
 }

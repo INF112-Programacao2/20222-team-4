@@ -15,6 +15,7 @@ class GerenciarFuncionarios
 private:
     std::vector<Vendedor> listaVendedores;
     std::vector<Gerente> listaGerentes;
+    std::vector<Pagamento> listaPagamentos;
 
 public:
     GerenciarFuncionarios();
@@ -25,11 +26,10 @@ public:
     void updateVendedor(const Vendedor &vendedor);
     void updateGerente(const Gerente &gerente);
 
-    void deleteVendedor(Vendedor &vendedor);
+    void deleteVendedor(Vendedor &vendedor); 
     void deleteGerente(Gerente &gerente);
 
     double calculaPagamento(Funcionario funcionario, Pagamento &pagamento);
-    void realizaPagamento(Funcionario funcionario, Pagamento &pagamento);
 
     ~GerenciarFuncionarios();
 }

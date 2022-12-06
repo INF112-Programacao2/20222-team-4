@@ -4,12 +4,11 @@ Cliente::Cliente() {}
 
 int Cliente::generateIds = 0;
 
-Cliente::Cliente(std::string nome, long long int documento, int totalCompras, double desconto)
+Cliente::Cliente(std::string nome, long long int documento, int totalCompras)
 {
     this->nome = nome;
     this->documento = documento;
     this->totalCompras = totalCompras;
-    this->desconto = desconto;
     this->id = Cliente::generateIds;
 
     Cliente::generateIds++;
@@ -27,10 +26,7 @@ int Cliente::getTotalCompras()
 {
     return this->totalCompras;
 }
-double Cliente::getDesconto()
-{
-    return this->desconto;
-}
+
 int Cliente::getId()
 {
     return this->id;
@@ -48,10 +44,7 @@ int Cliente::setTotalCompras(int totalCompras)
 {
     this->totalCompras;
 }
-double Cliente::setDesconto(double desconto)
-{
-    this->desconto;
-}
+
 
 Cliente::~Cliente(){
 

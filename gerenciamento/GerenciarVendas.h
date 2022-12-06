@@ -26,7 +26,6 @@ public:
 
     void cancelaVenda(Venda &venda);
 
-
     ~GerenciarVendas();
 }
 
