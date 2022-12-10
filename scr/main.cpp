@@ -229,8 +229,7 @@ inicio:
         std::cout << "----- GESTAO DE FINANCAS -----\n\n";
         std::cout << "1 - Novo pagamento\n";
         std::cout << "2 - Ver pagamentos\n";
-        std::cout << "3 - Gerar contracheque\n";
-        std::cout << "4 - Voltar ao menu inicial\n";
+        std::cout << "3 - Voltar ao menu inicial\n";
         std::cin >> resp4;
 
         if (resp4 == 1)
@@ -245,13 +244,9 @@ inicio:
         }
         else if (resp4 == 2)
         {
-            // ver pagamentos
+            //fazer uma funcao parecida com a ver itens no estoque, só que puxando a lista de pagamentos e mostrando o id do funcionario escolhido e o nome dele e o total que ele recebeu
         }
         else if (resp4 == 3)
-        {
-            // gerar contracheque
-        }
-        else if (resp4 == 4)
         {
             goto inicio; // voltar ao menu inicial
         }
