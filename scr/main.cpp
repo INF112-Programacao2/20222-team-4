@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-
 #include "funcionario.h"
 #include "estoque.h"
 #include "produto.h"
@@ -42,8 +41,8 @@ inicio:
 
         double valorTotal, desconto;
         int idFuncionario, idProduto;
-        std::string nomeCliente;
-        std::string documentoCliente;
+        std :: string nomeCliente;
+        std :: string documentoCliente;
 
         gerencia.novaVenda(idFuncionario, nomeCliente, documentoCliente, idProduto, desconto, valorTotal);
 
@@ -56,11 +55,11 @@ inicio:
 
         std ::system("CLS");
 
-        if (selecao2 == 1)
+        if (selecao2  ==  1)
         {
             goto venda;
         }
-        else if (selecao2 == 2)
+        else if (selecao2  ==  2)
         {
             goto inicio;
         }
@@ -73,21 +72,21 @@ inicio:
         double porcentagemComissao;
         double salarioBase;
         double horasSemanais;
-        std::cout << "----- GESTAO DE FUNCIONARIOS -----\n\n";
-        std::cout << "1 - Cadastrar novo funcionario\n";
-        std::cout << "2 - Editar Funcionario\n";
-        std::cout << "3 - Remover Funcionario\n";
-        std::cout << "4 - Voltar ao menu inicial\n";
-        std::cin >> resp;
+        std :: cout << "----- GESTAO DE FUNCIONARIOS -----\n\n";
+        std :: cout << "1 - Cadastrar novo funcionario\n";
+        std :: cout << "2 - Editar Funcionario\n";
+        std :: cout << "3 - Remover Funcionario\n";
+        std :: cout << "4 - Voltar ao menu inicial\n";
+        std :: cin >> resp;
 
-        if (resp == 1)
+        if (resp  ==  1)
         {
-            std ::cout << "Qual o cargo do funcionario? \n\n";
+            std ::cout << "Qual o cargo do funcionario que deseja cadastrar? \n\n";
             std ::cout << "1 - Gerente\n";
             std ::cout << "2 - Vendedor\n";
             std ::cin >> resp2;
 
-            if (resp2 == 1)
+            if (resp2  ==  1)
             {
                 int selecao2;
                 gerencia.novoGerente(nome, documento, porcentagemComissao, salarioBase, horasSemanais);
@@ -110,7 +109,7 @@ inicio:
                     goto inicio;
                 }
             }
-            else if (resp2 == 2)
+            else if (resp2  ==  2)
             {
                 int selecao2;
                 gerencia.novoVendedor(nome, documento, porcentagemComissao, salarioBase, horasSemanais);
@@ -134,15 +133,41 @@ inicio:
                 }
             }
         }
-        else if (resp == 2)
-        {
-            // editarfunc
+
+        else if (resp == 2) {
+            //editarfunc
+            std :: cout << "Qual o cargo do funcionario que deseja editar? \n\n";
+            std :: cout << "1 - Gerente\n";
+            std :: cout << "2 - Vendedor\n";
+            std :: cin >> resp21;
+            
+
+            if (resp21 == 1) {
+                //gerencia.editarGerente(nome, documento, porcentagemComissao, salarioBase, horasSemanais); 
+            }
+            else if (resp21 == 2) {
+                //gerencia.editarVendedor(nome, documento, porcentagemComissao, salarioBase, horasSemanais);
+            }
+
         }
-        else if (resp == 3)
-        {
-            // removerfunc
+
+        else if (resp == 3) {
+            //removerfunc
+            std :: cout << "Qual o cargo do funcionario que deseja remover? \n\n";
+            std :: cout << "1 - Gerente\n";
+            std :: cout << "2 - Vendedor\n";
+            std :: cin >> resp22;
+
+            if (resp22 == 1) {
+                //gerencia.removerGerente(nome, documento, porcentagemComissao, salarioBase, horasSemanais); 
+            }
+            else if (resp22 == 2) {
+                //gerencia.removerVendedor(nome, documento, porcentagemComissao, salarioBase, horasSemanais);
+            }
+
         }
-        else if (resp == 4)
+
+        else if (resp  ==  4)
         {
             goto inicio; // voltar ao menu inicial
         }
@@ -151,52 +176,58 @@ inicio:
     {
         int resp3;
 
-        std::cout << "----- GESTAO DE VENDAS -----\n\n";
-        std::cout << "1 - Editar venda\n";
-        std::cout << "2 - Cancelar venda\n";
-        std::cout << "3 - Gerar relatorio de vendas\n";
-        std::cout << "4 - Voltar ao menu inicial\n";
-        std::cin >> resp3;
+        std :: cout << "----- GESTAO DE VENDAS -----\n\n";
+        std :: cout << "1 - Editar venda\n";
+        std :: cout << "2 - Cancelar venda\n";
+        std :: cout << "3 - Gerar relatorio de vendas\n";
+        std :: cout << "4 - Voltar ao menu inicial\n";
+        std :: cin >> resp3;
 
-        if (resp3 == 1)
+        if (resp3  ==  1)
         {
             // editar alguma venda
         }
-        else if (resp3 == 2)
-        {
-            // cancelar alguma venda
+        else if (resp3==2) {
+            //cancelar alguma venda
+
+
+
         }
-        else if (resp3 == 3)
-        {
-            // gerar relatorio de vendas
+        else if (resp3==3) {
+            //gerar relatorio de vendas
+
+
+
         }
-        else if (resp3 == 4)
-        {
-            goto inicio; // voltar ao menu inicial
+        else if (resp3==4) {
+            goto inicio; //voltar ao menu inicial
         }
     }
     else if (selecao == 4)
     {
         int resp4;
 
-        std::cout << "----- GESTAO DE FINANCAS -----\n\n";
-        std::cout << "1 - Novo pagamento\n";
-        std::cout << "2 - Ver pagamentos\n";
-        std::cout << "3 - Gerar contracheque\n";
-        std::cout << "4 - Voltar ao menu inicial\n";
-        std::cin >> resp4;
+        std :: cout << "----- GESTAO DE FINANCAS -----\n\n";
+        std :: cout << "1 - Novo pagamento\n";
+        std :: cout << "2 - Ver pagamentos\n";
+        std :: cout << "3 - Gerar contracheque\n";
+        std :: cout << "4 - Voltar ao menu inicial\n";
+        std :: cin >> resp4;
 
-        if (resp4 == 1)
-        {
-            // novo pagamento
+        if (resp4==1) {
+            //novo pagamento
         }
-        else if (resp4 == 2)
-        {
-            // ver pagamentos
+        else if (resp4==2) {
+            //ver pagamentos
+
+
+
         }
-        else if (resp4 == 3)
-        {
-            // gerar contracheque
+        else if (resp4==3) {
+            //gerar contracheque
+
+
+
         }
         else if (resp4 == 4)
         {
@@ -215,26 +246,34 @@ inicio:
         std::cout << "5 - Voltar ao menu inicial\n";
         std::cin >> resp5;
 
-        if (resp5 == 1)
-        {
-            // consultar estoque
+        if (resp5==1) {
+            //consultar estoque
         }
-        else if (resp5 == 2)
-        {
-            // adicionar item
+        else if (resp5==2) {
+            //adicionar item
+
+
+
         }
-        else if (resp5 == 3)
-        {
-            // remover item
+        else if (resp5 == 3) {
+            //remover item
+            //estoque.removerProduto(); //criar funcao e ver oq recebe
+
+
         }
-        else if (resp5 == 4)
-        {
-            // editar item
+
+        else if (resp5 == 4) {
+            //editar item
+            //estoque.editarProduto(); //criar funcao e ver oq recebe
+
+
         }
-        else if (resp5 == 5)
+
+        else if (resp5  ==  5)
         {
             goto inicio; // voltar ao menu inicial
         }
+
     }
     else if (selecao == 6)
     {
