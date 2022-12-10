@@ -5,16 +5,19 @@
 #include "produto.h"
 #include "pagamento.h"
 #include "cliente.h"
+#include "estoque.h"
+//#include "venda.h"
 
-class Gerencia
+class Gerencia : public Estoque
 {
 private:
     static std::vector<Vendedor> listaVendedores;
     static std::vector<Gerente> listaGerentes;
-    static std::vector<Produto> listaProduto;
     static std::vector<Cliente> listaClientes;
+    //static std::vector<Venda> listaVendas;
+    static std::vector<Produto> carrinhoCompras;
     // static std::vector<Pagamento> listaPagamentos;
-    // static std::vector<Venda> listaVendas;
+    
 
     int buscarItem(Vendedor vendedor);
     int buscarItem(Gerente gerente);
@@ -28,6 +31,8 @@ public:
     void cadastrarVendedor(const Vendedor &vendedor);
     void cadastrarGerente(const Gerente &gerente);
     void cadastrarCliente(const Cliente &cliente);
+    //void cadastrarVenda(const Venda &venda);
+    void novoCarrinho (const Produto &produto);
 
     void novaVenda(int idFuncionario, std::string nomeCliente, std::string documentoCliente, int idProduto, double desconto, double valorTotal);
 

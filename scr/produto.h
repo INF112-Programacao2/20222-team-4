@@ -7,7 +7,7 @@ class Produto
 {
 
 private:
-    int generateIds;  //lembrar de inicializar esse contador no cpp =1;
+    static int generateIds;  //lembrar de inicializar esse contador no cpp =1;
     int id; // lembrar que no .cpp essa variavel recebe a generateIds
 
     std::string nomeProduto;
@@ -17,9 +17,9 @@ private:
 public:
     Produto(std::string nomeProduto, double preco, int quantidade);
 
-    std::string setNome();
-    double setPreco();
-    int setQuantidade();
+    void setNome(std::string nomeProduto);
+    void setPreco(double preco);
+    void setQuantidade(int quantidade);
 
     std::string getNome();
     double getPreco(); 

@@ -1,42 +1,49 @@
 #include "produto.h"
 
+int Produto::generateIds = 1;
 Produto::Produto(std::string nomeProduto, double preco, int quantidade)
 {
+    this->nomeProduto = nomeProduto;
+    this->preco = preco;
+    this->quantidade = quantidade;
+    this-> id = Produto::generateIds;
+
+    Produto::generateIds++;
 }
 
-std::string Produto::setNome()
+void Produto::setNome(std::string nomeProduto)
 {
-    return std::string();
+    this->nomeProduto = nomeProduto;
 }
 
-double Produto::setPreco()
+void Produto::setPreco(double preco)
 {
-    return 0.0;
+    this->preco = preco;
 }
 
-int Produto::setQuantidade()
+void Produto::setQuantidade(int quantidade)
 {
-    return 0;
+    this->quantidade = quantidade;
 }
 
 std::string Produto::getNome()
 {
-    return std::string();
+    return this->nomeProduto;
 }
 
 double Produto::getPreco()
 {
-    return 0.0;
+    return this->preco;
 }
 
 int Produto::getId()
 {
-    return 0;
+    return this->id;
 }
 
 int Produto::getQuantidade()
 {
-    return 0;
+    return this->quantidade;
 }
 
 Produto::~Produto()
