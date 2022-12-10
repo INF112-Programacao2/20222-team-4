@@ -39,6 +39,7 @@ void Estoque::updateProduto(const Produto &produto)
 
 }
 
+
 Estoque::~Estoque()
 {
 }
