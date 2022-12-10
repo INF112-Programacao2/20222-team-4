@@ -5,7 +5,9 @@
 #include "produto.h"
 #include "gerencia.h"
 
-// para compilar g++ cliente.cpp estoque.cpp funcionario.cpp gerencia.cpp gerente.cpp pagamento.cpp produto.cpp vendedor.cpp main.cpp
+// para compilar g++ cliente.cpp estoque.cpp funcionario.cpp gerencia.cpp gerente.cpp pagamento.cpp produto.cpp vendedor.cpp venda.cpp main.cpp
+// mostrar só os erros:
+//g++ cliente.cpp estoque.cpp funcionario.cpp gerencia.cpp gerente.cpp pagamento.cpp produto.cpp vendedor.cpp venda.cpp main.cpp -Wfatal-errors
 
 int main()
 {
@@ -46,7 +48,6 @@ inicio:
 
         gerencia.novaVenda(idFuncionario, nomeCliente, documentoCliente, idProduto, desconto, valorTotal);
 
-        std ::system("CLS");
 
         std ::cout << "\nO que deseja fazer agora?\n";
         std ::cout << "1 - Cadastrar outra venda\n";

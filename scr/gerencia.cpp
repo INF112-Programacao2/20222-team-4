@@ -4,10 +4,9 @@
 std::vector<Vendedor> Gerencia::listaVendedores = std::vector<Vendedor>();
 std::vector<Gerente> Gerencia::listaGerentes = std::vector<Gerente>();
 std::vector<Cliente> Gerencia::listaClientes = std::vector<Cliente>();
-//std::vector<Venda> Gerencia::listaVendas = std::vector<Venda>();
 std::vector<Produto> Gerencia::carrinhoCompras = std::vector<Produto>();
 
-Gerencia::Gerencia() : Estoque ()
+Gerencia::Gerencia() : Estoque()
 {
     this->cadastrarGerente(Gerente("Matheus", 6666666, 10, 1200.0, 46));
     this->cadastrarGerente(Gerente("Vitoria", 6666666, 10, 1200.0, 46));
@@ -83,12 +82,7 @@ void Gerencia::cadastrarCliente(const Cliente &cliente)
 {
     Gerencia::listaClientes.push_back(cliente);
 }
-/*
-void Gerencia::cadastrarVenda(const Venda &venda)
-{
-    Gerencia::listaVendas.push_back(venda);
-}
-*/
+
 void Gerencia::novoCarrinho(const Produto &produto)
 {
     Gerencia::carrinhoCompras.push_back(produto);
@@ -98,6 +92,7 @@ void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string
 {
     char resposta;
     double total = 0;
+    int quantidadeEstoque;
 
     std::cout << "----- CADASTRO DE VENDAS -----\n\n";
     std::cout << "Vamos cadastrar uma nova venda!\n";
@@ -142,8 +137,23 @@ void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string
 
         for (int i = 0; i < Estoque::listaProdutos.size(); i++)
         {
-            if (idProduto==Estoque::listaProdutos[i].getId())
-                this->novoCarrinho(Estoque::listaProdutos[i]);
+            if (idProduto == Estoque::listaProdutos[i].getId())
+            {
+                //Consulta no estoque a quantidade de produtos
+                if (Estoque::consultaEstoque(listaProdutos[i]) > 0)
+                {
+                    //adiciona o produto ao vector novo carrinho
+                    this->novoCarrinho(Estoque::listaProdutos[i]);
+
+                    // tira 1 da quantidade do produto no estoque
+                    quantidadeEstoque=listaProdutos[i].getQuantidade()-1;
+                    listaProdutos[i].setQuantidade (quantidadeEstoque);
+
+                } else {
+                    std::cout<< "Produto fora de estoque!\n";
+                }
+            }
+            
         }
     }
 
@@ -152,41 +162,43 @@ void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string
     std::cout << "===== DESCONTO =====\n";
     std::cout << "% Desconto (digite 0 para nenhum desconto): \n";
     std::cin >> desconto;
-    // tratar a excessao da entrada
+    // tratar a excessao da entrada (proibido numeros negativos)
 
     for (int i = 0; i < Gerencia::carrinhoCompras.size(); i++)
     {
         total = total + Gerencia::carrinhoCompras[i].getPreco();
-
     }
 
-
-    valorTotal = total - (total * (desconto / 100));
+    valorTotal = total - (total * (desconto / 100.0));
 
     std::cout << "===== PAGAMENTO =====\n";
+    std::cout << "Resumo de compras: \n";
+    for (int i = 0; i < Gerencia::carrinhoCompras.size(); i++)
+    {
+        std::cout << "Item: " << Gerencia::carrinhoCompras[i].getNome() << std::endl;
+        std::cout << "Preco: " << Gerencia::carrinhoCompras[i].getPreco() << std::endl;
+        std::cout << "------------: \n";
+    }
+
+    pagamento:
     std::cout << "Valor total: " << valorTotal;
-    std::cout << "\nPagamento efetuado? (s/n) ";
+    std::cout << "\n\nPagamento efetuado? (s/n) ";
     std::cin >> resposta;
 
     // tratar a excessao da entrada
 
     if (resposta == 's' || resposta == 'S')
     {
-        /*
-        for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
-        {
-            if (Gerencia::listaVendedores[i].getId() == idFuncionario)
-            {
-                Vendedor vendedor = Gerencia::listaVendedores[i];
-                this->cadastrarVenda(Venda(vendedor, nomeCliente, documentoCliente, valorTotal));
-            }
-        }
-        */
+
         std::cout << "Venda registrada com sucesso!\n";
     }
-    else
+    if (resposta == 'n' || resposta == 'N')
     {
         std::cout << "Venda cancelada!\n";
+    }
+    else {
+        std::cout << "Entrada invalida, digite apenas: s ou n";
+        goto pagamento;
     }
 }
 
@@ -211,7 +223,6 @@ void Gerencia::novoVendedor(std::string nome, long long int documento, double po
     this->cadastrarVendedor(Vendedor(nome, documento, porcentagemComissao, salarioBase, horasSemanais));
 
     std ::cout << "Vendedor cadastrado com sucesso!" << std ::endl;
-
 }
 
 void Gerencia::editarVendedor(const Vendedor &vendedor)
@@ -241,13 +252,6 @@ void Gerencia::novoGerente(std::string nome, long long int documento, double por
     this->cadastrarGerente(Gerente(nome, documento, porcentagemComissao, salarioBase, horasSemanais));
 
     std ::cout << "Gerente cadastrado com sucesso!" << std ::endl;
-
-    for (int i = 0; i < listaGerentes.size(); i++)
-    {
-        std::cout << "ID - " << listaGerentes[i].getId() << std::endl;
-        std::cout << "NOME - " << listaGerentes[i].getNome() << std::endl;
-        std::cout << "---------------------\n";
-    }
 }
 
 void Gerencia::editarGerente(const Gerente &gerente)
@@ -264,6 +268,7 @@ void Gerencia::editarCliente(const Cliente &cliente)
 
 double Gerencia::calculaPagamento(Funcionario &funcionario)
 {
+
     double salario;
     double horasSemanais, horasExtras, vendasTotais, comissao, salarioBase;
 
