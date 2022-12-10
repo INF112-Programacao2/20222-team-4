@@ -9,7 +9,7 @@ class Estoque
 {
 private:
 
-protected:
+public:
 
     static std::vector<Produto> listaProdutos;
 

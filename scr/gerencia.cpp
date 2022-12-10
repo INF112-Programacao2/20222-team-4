@@ -261,6 +261,16 @@ void Gerencia::novoProduto(std::string nomeProduto, double preco, int quantidade
 {
     // perguntar o nome do item, preco e quantidade
 
+    std::cout << "Qual o nome do produto? \n";
+    std::cin.ignore();
+    getline(std::cin, nomeProduto);
+    std::cout << "Qual sera o preco do produto? \n";
+    std::cin >> preco;
+    std::cout << "Qual a quantidade do produto? \n";
+    std::cin >> quantidade;
+
+    Estoque::adicionarProduto(Produto(nomeProduto, preco, quantidade));
+
     //Estoque::adicionarProdutos(Produto(nomeProduto,preco, quantidade));
 }
 
@@ -310,7 +320,7 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
                 std::cout << "Digite a quantidade que deseja adicionar: \n";
                 std::cin >> adicionarQuantidade;
 
-                quantidade = adicionarQuantidade +  Estoque::listaProdutos[i].getQuantidade;
+                quantidade = adicionarQuantidade +  Estoque::listaProdutos[i].getQuantidade();
 
 
             }

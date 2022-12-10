@@ -5,9 +5,9 @@
 #include "produto.h"
 #include "gerencia.h"
 
-// para compilar g++ cliente.cpp estoque.cpp funcionario.cpp gerencia.cpp gerente.cpp pagamento.cpp produto.cpp vendedor.cpp venda.cpp main.cpp
+// para compilar g++ estoque.cpp funcionario.cpp gerencia.cpp gerente.cpp pagamento.cpp produto.cpp vendedor.cpp main.cpp
 // mostrar só os erros:
-// g++ cliente.cpp estoque.cpp funcionario.cpp gerencia.cpp gerente.cpp pagamento.cpp produto.cpp vendedor.cpp venda.cpp main.cpp -Wfatal-errors
+// g++ estoque.cpp funcionario.cpp gerencia.cpp gerente.cpp pagamento.cpp produto.cpp vendedor.cpp main.cpp -Wfatal-errors
 
 int main()
 {
@@ -252,6 +252,7 @@ inicio:
     }
     else if (selecao == 5)
     {
+        menuEstoque:
         int resp5;
 
         std::cout << "----- GESTAO DE ESTOQUE -----\n\n";
@@ -270,6 +271,27 @@ inicio:
             // Estoque::listaProdutos[i]. getQuantidade();
 
             //uma opcao pra pessoa voltar ao menu, pq a consulta e so ver oq tem e a quantidade
+
+            std::cout << std::endl;
+            std::cout << "Produtos disponiveis no estoque: \n";
+            std::cout << std::endl;
+
+            for(int i=0;i<Estoque::listaProdutos.size();i++){
+                std::cout << "ID: "<< Estoque::listaProdutos[i].getId() << std::endl;
+                std::cout << "NOME: " << Estoque::listaProdutos[i].getNome() << std::endl;
+                std::cout << "QUANTIDADE: " << Estoque::listaProdutos[i]. getQuantidade() << std::endl;
+                std::cout << "---------------------------- \n";
+            }
+
+            std::cout << std::endl;
+            std::cout << "Digite 1 para voltar ao menu anterior: " << std::endl;
+            int comando;
+            std::cin >> comando;
+            std::cout << std::endl;
+
+            if(comando==1){
+                goto menuEstoque;
+            }
         }
         else if (resp5 == 2)
         {
@@ -278,18 +300,54 @@ inicio:
             //funcao novoItem, ja prototipei ela, falta chamar e construir;
             // a funcao recebe nome, quantidade, preco;
 
+            std::string nomeProduto;
+            double preco;
+            int quantidade;
+            gerencia.novoProduto(nomeProduto, preco, quantidade);
+
+            std::cout << "Digite 1 para voltar ao menu anterior: " << std::endl;
+            int comando;
+            std::cin >> comando;
+            std::cout << std::endl;
+
+            if(comando==1){
+                goto menuEstoque;
+            }
 
         }
         else if (resp5 == 3)  // deixar pra fazer por ultimo
         {
             // remover item
             // estoque.removerProduto(); //criar funcao e ver oq recebe
+            std::cout << std::endl;
+            std::cout << "Digite 1 para voltar ao menu anterior: " << std::endl;
+            int comando;
+            std::cin >> comando;
+            std::cout << std::endl;
+
+            if(comando==1){
+                goto menuEstoque;
+            }
         }
 
         else if (resp5 == 4)
         {
             // editar item
             //gerencia.editarEstoque(passar os parametros),  a funcao ja esta pronta, e so literalmente chamar ela aqui
+            int idProduto;
+            std::string nomeProduto;
+            double preco;
+            int quantidade;
+            gerencia.editarEstoque(idProduto, nomeProduto, preco, quantidade);
+            std::cout << std::endl;
+            std::cout << "Digite 1 para voltar ao menu anterior: " << std::endl;
+            int comando;
+            std::cin >> comando;
+            std::cout << std::endl;
+
+            if(comando==1){
+                goto menuEstoque;
+            }
         }
 
         else if (resp5 == 5)
