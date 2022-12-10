@@ -13,6 +13,7 @@ void Estoque::bancoDeDados()
     //  nome, preco e quantidade
     this->adicionarProduto(Produto("Camisa Cruzeiro Home 22/23", 149.90, 60));
     this->adicionarProduto(Produto("Camisa Cruzeiro Away 22/23", 149.90, 20));
+    this->adicionarProduto(Produto("Camisa Brasil Away 22/23", 149.90, 0));
 
 
 }
