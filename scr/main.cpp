@@ -111,7 +111,7 @@ inicio:
     }
     else if (selecao == 3)
     {   
-        int resp, resp2;
+        int resp, resp2, resp21, resp22;
         std::string nome; 
         long long int documento;
         double porcentagemComissao;
@@ -125,7 +125,7 @@ inicio:
         std::cin >> resp;
 
         if (resp==1) {
-            std :: cout << "Qual o cargo do funcionario? \n\n";
+            std :: cout << "Qual o cargo do funcionario que deseja cadastrar? \n\n";
             std :: cout << "1 - Gerente\n";
             std :: cout << "2 - Vendedor\n";
             std :: cin >> resp2;
@@ -137,18 +137,40 @@ inicio:
                 gerencia.novoVendedor(nome, documento, porcentagemComissao, salarioBase, horasSemanais);
             }
         }
+
         else if (resp==2) {
             //editarfunc
+            std :: cout << "Qual o cargo do funcionario que deseja editar? \n\n";
+            std :: cout << "1 - Gerente\n";
+            std :: cout << "2 - Vendedor\n";
+            std :: cin >> resp21;
+            
 
-
+            if (resp21==1) {
+                //gerencia.editarGerente(nome, documento, porcentagemComissao, salarioBase, horasSemanais); 
+            }
+            else if (resp21==2) {
+                //gerencia.editarVendedor(nome, documento, porcentagemComissao, salarioBase, horasSemanais);
+            }
 
         }
+
         else if (resp==3) {
             //removerfunc
+            std :: cout << "Qual o cargo do funcionario que deseja remover? \n\n";
+            std :: cout << "1 - Gerente\n";
+            std :: cout << "2 - Vendedor\n";
+            std :: cin >> resp22;
 
-
+            if (resp22==1) {
+                //gerencia.removerGerente(nome, documento, porcentagemComissao, salarioBase, horasSemanais); 
+            }
+            else if (resp22==2) {
+                //gerencia.removerVendedor(nome, documento, porcentagemComissao, salarioBase, horasSemanais);
+            }
 
         }
+
         else if (resp==4) {
             goto inicio; //voltar ao menu inicial
         }
@@ -242,28 +264,32 @@ inicio:
 
         if (resp5==1) {
             //consultar estoque
+            //estoque.consultaEstoque(); //ver o que recebe de parametro
         }
         else if (resp5==2) {
             //adicionar item
-
+            //estoque.adicionarProduto(); //ver o que recebe de parametro com a vitoria
 
 
         }
         else if (resp5==3) {
             //remover item
-
+            //estoque.removerProduto(); //criar funcao e ver oq recebe
 
 
         }
+
         else if (resp5==4) {
             //editar item
-
+            //estoque.editarProduto(); //criar funcao e ver oq recebe
 
 
         }
+
         else if (resp5==5) {
             goto inicio; //voltar ao menu inicial
         }
+
         // menu de gestao de estoque
         // 1 - consultar estoque
         // 2 - adicionar item
