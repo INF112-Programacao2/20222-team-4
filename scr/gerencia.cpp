@@ -105,7 +105,8 @@ void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string
     std::cout << "----- CLIENTE -----\n";
 
     std::cout << "\nDigite o nome do cliente: \n";
-    std::getline(std::cin, nomeCliente);
+    std::cin.ignore();
+    getline(std::cin, nomeCliente);
     // tratar a excessao da entrada
 
     std::cout << "\nDigite o CPF do cliente (Apenas numeros): \n";
@@ -146,7 +147,8 @@ void Gerencia::novoVendedor (std::string nome, long long int documento, double p
 std::cout << "----- CLIENTE -----\n";
 
     std::cout << "\nDigite o nome do vendedor: \n";
-    std::getline(std::cin, nome);
+    std::cin.ignore();
+    getline(std::cin, nome);
     // tratar a excessao da entrada
 
     std::cout << "\nDigite o CPF do vendedor (Apenas numeros): \n";
