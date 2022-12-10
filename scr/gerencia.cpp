@@ -125,7 +125,7 @@ pagamento:
 
         std::cout << "Venda registrada com sucesso!\n";
     }
-    if (resposta == 'n' || resposta == 'N')
+    else if (resposta == 'n' || resposta == 'N')
     {
         std::cout << "Venda cancelada!\n";
     }
