@@ -17,8 +17,16 @@ void Estoque::bancoDeDados()
 
 }
 
-void Estoque::consultaEstoque(Produto produto)
+bool Estoque::consultaEstoque(Produto produto)
 {
+     for (int i = 0; i < Estoque::listaProdutos.size(); i++)
+    {
+        if (Estoque::listaProdutos[i].getId() == produto.getId())
+        {
+            return true;
+        }
+    }
+            return false;
 }
 
 void Estoque::adicionarProduto(const Produto &produto)
