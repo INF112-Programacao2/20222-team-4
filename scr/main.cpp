@@ -4,13 +4,14 @@
 #include "funcionario.h"
 #include "estoque.h"
 #include "produto.h"
-#include "GerenciarFuncionarios.h"
+#include "gerencia.h"
 
 
-// para compilar g++ **/**.cpp main.cpp
+// para compilar g++ cliente.cpp estoque.cpp funcionario.cpp gerencia.cpp gerente.cpp pagamento.cpp produto.cpp vendedor.cpp main.cpp
 
 int main()
 {
+    Gerencia gerencia = Gerencia();
     Estoque estoque = Estoque();
     estoque.bancoDeDados();
 
@@ -39,62 +40,16 @@ inicio:
 
     if (selecao == 1)
     {
-        char resposta;
-        double calculaDesconto,desconto;
-        double valorTotal;
-        int idVendedor, idCliente, idProduto;
 
-        std::cout << "----- CADASTRO DE VENDAS -----\n";
-        std::cout << "Vamos cadastrar uma nova venda!\n";
-        std::cout << "Insira os dados abaixo: \n";
-        std::cout << "----- VENDEDOR -----";
+        double valorTotal,desconto;
+        int idFuncionario, idProduto;
+        std::string nomeCliente, documentoCliente;
+
+    
+       gerencia.novaVenda(idFuncionario, nomeCliente, documentoCliente, idProduto, desconto, valorTotal);
 
 
-
-        std::cout << "Digite o ID do vendedor: \n";
-        std::cin >> idVendedor;
-        // tratar a excessao da entrada
-
-
-        std::cout << "----- CLIENTE -----";
-
-
-        std::cout << "\nDigite o ID do cliente: \n";
-        std::cin >> idCliente;
-        // tratar a excessao da entrada
-
-
-        std::cout << "----- PRODUTOS -----";
-        std::cout << "\nInsira os produtos no carrinho:\n";
-        // ainda precisa consertar essa parte...
-        // precisa fazer aparecer os produtos e adicionar dentro do carrinho...
-        std::cout << "3 - Id do produto: \n";
-        std::cin >> idProduto;
-        // tratar a excessao da entrada
-
-        std::cout << "===== DESCONTO =====\n";
-        std::cout << "% Desconto (digite 0 para nenhum desconto): \n";
-        std::cin >> desconto;
-        // tratar a excessao da entrada
-
-        
-
-        std::cout << "===== PAGAMENTO =====\n";
-        std::cout << "Valor total: " << valorTotal;
-        std::cout << "Pagamento efetuado? (s/n)";
-        std::cin >> resposta;
-
-        // tratar a excessao da entrada
-
-        if (resposta == 's' || resposta == 'S')
-        {
-
-            std::cout << "Venda registrada com sucesso!";
-        }
-        else
-        {
-            std::cout << "Venda cancelada!";
-        }
+       
         // nova venda
         // logo apos abre um menu
         // 1 - cadastrar outra venda
@@ -155,7 +110,7 @@ inicio:
         // 1 - consultar estoque
         // 2 - adicionar item
         // 3 - remover item
-        // 4 - editar item
+        // 4 - editar item 
         // 5 - voltar ao menu
     }
     else if (selecao == 7)

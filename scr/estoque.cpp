@@ -17,20 +17,26 @@ void Estoque::bancoDeDados()
 
 }
 
-void Estoque::consultaEstoque(Produto produto)
+int Estoque::consultaEstoque(Produto produto)
 {
+
+    int quantidade= produto.getQuantidade();
+
+    if (quantidade == 0) {
+        return -1;
+    } else 
+        return quantidade;
+    
 }
 
 void Estoque::adicionarProduto(const Produto &produto)
 {
+    Estoque::listaProdutos.push_back(produto);
 }
 
 void Estoque::updateProduto(const Produto &produto)
 {
-}
 
-void Estoque::deleteProduto(Produto &produto)
-{
 }
 
 Estoque::~Estoque()

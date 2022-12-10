@@ -1,7 +1,7 @@
 #include "funcionario.h"
 
 
-int Funcionario::generateMatricula = 0;
+int Funcionario::generateId = 0;
 
 Funcionario::Funcionario(std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais)
 {
@@ -10,9 +10,9 @@ Funcionario::Funcionario(std::string nome, long long int documento, double porce
     this->porcentagemComissao = porcentagemComissao;
     this->salarioBase = salarioBase;
     this->horasSemanais = horasSemanais;
-    this->matricula = Funcionario::generateMatricula;
+    this->id = Funcionario::generateId;
 
-    Funcionario::generateMatricula++;
+    Funcionario::generateId++;
 }
 
 void Funcionario::setNome(std::string nome)
@@ -66,9 +66,9 @@ double Funcionario::getHorasSemanais()
 {
     return this->horasSemanais;
 }
-int Funcionario::getMatricula()
+int Funcionario::getId()
 {
-    return this->matricula;
+    return this->id;
 }
 
 double Funcionario::getTotalVendas()

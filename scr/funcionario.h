@@ -6,8 +6,8 @@
 class Funcionario
 {
 private:
-    static int generateMatricula; // contador responsavel por gerar o numero de matricula
-    int matricula;                // recebe o numero de matricula
+    static int generateId; // contador responsavel por gerar o numero de id
+    int id;                // recebe o numero de id
 
 protected:
     std::string nome;
@@ -32,7 +32,7 @@ public:
     double getPorcentagemComissao();
     double getSalarioBase();
     double getHorasSemanais();
-    int getMatricula();
+    int getId();
     double getTotalVendas();
 
     ~Funcionario();
