@@ -30,6 +30,7 @@ int Estoque::consultaEstoque(Produto produto)
     
 }
 
+
 void Estoque::adicionarProduto(const Produto &produto)
 {
     Estoque::listaProdutos.push_back(produto);
