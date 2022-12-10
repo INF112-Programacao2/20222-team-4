@@ -1,26 +1,28 @@
 
-/*
+
 #include "pagamento.h"
 
-Pagamento::Pagamento(Funcionario funcionario, double pagamento)
+Pagamento::Pagamento(int idFuncionario, double pagamento)
 {
-    this->funcionario = funcionario;
+    this->idFuncionario = idFuncionario;
     this->pagamento = pagamento;
 }
 
-void Pagamento::setFuncionario(Funcionario funcionario)
+void Pagamento::setFuncionario(int idFuncionario)
 {
-    this->funcionario = funcionario;
+    this->idFuncionario = idFuncionario;
 }
+
+
 
 void Pagamento::setPagamento(double pagamento)
 {
     this->pagamento = pagamento;
 }
 
-Funcionario Pagamento::getFuncionario()
+int Pagamento::getFuncionario()
 {
-    return this->funcionario();
+    return this->idFuncionario;
 }
 
 double Pagamento::getPagamento()
@@ -31,4 +33,3 @@ double Pagamento::getPagamento()
 Pagamento::~Pagamento()
 {
 }
-*/

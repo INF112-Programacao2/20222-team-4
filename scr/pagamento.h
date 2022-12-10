@@ -1,4 +1,4 @@
-/*
+
 #ifndef PAGAMENTO_H
 #define PAGAMENTO_H
 
@@ -7,16 +7,16 @@
 class Pagamento
 {
 private:
-    Funcionario funcionario;
+    int idFuncionario;
     double pagamento;
 
 public:
-    Pagamento(Funcionario funcionario, double pagamento);
+    Pagamento(int idFuncionario, double pagamento);
 
-    void setFuncionario(Funcionario funcionario);
+    void setFuncionario(int idFuncionario);
     void setPagamento(double pagamento);
 
-    Funcionario getFuncionario();
+    int getFuncionario();
     double getPagamento();
 
     ~Pagamento();
@@ -24,4 +24,3 @@ public:
 
 #endif
 
-*/

@@ -2,6 +2,7 @@
 
 
 int Funcionario::generateId = 0;
+double Funcionario::totalVendas = 0;
 
 Funcionario::Funcionario(std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais)
 {
@@ -11,6 +12,7 @@ Funcionario::Funcionario(std::string nome, long long int documento, double porce
     this->salarioBase = salarioBase;
     this->horasSemanais = horasSemanais;
     this->id = Funcionario::generateId;
+    this-> totalVendas = Funcionario::totalVendas;
 
     Funcionario::generateId++;
 }
@@ -41,7 +43,7 @@ void Funcionario::setHorasSemanais(double horasSemanais)
 }
 void Funcionario::setTotalVendas(double totalVendas)
 {
-    this->totalVendas = totalVendas;
+    this->totalVendas += totalVendas;
 }
 
 std::string Funcionario::getNome()

@@ -15,7 +15,7 @@ protected:
     double porcentagemComissao; // define a porcentagem de comissao (ex 3%)
     double salarioBase;         // salario base (por hora);
     double horasSemanais;       // quantidade de horas trabalhadas por semana;
-    double totalVendas;         // valor total de vendas que esse funcionario fez;
+    static double totalVendas;         // valor total de vendas que esse funcionario fez;
 
 public:
     Funcionario(std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais); // construtor

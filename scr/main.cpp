@@ -235,7 +235,13 @@ inicio:
 
         if (resp4 == 1)
         {
-            // novo pagamento
+            int idFuncionario;
+            double horasSemanais;
+            double horasExtras;
+            double vendasTotais;
+            double comissao;
+            double salarioBase;
+            gerencia.calculaPagamento(idFuncionario, horasSemanais,horasExtras,vendasTotais,comissao,salarioBase);
         }
         else if (resp4 == 2)
         {

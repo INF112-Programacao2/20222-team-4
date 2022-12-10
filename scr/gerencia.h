@@ -5,6 +5,7 @@
 #include "produto.h"
 #include "pagamento.h"
 #include "estoque.h"
+#include "pagamento.h"
 
 class Gerencia : public Estoque
 {
@@ -12,7 +13,7 @@ private:
     static std::vector<Vendedor> listaVendedores;
     static std::vector<Gerente> listaGerentes;
     static std::vector<Produto> carrinhoCompras;
-    // static std::vector<Pagamento> listaPagamentos;
+    static std::vector<Pagamento> listaPagamentos;
     
 
     int buscarItem(Vendedor vendedor);
@@ -27,6 +28,7 @@ public:
     void cadastrarVendedor(const Vendedor &vendedor);
     void cadastrarGerente(const Gerente &gerente);
     void novoCarrinho (const Produto &produto);
+    void novoPagamento(const Pagamento &pagamento);
 
 // colocar aqui as funcoes
     void novaVenda(int idFuncionario, std::string nomeCliente, std::string documentoCliente, int idProduto, double desconto, double valorTotal);
@@ -45,7 +47,7 @@ public:
 
     void imprimeProdutos();
 
-    double calculaPagamento(Funcionario &funcionario); // vou fazer ainda
+    void calculaPagamento(int idFuncionario, double horasSemanais, double horasExtras, double vendasTotais, double comissao, double salarioBase); // vou fazer ainda
 
     
 
