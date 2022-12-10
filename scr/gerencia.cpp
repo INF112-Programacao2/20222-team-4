@@ -102,7 +102,6 @@ void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string
     std::cout << "\n\nDigite o ID do vendedor: \n";
     std::cin >> idFuncionario;
     // tratar a excessao da entrada
-    std::system("clear");
     std::cout << "----- CLIENTE -----\n";
 
     std::cout << "\nDigite o nome do cliente: \n";
@@ -141,6 +140,35 @@ void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string
     {
         std::cout << "Venda cancelada!";
     }
+}
+
+void Gerencia::novoVendedor (std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais) {
+std::cout << "----- CLIENTE -----\n";
+
+    std::cout << "\nDigite o nome do vendedor: \n";
+    std::getline(std::cin, nome);
+    // tratar a excessao da entrada
+
+    std::cout << "\nDigite o CPF do vendedor (Apenas numeros): \n";
+    std::cin >> documento;
+
+    std::cout << "\nDigite o valor do salario base: \n";
+    std::cin >> salarioBase;
+
+    std::cout << "\nDigite a quantidade de horas semanais: \n";
+    std::cin >> horasSemanais;
+
+    this->cadastrarVendedor(Vendedor(nome, documento, porcentagemComissao, salarioBase, horasSemanais));
+
+    std :: cout << "Vendedor cadastrado com sucesso!" << std :: endl;
+
+    for (int i = 0; i < listaVendedores.size(); i++)
+    {
+        std::cout << "ID - " << listaVendedores[i].getId() << std::endl;
+        std::cout << "NOME - " << listaVendedores[i].getNome() << std::endl;
+        std::cout << "---------------------\n";
+    }
+
 }
 
 void Gerencia::editarVendedor(const Vendedor &vendedor)

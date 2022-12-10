@@ -43,7 +43,8 @@ inicio:
 
         double valorTotal,desconto;
         int idFuncionario, idProduto;
-        std::string nomeCliente, documentoCliente;
+        std::string nomeCliente;
+        std::string documentoCliente;
 
     
        gerencia.novaVenda(idFuncionario, nomeCliente, documentoCliente, idProduto, desconto, valorTotal);
@@ -76,12 +77,25 @@ inicio:
     else if (selecao == 3)
     {
         int resp;
-
+        std::string nome; 
+        long long int documento;
+        double porcentagemComissao;
+        double salarioBase;
+        double horasSemanais;
         std::cout << "----- GESTAO DE FUNCIONARIOS -----\n\n";
         std::cout << "1 - Cadastrar novo funcionario\n";
         std::cout << "2 - Editar Funcionario\n";
         std::cout << "3 - Remover Funcionario\n";
         std::cin >> resp;
+
+        if (resp==1) {
+            gerencia.novoVendedor(nome, documento, porcentagemComissao, salarioBase, horasSemanais);
+        }
+        else if (resp==2) {
+
+
+
+        }
         // menu de gestao de funcionarios
         // 1 - cadastrar novo funcionario - 1 - gerente 2- vendedor
         // 2 - editar funcionarios - 1 - gerente 2- vendedor

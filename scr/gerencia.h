@@ -1,5 +1,5 @@
 #include <vector>
-
+#include <string>
 #include "vendedor.h"
 #include "gerente.h"
 #include "produto.h"
@@ -38,6 +38,10 @@ public:
     void editarCliente(const Cliente &cliente);
 
     double calculaPagamento(Funcionario &funcionario);
+
+    void novoVendedor (std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais);
     
+    void novoGerente (std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais);
+
     ~Gerencia();
 };
