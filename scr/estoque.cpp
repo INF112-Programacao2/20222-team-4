@@ -53,9 +53,18 @@ void Estoque::updateProduto(const Produto &produto)
     Estoque::listaProdutos[i] = produto;
 }
 
+/*
 void Estoque::deleteProduto(Produto &produto)
 {
+    for (int i = 0; i < Estoque::listaProdutos.size(); i++)
+    {
+        if (Estoque::listaProdutos[i].getId() == produto.getId())
+        {
+            Estoque::listaProdutos.erase(i);
+        }
+    }
 }
+*/
 
 Estoque::~Estoque()
 {
