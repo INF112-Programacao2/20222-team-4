@@ -31,10 +31,26 @@ bool Estoque::consultaEstoque(Produto produto)
 
 void Estoque::adicionarProduto(const Produto &produto)
 {
+     Estoque::listaProdutos.push_back(produto);
+}
+
+int Estoque::buscarProduto(Produto produto)
+{
+    for (int i = 0; i < Estoque::listaProdutos.size(); i++)
+    {
+        if (Estoque::listaProdutos[i].getId() == produto.getId())
+        {
+            return i;
+        }
+    }
+
+    return -1;
 }
 
 void Estoque::updateProduto(const Produto &produto)
 {
+    int i = Estoque::buscarProduto(produto);
+    Estoque::listaProdutos[i] = produto;
 }
 
 void Estoque::deleteProduto(Produto &produto)
