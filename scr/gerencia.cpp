@@ -273,6 +273,21 @@ void Gerencia::novoProduto(std::string nomeProduto, double preco, int quantidade
 
     //Estoque::adicionarProdutos(Produto(nomeProduto,preco, quantidade));
 }
+    //imprime produtos do estoque com a quantidade
+
+void Gerencia::imprimeProdutos()
+{
+    std::cout << std::endl;
+            std::cout << "Produtos disponiveis no estoque: \n";
+            std::cout << std::endl;
+            
+            for(int i=0;i<Estoque::listaProdutos.size();i++){
+                std::cout << "ID: "<< Estoque::listaProdutos[i].getId() << std::endl;
+                std::cout << "NOME: " << Estoque::listaProdutos[i].getNome() << std::endl;
+                std::cout << "QUANTIDADE: " << Estoque::listaProdutos[i]. getQuantidade() << std::endl;
+                std::cout << "---------------------------- \n";
+            }
+}
 
 void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double preco, int quantidade)
 {

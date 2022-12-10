@@ -272,16 +272,8 @@ inicio:
 
             //uma opcao pra pessoa voltar ao menu, pq a consulta e so ver oq tem e a quantidade
 
-            std::cout << std::endl;
-            std::cout << "Produtos disponiveis no estoque: \n";
-            std::cout << std::endl;
-
-            for(int i=0;i<Estoque::listaProdutos.size();i++){
-                std::cout << "ID: "<< Estoque::listaProdutos[i].getId() << std::endl;
-                std::cout << "NOME: " << Estoque::listaProdutos[i].getNome() << std::endl;
-                std::cout << "QUANTIDADE: " << Estoque::listaProdutos[i]. getQuantidade() << std::endl;
-                std::cout << "---------------------------- \n";
-            }
+        
+            gerencia.imprimeProdutos();
 
             std::cout << std::endl;
             std::cout << "Digite 1 para voltar ao menu anterior: " << std::endl;
