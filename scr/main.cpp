@@ -142,12 +142,12 @@ inicio:
             if (resp2 == 1)
             {
                 std::string nome;
-                int idFuncionario;
+                int idGerente;
                 long long int documento;
                 double porcentagemComissao, salarioBase, horasSemanais;
                 int op;
 
-                gerencia.editarGerente(idFuncionario, nome, documento, porcentagemComissao, salarioBase, horasSemanais);
+                gerencia.editarGerente(idGerente, nome, documento, porcentagemComissao, salarioBase, horasSemanais);
 
                 std ::cout << "\nO que deseja fazer agora?\n";
                 std ::cout << "1 - Editar outro funcionario\n";
@@ -166,8 +166,31 @@ inicio:
                 }
             }
             else if (resp2 == 2)
-            {
-                    // copiar o do gerente e alterar
+            {                
+                std::string nome;
+                int idVendedor;
+                long long int documento;
+                double porcentagemComissao, salarioBase, horasSemanais;
+                int op;
+
+                gerencia.editarVendedor(idVendedor, nome, documento, porcentagemComissao, salarioBase, horasSemanais);
+
+                std ::cout << "\nO que deseja fazer agora?\n";
+                std ::cout << "1 - Editar outro funcionario\n";
+                std ::cout << "2 - Voltar ao menu inicial\n";
+                std ::cin >> op;
+
+                std ::system("CLS");
+
+                if (op == 1)
+                {
+                    goto editar;
+                }
+                else if (op == 2)
+                {
+                    goto inicio;
+                }
+                
             }
         }
 

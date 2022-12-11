@@ -33,7 +33,7 @@ public:
 // colocar aqui as funcoes
     void novaVenda(int idFuncionario, std::string nomeCliente, std::string documentoCliente, int idProduto, double desconto, double valorTotal);
 
-    void editarVendedor(int idGerente, std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais);
+    void editarVendedor(int idVendedor, std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais);
 
     void editarGerente(int idGerente, std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais);
 

@@ -243,10 +243,62 @@ void Gerencia::editarGerente(int idGerente, std::string nome, long long int docu
     std::cout << "Gerente editado com sucesso!\n";
 }
 
-void Gerencia::editarVendedor(int idGerente, std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais)
+void Gerencia::editarVendedor(int idVendedor, std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais)
 {
+    std::cout << " ----- EDITAR VENDEDOR ----- \n";
+    for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
+    {
+        std::cout << "ID - " << Gerencia::listaVendedores[i].getId() << std::endl;
+        std::cout << "NOME - " << Gerencia::listaVendedores[i].getNome() << std::endl;
+        std::cout << "---------------------\n";
+    }
+    std::cout << "Digite o id do gerente que voce deseja editar:: \n";
+    std::cin >> idVendedor;
 
-    // COPIAR A EDITAR VENDEDOR E ALTERAR OS PARAMETROS E VARIAVEIS...
+    for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
+    {
+        if (Gerencia::listaVendedores[i].getId() == idGerente)
+        {
+
+            int op;
+            std::cout << "O que deseja editar?: \n";
+            std::cout << "1 - Nome: \n";
+            std::cout << "2 - Documento: \n";
+            std::cout << "3 - Porcentagem comissao: \n";
+            std::cout << "4 - Salario base (por hora): \n";
+            std::cout << "5 - Horas semanais: \n";
+            std::cin >> op;
+            if (op == 1)
+            {
+                std::cout << "Digite o novo nome: \n";
+                std::cin.ignore();
+                getline(std::cin, nome);
+            }
+            if (op == 2)
+            {
+                std::cout << "Digite o novo documento: \n";
+                std::cin >> documento;
+            }
+            if (op == 3)
+            {
+                std::cout << "Digite a nova porcentagem de comissao: \n";
+                std::cin >> porcentagemComissao;
+            }
+            if (op == 4)
+            {
+                std::cout << "Digite o novo salario base (por hora): \n";
+                std::cin >> porcentagemComissao;
+            }
+            if (op == 5)
+            {
+                std::cout << "Digite a nova quantidade de horas semanais: \n";
+                std::cin >> horasSemanais;
+            }
+            Gerente novoVendedor(nome, documento, porcentagemComissao, salarioBase, horasSemanais);
+            Gerencia::listaVendedores[i] = novoVendedor;
+        }
+    }
+    std::cout << "Vendedor editado com sucesso!\n";
 }
 
 // FUNCOES DE ESTOQUE
