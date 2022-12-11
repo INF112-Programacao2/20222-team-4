@@ -354,7 +354,7 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
         std::cout << "NOME - " << Estoque::listaProdutos[i].getNome() << std::endl;
         std::cout << "---------------------\n";
     }
-    std::cout << "Digite o id do produto que voce deseja editar:: \n";
+    std::cout << "Digite o id do produto que voce deseja editar: \n";
     std::cin >> idProduto;
 
     for (int i = 0; i < Estoque::listaProdutos.size(); i++)
