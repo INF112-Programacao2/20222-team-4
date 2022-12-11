@@ -48,6 +48,9 @@ public:
     void editarEstoque(int idProduto, std::string nomeProduto, double preco, int quantidade);
 
     void imprimeProdutos();
+    void imprimeVendas();
+
+    void relatorioFaturamento();
 
     void calculaPagamento(int idFuncionario, double horasSemanais, double horasExtras, double vendasTotais, double comissao, double salarioBase); // vou fazer ainda
 

@@ -21,24 +21,23 @@ Gerencia::Gerencia() : Estoque()
     this->cadastrarVendedor(Vendedor("Pedro", 6666666, 10, 9.375, 40));
 }
 
-// funcoes que chamamos na main
+// VENDAS
 
 void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string documentoCliente, int idProduto, double desconto, double valorTotal)
 {
-    Vendas venda; //variavel que guarda as informacoes da venda
-    Estoque estoque; //variavel que guarda as informacoes do estoque
-    char resposta; //resposta do menu
-    double total = 0; // variavel que acumula o preco dos produtos 
+    Vendas venda;          // variavel que guarda as informacoes da venda
+    Estoque estoque;       // variavel que guarda as informacoes do estoque
+    char resposta;         // resposta do menu
+    double total = 0;      // variavel que acumula o preco dos produtos
     int quantidadeEstoque; // variavel que guarda a quantidade do produto X no estoque
-    int quantidade; //quantidade do produto que o cliente comprou
-
+    int quantidade;        // quantidade do produto que o cliente comprou
 
     std::cout << "----- CADASTRO DE VENDAS -----\n\n";
     std::cout << "Vamos cadastrar uma nova venda!\n\n";
     std::cout << "Insira os dados abaixo: \n\n";
     std::cout << "----- VENDEDOR -----\n";
 
-    //imprimindo a lista de vendedores
+    // imprimindo a lista de vendedores
     for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
     {
         std::cout << "ID - " << Gerencia::listaVendedores[i].getId() << std::endl;
@@ -47,8 +46,8 @@ void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string
     }
 
     std::cout << "\nDigite o ID do vendedor: ";
-    std::cin >> idFuncionario; 
-    venda.setFuncionario(idFuncionario); //registrando na venda o id dos funcionarios
+    std::cin >> idFuncionario;
+    venda.setFuncionario(idFuncionario); // registrando na venda o id dos funcionarios
 
     // tratar a excessao da entrada
 
@@ -83,7 +82,7 @@ void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string
     {
         std::cout << "\nDigite o ID do produto: ";
         std::cin >> idProduto;
-        if (idProduto==-1)
+        if (idProduto == -1)
             break;
         std::cout << "\nDigite a quantidade do produto: ";
         std::cin >> quantidade;
@@ -129,9 +128,9 @@ void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string
     }
 
     valorTotal = total - (total * (desconto / 100.0));
-    
+
     std ::system("CLS");
-    
+
     std::cout << "===== PAGAMENTO =====\n";
     std::cout << "Resumo de compras: \n";
     venda.imprimeCarrinho();
@@ -165,22 +164,69 @@ pagamento:
         std::system("CLS");
     }
     else if (resposta == 'n' || resposta == 'N')
-    {   
+    {
         std::system("CLS");
 
         std::cout << "Venda cancelada!\n";
-        sleep (1.5);
+        sleep(1.5);
         std ::system("CLS");
     }
     else
-    {   
+    {
         std::system("CLS");
 
         std::cout << "Entrada invalida, digite apenas: 's' ou 'n'.\n";
-        sleep (2);
+        sleep(2);
         std ::system("CLS");
         goto pagamento;
     }
+}
+
+void Gerencia::imprimeVendas()
+{
+
+    std::cout << "\nVendas realizadas: \n";
+    std::cout << std::endl;
+
+    for (int i = 0; i < Gerencia::listaVendas.size(); i++)
+    {
+        
+        std::cout << "CLIENTE: \n";
+        std::cout << "Nome: \n";
+        std::cout << Gerencia::listaVendas[i].getNomeCliente();
+        std::cout << "\nDocumento: ";
+        std::cout << Gerencia::listaVendas[i].getDocumentoCliente();
+        std::cout << std::endl;
+        std::cout << "\nVENDEDOR: ";
+        std::cout << "ID: \n";
+        std::cout << Gerencia::listaVendas[i].getIdFuncionario();
+        std::cout << std::endl;
+        std::cout << "\nVALOR TOTAL: R$";
+        std::cout << Gerencia::listaVendas[i].getValorTotal();
+        std::cout << std::endl;
+        std::cout << "---------------------------- \n";
+    }
+}
+
+void Gerencia::relatorioFaturamento()
+{
+    int quantidadeVendas=0;
+    double faturamento = 0;
+    double faturamentoTotal;
+    for (int i = 0; i < Gerencia::listaVendas.size(); i++)
+    {
+
+        faturamento = faturamento + Gerencia::listaVendas[i].getValorTotal();
+        quantidadeVendas++;
+    }
+
+    faturamentoTotal = faturamento;
+
+    std::cout << "----- RELATORIO DE FATURAMENTOS -----";
+    std::cout << "\n\nForam registradas " << quantidadeVendas << "vendas e resultaram em um faturamento de R$ "<< faturamentoTotal << ".";
+
+    std::cout << "\n----------------------------------\n";
+     
 }
 
 // novo vendedor e novo gerente estao prontos...
@@ -296,7 +342,7 @@ void Gerencia::editarGerente(int idFuncionario, std::string nome, long long int 
                 std::cout << "Digite a nova porcentagem de comissao: ";
                 std::cin >> porcentagemComissao;
                 Gerencia::listaGerentes[i].setPorcentagemComissao(porcentagemComissao);
-                
+
                 std ::system("CLS");
             }
             if (op == 4)
@@ -413,13 +459,13 @@ void Gerencia::novoProduto(std::string nomeProduto, double preco, int quantidade
     std::cout << "Digite o nome do produto: ";
     std::cin.ignore();
     getline(std::cin, nomeProduto);
-    std :: cout << std :: endl;
+    std ::cout << std ::endl;
     std::cout << "Digite o preco do produto: ";
     std::cin >> preco;
-    std :: cout << std :: endl;
+    std ::cout << std ::endl;
     std::cout << "Digite a quantidade do produto: ";
     std::cin >> quantidade;
-    std :: cout << std :: endl;
+    std ::cout << std ::endl;
 
     Estoque::adicionarProduto(Produto(nomeProduto, preco, quantidade));
 
@@ -429,7 +475,9 @@ void Gerencia::novoProduto(std::string nomeProduto, double preco, int quantidade
 
 void Gerencia::imprimeProdutos()
 {
-    std::cout << "Produtos disponiveis no estoque: \n";
+    std::cout << " ----- ESTOQUE ----- \n";
+
+    std::cout << "\nProdutos disponiveis no estoque: \n";
     std::cout << std::endl;
 
     for (int i = 0; i < Estoque::listaProdutos.size(); i++)
@@ -506,7 +554,6 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
         }
     }
     std::cout << "Estoque editado com sucesso!\n";
-
 }
 
 void Gerencia::calculaPagamento(int idFuncionario, double horasSemanais, double horasExtras, double vendasTotais, double comissao, double salarioBase)
@@ -599,22 +646,30 @@ void Gerencia::calculaPagamento(int idFuncionario, double horasSemanais, double 
     }
 }
 
-void Gerencia :: imprimePagamentos() {
+void Gerencia ::imprimePagamentos()
+{
+    // corrigir
+
     std::cout << "----- RELATORIO DE PAGAMENTOS ----- \n";
     std::cout << std::endl;
 
     for (int i = 0; i < Gerencia::listaPagamentos.size(); i++)
     {
-        std :: cout << "ID - " << Gerencia::listaPagamentos[i].getFuncionario() << std :: endl;
-        std :: cout << "NOME - ";
-        for (int j=0; j < Gerencia::listaVendedores.size(); j++) {
-            if (Gerencia::listaPagamentos[i].getFuncionario()==Gerencia::listaVendedores[j].getId())
-                std :: cout << Gerencia::listaVendedores[j].getNome() << std :: endl;
-            else if (Gerencia::listaPagamentos[i].getFuncionario()==Gerencia::listaGerentes[j].getId())
-                std :: cout << Gerencia::listaGerentes[j].getNome() << std :: endl;
+        std ::cout << "ID - " << Gerencia::listaPagamentos[i].getFuncionario() << std ::endl;
+        std ::cout << "NOME - ";
+
+        /*
+        for (int j = 0; j < Gerencia::listaVendedores.size(); j++)
+        {
+            if (Gerencia::listaPagamentos[i].getFuncionario() == Gerencia::listaVendedores[j].getId())
+                std ::cout << Gerencia::listaVendedores[j].getNome() << std ::endl;
+            else if (Gerencia::listaPagamentos[i].getFuncionario() == Gerencia::listaGerentes[j].getId())
+                std ::cout << Gerencia::listaGerentes[j].getNome() << std ::endl;
         }
-        std :: cout << "Valor recebido em R$: " << std :: fixed << std :: setprecision(2) << Gerencia::listaPagamentos[i].getPagamento() << std:: setw(1) << std :: setfill('0') << std :: endl;
-        std :: cout << "---------------------------- \n";
+
+        */
+        std ::cout << "Valor recebido em R$: " << std ::fixed << std ::setprecision(2) << Gerencia::listaPagamentos[i].getPagamento() << std::setw(1) << std ::setfill('0') << std ::endl;
+        std ::cout << "---------------------------- \n";
     }
 }
 

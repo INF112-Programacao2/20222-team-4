@@ -12,8 +12,6 @@ class Vendas
 {
 private:
     double valorTotal;
-    double faturamento;
-    int quantidadeVendas;
     int idFuncionario;
     std::string nomeCliente;
     std::string documentoCliente;
@@ -31,11 +29,13 @@ public:
     static std::vector<ItemCarrinho> carrinhoCompras;
     void imprimeCarrinho();
     void novoCarrinho(ItemCarrinho &itemCarrinho);
+
+
     double getValorTotal();
     int getIdFuncionario();
     std::string getNomeCliente();
-    int getQuantidadeVendas();
-    double getFaturamento();
+    std::string getDocumentoCliente();
+
 
     ~Vendas();
 };

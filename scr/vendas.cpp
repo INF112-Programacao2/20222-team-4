@@ -69,16 +69,11 @@ std::string Vendas::getNomeCliente()
     return this->nomeCliente;
 }
 
-
-int Vendas::getQuantidadeVendas()
+std::string Vendas::getDocumentoCliente()
 {
-    return this->quantidadeVendas;
+    return this->documentoCliente;
 }
 
-double Vendas::getFaturamento()
-{
-    return this->faturamento;
-}
 
 Vendas::~Vendas()
 {
