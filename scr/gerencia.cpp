@@ -78,12 +78,14 @@ void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string
         std::cout << "---------------------\n";
     }
 
-    std::cout << "Para fechar o carrinho digite -1\n";
+    std::cout << "\nPara fechar o carrinho digite -1\n";
     while (idProduto != -1)
     {
-        std::cout << "Digite o ID do produto: \n";
+        std::cout << "\nDigite o ID do produto: ";
         std::cin >> idProduto;
-        std::cout << "Digite a quantidade do produto: \n";
+        if (idProduto==-1)
+            break;
+        std::cout << "\nDigite a quantidade do produto: ";
         std::cin >> quantidade;
 
         for (int i = 0; i < Estoque::listaProdutos.size(); i++)
@@ -154,16 +156,26 @@ pagamento:
             std::cout << listaVendas[i].getValorTotal() << std::endl;
         }
 
-        std::cout << "\nVenda registrada com sucesso!\n";
+        std::system("CLS");
+
+        std::cout << "Venda registrada com sucesso!\n";
+
+        sleep(1.5);
+
+        std::system("CLS");
     }
     else if (resposta == 'n' || resposta == 'N')
-    {
+    {   
+        std::system("CLS");
+
         std::cout << "Venda cancelada!\n";
         sleep (1.5);
         std ::system("CLS");
     }
     else
-    {
+    {   
+        std::system("CLS");
+        
         std::cout << "Entrada invalida, digite apenas: 's' ou 'n'.\n";
         sleep (2);
         std ::system("CLS");
