@@ -54,7 +54,7 @@ inicio:
 
         gerencia.novaVenda(idFuncionario, nomeCliente, documentoCliente, idProduto, desconto, valorTotal);
 
-        std ::cout << "O que deseja fazer agora?\n";
+        std ::cout << "O que deseja fazer agora?\n\n";
         std ::cout << "1 - Cadastrar outra venda\n";
         std ::cout << "2 - Voltar ao menu inicial\n";
         std ::cin >> selecao2;
