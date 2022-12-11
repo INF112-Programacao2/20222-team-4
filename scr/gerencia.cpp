@@ -185,7 +185,7 @@ void Gerencia::novoGerente(std::string nome, long long int documento, double por
 
 // EDITAR GERENTE E VENDEDOR (falta editar vendedor)
 
-void Gerencia::editarGerente(int idGerente, std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais)
+void Gerencia::editarGerente(int idFuncionario, std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais)
 {
     std::cout << " ----- EDITAR GERENTE ----- \n";
     for (int i = 0; i < Gerencia::listaGerentes.size(); i++)
@@ -195,11 +195,11 @@ void Gerencia::editarGerente(int idGerente, std::string nome, long long int docu
         std::cout << "---------------------\n";
     }
     std::cout << "Digite o id do gerente que voce deseja editar:: \n";
-    std::cin >> idGerente;
+    std::cin >> idFuncionario;
 
     for (int i = 0; i < Gerencia::listaGerentes.size(); i++)
     {
-        if (Gerencia::listaGerentes[i].getId() == idGerente)
+        if (Gerencia::listaGerentes[i].getId() == idFuncionario)
         {
 
             int op;
@@ -243,7 +243,7 @@ void Gerencia::editarGerente(int idGerente, std::string nome, long long int docu
     std::cout << "Gerente editado com sucesso!\n";
 }
 
-void Gerencia::editarVendedor(int idVendedor, std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais)
+void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais)
 {
     std::cout << " ----- EDITAR VENDEDOR ----- \n";
     for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
@@ -253,11 +253,11 @@ void Gerencia::editarVendedor(int idVendedor, std::string nome, long long int do
         std::cout << "---------------------\n";
     }
     std::cout << "Digite o id do gerente que voce deseja editar:: \n";
-    std::cin >> idVendedor;
+    std::cin >> idFuncionario;
 
     for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
     {
-        if (Gerencia::listaVendedores[i].getId() == idGerente)
+        if (Gerencia::listaVendedores[i].getId() == idFuncionario)
         {
 
             int op;
@@ -294,7 +294,7 @@ void Gerencia::editarVendedor(int idVendedor, std::string nome, long long int do
                 std::cout << "Digite a nova quantidade de horas semanais: \n";
                 std::cin >> horasSemanais;
             }
-            Gerente novoVendedor(nome, documento, porcentagemComissao, salarioBase, horasSemanais);
+            Vendedor novoVendedor(nome, documento, porcentagemComissao, salarioBase, horasSemanais);
             Gerencia::listaVendedores[i] = novoVendedor;
         }
     }
