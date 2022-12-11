@@ -7,15 +7,12 @@
 
 class Estoque
 {
-private:
-
-public:
-
+protected:
     static std::vector<Produto> listaProdutos;
 
 public:
     Estoque();
-    void bancoDeDados();                           // criar um "banco de dados" fake
+    void bancoDeDados(); // criar um "banco de dados" fake
 
     const std::vector<Produto> &lerListaProdutos();
     int consultaEstoque(Produto produto);          // buscar se tem o produto no estoque

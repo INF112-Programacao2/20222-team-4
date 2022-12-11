@@ -190,7 +190,7 @@ void Gerencia::imprimeVendas()
 
     for (int i = 0; i < Gerencia::listaVendas.size(); i++)
     {
-        
+
         std::cout << "CLIENTE: \n";
         std::cout << "Nome: \n";
         std::cout << Gerencia::listaVendas[i].getNomeCliente();
@@ -210,7 +210,7 @@ void Gerencia::imprimeVendas()
 
 void Gerencia::relatorioFaturamento()
 {
-    int quantidadeVendas=0;
+    int quantidadeVendas = 0;
     double faturamento = 0;
     double faturamentoTotal;
     for (int i = 0; i < Gerencia::listaVendas.size(); i++)
@@ -223,10 +223,9 @@ void Gerencia::relatorioFaturamento()
     faturamentoTotal = faturamento;
 
     std::cout << "----- RELATORIO DE FATURAMENTOS -----";
-    std::cout << "\n\nForam registradas " << quantidadeVendas << "vendas e resultaram em um faturamento de R$ "<< faturamentoTotal << ".";
+    std::cout << "\n\nForam registradas " << quantidadeVendas << "vendas e resultaram em um faturamento de R$ " << faturamentoTotal << ".";
 
     std::cout << "\n----------------------------------\n";
-     
 }
 
 // novo vendedor e novo gerente estao prontos...
@@ -648,8 +647,6 @@ void Gerencia::calculaPagamento(int idFuncionario, double horasSemanais, double 
 
 void Gerencia ::imprimePagamentos()
 {
-    // corrigir
-
     std::cout << "----- RELATORIO DE PAGAMENTOS ----- \n";
     std::cout << std::endl;
 
@@ -658,18 +655,23 @@ void Gerencia ::imprimePagamentos()
         std ::cout << "ID - " << Gerencia::listaPagamentos[i].getFuncionario() << std ::endl;
         std ::cout << "NOME - ";
 
-        /*
         for (int j = 0; j < Gerencia::listaVendedores.size(); j++)
         {
             if (Gerencia::listaPagamentos[i].getFuncionario() == Gerencia::listaVendedores[j].getId())
-                std ::cout << Gerencia::listaVendedores[j].getNome() << std ::endl;
-            else if (Gerencia::listaPagamentos[i].getFuncionario() == Gerencia::listaGerentes[j].getId())
-                std ::cout << Gerencia::listaGerentes[j].getNome() << std ::endl;
+            {
+                std::cout << Gerencia::listaVendedores[j].getNome() << std::endl;
+            }
         }
 
-        */
-        std ::cout << "Valor recebido em R$: " << std ::fixed << std ::setprecision(2) << Gerencia::listaPagamentos[i].getPagamento() << std::setw(1) << std ::setfill('0') << std ::endl;
-        std ::cout << "---------------------------- \n";
+        for (int j = 0; j < Gerencia::listaGerentes.size(); j++)
+        {
+            if (Gerencia::listaPagamentos[i].getFuncionario() == Gerencia::listaGerentes[j].getId())
+                    std::cout
+                << Gerencia::listaGerentes[j].getNome() << std::endl;
+        }
+
+        std::cout << "Valor recebido em R$: " << std::fixed << std ::setprecision(2) << Gerencia::listaPagamentos[i].getPagamento() << std::setw(1) << std ::setfill('0') << std::endl;
+        std::cout << "---------------------------- \n";
     }
 }
 

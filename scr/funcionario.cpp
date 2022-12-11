@@ -1,7 +1,7 @@
 #include "funcionario.h"
 
 
-int Funcionario::generateId = 0;
+int Funcionario::generateId = 1;
 double Funcionario::totalVendas = 0;
 
 Funcionario::Funcionario(std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais)
