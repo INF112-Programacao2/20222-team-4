@@ -361,7 +361,6 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
     {
         if (Estoque::listaProdutos[i].getId() == idProduto)
         {
-
             int op;
             std::cout << "O que deseja editar?: \n";
             std::cout << "1 - Nome: \n";
@@ -373,32 +372,34 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
                 std::cout << "Digite o novo nome: \n";
                 std::cin.ignore();
                 getline(std::cin, nomeProduto);
+                Estoque::listaProdutos[i].setNome(nomeProduto);
             }
             if (op == 2)
             {
-                std::cout << "Preco atual: " << Estoque::listaProdutos[i].getPreco() << std::endl;
+                std::cout << "Preco atual: " << Estoque::listaProdutos[i].getPreco() <<std::endl;
 
                 std::cout << "Digite o novo preco: \n";
                 std::cin >> preco;
+                Estoque::listaProdutos[i].setPreco(preco);
             }
             if (op == 3)
             {
                 int adicionarQuantidade;
 
-                std::cout << "Quantidade atual: " << Estoque::listaProdutos[i].getQuantidade() << std::endl;
+                std::cout << "Quantidade atual: " << Estoque::listaProdutos[i].getQuantidade() <<std::endl;
 
                 std::cout << "Digite a quantidade que deseja adicionar: \n";
                 std::cin >> adicionarQuantidade;
 
                 quantidade = adicionarQuantidade + Estoque::listaProdutos[i].getQuantidade();
-            }
 
-            Produto novoProduto(nomeProduto, preco, quantidade);
-            Estoque::listaProdutos[i] = novoProduto;
+                Estoque::listaProdutos[i].setQuantidade(quantidade);
+            }
         }
     }
     std::cout << "Estoque editado com sucesso!\n";
 }
+
 
 void Gerencia::calculaPagamento(int idFuncionario, double horasSemanais, double horasExtras, double vendasTotais, double comissao, double salarioBase)
 {
