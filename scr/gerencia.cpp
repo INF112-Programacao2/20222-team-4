@@ -28,9 +28,9 @@ void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string
     double total = 0;
     int quantidadeEstoque;
 
-    std::cout << "----- CADASTRO DE VENDAS -----\n\n";
-    std::cout << "Vamos cadastrar uma nova venda!\n";
-    std::cout << "Insira os dados abaixo: \n";
+    std::cout << "\n----- CADASTRO DE VENDAS -----\n\n";
+    std::cout << "Vamos cadastrar uma nova venda!\n\n";
+    std::cout << "Insira os dados abaixo: \n\n";
     std::cout << "----- VENDEDOR -----\n";
 
     for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
@@ -40,17 +40,17 @@ void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string
         std::cout << "---------------------\n";
     }
 
-    std::cout << "\n\nDigite o ID do vendedor: \n";
+    std::cout << "\nDigite o ID do vendedor: ";
     std::cin >> idFuncionario;
     // tratar a excessao da entrada
-    std::cout << "----- CLIENTE -----\n";
+    std::cout << "\n----- CLIENTE -----\n";
 
-    std::cout << "\nDigite o nome do cliente: \n";
+    std::cout << "\nDigite o nome do cliente: ";
     std::cin.ignore();
     getline(std::cin, nomeCliente);
     // tratar a excessao da entrada
 
-    std::cout << "\nDigite o CPF do cliente (Apenas numeros): \n";
+    std::cout << "\nDigite o CPF do cliente (Apenas numeros): ";
     std::getline(std::cin, documentoCliente);
 
     std::cout << "----- PRODUTOS -----";
@@ -94,7 +94,7 @@ void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string
     // tratar a excessao da entrada
 
     std::cout << "===== DESCONTO =====\n";
-    std::cout << "% Desconto (digite 0 para nenhum desconto): \n";
+    std::cout << "% Desconto (digite 0 para nenhum desconto): ";
     std::cin >> desconto;
     // tratar a excessao da entrada (proibido numeros negativos)
 
@@ -142,46 +142,46 @@ void Gerencia::novoVendedor(std::string nome, long long int documento, double po
 {
     std::cout << "----- VENDEDOR -----\n";
 
-    std::cout << "\nDigite o nome do vendedor: \n";
+    std::cout << "\nDigite o nome do vendedor: ";
     std::cin.ignore();
     getline(std::cin, nome);
     // tratar a excessao da entrada
 
-    std::cout << "\nDigite o CPF do vendedor (Apenas numeros): \n";
+    std::cout << "\nDigite o CPF do vendedor (Apenas numeros): ";
     std::cin >> documento;
 
-    std::cout << "\nDigite o valor do salario por hora: \n";
+    std::cout << "\nDigite o valor do salario por hora: ";
     std::cin >> salarioBase;
 
-    std::cout << "\nDigite a quantidade de horas semanais: \n";
+    std::cout << "\nDigite a quantidade de horas semanais: ";
     std::cin >> horasSemanais;
 
     this->cadastrarVendedor(Vendedor(nome, documento, porcentagemComissao, salarioBase, horasSemanais));
 
-    std ::cout << "Vendedor cadastrado com sucesso!" << std ::endl;
+    std ::cout << "\nVendedor cadastrado com sucesso!" << std ::endl;
 }
 
 void Gerencia::novoGerente(std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais)
 {
     std::cout << "----- GERENTE -----\n";
 
-    std::cout << "\nDigite o nome do gerente: \n";
+    std::cout << "\nDigite o nome do gerente: ";
     std::cin.ignore();
     getline(std::cin, nome);
     // tratar a excessao da entrada
 
-    std::cout << "\nDigite o CPF do gerente (Apenas numeros): \n";
+    std::cout << "\nDigite o CPF do gerente (Apenas numeros): ";
     std::cin >> documento;
 
-    std::cout << "\nDigite o valor do salario base: \n";
+    std::cout << "\nDigite o valor do salario base: ";
     std::cin >> salarioBase;
 
-    std::cout << "\nDigite a quantidade de horas semanais: \n";
+    std::cout << "\nDigite a quantidade de horas semanais: ";
     std::cin >> horasSemanais;
 
     this->cadastrarGerente(Gerente(nome, documento, porcentagemComissao, salarioBase, horasSemanais));
 
-    std ::cout << "Gerente cadastrado com sucesso!" << std ::endl;
+    std ::cout << "\nGerente cadastrado com sucesso!" << std ::endl;
 }
 
 // EDITAR GERENTE E VENDEDOR (falta editar vendedor)
@@ -195,7 +195,7 @@ void Gerencia::editarGerente(int idFuncionario, std::string nome, long long int 
         std::cout << "NOME - " << Gerencia::listaGerentes[i].getNome() << std::endl;
         std::cout << "---------------------\n";
     }
-    std::cout << "Digite o id do gerente que voce deseja editar:: \n";
+    std::cout << "Digite o id do gerente que voce deseja editar: \n";
     std::cin >> idFuncionario;
 
     for (int i = 0; i < Gerencia::listaGerentes.size(); i++)
@@ -204,48 +204,48 @@ void Gerencia::editarGerente(int idFuncionario, std::string nome, long long int 
         {
 
             int op;
-            std::cout << "O que deseja editar?: \n";
-            std::cout << "1 - Nome: \n";
-            std::cout << "2 - Documento: \n";
-            std::cout << "3 - Porcentagem comissao: \n";
-            std::cout << "4 - Salario base (por hora): \n";
-            std::cout << "5 - Horas semanais: \n";
+            std::cout << "O que deseja editar? \n";
+            std::cout << "1 - Nome\n";
+            std::cout << "2 - Documento\n";
+            std::cout << "3 - Porcentagem comissao\n";
+            std::cout << "4 - Salario base (por hora)\n";
+            std::cout << "5 - Horas semanais\n";
             std::cin >> op;
             if (op == 1)
             {
-                std::cout << "Digite o novo nome: \n";
+                std::cout << "Digite o novo nome: ";
                 std::cin.ignore();
                 getline(std::cin, nome);
                 Gerencia::listaGerentes[i].setNome(nome);
             }
             if (op == 2)
             {
-                std::cout << "Digite o novo documento: \n";
+                std::cout << "Digite o novo documento: ";
                 std::cin >> documento;
                 Gerencia::listaGerentes[i].setDocumento(documento);
             }
             if (op == 3)
             {
-                std::cout << "Digite a nova porcentagem de comissao: \n";
+                std::cout << "Digite a nova porcentagem de comissao: ";
                 std::cin >> porcentagemComissao;
                 Gerencia::listaGerentes[i].setPorcentagemComissao(porcentagemComissao);
             }
             if (op == 4)
             {
-                std::cout << "Digite o novo salario base (por hora): \n";
+                std::cout << "Digite o novo salario base (por hora): ";
                 std::cin >> salarioBase;
                 Gerencia::listaGerentes[i].setSalarioBase(salarioBase);
             }
             if (op == 5)
             {
-                std::cout << "Digite a nova quantidade de horas semanais: \n";
+                std::cout << "Digite a nova quantidade de horas semanais: ";
                 std::cin >> horasSemanais;
                 Gerencia::listaGerentes[i].setHorasSemanais(horasSemanais);
             }
 
         }
     }
-    std::cout << "Gerente editado com sucesso!\n";
+    std::cout << "\nGerente editado com sucesso!\n";
 }
 
 void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais)
@@ -257,7 +257,7 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int
         std::cout << "NOME - " << Gerencia::listaVendedores[i].getNome() << std::endl;
         std::cout << "---------------------\n";
     }
-    std::cout << "Digite o id do gerente que voce deseja editar:: \n";
+    std::cout << "Digite o id do gerente que voce deseja editar: \n";
     std::cin >> idFuncionario;
 
     for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
@@ -266,47 +266,47 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int
         {
 
             int op;
-            std::cout << "O que deseja editar?: \n";
-            std::cout << "1 - Nome: \n";
-            std::cout << "2 - Documento: \n";
-            std::cout << "3 - Porcentagem comissao: \n";
-            std::cout << "4 - Salario base (por hora): \n";
-            std::cout << "5 - Horas semanais: \n";
+            std::cout << "O que deseja editar?: ";
+            std::cout << "1 - Nome\n";
+            std::cout << "2 - Documento\n";
+            std::cout << "3 - Porcentagem comissao\n";
+            std::cout << "4 - Salario base (por hora)\n";
+            std::cout << "5 - Horas semanais\n";
             std::cin >> op;
             if (op == 1)
             {
-                std::cout << "Digite o novo nome: \n";
+                std::cout << "Digite o novo nome: ";
                 std::cin.ignore();
                 getline(std::cin, nome);
                 Gerencia::listaVendedores[i].setNome(nome);
             }
             if (op == 2)
             {
-                std::cout << "Digite o novo documento: \n";
+                std::cout << "Digite o novo documento: ";
                 std::cin >> documento;
                 Gerencia::listaVendedores[i].setDocumento(documento);
             }
             if (op == 3)
             {
-                std::cout << "Digite a nova porcentagem de comissao: \n";
+                std::cout << "Digite a nova porcentagem de comissao: ";
                 std::cin >> porcentagemComissao;
                 Gerencia::listaVendedores[i].setPorcentagemComissao(porcentagemComissao);
             }
             if (op == 4)
             {
-                std::cout << "Digite o novo salario base (por hora): \n";
+                std::cout << "Digite o novo salario base (por hora): ";
                 std::cin >> salarioBase;
                 Gerencia::listaVendedores[i].setSalarioBase(salarioBase);
             }
             if (op == 5)
             {
-                std::cout << "Digite a nova quantidade de horas semanais: \n";
+                std::cout << "Digite a nova quantidade de horas semanais: ";
                 std::cin >> horasSemanais;
                 Gerencia::listaVendedores[i].setHorasSemanais(horasSemanais);
             }
         }
     }
-    std::cout << "Vendedor editado com sucesso!\n";
+    std::cout << "\nVendedor editado com sucesso!\n";
 }
 
 // FUNCOES DE ESTOQUE
@@ -354,7 +354,7 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
         std::cout << "NOME - " << Estoque::listaProdutos[i].getNome() << std::endl;
         std::cout << "---------------------\n";
     }
-    std::cout << "Digite o id do produto que voce deseja editar: \n";
+    std::cout << "Digite o id do produto que voce deseja editar: ";
     std::cin >> idProduto;
 
     for (int i = 0; i < Estoque::listaProdutos.size(); i++)
@@ -363,13 +363,13 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
         {
             int op;
             std::cout << "O que deseja editar?: \n";
-            std::cout << "1 - Nome: \n";
-            std::cout << "2 - Preco: \n";
-            std::cout << "3 - Adicionar mais quantidades no estoque: \n";
+            std::cout << "1 - Nome\n";
+            std::cout << "2 - Preco\n";
+            std::cout << "3 - Adicionar mais quantidades no estoque\n";
             std::cin >> op;
             if (op == 1)
             {
-                std::cout << "Digite o novo nome: \n";
+                std::cout << "Digite o novo nome: ";
                 std::cin.ignore();
                 getline(std::cin, nomeProduto);
                 Estoque::listaProdutos[i].setNome(nomeProduto);
@@ -378,7 +378,7 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
             {
                 std::cout << "Preco atual: " << Estoque::listaProdutos[i].getPreco() <<std::endl;
 
-                std::cout << "Digite o novo preco: \n";
+                std::cout << "Digite o novo preco: ";
                 std::cin >> preco;
                 Estoque::listaProdutos[i].setPreco(preco);
             }
@@ -397,7 +397,7 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
             }
         }
     }
-    std::cout << "Estoque editado com sucesso!\n";
+    std::cout << "\nEstoque editado com sucesso!\n";
 }
 
 
@@ -407,8 +407,8 @@ void Gerencia::calculaPagamento(int idFuncionario, double horasSemanais, double 
     int op;
     std::cout << " ----- NOVO PAGAMENTO ----- \n";
     std::cout << "\nVamos registrar um novo pagamento. Escolha abaixo o cargo do funcionario: \n";
-    std::cout << "1 - Gerente: \n";
-    std::cout << "2 - Vendedor: \n";
+    std::cout << "1 - Gerente\n";
+    std::cout << "2 - Vendedor\n";
     std::cin >> op;
 
     // se for gerente
@@ -423,7 +423,7 @@ void Gerencia::calculaPagamento(int idFuncionario, double horasSemanais, double 
             std::cout << "---------------------\n";
         }
 
-        std::cout << "Digite o id do gerente: \n";
+        std::cout << "Digite o id do gerente: ";
         std::cin >> idFuncionario;
 
         for (int i = 0; i < Gerencia::listaGerentes.size(); i++)
@@ -448,7 +448,7 @@ void Gerencia::calculaPagamento(int idFuncionario, double horasSemanais, double 
             std::cout << "NOME - " << Gerencia::listaVendedores[i].getNome() << std::endl;
             std::cout << "---------------------\n";
         }
-        std::cout << "Digite o id do vendedor: \n";
+        std::cout << "Digite o id do vendedor: ";
         std::cin >> idFuncionario;
 
         for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
@@ -465,7 +465,7 @@ void Gerencia::calculaPagamento(int idFuncionario, double horasSemanais, double 
         }
     }
 
-    std::cout << "\nHoras extras do funcionario: \n";
+    std::cout << "\n\nHoras extras do funcionario: ";
     std::cin >> horasExtras;
 
     // calculo do salario mensal
@@ -495,6 +495,8 @@ void Gerencia :: imprimePagamentos() {
         for (int j=0; j < Gerencia::listaVendedores.size(); j++) {
             if (Gerencia::listaPagamentos[i].getFuncionario()==Gerencia::listaVendedores[j].getId())
                 std :: cout << Gerencia::listaVendedores[j].getNome() << std :: endl;
+            else if (Gerencia::listaPagamentos[i].getFuncionario()==Gerencia::listaGerentes[j].getId())
+                std :: cout << Gerencia::listaGerentes[j].getNome() << std :: endl;
         }
         std :: cout << "Valor recebido em R$: " << std :: fixed << std :: setprecision(2) << Gerencia::listaPagamentos[i].getPagamento() << std:: setw(1) << std :: setfill('0') << std :: endl;
         std :: cout << "---------------------------- \n";
