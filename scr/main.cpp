@@ -81,6 +81,7 @@ inicio:
 
         if (resp == 1)
         {
+            cadastro:
             std ::cout << "Qual o cargo do funcionario que deseja cadastrar? \n\n";
             std ::cout << "1 - Gerente\n";
             std ::cout << "2 - Vendedor\n";
@@ -92,7 +93,7 @@ inicio:
                 gerencia.novoGerente(nome, documento, porcentagemComissao, salarioBase, horasSemanais);
 
                 std ::cout << "\nO que deseja fazer agora?\n";
-                std ::cout << "1 - Cadastrar outra venda\n";
+                std ::cout << "1 - Cadastrar outro funcionario\n";
                 std ::cout << "2 - Voltar ao menu inicial\n";
                 std ::cin >> selecao2;
 
@@ -100,7 +101,7 @@ inicio:
 
                 if (selecao2 == 1)
                 {
-                    goto venda;
+                    goto cadastro;
                 }
                 else if (selecao2 == 2)
                 {
@@ -113,7 +114,7 @@ inicio:
                 gerencia.novoVendedor(nome, documento, porcentagemComissao, salarioBase, horasSemanais);
 
                 std ::cout << "\nO que deseja fazer agora?\n";
-                std ::cout << "1 - Cadastrar outra venda\n";
+                std ::cout << "1 - Cadastrar outro funcionario\n";
                 std ::cout << "2 - Voltar ao menu inicial\n";
                 std ::cin >> selecao2;
 
@@ -121,7 +122,7 @@ inicio:
 
                 if (selecao2 == 1)
                 {
-                    goto venda;
+                    goto cadastro;
                 }
                 else if (selecao2 == 2)
                 {
@@ -190,7 +191,7 @@ inicio:
                 {
                     goto inicio;
                 }
-                
+
             }
         }
 

@@ -1,5 +1,6 @@
 #include "gerencia.h"
-#include <bits/stdc++.h>
+#include <iostream>
+#include <iomanip>
 
 std::vector<Vendedor> Gerencia::listaVendedores = std::vector<Vendedor>();
 std::vector<Gerente> Gerencia::listaGerentes = std::vector<Gerente>();
