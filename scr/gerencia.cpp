@@ -175,7 +175,7 @@ pagamento:
     else
     {   
         std::system("CLS");
-        
+
         std::cout << "Entrada invalida, digite apenas: 's' ou 'n'.\n";
         sleep (2);
         std ::system("CLS");
@@ -605,18 +605,16 @@ void Gerencia :: imprimePagamentos() {
 
     for (int i = 0; i < Gerencia::listaPagamentos.size(); i++)
     {
-
-        for (int j = 0; j < Gerencia::listaVendedores.size(); j++)
-        {
-            if (Gerencia::listaPagamentos[i].getFuncionario() == Gerencia::listaVendedores[j].getId())
-            {
-                std ::cout << "ID - " << Gerencia::listaPagamentos[i].getFuncionario() << std ::endl;
-                std ::cout << "NOME - ";
-                std ::cout << Gerencia::listaVendedores[j].getNome() << std ::endl;
-            }
+        std :: cout << "ID - " << Gerencia::listaPagamentos[i].getFuncionario() << std :: endl;
+        std :: cout << "NOME - ";
+        for (int j=0; j < Gerencia::listaVendedores.size(); j++) {
+            if (Gerencia::listaPagamentos[i].getFuncionario()==Gerencia::listaVendedores[j].getId())
+                std :: cout << Gerencia::listaVendedores[j].getNome() << std :: endl;
+            else if (Gerencia::listaPagamentos[i].getFuncionario()==Gerencia::listaGerentes[j].getId())
+                std :: cout << Gerencia::listaGerentes[j].getNome() << std :: endl;
         }
-        std ::cout << "Valor recebido em R$: " << std ::fixed << std ::setprecision(2) << Gerencia::listaPagamentos[i].getPagamento() << std::setw(1) << std ::setfill('0') << std ::endl;
-        std ::cout << "---------------------------- \n";
+        std :: cout << "Valor recebido em R$: " << std :: fixed << std :: setprecision(2) << Gerencia::listaPagamentos[i].getPagamento() << std:: setw(1) << std :: setfill('0') << std :: endl;
+        std :: cout << "---------------------------- \n";
     }
 }
 
