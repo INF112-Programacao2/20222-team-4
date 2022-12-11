@@ -4,6 +4,7 @@
 #include "estoque.h"
 #include "produto.h"
 #include "gerencia.h"
+#include <time.h>
 
 // para compilar g++ estoque.cpp funcionario.cpp gerencia.cpp gerente.cpp pagamento.cpp produto.cpp vendedor.cpp main.cpp
 // mostrar só os erros:
@@ -22,6 +23,8 @@ inicio:
 
     int selecao;
 
+    std ::system("CLS");
+
     std::cout << "----- MENU INICIAL -----\n\n";
     std::cout << "1 - Registrar venda\n";
     std::cout << "2 - Gestao de funcionarios\n";
@@ -31,6 +34,8 @@ inicio:
     std::cout << "6 - Encerrar programa\n";
     std::cout << "\nInforme o numero: ";
     std::cin >> selecao;
+
+    std::system("CLS");
 
     // tratar a excessao da entrada
     // tratar excessao dessa entrada!!
@@ -48,7 +53,7 @@ inicio:
 
         gerencia.novaVenda(idFuncionario, nomeCliente, documentoCliente, idProduto, desconto, valorTotal);
 
-        std ::cout << "\nO que deseja fazer agora?\n";
+        std ::cout << "O que deseja fazer agora?\n";
         std ::cout << "1 - Cadastrar outra venda\n";
         std ::cout << "2 - Voltar ao menu inicial\n";
         std ::cin >> selecao2;
@@ -73,12 +78,14 @@ inicio:
         double porcentagemComissao;
         double salarioBase;
         double horasSemanais;
-        std::cout << "\n----- GESTAO DE FUNCIONARIOS -----\n\n";
+        std::cout << "----- GESTAO DE FUNCIONARIOS -----\n\n";
         std::cout << "1 - Cadastrar novo funcionario\n";
         std::cout << "2 - Editar Funcionario\n";
         std::cout << "3 - Remover Funcionario\n";
         std::cout << "4 - Voltar ao menu inicial\n";
         std::cin >> resp;
+
+        std ::system("CLS");
 
         if (resp == 1)
         {
@@ -87,13 +94,15 @@ inicio:
             std ::cout << "1 - Gerente\n";
             std ::cout << "2 - Vendedor\n";
             std ::cin >> resp2;
+            
+            std ::system("CLS");
 
             if (resp2 == 1)
             {   
                 int selecao2;
                 gerencia.novoGerente(nome, documento, porcentagemComissao, salarioBase, horasSemanais);
 
-                std ::cout << "\nO que deseja fazer agora?\n\n";
+                std ::cout << "O que deseja fazer agora?\n\n";
                 std ::cout << "1 - Cadastrar outro funcionario\n";
                 std ::cout << "2 - Voltar ao menu anterior\n";
                 std ::cin >> selecao2;
@@ -114,7 +123,9 @@ inicio:
                 int selecao2;
                 gerencia.novoVendedor(nome, documento, porcentagemComissao, salarioBase, horasSemanais);
 
-                std ::cout << "\nO que deseja fazer agora?\n\n";
+                std ::system("CLS");
+
+                std ::cout << "O que deseja fazer agora?\n\n";
                 std ::cout << "1 - Cadastrar outro funcionario\n";
                 std ::cout << "2 - Voltar ao menu anterior\n";
                 std ::cin >> selecao2;
@@ -136,10 +147,12 @@ inicio:
         {
         editar:
             // editarfunc
-            std::cout << "\nQual o cargo do funcionario que deseja editar? \n\n";
+            std::cout << "Qual o cargo do funcionario que deseja editar? \n\n";
             std::cout << "1 - Gerente\n";
             std::cout << "2 - Vendedor\n";
             std::cin >> resp2;
+
+            std ::system("CLS");
 
             if (resp2 == 1)
             {   
@@ -151,7 +164,7 @@ inicio:
 
                 gerencia.editarGerente(idGerente, nome, documento, porcentagemComissao, salarioBase, horasSemanais);
 
-                std ::cout << "\nO que deseja fazer agora?\n";
+                std ::cout << "O que deseja fazer agora?\n\n";
                 std ::cout << "1 - Editar outro funcionario\n";
                 std ::cout << "2 - Voltar ao menu anterior\n";
                 std ::cin >> op;
@@ -177,7 +190,8 @@ inicio:
 
                 gerencia.editarVendedor(idVendedor, nome, documento, porcentagemComissao, salarioBase, horasSemanais);
 
-                std ::cout << "\nO que deseja fazer agora?\n";
+
+                std ::cout << "O que deseja fazer agora?\n\n";
                 std ::cout << "1 - Editar outro funcionario\n";
                 std ::cout << "2 - Voltar ao menu anterior\n";
                 std ::cin >> op;
@@ -223,12 +237,14 @@ inicio:
     {
         int resp3;
 
-        std::cout << "\n----- GESTAO DE VENDAS -----\n\n";
+        std::cout << "----- GESTAO DE VENDAS -----\n\n";
         std::cout << "1 - Editar venda\n";
         std::cout << "2 - Cancelar venda\n";
         std::cout << "3 - Gerar relatorio de vendas\n";
         std::cout << "4 - Voltar ao menu inicial\n";
         std::cin >> resp3;
+
+        std ::system("CLS");
 
         if (resp3 == 1)
         {
@@ -252,14 +268,16 @@ inicio:
         menuPagamento:
         int resp4;
 
-        std::cout << "\n----- GESTAO DE FINANCAS -----\n\n";
+        std::cout << "----- GESTAO DE FINANCAS -----\n\n";
         std::cout << "1 - Novo pagamento\n";
         std::cout << "2 - Ver pagamentos\n";
         std::cout << "3 - Voltar ao menu inicial\n";
         std::cin >> resp4;
 
+        std ::system("CLS");
+
         if (resp4 == 1)
-        {
+        {   pagar:
             int idFuncionario;
             double horasSemanais;
             double horasExtras;
@@ -268,13 +286,20 @@ inicio:
             double salarioBase;
             gerencia.calculaPagamento(idFuncionario, horasSemanais,horasExtras,vendasTotais,comissao,salarioBase);
 
-            std::cout << std::endl;
-            std::cout << "Digite 1 para voltar ao menu anterior: " << std::endl;
+            std ::cout << "\nO que deseja fazer agora?\n\n";
+            std ::cout << "1 - Realizar outro pagamento\n";
+            std ::cout << "2 - Voltar ao menu anterior\n";
+
             int comando3;
             std::cin >> comando3;
-            std::cout << std::endl;
+
+            std ::system("CLS");
 
             if(comando3==1){
+                goto pagar;
+            }
+
+            if(comando3==2){
                 goto menuPagamento;
             }
         }
@@ -286,7 +311,8 @@ inicio:
             std::cout << "Digite 1 para voltar ao menu anterior: " << std::endl;
             int comando;
             std::cin >> comando;
-            std::cout << std::endl;
+
+            std ::system("CLS");
 
             if(comando==1){
                 goto menuPagamento;
@@ -304,13 +330,15 @@ inicio:
         menuEstoque:
         int resp5;
 
-        std::cout << "\n----- GESTAO DE ESTOQUE -----\n\n";
+        std::cout << "----- GESTAO DE ESTOQUE -----\n\n";
         std::cout << "1 - Consultar estoque\n";
         std::cout << "2 - Adicionar item\n";
         std::cout << "3 - Remover item\n";
         std::cout << "4 - Editar item\n";
         std::cout << "5 - Voltar ao menu inicial\n";
         std::cin >> resp5;
+
+        std ::system("CLS");
 
         if (resp5 == 1)
         {
@@ -328,14 +356,15 @@ inicio:
             std::cout << "Digite 1 para voltar ao menu anterior: " << std::endl;
             int comando;
             std::cin >> comando;
-            std::cout << std::endl;
+            
+            std ::system("CLS");
 
             if(comando==1){
                 goto menuEstoque;
             }
         }
         else if (resp5 == 2)
-        {
+        {   adicprod:
             // adicionar item
             //gerencia.novoItem(passar os parametros);
             //funcao novoItem, ja prototipei ela, falta chamar e construir;
@@ -346,12 +375,21 @@ inicio:
             int quantidade;
             gerencia.novoProduto(nomeProduto, preco, quantidade);
 
-            std::cout << "Digite 1 para voltar ao menu anterior: " << std::endl;
+            std ::system("CLS");
+
+
+            std ::cout << "O que deseja fazer agora?\n\n";
+            std ::cout << "1 - Adicionar outro produto\n";
+            std ::cout << "2 - Voltar ao menu anterior\n";
             int comando;
             std::cin >> comando;
-            std::cout << std::endl;
+            
+            std ::system("CLS");
 
             if(comando==1){
+                goto adicprod;
+            }
+            else if(comando==2) {
                 goto menuEstoque;
             }
 
@@ -360,11 +398,11 @@ inicio:
         {
             // remover item
             // estoque.removerProduto(); //criar funcao e ver oq recebe
-            std::cout << std::endl;
-            std::cout << "Digite 1 para voltar ao menu anterior: " << std::endl;
+            std::cout << "\nDigite 1 para voltar ao menu anterior: " << std::endl;
             int comando;
             std::cin >> comando;
-            std::cout << std::endl;
+
+            std ::system("CLS");
 
             if(comando==1){
                 goto menuEstoque;
@@ -372,7 +410,8 @@ inicio:
         }
 
         else if (resp5 == 4)
-        {
+        {   
+            editprod:
             // editar item
             //gerencia.editarEstoque(passar os parametros),  a funcao ja esta pronta, e so literalmente chamar ela aqui
             int idProduto;
@@ -380,13 +419,21 @@ inicio:
             double preco;
             int quantidade;
             gerencia.editarEstoque(idProduto, nomeProduto, preco, quantidade);
-            std::cout << std::endl;
-            std::cout << "Digite 1 para voltar ao menu anterior: " << std::endl;
+
+            std ::system("CLS");
+
+            std ::cout << "O que deseja fazer agora?\n\n";
+            std ::cout << "1 - Editar outro item\n";
+            std ::cout << "2 - Voltar ao menu anterior\n";
             int comando;
-            std::cin >> comando;
-            std::cout << std::endl;
+            std :: cin >> comando;
+
+            std ::system("CLS");
 
             if(comando==1){
+                goto editprod;
+            }
+            else if (comando==2) {
                 goto menuEstoque;
             }
         }
