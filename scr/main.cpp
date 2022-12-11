@@ -3,11 +3,12 @@
 #include "funcionario.h"
 #include "estoque.h"
 #include "produto.h"
+#include "vendas.h"
 #include "gerencia.h"
 
 // para compilar g++ estoque.cpp funcionario.cpp gerencia.cpp gerente.cpp pagamento.cpp produto.cpp vendedor.cpp main.cpp
 // mostrar só os erros:
-// g++ estoque.cpp funcionario.cpp gerencia.cpp gerente.cpp pagamento.cpp produto.cpp vendedor.cpp main.cpp -Wfatal-errors
+// g++ estoque.cpp funcionario.cpp gerencia.cpp gerente.cpp pagamento.cpp produto.cpp vendedor.cpp vendas.cpp itemcarrinho.cpp main.cpp -Wfatal-errors
 
 int main()
 {

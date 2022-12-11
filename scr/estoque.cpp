@@ -18,6 +18,11 @@ void Estoque::bancoDeDados()
 
 }
 
+const std::vector<Produto> &Estoque::lerListaProdutos()
+{
+    return Estoque::listaProdutos;
+}
+
 int Estoque::consultaEstoque(Produto produto)
 {
 

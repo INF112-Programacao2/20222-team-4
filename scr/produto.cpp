@@ -11,6 +11,10 @@ Produto::Produto(std::string nomeProduto, double preco, int quantidade)
     Produto::generateIds++;
 }
 
+Produto::Produto()
+{
+}
+
 void Produto::setNome(std::string nomeProduto)
 {
     this->nomeProduto = nomeProduto;

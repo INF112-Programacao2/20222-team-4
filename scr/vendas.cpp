@@ -1,6 +1,13 @@
+
 #include "vendas.h"
 
-Vendas::Vendas(int idFuncionario, std::string nomeCliente, long long int documentoCliente, std::vector<Produto> carrinhoCompras, valorTotal)
+std::vector<ItemCarrinho> Vendas::carrinhoCompras = std::vector<ItemCarrinho>();
+
+Vendas::Vendas()
+{
+}
+
+Vendas::Vendas(int idFuncionario, std::string nomeCliente, std::string documentoCliente, std::vector<ItemCarrinho> carrinhoCompras, double valorTotal)
 {
     this->idFuncionario = idFuncionario;
     this->nomeCliente = nomeCliente;
@@ -9,34 +16,68 @@ Vendas::Vendas(int idFuncionario, std::string nomeCliente, long long int documen
     this->valorTotal = valorTotal;
 }
 
-Vendas::Vendas(int quantidadeVendas, double valo)
+void Vendas::setFuncionario(int idFuncionario)
 {
-
+    this->idFuncionario = idFuncionario;
 }
 
-double Vendas::getValorTotal(double valorTotal)
+void Vendas::setNomeCliente(std::string nomeCliente)
 {
+    this->nomeCliente = nomeCliente;
 }
 
-int Vendas::getIdFuncionario(int idFuncionario)
+void Vendas::setDocumentoCliente(std::string documentoCliente)
 {
+    this->documentoCliente = documentoCliente;
 }
 
-std::string Vendas::getNomeCliente(std::string nomeCliente)
+void Vendas::setValorTotal(double valorTotal)
 {
+    this->valorTotal = valorTotal;
 }
 
-std::vector<Produto> Vendas::getCarrinhoCompras(std::vector<Produto> carrinhoCompras)
+void Vendas::novoCarrinho(ItemCarrinho &itemCarrinho)
 {
-    return std::vector<Produto>();
+    this->carrinhoCompras.push_back(itemCarrinho);
 }
 
-int Vendas::getQuantidadeVendas(int quantidadeVendas)
+void Vendas::imprimeCarrinho()
 {
+
+    std::cout << "\n\n====== CARRINHO ======:\n";
+    for (int i = 0; i < carrinhoCompras.size(); i++)
+    {
+
+        std::cout << "PRODUTO: "<< carrinhoCompras[i].getNome()<<std::endl;
+        std::cout << "QUANTIDADE: " << carrinhoCompras[i].getQuantidade()<<std::endl;
+        std::cout << "-------------------------------\n";
+    }
 }
 
-double Vendas::getFaturamento(double faturamento)
+double Vendas::getValorTotal()
 {
+    return this->valorTotal;
+}
+
+int Vendas::getIdFuncionario()
+{
+    return this->idFuncionario;
+}
+
+std::string Vendas::getNomeCliente()
+{
+    return this->nomeCliente;
+}
+
+
+int Vendas::getQuantidadeVendas()
+{
+    return this->quantidadeVendas;
+}
+
+double Vendas::getFaturamento()
+{
+    return this->faturamento;
 }
 
 Vendas::~Vendas()

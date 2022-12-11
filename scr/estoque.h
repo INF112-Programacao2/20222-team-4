@@ -16,6 +16,8 @@ public:
 public:
     Estoque();
     void bancoDeDados();                           // criar um "banco de dados" fake
+
+    const std::vector<Produto> &lerListaProdutos();
     int consultaEstoque(Produto produto);          // buscar se tem o produto no estoque
     void adicionarProduto(const Produto &produto); // adiciona o produto
     void updateProduto(const Produto &produto);    // atualiza o produto

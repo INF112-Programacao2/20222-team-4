@@ -16,6 +16,7 @@ private:
 
 public:
     Produto(std::string nomeProduto, double preco, int quantidade);
+    Produto();
 
     void setNome(std::string nomeProduto);
     void setPreco(double preco);
