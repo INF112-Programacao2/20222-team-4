@@ -1,8 +1,9 @@
 sistema: estoque.o funcionario.o gerencia.o gerente.o main.o pagamento.o produto.o vendas.o vendedor.o itemcarrinho.o
-	g++ -o sistema estoque.o funcionario.o gerencia.o gerente.o main.o pagamento.o produto.o vendas.o vendedor.o itemcarrinho.h
+	g++ -o main estoque.o funcionario.o gerencia.o gerente.o main.o pagamento.o produto.o vendas.o vendedor.o itemcarrinho.o
 
 estoque.o:estoque.cpp estoque.h
 	g++ -c estoque.cpp
+
 funcionario.o:funcionario.cpp funcionario.h
 	g++ -c funcionario.cpp
 
@@ -31,4 +32,7 @@ vendedor.o:vendedor.cpp vendedor.h
 	g++ -c vendedor.cpp
 
 clean:
-	rm *.o sistema
+	rm -rf *.o
+
+run:
+	./main
