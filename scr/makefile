@@ -3,6 +3,7 @@ sistema: estoque.o funcionario.o gerencia.o gerente.o main.o pagamento.o produto
 
 estoque.o:estoque.cpp estoque.h
 	g++ -c estoque.cpp
+	
 funcionario.o:funcionario.cpp funcionario.h
 	g++ -c funcionario.cpp
 
