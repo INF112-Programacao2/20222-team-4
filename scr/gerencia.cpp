@@ -215,29 +215,33 @@ void Gerencia::editarGerente(int idFuncionario, std::string nome, long long int 
                 std::cout << "Digite o novo nome: \n";
                 std::cin.ignore();
                 getline(std::cin, nome);
+                Gerencia::listaGerentes[i].setNome(nome);
             }
             if (op == 2)
             {
                 std::cout << "Digite o novo documento: \n";
                 std::cin >> documento;
+                Gerencia::listaGerentes[i].setDocumento(documento);
             }
             if (op == 3)
             {
                 std::cout << "Digite a nova porcentagem de comissao: \n";
                 std::cin >> porcentagemComissao;
+                Gerencia::listaGerentes[i].setPorcentagemComissao(porcentagemComissao);
             }
             if (op == 4)
             {
                 std::cout << "Digite o novo salario base (por hora): \n";
-                std::cin >> porcentagemComissao;
+                std::cin >> salarioBase;
+                Gerencia::listaGerentes[i].setSalarioBase(salarioBase);
             }
             if (op == 5)
             {
                 std::cout << "Digite a nova quantidade de horas semanais: \n";
                 std::cin >> horasSemanais;
+                Gerencia::listaGerentes[i].setHorasSemanais(horasSemanais);
             }
-            Gerente novoGerente(nome, documento, porcentagemComissao, salarioBase, horasSemanais);
-            Gerencia::listaGerentes[i] = novoGerente;
+
         }
     }
     std::cout << "Gerente editado com sucesso!\n";
@@ -273,29 +277,32 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int
                 std::cout << "Digite o novo nome: \n";
                 std::cin.ignore();
                 getline(std::cin, nome);
+                Gerencia::listaVendedores[i].setNome(nome);
             }
             if (op == 2)
             {
                 std::cout << "Digite o novo documento: \n";
                 std::cin >> documento;
+                Gerencia::listaVendedores[i].setDocumento(documento);
             }
             if (op == 3)
             {
                 std::cout << "Digite a nova porcentagem de comissao: \n";
                 std::cin >> porcentagemComissao;
+                Gerencia::listaVendedores[i].setPorcentagemComissao(porcentagemComissao);
             }
             if (op == 4)
             {
                 std::cout << "Digite o novo salario base (por hora): \n";
-                std::cin >> porcentagemComissao;
+                std::cin >> salarioBase;
+                Gerencia::listaVendedores[i].setSalarioBase(salarioBase);
             }
             if (op == 5)
             {
                 std::cout << "Digite a nova quantidade de horas semanais: \n";
                 std::cin >> horasSemanais;
+                Gerencia::listaVendedores[i].setHorasSemanais(horasSemanais);
             }
-            Vendedor novoVendedor(nome, documento, porcentagemComissao, salarioBase, horasSemanais);
-            Gerencia::listaVendedores[i] = novoVendedor;
         }
     }
     std::cout << "Vendedor editado com sucesso!\n";
