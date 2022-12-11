@@ -1,5 +1,5 @@
-sistema: estoque.o funcionario.o gerencia.o gerente.o main.o pagamento.o produto.o vendas.o vendedor.o
-	g++ -o sistema estoque.o funcionario.o gerencia.o gerente.o main.o pagamento.o produto.o vendas.o vendedor.o
+sistema: estoque.o funcionario.o gerencia.o gerente.o main.o pagamento.o produto.o vendas.o vendedor.o itemcarrinho.o
+	g++ -o sistema estoque.o funcionario.o gerencia.o gerente.o main.o pagamento.o produto.o vendas.o vendedor.o itemcarrinho.h
 
 estoque.o:estoque.cpp estoque.h
 	g++ -c estoque.cpp
@@ -21,8 +21,11 @@ pagamento.o:pagamento.cpp pagamento.h
 produto.o:produto.cpp produto.h
 	g++ -c produto.cpp
 
-//vendas.o:vendas.cpp vendas.h
-	//g++ -c vendas.cpp
+vendas.o:vendas.cpp vendas.h
+	g++ -c vendas.cpp
+
+itemcarrinho.o:itemcarrinho.cpp itemcarrinho.h
+	g++ -c itemcarrinho.cpp
 
 vendedor.o:vendedor.cpp vendedor.h
 	g++ -c vendedor.cpp
