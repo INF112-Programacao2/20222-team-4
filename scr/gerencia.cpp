@@ -286,7 +286,6 @@ void Gerencia::editarGerente(int idFuncionario, std::string nome, long long int 
 
                 std ::system("CLS");
             }
-
         }
     }
     std::cout << "Gerente editado com sucesso!\n";
@@ -452,7 +451,7 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
             }
             if (op == 2)
             {
-                std::cout << "Preco atual: " << Estoque::listaProdutos[i].getPreco() <<std::endl;
+                std::cout << "Preco atual: " << Estoque::listaProdutos[i].getPreco() << std::endl;
 
                 std::cout << "Digite o novo preco: ";
                 std::cin >> preco;
@@ -464,7 +463,7 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
             {
                 int adicionarQuantidade;
 
-                std::cout << "Quantidade atual: " << Estoque::listaProdutos[i].getQuantidade() <<std::endl;
+                std::cout << "Quantidade atual: " << Estoque::listaProdutos[i].getQuantidade() << std::endl;
 
                 std::cout << "Digite a quantidade que deseja adicionar: \n";
                 std::cin >> adicionarQuantidade;
@@ -480,7 +479,6 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
     std::cout << "Estoque editado com sucesso!\n";
 
 }
-
 
 void Gerencia::calculaPagamento(int idFuncionario, double horasSemanais, double horasExtras, double vendasTotais, double comissao, double salarioBase)
 {
@@ -568,7 +566,7 @@ void Gerencia::calculaPagamento(int idFuncionario, double horasSemanais, double 
     for (int i = 0; i < Gerencia::listaPagamentos.size(); i++)
     {
         std::cout << "ID - " << Gerencia::listaPagamentos[i].getFuncionario() << "\n";
-        std::cout << "Valor recebido em R$: " << std:: fixed << std:: setprecision(2) << Gerencia::listaPagamentos[i].getPagamento() << std:: setw(1) << std :: setfill('0') << "\n";
+        std::cout << "Valor recebido em R$: " << std::fixed << std::setprecision(2) << Gerencia::listaPagamentos[i].getPagamento() << std::setw(1) << std ::setfill('0') << "\n";
     }
 
 }
@@ -579,18 +577,19 @@ void Gerencia :: imprimePagamentos() {
 
     for (int i = 0; i < Gerencia::listaPagamentos.size(); i++)
     {
-        std :: cout << "ID - " << Gerencia::listaPagamentos[i].getFuncionario() << std :: endl;
-        std :: cout << "NOME - ";
-        for (int j=0; j < Gerencia::listaVendedores.size(); j++) {
-            if (Gerencia::listaPagamentos[i].getFuncionario()==Gerencia::listaVendedores[j].getId())
-                std :: cout << Gerencia::listaVendedores[j].getNome() << std :: endl;
-            else if (Gerencia::listaPagamentos[i].getFuncionario()==Gerencia::listaGerentes[j].getId())
-                std :: cout << Gerencia::listaGerentes[j].getNome() << std :: endl;
-        }
-        std :: cout << "Valor recebido em R$: " << std :: fixed << std :: setprecision(2) << Gerencia::listaPagamentos[i].getPagamento() << std:: setw(1) << std :: setfill('0') << std :: endl;
-        std :: cout << "---------------------------- \n";
-    }
 
+        for (int j = 0; j < Gerencia::listaVendedores.size(); j++)
+        {
+            if (Gerencia::listaPagamentos[i].getFuncionario() == Gerencia::listaVendedores[j].getId())
+            {
+                std ::cout << "ID - " << Gerencia::listaPagamentos[i].getFuncionario() << std ::endl;
+                std ::cout << "NOME - ";
+                std ::cout << Gerencia::listaVendedores[j].getNome() << std ::endl;
+            }
+        }
+        std ::cout << "Valor recebido em R$: " << std ::fixed << std ::setprecision(2) << Gerencia::listaPagamentos[i].getPagamento() << std::setw(1) << std ::setfill('0') << std ::endl;
+        std ::cout << "---------------------------- \n";
+    }
 }
 
 // FUNÇÕES QUE CRIAM UM NOVO OBJETO - nao mexer
