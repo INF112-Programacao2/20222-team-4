@@ -1,5 +1,5 @@
 #include "gerencia.h"
-#include <iostream>
+#include <bits/stdc++.h>
 
 std::vector<Vendedor> Gerencia::listaVendedores = std::vector<Vendedor>();
 std::vector<Gerente> Gerencia::listaGerentes = std::vector<Gerente>();
@@ -114,7 +114,7 @@ void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string
     }
 
 pagamento:
-    std::cout << "Valor total: " << valorTotal;
+    std::cout << "Valor total: R$" << std :: fixed << std::setprecision(2) << valorTotal;
     std::cout << "\n\nPagamento efetuado? (s/n) ";
     std::cin >> resposta;
 
@@ -131,7 +131,7 @@ pagamento:
     }
     else
     {
-        std::cout << "Entrada invalida, digite apenas: s ou n";
+        std::cout << "Entrada invalida, digite apenas: 's' ou 'n'.\n";
         goto pagamento;
     }
 }
