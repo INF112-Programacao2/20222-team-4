@@ -254,7 +254,7 @@ editarFuncionario:
         if (resp3 == 1)
         {
             gerencia.imprimeVendas();
-            std ::cout << "O que deseja fazer agora?\n\n";
+            std ::cout << "\nO que deseja fazer agora?\n\n";
             std ::cout << "1 - Voltar ao menu anterior\n";
             std ::cin >> op;
 
@@ -271,7 +271,7 @@ editarFuncionario:
             int op;
             gerencia.relatorioFaturamento();
 
-            std ::cout << "O que deseja fazer agora?\n\n";
+            std ::cout << "\nO que deseja fazer agora?\n\n";
             std ::cout << "1 - Voltar ao menu anterior\n";
             std ::cin >> op;
 

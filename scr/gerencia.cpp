@@ -185,20 +185,19 @@ pagamento:
 void Gerencia::imprimeVendas()
 {
 
-    std::cout << "\nVendas realizadas: \n";
+    std::cout << "----- VENDAS REALIZADAS -----\n";
     std::cout << std::endl;
 
     for (int i = 0; i < Gerencia::listaVendas.size(); i++)
     {
 
-        std::cout << "CLIENTE: \n";
-        std::cout << "Nome: \n";
+        std::cout << "CLIENTE: \n\n";
+        std::cout << "Nome: ";
         std::cout << Gerencia::listaVendas[i].getNomeCliente();
         std::cout << "\nDocumento: ";
         std::cout << Gerencia::listaVendas[i].getDocumentoCliente();
         std::cout << std::endl;
-        std::cout << "\nVENDEDOR: ";
-        std::cout << "ID: \n";
+        std::cout << "\nId do vendedor: ";
         std::cout << Gerencia::listaVendas[i].getIdFuncionario();
         std::cout << std::endl;
         std::cout << "\nVALOR TOTAL: R$";
@@ -222,10 +221,13 @@ void Gerencia::relatorioFaturamento()
 
     faturamentoTotal = faturamento;
 
-    std::cout << "----- RELATORIO DE FATURAMENTOS -----";
-    std::cout << "\n\nForam registradas " << quantidadeVendas << "vendas e resultaram em um faturamento de R$ " << faturamentoTotal << ".";
+    std::cout << "---------------------- RELATORIO DE FATURAMENTOS ----------------------";
+    if (quantidadeVendas==1)
+        std::cout << "\n\nFoi registrada 1 venda e resultou em um faturamento de R$ " << faturamentoTotal << ".\n";
+    else
+        std::cout << "\n\nForam registradas " << quantidadeVendas << " vendas e resultaram em um faturamento de R$ " << faturamentoTotal << ".\n";
 
-    std::cout << "\n----------------------------------\n";
+    std::cout << "\n-----------------------------------------------------------------------\n";
 }
 
 // novo vendedor e novo gerente estao prontos...
