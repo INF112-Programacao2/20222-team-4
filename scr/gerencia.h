@@ -49,7 +49,7 @@ public:
 
     void calculaPagamento(int idFuncionario, double horasSemanais, double horasExtras, double vendasTotais, double comissao, double salarioBase); // vou fazer ainda
 
-    
+    void imprimePagamentos();
 
     ~Gerencia();
 };

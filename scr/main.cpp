@@ -247,7 +247,8 @@ inicio:
         }
     }
     else if (selecao == 4)
-    {
+    {   
+        menuPagamento:
         int resp4;
 
         std::cout << "----- GESTAO DE FINANCAS -----\n\n";
@@ -265,11 +266,33 @@ inicio:
             double comissao;
             double salarioBase;
             gerencia.calculaPagamento(idFuncionario, horasSemanais,horasExtras,vendasTotais,comissao,salarioBase);
+
+            std::cout << std::endl;
+            std::cout << "Digite 1 para voltar ao menu anterior: " << std::endl;
+            int comando3;
+            std::cin >> comando3;
+            std::cout << std::endl;
+
+            if(comando3==1){
+                goto menuPagamento;
+            }
         }
         else if (resp4 == 2)
-        {
-            //fazer uma funcao parecida com a ver itens no estoque, só que puxando a lista de pagamentos e mostrando o id do funcionario escolhido e o nome dele e o total que ele recebeu
+        {            
+            gerencia.imprimePagamentos();
+
+            std::cout << std::endl;
+            std::cout << "Digite 1 para voltar ao menu anterior: " << std::endl;
+            int comando;
+            std::cin >> comando;
+            std::cout << std::endl;
+
+            if(comando==1){
+                goto menuPagamento;
+            }
         }
+            //fazer uma funcao parecida com a ver itens no estoque, só que puxando a lista de pagamentos e mostrando o id do funcionario escolhido e o nome dele e o total que ele recebeu
+        
         else if (resp4 == 3)
         {
             goto inicio; // voltar ao menu inicial
