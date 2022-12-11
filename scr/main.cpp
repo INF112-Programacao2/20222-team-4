@@ -29,7 +29,7 @@ inicio:
     std::cout << "4 - Gestao de financas\n";
     std::cout << "5 - Gestao de estoque\n";
     std::cout << "6 - Encerrar programa\n";
-    std::cout << "Informe o numero: ";
+    std::cout << "\nInforme o numero: ";
     std::cin >> selecao;
 
     // tratar a excessao da entrada
@@ -65,14 +65,15 @@ inicio:
         }
     }
     else if (selecao == 2)
-    {
+    {   
+        menuFuncionarios:
         int resp, resp2;
         std::string nome;
         long long int documento;
         double porcentagemComissao;
         double salarioBase;
         double horasSemanais;
-        std::cout << "----- GESTAO DE FUNCIONARIOS -----\n\n";
+        std::cout << "\n----- GESTAO DE FUNCIONARIOS -----\n\n";
         std::cout << "1 - Cadastrar novo funcionario\n";
         std::cout << "2 - Editar Funcionario\n";
         std::cout << "3 - Remover Funcionario\n";
@@ -88,13 +89,13 @@ inicio:
             std ::cin >> resp2;
 
             if (resp2 == 1)
-            {
+            {   
                 int selecao2;
                 gerencia.novoGerente(nome, documento, porcentagemComissao, salarioBase, horasSemanais);
 
-                std ::cout << "\nO que deseja fazer agora?\n";
+                std ::cout << "\nO que deseja fazer agora?\n\n";
                 std ::cout << "1 - Cadastrar outro funcionario\n";
-                std ::cout << "2 - Voltar ao menu inicial\n";
+                std ::cout << "2 - Voltar ao menu anterior\n";
                 std ::cin >> selecao2;
 
                 std ::system("CLS");
@@ -105,7 +106,7 @@ inicio:
                 }
                 else if (selecao2 == 2)
                 {
-                    goto inicio;
+                    goto menuFuncionarios;
                 }
             }
             else if (resp2 == 2)
@@ -113,9 +114,9 @@ inicio:
                 int selecao2;
                 gerencia.novoVendedor(nome, documento, porcentagemComissao, salarioBase, horasSemanais);
 
-                std ::cout << "\nO que deseja fazer agora?\n";
+                std ::cout << "\nO que deseja fazer agora?\n\n";
                 std ::cout << "1 - Cadastrar outro funcionario\n";
-                std ::cout << "2 - Voltar ao menu inicial\n";
+                std ::cout << "2 - Voltar ao menu anterior\n";
                 std ::cin >> selecao2;
 
                 std ::system("CLS");
@@ -126,7 +127,7 @@ inicio:
                 }
                 else if (selecao2 == 2)
                 {
-                    goto inicio;
+                    goto menuFuncionarios;
                 }
             }
         }
@@ -135,13 +136,13 @@ inicio:
         {
         editar:
             // editarfunc
-            std::cout << "Qual o cargo do funcionario que deseja editar? \n\n";
+            std::cout << "\nQual o cargo do funcionario que deseja editar? \n\n";
             std::cout << "1 - Gerente\n";
             std::cout << "2 - Vendedor\n";
             std::cin >> resp2;
 
             if (resp2 == 1)
-            {
+            {   
                 std::string nome;
                 int idGerente;
                 long long int documento;
@@ -152,7 +153,7 @@ inicio:
 
                 std ::cout << "\nO que deseja fazer agora?\n";
                 std ::cout << "1 - Editar outro funcionario\n";
-                std ::cout << "2 - Voltar ao menu inicial\n";
+                std ::cout << "2 - Voltar ao menu anterior\n";
                 std ::cin >> op;
 
                 std ::system("CLS");
@@ -163,7 +164,7 @@ inicio:
                 }
                 else if (op == 2)
                 {
-                    goto inicio;
+                    goto menuFuncionarios;
                 }
             }
             else if (resp2 == 2)
@@ -178,7 +179,7 @@ inicio:
 
                 std ::cout << "\nO que deseja fazer agora?\n";
                 std ::cout << "1 - Editar outro funcionario\n";
-                std ::cout << "2 - Voltar ao menu inicial\n";
+                std ::cout << "2 - Voltar ao menu anterior\n";
                 std ::cin >> op;
 
                 std ::system("CLS");
@@ -189,7 +190,7 @@ inicio:
                 }
                 else if (op == 2)
                 {
-                    goto inicio;
+                    goto menuFuncionarios;
                 }
 
             }
@@ -222,7 +223,7 @@ inicio:
     {
         int resp3;
 
-        std::cout << "----- GESTAO DE VENDAS -----\n\n";
+        std::cout << "\n----- GESTAO DE VENDAS -----\n\n";
         std::cout << "1 - Editar venda\n";
         std::cout << "2 - Cancelar venda\n";
         std::cout << "3 - Gerar relatorio de vendas\n";
@@ -251,7 +252,7 @@ inicio:
         menuPagamento:
         int resp4;
 
-        std::cout << "----- GESTAO DE FINANCAS -----\n\n";
+        std::cout << "\n----- GESTAO DE FINANCAS -----\n\n";
         std::cout << "1 - Novo pagamento\n";
         std::cout << "2 - Ver pagamentos\n";
         std::cout << "3 - Voltar ao menu inicial\n";
@@ -303,7 +304,7 @@ inicio:
         menuEstoque:
         int resp5;
 
-        std::cout << "----- GESTAO DE ESTOQUE -----\n\n";
+        std::cout << "\n----- GESTAO DE ESTOQUE -----\n\n";
         std::cout << "1 - Consultar estoque\n";
         std::cout << "2 - Adicionar item\n";
         std::cout << "3 - Remover item\n";

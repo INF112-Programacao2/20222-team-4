@@ -116,7 +116,7 @@ void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string
 
 pagamento:
     std::cout << "Valor total: R$" << std :: fixed << std::setprecision(2) << valorTotal;
-    std::cout << "\n\nPagamento efetuado? (s/n) ";
+    std::cout << "\n\nPagamento efetuado?(s/n): ";
     std::cin >> resposta;
 
     // tratar a excessao da entrada
@@ -124,15 +124,15 @@ pagamento:
     if (resposta == 's' || resposta == 'S')
     {
 
-        std::cout << "Venda registrada com sucesso!\n";
+        std::cout << "\nVenda registrada com sucesso!\n";
     }
     else if (resposta == 'n' || resposta == 'N')
     {
-        std::cout << "Venda cancelada!\n";
+        std::cout << "\nVenda cancelada!\n";
     }
     else
     {
-        std::cout << "Entrada invalida, digite apenas: 's' ou 'n'.\n";
+        std::cout << "\nEntrada invalida, digite apenas: 's' ou 'n'.\n";
         goto pagamento;
     }
 }
@@ -195,7 +195,7 @@ void Gerencia::editarGerente(int idFuncionario, std::string nome, long long int 
         std::cout << "NOME - " << Gerencia::listaGerentes[i].getNome() << std::endl;
         std::cout << "---------------------\n";
     }
-    std::cout << "Digite o id do gerente que voce deseja editar: \n";
+    std::cout << "Digite o id do gerente que voce deseja editar: ";
     std::cin >> idFuncionario;
 
     for (int i = 0; i < Gerencia::listaGerentes.size(); i++)
@@ -204,7 +204,7 @@ void Gerencia::editarGerente(int idFuncionario, std::string nome, long long int 
         {
 
             int op;
-            std::cout << "O que deseja editar? \n";
+            std::cout << "\nO que deseja editar? \n\n";
             std::cout << "1 - Nome\n";
             std::cout << "2 - Documento\n";
             std::cout << "3 - Porcentagem comissao\n";
@@ -257,7 +257,7 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int
         std::cout << "NOME - " << Gerencia::listaVendedores[i].getNome() << std::endl;
         std::cout << "---------------------\n";
     }
-    std::cout << "Digite o id do gerente que voce deseja editar: \n";
+    std::cout << "Digite o id do vendedor que voce deseja editar: ";
     std::cin >> idFuncionario;
 
     for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
@@ -266,7 +266,7 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int
         {
 
             int op;
-            std::cout << "O que deseja editar?: ";
+            std::cout << "\nO que deseja editar?: \n\n";
             std::cout << "1 - Nome\n";
             std::cout << "2 - Documento\n";
             std::cout << "3 - Porcentagem comissao\n";
