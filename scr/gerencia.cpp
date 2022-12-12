@@ -86,6 +86,11 @@ void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string
             break;
         std::cout << "\nDigite a quantidade do produto: ";
         std::cin >> quantidade;
+        while (quantidade<=0) {
+            std::cout << "\nQuantidade invalida. Digite apenas numeros maiores que 0.\n";
+            std::cout << "\nDigite a quantidade do produto: ";
+            std:: cin >> quantidade;
+        }
 
         for (int i = 0; i < Estoque::listaProdutos.size(); i++)
         {
@@ -271,7 +276,7 @@ void Gerencia::novoGerente(std::string nome, long long int documento, double por
     std::cout << "\nDigite o CPF do gerente (Apenas numeros): ";
     std::cin >> documento;
 
-    std::cout << "\nDigite o valor do salario base: ";
+    std::cout << "\nDigite o valor do salario por hora: ";
     std::cin >> salarioBase;
 
     std::cout << "\nDigite a quantidade de horas semanais: ";
