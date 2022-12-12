@@ -29,7 +29,7 @@ inicio:
 
     int selecao;
 
-    std ::system("CLS");
+    std ::system("clear");
 
     std::cout << "Bem vindo(a) ao e-cart!\n\n";
     std::cout << "----- MENU INICIAL -----\n\n";
@@ -42,7 +42,7 @@ inicio:
     std::cout << "\nInforme o numero: ";
     std::cin >> selecao;
 
-    std::system("CLS");
+    std::system("clear");
 
     // tratar a excessao da entrada
     // tratar excessao dessa entrada!!
@@ -69,7 +69,7 @@ inicio:
         std ::cout << "2 - Voltar ao menu inicial\n";
         std ::cin >> selecao2;
 
-        std ::system("CLS");
+        std ::system("clear");
         //opcao de executar novamente mesma acao ou retornar ao menu
         if (selecao2 == 1)
         {
@@ -97,7 +97,7 @@ inicio:
         std::cout << "4 - Voltar ao menu inicial\n";
         std::cin >> resp;
 
-        std ::system("CLS");
+        std ::system("clear");
 
         if (resp == 1)
         {
@@ -107,7 +107,7 @@ inicio:
             std ::cout << "2 - Vendedor\n";
             std ::cin >> resp2;
 
-            std ::system("CLS");
+            std ::system("clear");
 
             if (resp2 == 1)
             {
@@ -120,7 +120,7 @@ inicio:
                 std ::cout << "2 - Voltar ao menu anterior\n";
                 std ::cin >> selecao2;
 
-                std ::system("CLS");
+                std ::system("clear");
                 //opcao de executar novamente mesma acao ou retornar ao menu
                 if (selecao2 == 1)
                 {
@@ -137,14 +137,14 @@ inicio:
                 // chamando funcao para cadastrar novo funcionario
                 gerencia.novoVendedor(nome, documento, porcentagemComissao, salarioBase, horasSemanais);
 
-                std ::system("CLS");
+                std ::system("clear");
                 //opcao de executar novamente mesma acao ou retornar ao menu
                 std ::cout << "O que deseja fazer agora?\n\n";
                 std ::cout << "1 - Cadastrar outro funcionario\n";
                 std ::cout << "2 - Voltar ao menu anterior\n";
                 std ::cin >> selecao2;
 
-                std ::system("CLS");
+                std ::system("clear");
 
                 if (selecao2 == 1)
                 {
@@ -166,7 +166,7 @@ editarFuncionario:
             std::cout << "2 - Vendedor\n";
             std::cin >> resp2;
 
-            std ::system("CLS");
+            std ::system("clear");
 
             if (resp2 == 1)
             {
@@ -184,7 +184,7 @@ editarFuncionario:
                 std ::cout << "2 - Voltar ao menu anterior\n";
                 std ::cin >> op;
 
-                std ::system("CLS");
+                std ::system("clear");
 
                 if (op == 1)
                 {
@@ -210,7 +210,7 @@ editarFuncionario:
                 std ::cout << "2 - Voltar ao menu anterior\n";
                 std ::cin >> op;
 
-                std ::system("CLS");
+                std ::system("clear");
 
                 if (op == 1)
                 {
@@ -259,7 +259,7 @@ editarFuncionario:
         std::cout << "3 - Voltar ao menu inicial\n";
         std::cin >> resp3;
 
-        std ::system("CLS");
+        std ::system("clear");
 
         if (resp3 == 1)
         {   //chamando funcao para imprimir vendas
@@ -268,7 +268,7 @@ editarFuncionario:
             std ::cout << "1 - Voltar ao menu anterior\n";
             std ::cin >> op;
 
-            std ::system("CLS");
+            std ::system("clear");
             //opcao de executar novamente mesma acao ou retornar ao menu
             if (op == 1)
             {
@@ -286,7 +286,7 @@ editarFuncionario:
             std ::cout << "1 - Voltar ao menu anterior\n";
             std ::cin >> op;
 
-            std ::system("CLS");
+            std ::system("clear");
 
             if (op == 1)
             {
@@ -310,7 +310,7 @@ editarFuncionario:
         std::cout << "3 - Voltar ao menu inicial\n";
         std::cin >> resp4;
 
-        std ::system("CLS");
+        std ::system("clear");
 
         if (resp4 == 1)
         {
@@ -332,7 +332,7 @@ editarFuncionario:
             int comando3;
             std::cin >> comando3;
 
-            std ::system("CLS");
+            std ::system("clear");
 
             if (comando3 == 1)
             {
@@ -354,7 +354,7 @@ editarFuncionario:
             std ::cout << "1 - Voltar ao menu anterior\n";
             std ::cin >> op;
 
-            std ::system("CLS");
+            std ::system("clear");
             //opcao de executar novamente mesma acao ou retornar ao menu
             if (op == 1)
             {
@@ -380,7 +380,7 @@ editarFuncionario:
         std::cout << "5 - Voltar ao menu inicial\n";
         std::cin >> resp5;
 
-        std ::system("CLS");
+        std ::system("clear");
 
         if (resp5 == 1)
         {
@@ -392,7 +392,7 @@ editarFuncionario:
             std ::cout << "1 - Voltar ao menu anterior \n";
             std ::cin >> op;
 
-            std ::system("CLS");
+            std ::system("clear");
             //opcao de executar novamente mesma acao ou retornar ao menu
             if (op == 1)    
             {
@@ -409,7 +409,7 @@ editarFuncionario:
             // chamando funcao para adcionar novo produto
             gerencia.novoProduto(nomeProduto, preco, quantidade);
 
-            std ::system("CLS");
+            std ::system("clear");
             //opcao de executar novamente mesma acao ou retornar ao menu
             std ::cout << "O que deseja fazer agora?\n\n";
             std ::cout << "1 - Adicionar outro produto\n";
@@ -417,7 +417,7 @@ editarFuncionario:
             int comando;
             std::cin >> comando;
 
-            std ::system("CLS");
+            std ::system("clear");
 
             if (comando == 1)
             {
@@ -445,7 +445,7 @@ editarFuncionario:
             //chamando funcao editar produto
             gerencia.editarEstoque(idProduto, nomeProduto, preco, quantidade);
 
-            std ::system("CLS");
+            std ::system("clear");
             //opcao de executar novamente mesma acao ou retornar ao menu
             std ::cout << "O que deseja fazer agora?\n\n";
             std ::cout << "1 - Editar outro item\n";
@@ -453,7 +453,7 @@ editarFuncionario:
             int comando;
             std ::cin >> comando;
 
-            std ::system("CLS");
+            std ::system("clear");
 
             if (comando == 1)
             {
