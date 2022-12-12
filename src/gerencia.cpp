@@ -5,7 +5,6 @@
 
 std::vector<Vendedor> Gerencia::listaVendedores = std::vector<Vendedor>();
 std::vector<Gerente> Gerencia::listaGerentes = std::vector<Gerente>();
-std::vector<Produto> Gerencia::carrinhoCompras = std::vector<Produto>();
 std::vector<Pagamento> Gerencia::listaPagamentos = std::vector<Pagamento>();
 std::vector<Vendas> Gerencia::listaVendas = std::vector<Vendas>();
 
@@ -243,6 +242,8 @@ pagamento:
                 listaVendedores[i].setTotalVendas(valorTotal);
             }
         }
+
+        venda.deleteCarrinho();
 
         std::system("clear");
 
@@ -1058,10 +1059,6 @@ void Gerencia::cadastrarVenda(const Vendas &venda)
     Gerencia::listaVendas.push_back(venda);
 }
 
-void Gerencia::novoCarrinho(const Produto &produto)
-{
-    Gerencia::carrinhoCompras.push_back(produto);
-}
 void Gerencia::novoPagamento(const Pagamento &pagamento)
 {
     Gerencia::listaPagamentos.push_back(pagamento);

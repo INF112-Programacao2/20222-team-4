@@ -13,7 +13,7 @@ void Estoque::bancoDeDados()
     // banco de dados fake para ter alguns produtos pre cadastrados...
     //  nome, preco e quantidade
     this->adicionarProduto(Produto("Camisa Cruzeiro Home 22/23", 149.90, 60));
-    this->adicionarProduto(Produto("Camisa Cruzeiro Away 22/23", 149.90, 20));
+    this->adicionarProduto(Produto("Camisa Atletico MG Away 22/23", 149.90, 20));
     this->adicionarProduto(Produto("Camisa Brasil Away 22/23", 149.90, 0));
 
 

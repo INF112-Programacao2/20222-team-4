@@ -29,7 +29,8 @@ public:
     void setValorTotal(double valorTotal);
 
     static std::vector<ItemCarrinho> carrinhoCompras;
-    void imprimeCarrinho();                             // imprimindo itens do carrinho
+    void imprimeCarrinho();    
+    void deleteCarrinho();                         // imprimindo itens do carrinho
     void novoCarrinho(ItemCarrinho &itemCarrinho);      // prototipo da funcao adcionar novos item ao carrinho
 
     // retornando valor dos dados da venda previamente definidos (valor total, id do funcionario, nome e documento do cliente)

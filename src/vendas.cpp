@@ -59,6 +59,11 @@ void Vendas::imprimeCarrinho()
     }
 }
 
+void Vendas::deleteCarrinho()
+{
+    carrinhoCompras.clear();
+}
+
 // pega valor total da venda e retorna ele
 double Vendas::getValorTotal()
 {

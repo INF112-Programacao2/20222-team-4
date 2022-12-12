@@ -14,7 +14,6 @@ class Gerencia : public Estoque
 private:
     static std::vector<Vendedor> listaVendedores;   //lista de vendedores para guardar o cadastro dos vendedores e seus atributos
     static std::vector<Gerente> listaGerentes;      //lista de gerentes para guardar o cadastro dos gerentes e seus atributos
-    static std::vector<Produto> carrinhoCompras;    //lista que guarda produtos armazenados no sistema de carrinho
     static std::vector<Pagamento> listaPagamentos;  //lista para armazenar pagamentos dos funcionarios
     static std::vector<Vendas> listaVendas;         //lista para armazenar as vendas e os dados de cada venda
 
@@ -28,7 +27,6 @@ public:
     void cadastrarVendedor(const Vendedor &vendedor);
     void cadastrarGerente(const Gerente &gerente);
     void cadastrarVenda(const Vendas &venda);
-    void novoCarrinho(const Produto &produto);
     void novoPagamento(const Pagamento &pagamento);
     void apagaProduto(int i);
     void apagaVendedor(int i);
