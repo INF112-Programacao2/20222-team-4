@@ -52,7 +52,7 @@ inicio:
 
     // tratar a excessao da entrada
     // tratar excessao dessa entrada!!
-    // so pode entrar um numero int entre 1 e 7
+    // so pode entrar um numero int entre 1 e 6
 
 
     //Selecao da area do sistema que deseja acessar
