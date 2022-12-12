@@ -61,6 +61,8 @@ public:
     void calculaPagamento(int idFuncionario, double horasSemanais, double horasExtras, double vendasTotais, double comissao, double salarioBase); // vou fazer ainda
     // impressao de lista de pagamentos
     void imprimePagamentos();
+    void imprimeGerentes(int idGerente);
+    void imprimeVendedores(int idVendedor);
 
     // lendo listas de vendedores, gerentes, pagamentos e vendas
     const std::vector<Vendedor> &lerListaVendedores();

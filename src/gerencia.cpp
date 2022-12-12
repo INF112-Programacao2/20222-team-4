@@ -1020,6 +1020,104 @@ void Gerencia ::imprimePagamentos()
     }
 }
 
+void Gerencia::imprimeGerentes(int idGerente)
+{
+    std::cout << "----- VER INFORMACOES DE GERENTES -----\n";
+    for (int i = 0; i < Gerencia::listaGerentes.size(); i++)
+    {
+        std::cout << "ID - " << Gerencia::listaGerentes[i].getId() << std::endl;
+        std::cout << "NOME - " << Gerencia::listaGerentes[i].getNome() << std::endl;
+        std::cout << "---------------------\n";
+    }
+    std::cout << "Digite o id do gerente que voce deseja ver: ";
+    std::cin >> idGerente;
+
+    // validando os ids
+    bool isValid;
+    while (true)
+    {
+        for (int i = 0; i < Gerencia::listaGerentes.size(); i++)
+        {
+            if (idGerente == listaGerentes[i].getId())
+            {
+                isValid = true;
+                break;
+            }
+            else
+                isValid = false;
+        }
+
+        if (!isValid)
+        {
+            std::cout << "Erro! ID invalido. Tente novamente: \n";
+            std::cin >> idGerente;
+        }
+        else
+            break;
+    }
+
+    std ::system("clear");
+
+    for (int i = 0; i < Gerencia::listaGerentes.size(); i++)
+    { // compara o id do funcionario com os ids da lista
+        if (Gerencia::listaGerentes[i].getId() == idGerente)
+        {
+            std::cout << "\nID: " << Gerencia::listaGerentes[i].getId() << std::endl;
+            std::cout << "\nNome: " << Gerencia::listaGerentes[i].getNome() << std::endl;
+            std::cout << "\nDocumento: " << Gerencia::listaGerentes[i].getDocumento() << std::endl;
+            std::cout << "----------------------------\n\n";
+        }
+    }
+}
+
+void Gerencia::imprimeVendedores(int idVendedor)
+{
+    std::cout << "----- VER INFORMACOES DE VENDEDORES -----\n";
+    for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
+    {
+        std::cout << "ID - " << Gerencia::listaVendedores[i].getId() << std::endl;
+        std::cout << "NOME - " << Gerencia::listaVendedores[i].getNome() << std::endl;
+        std::cout << "---------------------\n";
+    }
+    std::cout << "Digite o id do vendedor que voce deseja ver: ";
+    std::cin >> idVendedor;
+    bool isValid;
+    while (true)
+    {
+        for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
+        {
+            if (idVendedor == Gerencia::listaVendedores[i].getId())
+            {
+                isValid = true;
+                break;
+            }
+            else
+                isValid = false;
+        }
+
+        if (!isValid)
+        {
+            std::cout << "Erro! ID invalido. Tente novamente: \n";
+            std::cin >> idVendedor;
+        }
+        else
+            break;
+    }
+
+    std ::system("clear");
+
+    for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
+    { // compara o id do funcionario com os ids da lista
+        if (Gerencia::listaVendedores[i].getId() == idVendedor)
+        {
+            std::cout << "\nID: " << Gerencia::listaVendedores[i].getId() << std::endl;
+            std::cout << "\nNome: " << Gerencia::listaVendedores[i].getNome() << std::endl;
+            std::cout << "\nDocumento: " << Gerencia::listaVendedores[i].getDocumento() << std::endl;
+            std::cout << "----------------------------\n\n";
+        }
+    }
+}
+
 // FUNCOES DE LEITURA DE LISTAS
 
 const std::vector<Vendedor> &Gerencia::lerListaVendedores()
@@ -1078,7 +1176,6 @@ void Gerencia::apagaGerente(int i)
 {
     Gerencia::listaGerentes.erase(listaGerentes.begin() + i);
 }
-
 
 void Gerencia::removerGerente(int idGerente)
 {
@@ -1202,7 +1299,7 @@ void Gerencia::removerProduto(int idProduto)
         if (!isValid)
         {
             std::cout << "Erro! ID invalido. Tente novamente: \n";
-            std::cin >>idProduto;
+            std::cin >> idProduto;
         }
         else
             break;

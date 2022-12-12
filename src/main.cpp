@@ -102,7 +102,8 @@ inicio:
         std::cout << "1 - Cadastrar novo funcionario\n";
         std::cout << "2 - Editar Funcionario\n";
         std::cout << "3 - Remover Funcionario\n";
-        std::cout << "4 - Voltar ao menu inicial\n";
+        std::cout << "4 - Ver informacoes de funcionarios\n";
+        std::cout << "5 - Voltar ao menu inicial\n";
         std::cin >> resp;
         while (true)
         {
@@ -309,8 +310,35 @@ inicio:
                 gerencia.removerVendedor(idVendedor);
             }
         }
+        else if (resp == "4"){
+            std ::cout << "Qual o cargo do funcionario que deseja visualizar as informacoes? \n\n";
+            std ::cout << "1 - Gerente\n";
+            std ::cout << "2 - Vendedor\n";
+            std ::cin >> resp2;
+            while (true)
+            {
+                if (isdigit(resp2[0]) && (resp2 == "1" || resp2 == "2"))
+                    break;
+                std ::cout << "Entrada invalida. Digite os numeros 1 ou 2.\n";
+                std ::cin >> resp2;
+            }
 
-        else if (resp == "4")
+            std ::system("clear");
+
+            if (resp2 == "1") {
+
+                int idGerente;
+                gerencia.imprimeGerentes(idGerente);
+
+                //completar com a opcao de voltar
+            }
+            else if (resp2 == "2") {
+                int idVendedor;
+                gerencia.imprimeVendedores (idVendedor);
+                //completar com a opcao de voltar
+            }
+        }
+        else if (resp == "5")
         {
             goto inicio; // voltar ao menu inicial
         }
@@ -527,7 +555,7 @@ inicio:
                 goto menuEstoque;
             }
         }
-        else if (resp5 == "3") // deixar pra fazer por ultimo
+        else if (resp5 == "3") // 
         {
             int idProduto;
             gerencia.removerProduto(idProduto);
