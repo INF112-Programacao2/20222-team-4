@@ -45,6 +45,7 @@ void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string
         std::cout << "NOME - " << Gerencia::listaVendedores[i].getNome() << std::endl;
         std::cout << "---------------------\n";
     }
+    // validando os ids
     std::cout << "\nDigite o ID do vendedor: ";
     std::cin >> idFuncionario;
 
@@ -103,7 +104,7 @@ void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string
         std::cout << "PRECO: R$" << std ::fixed << std ::setprecision(2) << Estoque::listaProdutos[i].getPreco() << std::setw(1) << std ::setfill('0') << "\n";
         std::cout << "---------------------\n";
     }
-
+    // validando os ids
     std::cout << "\nPara fechar o carrinho digite -1\n";
     while (idProduto != -1)
     {
@@ -111,7 +112,7 @@ void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string
         std::cin >> idProduto;
 
         // validacao de id
-
+        bool isValid;
         while (true)
         {
             for (int i = 0; i < Estoque::listaProdutos.size(); i++)
@@ -220,11 +221,11 @@ pagamento:
 
         this->cadastrarVenda(venda);
 
-        for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
+        for (int i = 0; i < listaVendedores.size(); i++)
         {
             if (idFuncionario == Gerencia::listaVendedores[i].getId())
             {
-                Gerencia::listaVendedores[i].setTotalVendas(valorTotal);
+                listaVendedores[i].setTotalVendas(valorTotal);
             }
         }
 
@@ -378,8 +379,33 @@ void Gerencia::editarGerente(int idFuncionario, std::string nome, long long int 
         std::cout << "NOME - " << Gerencia::listaGerentes[i].getNome() << std::endl;
         std::cout << "---------------------\n";
     }
+
+    // validando os ids
     std::cout << "Digite o id do gerente que voce deseja editar: ";
     std::cin >> idFuncionario;
+
+    bool isValid;
+    while (true)
+    {
+        for (int i = 0; i < Gerencia::listaGerentes.size(); i++)
+        {
+            if (idFuncionario == listaGerentes[i].getId())
+            {
+                isValid = true;
+                break;
+            }
+            else
+                isValid = false;
+        }
+
+        if (!isValid)
+        {
+            std::cout << "Erro! ID invalido. Tente novamente: \n";
+            std::cin >> idFuncionario;
+        }
+        else
+            break;
+    }
 
     std ::system("clear");
 
@@ -471,8 +497,33 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int
         std::cout << "NOME - " << Gerencia::listaVendedores[i].getNome() << std::endl;
         std::cout << "---------------------\n";
     }
+
+    // validando os ids
     std::cout << "Digite o id do vendedor que voce deseja editar: ";
     std::cin >> idFuncionario;
+
+    bool isValid;
+    while (true)
+    {
+        for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
+        {
+            if (idFuncionario == listaVendedores[i].getId())
+            {
+                isValid = true;
+                break;
+            }
+            else
+                isValid = false;
+        }
+
+        if (!isValid)
+        {
+            std::cout << "Erro! ID invalido. Tente novamente: \n";
+            std::cin >> idFuncionario;
+        }
+        else
+            break;
+    }
 
     std ::system("clear");
 
@@ -605,8 +656,33 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
         std::cout << "NOME - " << Estoque::listaProdutos[i].getNome() << std::endl;
         std::cout << "---------------------\n";
     }
+
+    // validando os ids
     std::cout << "Digite o id do produto que voce deseja editar: ";
     std::cin >> idProduto;
+    bool isValid;
+    while (true)
+    {
+        for (int i = 0; i < Estoque::listaProdutos.size(); i++)
+        {
+            if (idProduto == Estoque::listaProdutos[i].getId())
+            {
+                isValid = true;
+                break;
+            }
+            else
+                isValid = false;
+        }
+
+        if (!isValid)
+        {
+
+            std::cout << "Erro! ID invalido. Tente novamente: \n";
+            std::cin >> idProduto;
+        }
+        else
+            break;
+    }
 
     std ::system("clear");
 
@@ -698,9 +774,32 @@ void Gerencia::calculaPagamento(int idFuncionario, double horasSemanais, double 
             std::cout << "NOME - " << Gerencia::listaGerentes[i].getNome() << std::endl;
             std::cout << "---------------------\n";
         }
-
+        // validando os ids
         std::cout << "Digite o id do gerente: ";
         std::cin >> idFuncionario;
+
+        bool isValid;
+        while (true)
+        {
+            for (int i = 0; i < Gerencia::listaGerentes.size(); i++)
+            {
+                if (idFuncionario == listaGerentes[i].getId())
+                {
+                    isValid = true;
+                    break;
+                }
+                else
+                    isValid = false;
+            }
+
+            if (!isValid)
+            {
+                std::cout << "Erro! ID invalido. Tente novamente: \n";
+                std::cin >> idFuncionario;
+            }
+            else
+                break;
+        }
 
         std ::system("clear");
 
@@ -732,6 +831,30 @@ void Gerencia::calculaPagamento(int idFuncionario, double horasSemanais, double 
         }
         std::cout << "Digite o id do vendedor: ";
         std::cin >> idFuncionario;
+
+        // validando os ids
+        bool isValid;
+        while (true)
+        {
+            for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
+            {
+                if (idFuncionario == listaVendedores[i].getId())
+                {
+                    isValid = true;
+                    break;
+                }
+                else
+                    isValid = false;
+            }
+
+            if (!isValid)
+            {
+                std::cout << "Erro! ID invalido. Tente novamente: \n";
+                std::cin >> idFuncionario;
+            }
+            else
+                break;
+        }
 
         std ::system("clear");
 
