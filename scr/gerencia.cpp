@@ -187,14 +187,18 @@ pagamento:
     }
 }
 
+    //IMPRESSAO DE VENDAS
+
 void Gerencia::imprimeVendas()
 {
 
     std::cout << "----- VENDAS REALIZADAS -----\n";
 
+    // Percorrendo lista de vendas
     for (int i = 0; i < Gerencia::listaVendas.size(); i++)
     {
 
+        //Imprimindo atributos da venda
         std::cout << "\nCLIENTE: \n\n";
         std::cout << "Nome: ";
         std::cout << Gerencia::listaVendas[i].getNomeCliente();
@@ -211,6 +215,7 @@ void Gerencia::imprimeVendas()
     }
 }
 
+    // FATURAMENTO
 void Gerencia::relatorioFaturamento()
 {
     int quantidadeVendas = 0;
@@ -218,7 +223,7 @@ void Gerencia::relatorioFaturamento()
     double faturamentoTotal;
     for (int i = 0; i < Gerencia::listaVendas.size(); i++)
     {
-
+        // Acrescentando valor das vendas ao montante faturamento
         faturamento = faturamento + Gerencia::listaVendas[i].getValorTotal();
         quantidadeVendas++;
     }
@@ -234,7 +239,7 @@ void Gerencia::relatorioFaturamento()
     std::cout << "\n-----------------------------------------------------------------------\n";
 }
 
-// novo vendedor e novo gerente estao prontos...
+// Funcao para adicao de novo vendedor
 void Gerencia::novoVendedor(std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais)
 {
     std::cout << "----- VENDEDOR -----\n";
@@ -263,7 +268,7 @@ void Gerencia::novoVendedor(std::string nome, long long int documento, double po
 
     std ::system("CLS");
 }
-
+    //funcao para adicao de novo gerente
 void Gerencia::novoGerente(std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais)
 {
     std::cout << "----- GERENTE -----\n";
@@ -293,11 +298,12 @@ void Gerencia::novoGerente(std::string nome, long long int documento, double por
     std ::system("CLS");
 }
 
-// EDITAR GERENTE E VENDEDOR (falta editar vendedor)
+// EDITAR GERENTE 
 
 void Gerencia::editarGerente(int idFuncionario, std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais)
 {
     std::cout << " ----- EDITAR GERENTE ----- \n";
+    // Listando gerentes
     for (int i = 0; i < Gerencia::listaGerentes.size(); i++)
     {
         std::cout << "ID - " << Gerencia::listaGerentes[i].getId() << std::endl;
@@ -313,7 +319,7 @@ void Gerencia::editarGerente(int idFuncionario, std::string nome, long long int 
     {
         if (Gerencia::listaGerentes[i].getId() == idFuncionario)
         {
-
+            // Selecao do dado que deseja modificar
             int op;
             std::cout << "O que deseja editar? \n\n";
             std::cout << "1 - Nome\n";
@@ -325,6 +331,7 @@ void Gerencia::editarGerente(int idFuncionario, std::string nome, long long int 
 
             std ::system("CLS");
 
+            // edicao de nome
             if (op == 1)
             {
                 std::cout << "Digite o novo nome: ";
@@ -334,6 +341,8 @@ void Gerencia::editarGerente(int idFuncionario, std::string nome, long long int 
 
                 std ::system("CLS");
             }
+
+            // edicao de documento
             if (op == 2)
             {
                 std::cout << "Digite o novo documento: ";
@@ -342,6 +351,8 @@ void Gerencia::editarGerente(int idFuncionario, std::string nome, long long int 
 
                 std ::system("CLS");
             }
+
+            // edicao de percentual de comissao
             if (op == 3)
             {
                 std::cout << "Digite a nova porcentagem de comissao: ";
@@ -350,6 +361,8 @@ void Gerencia::editarGerente(int idFuncionario, std::string nome, long long int 
 
                 std ::system("CLS");
             }
+
+            // edicao de salario base
             if (op == 4)
             {
                 std::cout << "Digite o novo salario base (por hora): ";
@@ -358,6 +371,8 @@ void Gerencia::editarGerente(int idFuncionario, std::string nome, long long int 
 
                 std ::system("CLS");
             }
+
+            // edicao de carga horaria semanal
             if (op == 5)
             {
                 std::cout << "Digite a nova quantidade de horas semanais: ";
@@ -375,9 +390,13 @@ void Gerencia::editarGerente(int idFuncionario, std::string nome, long long int 
     std ::system("CLS");
 }
 
+    // EDITAR VENDEDOR
+
 void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais)
 {
+    
     std::cout << " ----- EDITAR VENDEDOR ----- \n";
+    // Listando vendedores
     for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
     {
         std::cout << "ID - " << Gerencia::listaVendedores[i].getId() << std::endl;
@@ -393,7 +412,6 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int
     {
         if (Gerencia::listaVendedores[i].getId() == idFuncionario)
         {
-
             int op;
             std::cout << "O que deseja editar?: \n\n";
             std::cout << "1 - Nome\n";
@@ -405,6 +423,7 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int
 
             std ::system("CLS");
 
+            // edicao de nome
             if (op == 1)
             {
                 std::cout << "Digite o novo nome: ";
@@ -414,6 +433,8 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int
 
                 std ::system("CLS");
             }
+
+            // edicao de documento
             if (op == 2)
             {
                 std::cout << "Digite o novo documento: ";
@@ -422,6 +443,8 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int
 
                 std ::system("CLS");
             }
+            
+            //edicao de percentual de comissao
             if (op == 3)
             {
                 std::cout << "Digite a nova porcentagem de comissao: ";
@@ -430,6 +453,8 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int
 
                 std ::system("CLS");
             }
+
+            // edicao de salario base
             if (op == 4)
             {
                 std::cout << "Digite o novo salario base (por hora): ";
@@ -438,6 +463,8 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int
 
                 std ::system("CLS");
             }
+
+            // edicao de carga horaria semanal
             if (op == 5)
             {
                 std::cout << "Digite a nova quantidade de horas semanais: ";
@@ -457,9 +484,12 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int
 
 // FUNCOES DE ESTOQUE
 
+    //cadastro de novo produto
+
 void Gerencia::novoProduto(std::string nomeProduto, double preco, int quantidade)
 {
-    // perguntar o nome do item, preco e quantidade
+    // perguntando o nome, preco e quantidade do novo produto para cadastro
+
     std::cout << " ----- ADICIONAR PRODUTO ----- \n\n";
     std::cout << "Digite o nome do produto: ";
     std::cin.ignore();
@@ -472,10 +502,12 @@ void Gerencia::novoProduto(std::string nomeProduto, double preco, int quantidade
     std::cin >> quantidade;
     std ::cout << std ::endl;
 
+    //chamando funcao do estoque para adcionar novo produto ao estoque
+
     Estoque::adicionarProduto(Produto(nomeProduto, preco, quantidade));
 
-    // Estoque::adicionarProdutos(Produto(nomeProduto,preco, quantidade));
 }
+
 // imprime produtos do estoque com a quantidade
 
 void Gerencia::imprimeProdutos()
@@ -494,9 +526,10 @@ void Gerencia::imprimeProdutos()
     }
 }
 
+    //Edicao caracteristicas dos produtos, tais como nome, preco e quantidade
+
 void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double preco, int quantidade)
 {
-    //
     std::cout << " ----- EDITAR ESTOQUE ----- \n";
     for (int i = 0; i < Estoque::listaProdutos.size(); i++)
     {
@@ -508,7 +541,7 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
     std::cin >> idProduto;
 
     std ::system("CLS");
-
+        
     for (int i = 0; i < Estoque::listaProdutos.size(); i++)
     {
         if (Estoque::listaProdutos[i].getId() == idProduto)
@@ -527,7 +560,8 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
             std::cin >> op;
 
             std ::system("CLS");
-
+                
+                //Edicao do nome
             if (op == 1)
             {
                 std::cout << "Digite o novo nome: ";
@@ -537,6 +571,8 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
 
                 std ::system("CLS");
             }
+
+                //Edicao do preco
             if (op == 2)
             {
                 std::cout << "Preco atual: " << Estoque::listaProdutos[i].getPreco() << std::endl;
@@ -547,6 +583,8 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
 
                 std ::system("CLS");
             }
+
+                //Edicao da quantidade
             if (op == 3)
             {
                 int adicionarQuantidade;
@@ -566,6 +604,8 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
     }
     std::cout << "Estoque editado com sucesso!\n";
 }
+
+        //PAGAMENTO
 
 void Gerencia::calculaPagamento(int idFuncionario, double horasSemanais, double horasExtras, double vendasTotais, double comissao, double salarioBase)
 {
@@ -610,8 +650,12 @@ void Gerencia::calculaPagamento(int idFuncionario, double horasSemanais, double 
             }
         }
     }
+
+    // se for vendedor
     else if (op == 2)
-    {
+    {   
+        // imprime a lista de vendedores pro usuario escolher
+
         for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
         {
             std::cout << "ID - " << Gerencia::listaVendedores[i].getId() << std::endl;
@@ -624,7 +668,7 @@ void Gerencia::calculaPagamento(int idFuncionario, double horasSemanais, double 
         std ::system("CLS");
 
         for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
-        {
+        {   // compara o id do funcionario com os ids da lista
             if (Gerencia::listaVendedores[i].getId() == idFuncionario)
             {
                 horasSemanais = Gerencia::listaVendedores[i].getHorasSemanais();
@@ -657,18 +701,24 @@ void Gerencia::calculaPagamento(int idFuncionario, double horasSemanais, double 
     }
 }
 
+    // Impressao de pagamento
+
 void Gerencia ::imprimePagamentos()
 {
     std::cout << "----- RELATORIO DE PAGAMENTOS ----- \n";
     std::cout << std::endl;
+
+    // Percorre toda a lista de pagamentos (por meio do "for") imprimindo eles
 
     for (int i = 0; i < Gerencia::listaPagamentos.size(); i++)
     {
         std ::cout << "ID - " << Gerencia::listaPagamentos[i].getFuncionario() << std ::endl;
         std ::cout << "NOME - ";
 
+        // Percorre a lista de vendedores
         for (int j = 0; j < Gerencia::listaVendedores.size(); j++)
-        {
+        {   
+            //Compara cada pagamento com cada vendedor para atribuir o pagamento correto ao vendedor correto
             if (Gerencia::listaPagamentos[i].getFuncionario() == Gerencia::listaVendedores[j].getId())
             {
                 std::cout << Gerencia::listaVendedores[j].getNome() << std::endl;
@@ -677,6 +727,7 @@ void Gerencia ::imprimePagamentos()
 
         for (int j = 0; j < Gerencia::listaGerentes.size(); j++)
         {
+            // Compara cada pagamento com cada gerente para atribuir o pagamento correto ao gerente correto
             if (Gerencia::listaPagamentos[i].getFuncionario() == Gerencia::listaGerentes[j].getId())
                     std::cout
                 << Gerencia::listaGerentes[j].getNome() << std::endl;
@@ -686,6 +737,8 @@ void Gerencia ::imprimePagamentos()
         std::cout << "---------------------------- \n";
     }
 }
+
+// FUNCOES DE LEITURA DE LISTAS
 
 const std::vector<Vendedor> &Gerencia::lerListaVendedores()
 {
@@ -774,6 +827,7 @@ int Gerencia::buscarItem(std::vector<Produto> carrinhoCompras)
     return -1;
 }
 
+// destrutor
 Gerencia::~Gerencia()
 {
 }

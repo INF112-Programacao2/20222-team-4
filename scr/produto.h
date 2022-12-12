@@ -7,25 +7,30 @@ class Produto
 {
 
 private:
-    static int generateIds;  //lembrar de inicializar esse contador no cpp =1;
-    int id; // lembrar que no .cpp essa variavel recebe a generateIds
+    static int generateIds;  // gerador de Ids
+    int id; //id
 
+    // dados do produto
     std::string nomeProduto;
     double preco;
     int quantidade;
 
 public:
+    //construtores
     Produto(std::string nomeProduto, double preco, int quantidade);
     Produto();
 
-    void setNome(std::string nomeProduto);
-    void setPreco(double preco);
-    void setQuantidade(int quantidade);
+    // prototipo das funcoes que definem os dados do produto
+    void setNome(std::string nomeProduto);  //nome
+    void setPreco(double preco);            //preco
+    void setQuantidade(int quantidade);     //quantidade
 
-    std::string getNome();
-    double getPreco(); 
-    int getId();
-    int getQuantidade();
+    // prototipo das funcoes que retornam os dados do produto
+    std::string getNome();  //nome
+    double getPreco();      //preco
+    int getId();            //Id
+    int getQuantidade();    //quantidade
+    // destrutor
     ~Produto();
 };
 

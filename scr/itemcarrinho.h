@@ -12,11 +12,17 @@ private:
     int quantidade;
     
 public:
+            // ----CARRINHO----
+
+    // construtor
     ItemCarrinho(Produto produto,int quantidade);
-    std::string getNome();
-    int getQuantidade();
-    double getPreco();
-    ~ItemCarrinho();
+
+    std::string getNome();  // retornando nome do produto,
+    int getQuantidade();    // retornando quantidade do produto
+    double getPreco();      // retornando preco 
+
+    //destrutor
+    ~ItemCarrinho();    
 };
 
 

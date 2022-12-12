@@ -24,6 +24,9 @@ login:
 
 inicio:
 
+    // SISTEMA DE MENU
+    // Opcoes de caminhos no sistema
+
     int selecao;
 
     std ::system("CLS");
@@ -45,6 +48,10 @@ inicio:
     // tratar excessao dessa entrada!!
     // so pode entrar um numero int entre 1 e 7
 
+
+    //Selecao da area do sistema que deseja acessar
+
+
     if (selecao == 1)
     {
     novaVenda:
@@ -56,14 +63,14 @@ inicio:
         std ::string documentoCliente;
 
         gerencia.novaVenda(idFuncionario, nomeCliente, documentoCliente, idProduto, desconto, valorTotal);
-
+        // novo menu para selecionar o que deseja fazer no sistema
         std ::cout << "O que deseja fazer agora?\n\n";
         std ::cout << "1 - Cadastrar outra venda\n";
         std ::cout << "2 - Voltar ao menu inicial\n";
         std ::cin >> selecao2;
 
         std ::system("CLS");
-
+        //opcao de executar novamente mesma acao ou retornar ao menu
         if (selecao2 == 1)
         {
             goto novaVenda;
@@ -75,7 +82,7 @@ inicio:
     }
     else if (selecao == 2)
     {
-
+    // MENU DE FUNCIONARIOS
     menuFuncionarios:
         int resp, resp2;
         std::string nome;
@@ -105,6 +112,7 @@ inicio:
             if (resp2 == 1)
             {
                 int selecao2;
+                //chamando funcao para cadastrar gerente
                 gerencia.novoGerente(nome, documento, porcentagemComissao, salarioBase, horasSemanais);
 
                 std ::cout << "O que deseja fazer agora?\n\n";
@@ -113,7 +121,7 @@ inicio:
                 std ::cin >> selecao2;
 
                 std ::system("CLS");
-
+                //opcao de executar novamente mesma acao ou retornar ao menu
                 if (selecao2 == 1)
                 {
                     goto cadastro;
@@ -126,10 +134,11 @@ inicio:
             else if (resp2 == 2)
             {
                 int selecao2;
+                // chamando funcao para cadastrar novo funcionario
                 gerencia.novoVendedor(nome, documento, porcentagemComissao, salarioBase, horasSemanais);
 
                 std ::system("CLS");
-
+                //opcao de executar novamente mesma acao ou retornar ao menu
                 std ::cout << "O que deseja fazer agora?\n\n";
                 std ::cout << "1 - Cadastrar outro funcionario\n";
                 std ::cout << "2 - Voltar ao menu anterior\n";
@@ -151,7 +160,7 @@ inicio:
         else if (resp == 2)
         {
 editarFuncionario:
-
+            //opcao de executar novamente mesma acao ou retornar ao menu
             std::cout << "Qual o cargo do funcionario que deseja editar? \n\n";
             std::cout << "1 - Gerente\n";
             std::cout << "2 - Vendedor\n";
@@ -167,8 +176,9 @@ editarFuncionario:
                 double porcentagemComissao, salarioBase, horasSemanais;
                 int op;
 
+                //chamando funcao para editar gerente
                 gerencia.editarGerente(idGerente, nome, documento, porcentagemComissao, salarioBase, horasSemanais);
-
+                //opcao de executar novamente mesma acao ou retornar ao menu
                 std ::cout << "O que deseja fazer agora?\n\n";
                 std ::cout << "1 - Editar outro funcionario\n";
                 std ::cout << "2 - Voltar ao menu anterior\n";
@@ -192,9 +202,9 @@ editarFuncionario:
                 long long int documento;
                 double porcentagemComissao, salarioBase, horasSemanais;
                 int op;
-
+                //chamando funcao para editar vendedor
                 gerencia.editarVendedor(idVendedor, nome, documento, porcentagemComissao, salarioBase, horasSemanais);
-
+                //opcao de executar novamente mesma acao ou retornar ao menu
                 std ::cout << "O que deseja fazer agora?\n\n";
                 std ::cout << "1 - Editar outro funcionario\n";
                 std ::cout << "2 - Voltar ao menu anterior\n";
@@ -215,7 +225,7 @@ editarFuncionario:
 
         else if (resp == 3) // deixar por ultimo, mt dificil
         {
-            // removerfunc
+            // menu de escolha de remocao de funcionario
             std::cout << "Qual o cargo do funcionario que deseja remover? \n\n";
             std::cout << "1 - Gerente\n";
             std::cout << "2 - Vendedor\n";
@@ -242,7 +252,7 @@ editarFuncionario:
 
         int resp3;
         int op;
-
+        // GESTAO DE VENDAS
         std::cout << "----- GESTAO DE VENDAS -----\n\n";
         std::cout << "1 - Listar vendas concluidas\n";
         std::cout << "2 - Gerar relatorio de faturamentos\n";
@@ -252,14 +262,14 @@ editarFuncionario:
         std ::system("CLS");
 
         if (resp3 == 1)
-        {
+        {   //chamando funcao para imprimir vendas
             gerencia.imprimeVendas();
             std ::cout << "\nO que deseja fazer agora?\n\n";
             std ::cout << "1 - Voltar ao menu anterior\n";
             std ::cin >> op;
 
             std ::system("CLS");
-
+            //opcao de executar novamente mesma acao ou retornar ao menu
             if (op == 1)
             {
                 goto gestaoVendas;
@@ -269,8 +279,9 @@ editarFuncionario:
         else if (resp3 == 2)
         {
             int op;
+            // chamando funcao para fazer relatorio do faturamento
             gerencia.relatorioFaturamento();
-
+            //opcao de executar novamente mesma acao ou retornar ao menu
             std ::cout << "\nO que deseja fazer agora?\n\n";
             std ::cout << "1 - Voltar ao menu anterior\n";
             std ::cin >> op;
@@ -292,7 +303,7 @@ editarFuncionario:
     {
     menuPagamento:
         int resp4;
-
+        // MENU DE FINANCIAS
         std::cout << "----- GESTAO DE FINANCAS -----\n\n";
         std::cout << "1 - Novo pagamento\n";
         std::cout << "2 - Ver pagamentos\n";
@@ -310,8 +321,10 @@ editarFuncionario:
             double vendasTotais;
             double comissao;
             double salarioBase;
+            // chamando funcao que calcula pagamento
             gerencia.calculaPagamento(idFuncionario, horasSemanais, horasExtras, vendasTotais, comissao, salarioBase);
 
+            //opcao de executar novamente mesma acao ou retornar ao menu
             std ::cout << "\nO que deseja fazer agora?\n\n";
             std ::cout << "1 - Realizar outro pagamento\n";
             std ::cout << "2 - Voltar ao menu anterior\n";
@@ -334,15 +347,15 @@ editarFuncionario:
         else if (resp4 == 2)
         {
             int op;
-
-            gerencia.imprimePagamentos();
+            // chamando funcao para imprimir pagamento
+            gerencia.imprimePagamentos(); 
 
             std ::cout << "O que deseja fazer agora?\n\n";
             std ::cout << "1 - Voltar ao menu anterior\n";
             std ::cin >> op;
 
             std ::system("CLS");
-
+            //opcao de executar novamente mesma acao ou retornar ao menu
             if (op == 1)
             {
                 goto menuPagamento;
@@ -358,7 +371,7 @@ editarFuncionario:
     {
     menuEstoque:
         int resp5;
-
+        // menu de gestao do estoque
         std::cout << "----- GESTAO DE ESTOQUE -----\n\n";
         std::cout << "1 - Consultar estoque\n";
         std::cout << "2 - Adicionar item\n";
@@ -372,6 +385,7 @@ editarFuncionario:
         if (resp5 == 1)
         {
             int op;
+            //chamando funcao que imprime produtos
             gerencia.imprimeProdutos();
 
             std ::cout << "O que deseja fazer agora?\n\n";
@@ -379,8 +393,8 @@ editarFuncionario:
             std ::cin >> op;
 
             std ::system("CLS");
-
-            if (op == 1)
+            //opcao de executar novamente mesma acao ou retornar ao menu
+            if (op == 1)    
             {
                 goto menuEstoque;
             }
@@ -392,10 +406,11 @@ editarFuncionario:
             std::string nomeProduto;
             double preco;
             int quantidade;
+            // chamando funcao para adcionar novo produto
             gerencia.novoProduto(nomeProduto, preco, quantidade);
 
             std ::system("CLS");
-
+            //opcao de executar novamente mesma acao ou retornar ao menu
             std ::cout << "O que deseja fazer agora?\n\n";
             std ::cout << "1 - Adicionar outro produto\n";
             std ::cout << "2 - Voltar ao menu anterior\n";
@@ -422,15 +437,16 @@ editarFuncionario:
         else if (resp5 == 4)
         {
         editProd:
-
+            // edicao de produto
             int idProduto;
             std::string nomeProduto;
             double preco;
             int quantidade;
+            //chamando funcao editar produto
             gerencia.editarEstoque(idProduto, nomeProduto, preco, quantidade);
 
             std ::system("CLS");
-
+            //opcao de executar novamente mesma acao ou retornar ao menu
             std ::cout << "O que deseja fazer agora?\n\n";
             std ::cout << "1 - Editar outro item\n";
             std ::cout << "2 - Voltar ao menu anterior\n";

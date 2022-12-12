@@ -3,6 +3,7 @@
 // lista de produtos
 std::vector<Produto> Estoque::listaProdutos = std::vector<Produto>();
 
+//construtor
 Estoque::Estoque()
 {
 }
@@ -23,6 +24,7 @@ const std::vector<Produto> &Estoque::lerListaProdutos()
     return Estoque::listaProdutos;
 }
 
+//funcao para consultar quantidade de determinado produto no estoque
 int Estoque::consultaEstoque(Produto produto)
 {
 
@@ -35,18 +37,13 @@ int Estoque::consultaEstoque(Produto produto)
     
 }
 
-
+// funcao para adcionar produto na lista de produtos/estoque
 void Estoque::adicionarProduto(const Produto &produto)
 {
     Estoque::listaProdutos.push_back(produto);
 }
 
-void Estoque::updateProduto(const Produto &produto)
-{
-
-}
-
-
+//destrutor
 Estoque::~Estoque()
 {
 }

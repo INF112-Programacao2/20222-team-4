@@ -12,27 +12,28 @@
 class Gerencia : public Estoque
 {
 private:
-    static std::vector<Vendedor> listaVendedores;
-    static std::vector<Gerente> listaGerentes;
-    static std::vector<Produto> carrinhoCompras;
-    static std::vector<Pagamento> listaPagamentos;
-    static std::vector<Vendas> listaVendas;
+    static std::vector<Vendedor> listaVendedores;   //lista de vendedores para guardar o cadastro dos vendedores e seus atributos
+    static std::vector<Gerente> listaGerentes;      //lista de gerentes para guardar o cadastro dos gerentes e seus atributos
+    static std::vector<Produto> carrinhoCompras;    //lista que guarda produtos armazenados no sistema de carrinho
+    static std::vector<Pagamento> listaPagamentos;  //lista para armazenar pagamentos dos funcionarios
+    static std::vector<Vendas> listaVendas;         //lista para armazenar as vendas e os dados de cada venda
 
-    int buscarItem(Vendedor vendedor);
+    // Prototipo de funcoes para buscar itens
+    int buscarItem(Vendedor vendedor);  
     int buscarItem(Gerente gerente);
     int buscarItem(std::vector<Produto> carrinhoCompras);
 
 public:
     Gerencia();
 
-    // nao mexer
+    // Prototipos das funcoes de cadastro de vendedor, gerente, venda, carrinho e pagamento que serao adcionados em suas respectivas listas
     void cadastrarVendedor(const Vendedor &vendedor);
     void cadastrarGerente(const Gerente &gerente);
     void cadastrarVenda(const Vendas &venda);
     void novoCarrinho(const Produto &produto);
     void novoPagamento(const Pagamento &pagamento);
 
-    // colocar aqui as funcoes
+    // Prototipo de funcoes de criar e editar cadastros
     void novaVenda(int idFuncionario, std::string nomeCliente, std::string documentoCliente, int idProduto, double desconto, double valorTotal);
 
     void editarVendedor(int idFuncionario, std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais);
@@ -47,15 +48,18 @@ public:
 
     void editarEstoque(int idProduto, std::string nomeProduto, double preco, int quantidade);
 
+    // impressao de lista de produtos
     void imprimeProdutos();
+    // impressao de lista de pagamentos
     void imprimeVendas();
-
+    // relatorio do faturamento
     void relatorioFaturamento();
-
+    //prototipo da funcao que calcula pagamento
     void calculaPagamento(int idFuncionario, double horasSemanais, double horasExtras, double vendasTotais, double comissao, double salarioBase); // vou fazer ainda
-
+    // impressao de lista de pagamentos
     void imprimePagamentos();
 
+    // lendo listas de vendedores, gerentes, pagamentos e vendas
     const std::vector<Vendedor> &lerListaVendedores();
     const std::vector<Gerente> &lerListaGerentes();
     const std::vector<Pagamento> &lerListaPagamentos();
