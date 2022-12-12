@@ -41,6 +41,7 @@ inicio:
     std::cout << "6 - Encerrar programa\n";
     std::cout << "\nInforme o numero: ";
     std::cin >> selecao;
+    //tratamento de excecoes
     while (true)
     {
         if (isdigit(selecao[0]) && (selecao == "1" || selecao == "2" || selecao == "3" || selecao == "4" || selecao == "5" || selecao == "6"))
@@ -69,6 +70,7 @@ inicio:
         std ::cout << "1 - Cadastrar outra venda\n";
         std ::cout << "2 - Voltar ao menu inicial\n";
         std ::cin >> selecao2;
+        //tratamento de excecoes
         while (true)
         {
             if (isdigit(selecao2[0]) && (selecao2 == "1" || selecao2 == "2"))
@@ -105,9 +107,10 @@ inicio:
         std::cout << "4 - Ver informacoes de funcionarios\n";
         std::cout << "5 - Voltar ao menu inicial\n";
         std::cin >> resp;
+        //tratamento de excecoes
         while (true)
         {
-            if (isdigit(resp[0]) && (resp == "1" || resp == "2" || resp == "3" || resp == "4"))
+            if (isdigit(resp[0]) && (resp == "1" || resp == "2" || resp == "3" || resp == "4"|| resp == "5"))
                 break;
             std ::cout << "Entrada invalida. Digite um numero de 1 a 4.\n";
             std ::cin >> resp;
@@ -122,6 +125,7 @@ inicio:
             std ::cout << "1 - Gerente\n";
             std ::cout << "2 - Vendedor\n";
             std ::cin >> resp2;
+            //tratamento de excecoes
             while (true)
             {
                 if (isdigit(resp2[0]) && (resp2 == "1" || resp2 == "2"))
@@ -142,6 +146,7 @@ inicio:
                 std ::cout << "1 - Cadastrar outro funcionario\n";
                 std ::cout << "2 - Voltar ao menu anterior\n";
                 std ::cin >> selecao2;
+                //tratamento de excecoes
                 while (true)
                 {
                     if (isdigit(selecao2[0]) && (selecao2 == "1" || selecao2 == "2"))
@@ -173,6 +178,7 @@ inicio:
                 std ::cout << "1 - Cadastrar outro funcionario\n";
                 std ::cout << "2 - Voltar ao menu anterior\n";
                 std ::cin >> selecao2;
+                //tratamento de excecoes
                 while (true)
                 {
                     if (isdigit(selecao2[0]) && (selecao2 == "1" || selecao2 == "2"))
@@ -202,6 +208,7 @@ inicio:
             std::cout << "1 - Gerente\n";
             std::cout << "2 - Vendedor\n";
             std::cin >> resp2;
+            //tratamento de excecoes
             while (true)
             {
                 if (isdigit(resp2[0]) && (resp2 == "1" || resp2 == "2"))
@@ -227,6 +234,7 @@ inicio:
                 std ::cout << "1 - Editar outro funcionario\n";
                 std ::cout << "2 - Voltar ao menu anterior\n";
                 std ::cin >> op;
+                //tratamento de excecoes
                 while (true)
                 {
                     if (isdigit(op[0]) && (op == "1" || op == "2"))
@@ -260,6 +268,7 @@ inicio:
                 std ::cout << "1 - Editar outro funcionario\n";
                 std ::cout << "2 - Voltar ao menu anterior\n";
                 std ::cin >> op;
+                //tratamento de excecoes
                 while (true)
                 {
                     if (isdigit(op[0]) && (op == "1" || op == "2"))
@@ -281,13 +290,18 @@ inicio:
             }
         }
 
-        else if (resp == "3") // deixar por ultimo, mt dificil
-        {
+        else if (resp == "3")
+        {   
             // menu de escolha de remocao de funcionario
+            menuremover:
             std::cout << "Qual o cargo do funcionario que deseja remover? \n\n";
             std::cout << "1 - Gerente\n";
             std::cout << "2 - Vendedor\n";
             std::cin >> resp2;
+
+            std :: system("clear");
+
+            //tratamento de excecoes
             while (true)
             {
                 if (isdigit(resp2[0]) && (resp2 == "1" || resp2 == "2"))
@@ -296,25 +310,86 @@ inicio:
                 std ::cin >> resp2;
             }
 
+            std :: system("clear");
+
             if (resp2 == "1")
             {
                 int idGerente;
 
                 // chamando funcao para remover gerente
                 gerencia.removerGerente(idGerente);
+
+                std :: system("clear");
+
+                std :: string op;
+                std ::cout << "O que deseja fazer agora?\n\n";
+                std ::cout << "1 - Remover outro funcionario\n";
+                std ::cout << "2 - Voltar ao menu anterior\n";
+                std ::cin >> op;
+                //tratamento de excecoes
+                while (true)
+                {
+                    if (isdigit(op[0]) && (op == "1" || op == "2"))
+                        break;
+                    std ::cout << "Entrada invalida. Digite os numeros 1 ou 2.\n";
+                    std ::cin >> op;
+                }
+
+                std ::system("clear");
+
+                if (op == "1")
+                {
+                    goto menuremover;
+                }
+                else if (op == "2")
+                {
+                    goto menuFuncionarios;
+                }
+
+
                 
             }
             else if (resp2 == "2")
-            {
+            {   
                 int idVendedor;
                 gerencia.removerVendedor(idVendedor);
+
+                std :: system("clear");
+
+                std :: string op;
+                std ::cout << "O que deseja fazer agora?\n\n";
+                std ::cout << "1 - Remover outro funcionario\n";
+                std ::cout << "2 - Voltar ao menu anterior\n";
+                std ::cin >> op;
+                //tratamento de excecoes
+                while (true)
+                {
+                    if (isdigit(op[0]) && (op == "1" || op == "2"))
+                        break;
+                    std ::cout << "Entrada invalida. Digite os numeros 1 ou 2.\n";
+                    std ::cin >> op;
+                }
+
+                std ::system("clear");
+
+                if (op == "1")
+                {
+                    goto menuremover;
+                }
+                else if (op == "2")
+                {
+                    goto menuFuncionarios;
+                }
+
             }
         }
         else if (resp == "4"){
+            menuvisualizar:
             std ::cout << "Qual o cargo do funcionario que deseja visualizar as informacoes? \n\n";
             std ::cout << "1 - Gerente\n";
             std ::cout << "2 - Vendedor\n";
             std ::cin >> resp2;
+            //tratamento de excecoes
             while (true)
             {
                 if (isdigit(resp2[0]) && (resp2 == "1" || resp2 == "2"))
@@ -325,17 +400,62 @@ inicio:
 
             std ::system("clear");
 
-            if (resp2 == "1") {
-
+            if (resp2 == "1") { 
+                
                 int idGerente;
                 gerencia.imprimeGerentes(idGerente);
+                std :: string op;
+                std ::cout << "O que deseja fazer agora?\n\n";
+                std ::cout << "1 - Visualizar informacoes de outro funcionario\n";
+                std ::cout << "2 - Voltar ao menu anterior\n";
+                std ::cin >> op;
+                //tratamento de excecoes
+                while (true)
+                {
+                    if (isdigit(op[0]) && (op == "1" || op == "2"))
+                        break;
+                    std ::cout << "Entrada invalida. Digite os numeros 1 ou 2.\n";
+                    std ::cin >> op;
+                }
 
-                //completar com a opcao de voltar
+                std ::system("clear");
+
+                if (op == "1")
+                {
+                    goto menuvisualizar;
+                }
+                else if (op == "2")
+                {
+                    goto menuFuncionarios;
+                }
             }
             else if (resp2 == "2") {
                 int idVendedor;
                 gerencia.imprimeVendedores (idVendedor);
-                //completar com a opcao de voltar
+                std :: string op;
+                std ::cout << "O que deseja fazer agora?\n\n";
+                std ::cout << "1 - Visualizar informacoes de outro funcionario\n";
+                std ::cout << "2 - Voltar ao menu anterior\n";
+                std ::cin >> op;
+                //tratamento de excecoes
+                while (true)
+                {
+                    if (isdigit(op[0]) && (op == "1" || op == "2"))
+                        break;
+                    std ::cout << "Entrada invalida. Digite os numeros 1 ou 2.\n";
+                    std ::cin >> op;
+                }
+
+                std ::system("clear");
+
+                if (op == "1")
+                {
+                    goto menuvisualizar;
+                }
+                else if (op == "2")
+                {
+                    goto menuFuncionarios;
+                }
             }
         }
         else if (resp == "5")
@@ -354,6 +474,7 @@ inicio:
         std::cout << "2 - Gerar relatorio de faturamentos\n";
         std::cout << "3 - Voltar ao menu inicial\n";
         std::cin >> resp3;
+        //tratamento de excecoes
         while (true)
         {
             if (isdigit(resp3[0]) && (resp3 == "1" || resp3 == "2" || resp3 == "3"))
@@ -369,6 +490,12 @@ inicio:
             gerencia.imprimeVendas();
             std ::cout << "\nDigite 1 para voltar ao menu anterior.\n\n";
             std ::cin >> op;
+            while (true) {
+                    if (isdigit(op[0]) && op == "1")
+                        break;
+                    std ::cout << "Entrada invalida. Digite 1 para voltar ao menu anterior.\n";
+                    std ::cin >> op;
+            }
 
             std ::system("clear");
             // opcao de executar novamente mesma acao ou retornar ao menu
@@ -386,6 +513,12 @@ inicio:
             // opcao de executar novamente mesma acao ou retornar ao menu
             std ::cout << "\nDigite 1 para voltar ao menu anterior.\n\n";
             std ::cin >> op;
+            while (true) {
+            if (isdigit(op[0]) && op == "1")
+                break;
+            std ::cout << "Entrada invalida. Digite 1 para voltar ao menu anterior.\n";
+            std ::cin >> op;
+            }
 
             std ::system("clear");
 
@@ -410,6 +543,7 @@ inicio:
         std::cout << "2 - Ver pagamentos\n";
         std::cout << "3 - Voltar ao menu inicial\n";
         std::cin >> resp4;
+        //tratamento de excecoes
         while (true)
         {
             if (isdigit(resp4[0]) && (resp4 == "1" || resp4 == "2" || resp4 == "3"))
@@ -439,6 +573,7 @@ inicio:
 
             std ::string comando3;
             std::cin >> comando3;
+            //tratamento de excecoes
             while (true)
             {
                 if (isdigit(comando3[0]) && (comando3 == "1" || comando3 == "2"))
@@ -467,6 +602,12 @@ inicio:
 
             std ::cout << "Digite 1 para voltar ao menu anterior.\n\n";
             std ::cin >> op;
+                while (true) {
+                if (isdigit(op[0]) && op == "1")
+                    break;
+                std ::cout << "Entrada invalida. Digite 1 para voltar ao menu anterior.\n";
+                std ::cin >> op;
+            }
 
             std ::system("clear");
             // opcao de executar novamente mesma acao ou retornar ao menu
@@ -488,11 +629,12 @@ inicio:
         // menu de gestao do estoque
         std::cout << "----- GESTAO DE ESTOQUE -----\n\n";
         std::cout << "1 - Consultar estoque\n";
-        std::cout << "2 - Adicionar item\n";
-        std::cout << "3 - Remover item\n";
-        std::cout << "4 - Editar item\n";
+        std::cout << "2 - Adicionar produto\n";
+        std::cout << "3 - Remover produto\n";
+        std::cout << "4 - Editar produto\n";
         std::cout << "5 - Voltar ao menu inicial\n";
         std::cin >> resp5;
+        //tratamento de excecoes
         while (true)
         {
             if (isdigit(resp5[0]) && (resp5 == "1" || resp5 == "2" || resp5 == "3" || resp5 == "4" || resp5 == "5"))
@@ -511,6 +653,12 @@ inicio:
 
             std ::cout << "Digite 1 para voltar ao menu anterior.\n\n";
             std ::cin >> op;
+            while (true) {
+                if (isdigit(op[0]) && op == "1")
+                    break;
+                std ::cout << "Entrada invalida. Digite 1 para voltar ao menu anterior.\n";
+                std ::cin >> op;
+            }
 
             std ::system("clear");
             // opcao de executar novamente mesma acao ou retornar ao menu
@@ -536,6 +684,7 @@ inicio:
             std ::cout << "2 - Voltar ao menu anterior\n";
             std ::string comando;
             std::cin >> comando;
+            //tratamento de excecoes
             while (true)
             {
                 if (isdigit(comando[0]) && (comando == "1" || comando == "2"))
@@ -555,10 +704,38 @@ inicio:
                 goto menuEstoque;
             }
         }
-        else if (resp5 == "3") // 
-        {
+        else if (resp5 == "3")  
+        {   menuremoverprod:
             int idProduto;
             gerencia.removerProduto(idProduto);
+
+            std :: system("clear");
+                        
+            std ::cout << "O que deseja fazer agora?\n\n";
+            std ::cout << "1 - Remover outro produto\n";
+            std ::cout << "2 - Voltar ao menu anterior\n";
+            std ::string comando;
+            std ::cin >> comando;
+            //tratamento de excecoes
+            while (true)
+            {
+                if (isdigit(comando[0]) && (comando == "1" || comando == "2"))
+                    break;
+                std ::cout << "Entrada invalida. Digite os numeros 1 ou 2.\n";
+                std ::cin >> comando;
+            }
+
+            std ::system("clear");
+
+            if (comando == "1")
+            {
+                goto menuremoverprod;
+            }
+            else if (comando == "2")
+            {
+                goto menuEstoque;
+            }
+
         }
 
         else if (resp5 == "4")
@@ -575,10 +752,11 @@ inicio:
             std ::system("clear");
             // opcao de executar novamente mesma acao ou retornar ao menu
             std ::cout << "O que deseja fazer agora?\n\n";
-            std ::cout << "1 - Editar outro item\n";
+            std ::cout << "1 - Editar outro produto\n";
             std ::cout << "2 - Voltar ao menu anterior\n";
             std ::string comando;
             std ::cin >> comando;
+            //tratamento de excecoes
             while (true)
             {
                 if (isdigit(comando[0]) && (comando == "1" || comando == "2"))

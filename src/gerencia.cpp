@@ -713,7 +713,9 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
     {
         std::cout << "ID - " << Estoque::listaProdutos[i].getId() << std::endl;
         std::cout << "NOME - " << Estoque::listaProdutos[i].getNome() << std::endl;
-        std::cout << "---------------------\n";
+        std::cout << "PRECO: R$" << std ::fixed << std ::setprecision(2) << Estoque::listaProdutos[i].getPreco() << std::setw(1) << std ::setfill('0') << "\n";
+
+        std::cout << "---------------------------\n";
     }
 
     // validando os ids
@@ -1061,11 +1063,11 @@ void Gerencia::imprimeGerentes(int idGerente)
     for (int i = 0; i < Gerencia::listaGerentes.size(); i++)
     { // compara o id do funcionario com os ids da lista
         if (Gerencia::listaGerentes[i].getId() == idGerente)
-        {
+        {   std :: cout << "------- INFORMACOES DO GERENTE -------" << std :: endl;
             std::cout << "\nID: " << Gerencia::listaGerentes[i].getId() << std::endl;
             std::cout << "\nNome: " << Gerencia::listaGerentes[i].getNome() << std::endl;
             std::cout << "\nDocumento: " << Gerencia::listaGerentes[i].getDocumento() << std::endl;
-            std::cout << "----------------------------\n\n";
+            std::cout << "-------------------------------------\n\n";
         }
     }
 }
@@ -1109,11 +1111,11 @@ void Gerencia::imprimeVendedores(int idVendedor)
     for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
     { // compara o id do funcionario com os ids da lista
         if (Gerencia::listaVendedores[i].getId() == idVendedor)
-        {
+        {   std :: cout << "------- INFORMACOES DO VENDEDOR -------" << std :: endl;
             std::cout << "\nID: " << Gerencia::listaVendedores[i].getId() << std::endl;
             std::cout << "\nNome: " << Gerencia::listaVendedores[i].getNome() << std::endl;
             std::cout << "\nDocumento: " << Gerencia::listaVendedores[i].getDocumento() << std::endl;
-            std::cout << "----------------------------\n\n";
+            std::cout << "-------------------------------------\n\n";
         }
     }
 }
@@ -1189,6 +1191,8 @@ void Gerencia::removerGerente(int idGerente)
     std::cout << "Digite o id do vendedor que deseja remover: ";
     std::cin >> idGerente;
 
+    std :: system("clear");
+
     // validando os ids
     bool isValid;
     while (true)
@@ -1219,6 +1223,7 @@ void Gerencia::removerGerente(int idGerente)
         {
             Gerencia::apagaGerente(i);
             std::cout << "Gerente removido com sucesso! \n";
+            sleep (1.5);
         }
     }
 }
@@ -1234,6 +1239,8 @@ void Gerencia::removerVendedor(int idVendedor)
     }
     std::cout << "Digite o id do vendedor que deseja remover: ";
     std::cin >> idVendedor;
+
+    std :: system("clear");
 
     // validando os ids
     bool isValid;
@@ -1264,7 +1271,9 @@ void Gerencia::removerVendedor(int idVendedor)
         if (idVendedor == Gerencia::listaVendedores[i].getId())
         {
             Gerencia::apagaVendedor(i);
+            std :: system("clear");
             std::cout << "Vendedor removido com sucesso! \n";
+            sleep (1.5);
         }
     }
 }
@@ -1276,9 +1285,11 @@ void Gerencia::removerProduto(int idProduto)
     {
         std::cout << "ID - " << Estoque::listaProdutos[i].getId() << std::endl;
         std::cout << "NOME - " << Estoque::listaProdutos[i].getNome() << std::endl;
+        std::cout << "PRECO: R$" << std ::fixed << std ::setprecision(2) << Estoque::listaProdutos[i].getPreco() << std::setw(1) << std ::setfill('0') << "\n";
+
         std::cout << "---------------------\n";
     }
-    std::cout << "Digite o id do vendedor que deseja remover: ";
+    std::cout << "Digite o id do produto que deseja remover: ";
     std::cin >> idProduto;
 
     // validando os ids
