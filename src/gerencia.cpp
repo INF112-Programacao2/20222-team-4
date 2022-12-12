@@ -764,10 +764,17 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
             if (op == 2)
             {
                 std::cout << "Preco atual: " << Estoque::listaProdutos[i].getPreco() << std::endl;
-
-                std::cout << "\nDigite o novo preco: ";
-                std::cin >> preco;
-                Estoque::listaProdutos[i].setPreco(preco);
+                while(true){
+                    std::cout << "\nDigite o novo preco: ";
+                    std::cin >> preco;
+                    Estoque::listaProdutos[i].setPreco(preco);
+                    if(preco<=0){
+                        std::cout << "Erro! O preco nao pode ser menor ou igual a 0.00, tente novamente com outro valor" << std::endl;
+                    }
+                    else{
+                        break;
+                    }
+                }
 
                 std ::system("clear");
             }
@@ -776,7 +783,7 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
             if (op == 3)
             {
                 int adicionarQuantidade;
-
+                
                 std::cout << "Quantidade atual: " << Estoque::listaProdutos[i].getQuantidade() << std::endl;
 
                 std::cout << "\nDigite a quantidade que deseja adicionar: ";
