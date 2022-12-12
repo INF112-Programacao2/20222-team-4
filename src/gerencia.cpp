@@ -421,7 +421,16 @@ void Gerencia::editarGerente(int idFuncionario, std::string nome, long long int 
             std::cout << "3 - Porcentagem comissao\n";
             std::cout << "4 - Salario base (por hora)\n";
             std::cout << "5 - Horas semanais\n";
-            std::cin >> op;
+            while(true)
+            {
+                std::cin >> op;
+                if(op<1||op>5){
+                    std::cout << "Operacao invalida, insira o numero de uma operacao valida" << std::endl;
+                }
+                else{
+                    break;
+                }
+            }
 
             std ::system("clear");
 
@@ -538,7 +547,16 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int
             std::cout << "3 - Porcentagem comissao\n";
             std::cout << "4 - Salario base (por hora)\n";
             std::cout << "5 - Horas semanais\n";
-            std::cin >> op;
+            while(true)
+            {
+                std::cin >> op;
+                if(op<1||op>5){
+                    std::cout << "Operacao invalida, insira o numero de uma operacao valida" << std::endl;
+                }
+                else{
+                    break;
+                }
+            }
 
             std ::system("clear");
 
@@ -609,6 +627,9 @@ void Gerencia::novoProduto(std::string nomeProduto, double preco, int quantidade
 {
     // perguntando o nome, preco e quantidade do novo produto para cadastro
 
+    bool condicao=0;
+    while(condicao==0){
+        condicao=1;
     std::cout << " ----- ADICIONAR PRODUTO ----- \n\n";
     std::cout << "Digite o nome do produto: ";
     std::cin.ignore();
@@ -617,9 +638,23 @@ void Gerencia::novoProduto(std::string nomeProduto, double preco, int quantidade
     std::cout << "Digite o preco do produto: ";
     std::cin >> preco;
     std ::cout << std ::endl;
+    if(preco<=0){
+        std::cout<< "Erro! Nao ha como cadastrar produtos com preco menor ou igual a 0.00, tente novamente!" << std::endl;
+        condicao=false;
+        std::cout << std::endl;
+    }
+    
+    if(condicao==1){
     std::cout << "Digite a quantidade do produto: ";
     std::cin >> quantidade;
     std ::cout << std ::endl;
+    if(quantidade<0){
+        std::cout<< "Erro! Nao ha como cadastrar quantidade menor que zero, tente novamente!" << std::endl;
+        condicao=false;
+        std::cout << std::endl;
+    }
+    }
+    }
 
     // chamando funcao do estoque para adcionar novo produto ao estoque
 
@@ -701,7 +736,16 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
                 std ::cout << "(Produto esgotado)." << std ::endl;
             else
                 std ::cout << "(" << listaProdutos[i].getQuantidade() << " unidades restantes)." << std ::endl;
-            std::cin >> op;
+            while(true)
+            {
+                std::cin >> op;
+                if(op<1||op>3){
+                    std::cout << "Operacao invalida, insira o numero de uma operacao valida" << std::endl;
+                }
+                else{
+                    break;
+                }
+            }
 
             std ::system("clear");
 
@@ -759,7 +803,16 @@ void Gerencia::calculaPagamento(int idFuncionario, double horasSemanais, double 
     std::cout << "\nVamos registrar um novo pagamento. Escolha abaixo o cargo do funcionario: \n";
     std::cout << "1 - Gerente\n";
     std::cout << "2 - Vendedor\n";
-    std::cin >> op;
+    while(true)
+            {
+                std::cin >> op;
+                if(op<1||op>2){
+                    std::cout << "Operacao invalida, insira o numero de uma operacao valida" << std::endl;
+                }
+                else{
+                    break;
+                }
+            }
 
     std ::system("clear");
 
