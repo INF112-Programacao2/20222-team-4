@@ -74,6 +74,7 @@ void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string
     {
         std::cout << "ID - " << Estoque::listaProdutos[i].getId() << std::endl;
         std::cout << "NOME - " << Estoque::listaProdutos[i].getNome() << std::endl;
+        std::cout << "PRECO: R$" << std :: fixed << std :: setprecision(2) << Estoque::listaProdutos[i].getPreco() << std::setw(1) << std ::setfill('0') << "\n";
         std::cout << "---------------------\n";
     }
 
@@ -112,7 +113,7 @@ void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string
                 }
                 else
                 {
-                    std::cout << "Produto fora de estoque!\n";
+                    std::cout << "\nProduto fora de estoque!\n";
                 }
             }
         }
@@ -490,6 +491,7 @@ void Gerencia::imprimeProdutos()
         std::cout << "ID: " << Estoque::listaProdutos[i].getId() << std::endl;
         std::cout << "NOME: " << Estoque::listaProdutos[i].getNome() << std::endl;
         std::cout << "QUANTIDADE: " << Estoque::listaProdutos[i].getQuantidade() << std::endl;
+        std::cout << "PRECO: R$" << std :: fixed << std :: setprecision(2) << Estoque::listaProdutos[i].getPreco() << std::setw(1) << std ::setfill('0') << "\n";
         std::cout << "---------------------------- \n";
     }
 }
