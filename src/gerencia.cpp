@@ -31,7 +31,6 @@ void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string
     double total = 0;      // variavel que acumula o preco dos produtos
     int quantidadeEstoque; // variavel que guarda a quantidade do produto X no estoque
     int quantidade;        // quantidade do produto que o cliente comprou
-    std::vector<int> idsValidos;
 
     std::cout << "----- CADASTRO DE VENDAS -----\n\n";
     std::cout << "Vamos cadastrar uma nova venda!\n\n";
@@ -46,10 +45,33 @@ void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string
         std::cout << "NOME - " << Gerencia::listaVendedores[i].getNome() << std::endl;
         std::cout << "---------------------\n";
     }
-
     std::cout << "\nDigite o ID do vendedor: ";
     std::cin >> idFuncionario;
 
+    // validacao de ids
+
+    bool isValid;
+    while (true)
+    {
+        for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
+        {
+            if (idFuncionario == listaVendedores[i].getId())
+            {
+                isValid = true;
+                break;
+            }
+            else
+                isValid = false;
+        }
+
+        if (!isValid)
+        {
+            std::cout << "Erro! ID invalido. Tente novamente: \n";
+            std::cin >> idFuncionario;
+        }
+        else
+            break;
+    }
 
     venda.setFuncionario(idFuncionario); // registrando na venda o id dos funcionarios
 
@@ -87,6 +109,38 @@ void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string
     {
         std::cout << "\nDigite o ID do produto: ";
         std::cin >> idProduto;
+
+        // validacao de id
+
+        while (true)
+        {
+            for (int i = 0; i < Estoque::listaProdutos.size(); i++)
+            {
+                if (idProduto == Estoque::listaProdutos[i].getId())
+                {
+                    isValid = true;
+                    break;
+                }
+                else
+                    isValid = false;
+            }
+
+            if (!isValid)
+            {
+                if (idProduto == -1)
+                {
+                    break;
+                }
+                else
+                {
+                    std::cout << "Erro! ID invalido. Tente novamente: \n";
+                    std::cin >> idProduto;
+                }
+            }
+            else
+                break;
+        }
+
         if (idProduto == -1)
             break;
         std::cout << "\nDigite a quantidade do produto: ";
@@ -132,10 +186,10 @@ void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string
     std::cout << "% Desconto (digite 0 para nenhum desconto): ";
     std::cin >> desconto;
 
-    if (desconto <0 || desconto >100){
+    if (desconto < 0 || desconto > 100)
+    {
         std::cout << "Erro! Desconto invalido, digite um valor entre 0 e 100. Tente novamente: \n";
-        std::cin>>desconto;
-
+        std::cin >> desconto;
     }
     // tratar a excessao da entrada (proibido numeros negativos)
 
@@ -166,10 +220,12 @@ pagamento:
 
         this->cadastrarVenda(venda);
 
-        for (int i = 0; i < Gerencia::listaVendas.size(); i++)
+        for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
         {
-            std::cout << listaVendas[i].getNomeCliente() << std::endl;
-            std::cout << listaVendas[i].getValorTotal() << std::endl;
+            if (idFuncionario == Gerencia::listaVendedores[i].getId())
+            {
+                Gerencia::listaVendedores[i].setTotalVendas(valorTotal);
+            }
         }
 
         std::system("clear");
