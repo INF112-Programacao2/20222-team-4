@@ -186,12 +186,11 @@ void Gerencia::imprimeVendas()
 {
 
     std::cout << "----- VENDAS REALIZADAS -----\n";
-    std::cout << std::endl;
 
     for (int i = 0; i < Gerencia::listaVendas.size(); i++)
     {
 
-        std::cout << "CLIENTE: \n\n";
+        std::cout << "\nCLIENTE: \n\n";
         std::cout << "Nome: ";
         std::cout << Gerencia::listaVendas[i].getNomeCliente();
         std::cout << "\nDocumento: ";
@@ -513,7 +512,13 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
             std::cout << "O que deseja editar? \n\n";
             std::cout << "1 - Nome\n";
             std::cout << "2 - Preco\n";
-            std::cout << "3 - Adicionar mais quantidades no estoque\n";
+            std::cout << "3 - Adicionar mais unidades no estoque ";
+            if (listaProdutos[i].getQuantidade()<10 && listaProdutos[i].getQuantidade()>0)
+                std :: cout << "(Estoque em baixa. Apenas " << listaProdutos[i].getQuantidade() << " unidades restantes)." << std :: endl;
+            else if (listaProdutos[i].getQuantidade()==0)
+                std :: cout << "(Produto esgotado)." << std :: endl;
+            else 
+                std :: cout << "(" << listaProdutos[i].getQuantidade() << " unidades restantes)." << std :: endl;
             std::cin >> op;
 
             std ::system("CLS");
@@ -531,7 +536,7 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
             {
                 std::cout << "Preco atual: " << Estoque::listaProdutos[i].getPreco() << std::endl;
 
-                std::cout << "Digite o novo preco: ";
+                std::cout << "\nDigite o novo preco: ";
                 std::cin >> preco;
                 Estoque::listaProdutos[i].setPreco(preco);
 
@@ -543,7 +548,7 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
 
                 std::cout << "Quantidade atual: " << Estoque::listaProdutos[i].getQuantidade() << std::endl;
 
-                std::cout << "Digite a quantidade que deseja adicionar: \n";
+                std::cout << "\nDigite a quantidade que deseja adicionar: ";
                 std::cin >> adicionarQuantidade;
 
                 quantidade = adicionarQuantidade + Estoque::listaProdutos[i].getQuantidade();
