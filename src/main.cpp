@@ -41,27 +41,22 @@ inicio:
     std::cout << "6 - Encerrar programa\n";
     std::cout << "\nInforme o numero: ";
     std::cin >> selecao;
-    while (true) {
-        if (isdigit(selecao[0]) && (selecao=="1"||selecao=="2"||selecao=="3"||selecao=="4"||selecao=="5"||selecao=="6"))
+    while (true)
+    {
+        if (isdigit(selecao[0]) && (selecao == "1" || selecao == "2" || selecao == "3" || selecao == "4" || selecao == "5" || selecao == "6"))
             break;
-        std :: cout << "Entrada invalida. Digite um numero de 1 a 6.\n";
-        std :: cout << "\nInforme o numero: ";
-        std :: cin >> selecao;
+        std ::cout << "Entrada invalida. Digite um numero de 1 a 6.\n";
+        std ::cout << "\nInforme o numero: ";
+        std ::cin >> selecao;
     }
     std::system("clear");
 
-    // tratar a excessao da entrada
-    // tratar excessao dessa entrada!!
-    // so pode entrar um numero int entre 1 e 6
-
-
-    //Selecao da area do sistema que deseja acessar
-
+    // Selecao da area do sistema que deseja acessar
 
     if (selecao == "1")
     {
     novaVenda:
-        std :: string selecao2;
+        std ::string selecao2;
 
         double valorTotal, desconto;
         int idFuncionario, idProduto;
@@ -74,16 +69,16 @@ inicio:
         std ::cout << "1 - Cadastrar outra venda\n";
         std ::cout << "2 - Voltar ao menu inicial\n";
         std ::cin >> selecao2;
-        while (true) {
-            if (isdigit(selecao2[0]) && (selecao2=="1"||selecao2=="2"))
+        while (true)
+        {
+            if (isdigit(selecao2[0]) && (selecao2 == "1" || selecao2 == "2"))
                 break;
-            std :: cout << "Entrada invalida. Digite os numeros 1 ou 2.\n";
-            std :: cin >> selecao2;
+            std ::cout << "Entrada invalida. Digite os numeros 1 ou 2.\n";
+            std ::cin >> selecao2;
         }
-    
 
         std ::system("clear");
-        //opcao de executar novamente mesma acao ou retornar ao menu
+        // opcao de executar novamente mesma acao ou retornar ao menu
         if (selecao2 == "1")
         {
             goto novaVenda;
@@ -97,7 +92,7 @@ inicio:
     {
     // MENU DE FUNCIONARIOS
     menuFuncionarios:
-        std :: string resp, resp2;
+        std ::string resp, resp2;
         std::string nome;
         long long int documento;
         double porcentagemComissao;
@@ -109,11 +104,12 @@ inicio:
         std::cout << "3 - Remover Funcionario\n";
         std::cout << "4 - Voltar ao menu inicial\n";
         std::cin >> resp;
-        while (true) {
-            if (isdigit(resp[0]) && (resp=="1"||resp=="2"||resp=="3"||resp=="4"))
+        while (true)
+        {
+            if (isdigit(resp[0]) && (resp == "1" || resp == "2" || resp == "3" || resp == "4"))
                 break;
-            std :: cout << "Entrada invalida. Digite um numero de 1 a 4.\n";
-            std :: cin >> resp;
+            std ::cout << "Entrada invalida. Digite um numero de 1 a 4.\n";
+            std ::cin >> resp;
         }
 
         std ::system("clear");
@@ -125,34 +121,36 @@ inicio:
             std ::cout << "1 - Gerente\n";
             std ::cout << "2 - Vendedor\n";
             std ::cin >> resp2;
-            while (true) {
-                if (isdigit(resp2[0]) && (resp2=="1"||resp2=="2"))
+            while (true)
+            {
+                if (isdigit(resp2[0]) && (resp2 == "1" || resp2 == "2"))
                     break;
-                std :: cout << "Entrada invalida. Digite os numeros 1 ou 2.\n";
-                std :: cin >> resp2;
+                std ::cout << "Entrada invalida. Digite os numeros 1 ou 2.\n";
+                std ::cin >> resp2;
             }
 
             std ::system("clear");
 
             if (resp2 == "1")
             {
-                std :: string selecao2;
-                //chamando funcao para cadastrar gerente
+                std ::string selecao2;
+                // chamando funcao para cadastrar gerente
                 gerencia.novoGerente(nome, documento, porcentagemComissao, salarioBase, horasSemanais);
 
                 std ::cout << "O que deseja fazer agora?\n\n";
                 std ::cout << "1 - Cadastrar outro funcionario\n";
                 std ::cout << "2 - Voltar ao menu anterior\n";
                 std ::cin >> selecao2;
-                while (true) {
-                    if (isdigit(selecao2[0]) && (selecao2=="1"||selecao2=="2"))
+                while (true)
+                {
+                    if (isdigit(selecao2[0]) && (selecao2 == "1" || selecao2 == "2"))
                         break;
-                    std :: cout << "Entrada invalida. Digite os numeros 1 ou 2.\n";
-                    std :: cin >> selecao2;
+                    std ::cout << "Entrada invalida. Digite os numeros 1 ou 2.\n";
+                    std ::cin >> selecao2;
                 }
 
                 std ::system("clear");
-                //opcao de executar novamente mesma acao ou retornar ao menu
+                // opcao de executar novamente mesma acao ou retornar ao menu
                 if (selecao2 == "1")
                 {
                     goto cadastro;
@@ -164,21 +162,22 @@ inicio:
             }
             else if (resp2 == "2")
             {
-                std :: string selecao2;
+                std ::string selecao2;
                 // chamando funcao para cadastrar novo funcionario
                 gerencia.novoVendedor(nome, documento, porcentagemComissao, salarioBase, horasSemanais);
 
                 std ::system("clear");
-                //opcao de executar novamente mesma acao ou retornar ao menu
+                // opcao de executar novamente mesma acao ou retornar ao menu
                 std ::cout << "O que deseja fazer agora?\n\n";
                 std ::cout << "1 - Cadastrar outro funcionario\n";
                 std ::cout << "2 - Voltar ao menu anterior\n";
                 std ::cin >> selecao2;
-                while (true) {
-                    if (isdigit(selecao2[0]) && (selecao2=="1"||selecao2=="2"))
+                while (true)
+                {
+                    if (isdigit(selecao2[0]) && (selecao2 == "1" || selecao2 == "2"))
                         break;
-                    std :: cout << "Entrada invalida. Digite os numeros 1 ou 2.\n";
-                    std :: cin >> selecao2;
+                    std ::cout << "Entrada invalida. Digite os numeros 1 ou 2.\n";
+                    std ::cin >> selecao2;
                 }
 
                 std ::system("clear");
@@ -196,17 +195,18 @@ inicio:
 
         else if (resp == "2")
         {
-editarFuncionario:
-            //opcao de executar novamente mesma acao ou retornar ao menu
+        editarFuncionario:
+            // opcao de executar novamente mesma acao ou retornar ao menu
             std::cout << "Qual o cargo do funcionario que deseja editar? \n\n";
             std::cout << "1 - Gerente\n";
             std::cout << "2 - Vendedor\n";
             std::cin >> resp2;
-            while (true) {
-                if (isdigit(resp2[0]) && (resp2=="1"||resp2=="2"))
+            while (true)
+            {
+                if (isdigit(resp2[0]) && (resp2 == "1" || resp2 == "2"))
                     break;
-                std :: cout << "Entrada invalida. Digite os numeros 1 ou 2.\n";
-                std :: cin >> resp2;
+                std ::cout << "Entrada invalida. Digite os numeros 1 ou 2.\n";
+                std ::cin >> resp2;
             }
 
             std ::system("clear");
@@ -217,20 +217,21 @@ editarFuncionario:
                 int idGerente;
                 long long int documento;
                 double porcentagemComissao, salarioBase, horasSemanais;
-                std :: string op;
+                std ::string op;
 
-                //chamando funcao para editar gerente
+                // chamando funcao para editar gerente
                 gerencia.editarGerente(idGerente, nome, documento, porcentagemComissao, salarioBase, horasSemanais);
-                //opcao de executar novamente mesma acao ou retornar ao menu
+                // opcao de executar novamente mesma acao ou retornar ao menu
                 std ::cout << "O que deseja fazer agora?\n\n";
                 std ::cout << "1 - Editar outro funcionario\n";
                 std ::cout << "2 - Voltar ao menu anterior\n";
                 std ::cin >> op;
-                while (true) {
-                    if (isdigit(op[0]) && (op=="1"||op=="2"))
+                while (true)
+                {
+                    if (isdigit(op[0]) && (op == "1" || op == "2"))
                         break;
-                    std :: cout << "Entrada invalida. Digite os numeros 1 ou 2.\n";
-                    std :: cin >> op;
+                    std ::cout << "Entrada invalida. Digite os numeros 1 ou 2.\n";
+                    std ::cin >> op;
                 }
 
                 std ::system("clear");
@@ -250,19 +251,20 @@ editarFuncionario:
                 int idVendedor;
                 long long int documento;
                 double porcentagemComissao, salarioBase, horasSemanais;
-                std :: string op;
-                //chamando funcao para editar vendedor
+                std ::string op;
+                // chamando funcao para editar vendedor
                 gerencia.editarVendedor(idVendedor, nome, documento, porcentagemComissao, salarioBase, horasSemanais);
-                //opcao de executar novamente mesma acao ou retornar ao menu
+                // opcao de executar novamente mesma acao ou retornar ao menu
                 std ::cout << "O que deseja fazer agora?\n\n";
                 std ::cout << "1 - Editar outro funcionario\n";
                 std ::cout << "2 - Voltar ao menu anterior\n";
                 std ::cin >> op;
-                while (true) {
-                    if (isdigit(op[0]) && (op=="1"||op=="2"))
+                while (true)
+                {
+                    if (isdigit(op[0]) && (op == "1" || op == "2"))
                         break;
-                    std :: cout << "Entrada invalida. Digite os numeros 1 ou 2.\n";
-                    std :: cin >> op;
+                    std ::cout << "Entrada invalida. Digite os numeros 1 ou 2.\n";
+                    std ::cin >> op;
                 }
 
                 std ::system("clear");
@@ -285,20 +287,26 @@ editarFuncionario:
             std::cout << "1 - Gerente\n";
             std::cout << "2 - Vendedor\n";
             std::cin >> resp2;
-            while (true) {
-                if (isdigit(resp2[0]) && (resp2=="1"||resp2=="2"))
+            while (true)
+            {
+                if (isdigit(resp2[0]) && (resp2 == "1" || resp2 == "2"))
                     break;
-                std :: cout << "Entrada invalida. Digite os numeros 1 ou 2.\n";
-                std :: cin >> resp2;
+                std ::cout << "Entrada invalida. Digite os numeros 1 ou 2.\n";
+                std ::cin >> resp2;
             }
 
             if (resp2 == "1")
             {
-                // gerencia.removerGerente(nome, documento, porcentagemComissao, salarioBase, horasSemanais);
+                int idGerente;
+
+                // chamando funcao para remover gerente
+                gerencia.removerGerente(idGerente);
+                
             }
             else if (resp2 == "2")
             {
-                // gerencia.removerVendedor(nome, documento, porcentagemComissao, salarioBase, horasSemanais);
+                int idVendedor;
+                gerencia.removerVendedor(idVendedor);
             }
         }
 
@@ -311,30 +319,31 @@ editarFuncionario:
     {
     gestaoVendas:
 
-        std :: string resp3, op;
+        std ::string resp3, op;
         // GESTAO DE VENDAS
         std::cout << "----- GESTAO DE VENDAS -----\n\n";
         std::cout << "1 - Listar vendas concluidas\n";
         std::cout << "2 - Gerar relatorio de faturamentos\n";
         std::cout << "3 - Voltar ao menu inicial\n";
         std::cin >> resp3;
-        while (true) {
-            if (isdigit(resp3[0]) && (resp3=="1"||resp3=="2"||resp3=="3"))
+        while (true)
+        {
+            if (isdigit(resp3[0]) && (resp3 == "1" || resp3 == "2" || resp3 == "3"))
                 break;
-            std :: cout << "Entrada invalida. Digite um numero de 1 a 3.\n";
-            std :: cin >> resp3;
+            std ::cout << "Entrada invalida. Digite um numero de 1 a 3.\n";
+            std ::cin >> resp3;
         }
 
         std ::system("clear");
 
         if (resp3 == "1")
-        {   //chamando funcao para imprimir vendas
+        { // chamando funcao para imprimir vendas
             gerencia.imprimeVendas();
             std ::cout << "\nDigite 1 para voltar ao menu anterior.\n\n";
             std ::cin >> op;
 
             std ::system("clear");
-            //opcao de executar novamente mesma acao ou retornar ao menu
+            // opcao de executar novamente mesma acao ou retornar ao menu
             if (op == "1")
             {
                 goto gestaoVendas;
@@ -343,10 +352,10 @@ editarFuncionario:
 
         else if (resp3 == "2")
         {
-            std :: string op;
+            std ::string op;
             // chamando funcao para fazer relatorio do faturamento
             gerencia.relatorioFaturamento();
-            //opcao de executar novamente mesma acao ou retornar ao menu
+            // opcao de executar novamente mesma acao ou retornar ao menu
             std ::cout << "\nDigite 1 para voltar ao menu anterior.\n\n";
             std ::cin >> op;
 
@@ -366,18 +375,19 @@ editarFuncionario:
     else if (selecao == "4")
     {
     menuPagamento:
-        std :: string resp4;
+        std ::string resp4;
         // MENU DE FINANCIAS
         std::cout << "----- GESTAO DE FINANCAS -----\n\n";
         std::cout << "1 - Novo pagamento\n";
         std::cout << "2 - Ver pagamentos\n";
         std::cout << "3 - Voltar ao menu inicial\n";
         std::cin >> resp4;
-        while (true) {
-            if (isdigit(resp4[0]) && (resp4=="1"||resp4=="2"||resp4=="3"))
+        while (true)
+        {
+            if (isdigit(resp4[0]) && (resp4 == "1" || resp4 == "2" || resp4 == "3"))
                 break;
-            std :: cout << "Entrada invalida. Digite um numero de 1 a 3.\n";
-            std :: cin >> resp4;
+            std ::cout << "Entrada invalida. Digite um numero de 1 a 3.\n";
+            std ::cin >> resp4;
         }
 
         std ::system("clear");
@@ -394,18 +404,19 @@ editarFuncionario:
             // chamando funcao que calcula pagamento
             gerencia.calculaPagamento(idFuncionario, horasSemanais, horasExtras, vendasTotais, comissao, salarioBase);
 
-            //opcao de executar novamente mesma acao ou retornar ao menu
+            // opcao de executar novamente mesma acao ou retornar ao menu
             std ::cout << "\nO que deseja fazer agora?\n\n";
             std ::cout << "1 - Realizar outro pagamento\n";
             std ::cout << "2 - Voltar ao menu anterior\n";
 
-            std :: string comando3;
+            std ::string comando3;
             std::cin >> comando3;
-            while (true) {
-                if (isdigit(comando3[0]) && (comando3=="1"||comando3=="2"))
+            while (true)
+            {
+                if (isdigit(comando3[0]) && (comando3 == "1" || comando3 == "2"))
                     break;
-                std :: cout << "Entrada invalida. Digite os numeros 1 ou 2.\n";
-                std :: cin >> comando3;
+                std ::cout << "Entrada invalida. Digite os numeros 1 ou 2.\n";
+                std ::cin >> comando3;
             }
 
             std ::system("clear");
@@ -422,15 +433,15 @@ editarFuncionario:
         }
         else if (resp4 == "2")
         {
-            std :: string op;
+            std ::string op;
             // chamando funcao para imprimir pagamento
-            gerencia.imprimePagamentos(); 
+            gerencia.imprimePagamentos();
 
             std ::cout << "Digite 1 para voltar ao menu anterior.\n\n";
             std ::cin >> op;
 
             std ::system("clear");
-            //opcao de executar novamente mesma acao ou retornar ao menu
+            // opcao de executar novamente mesma acao ou retornar ao menu
             if (op == "1")
             {
                 goto menuPagamento;
@@ -445,7 +456,7 @@ editarFuncionario:
     else if (selecao == "5")
     {
     menuEstoque:
-        std :: string resp5;
+        std ::string resp5;
         // menu de gestao do estoque
         std::cout << "----- GESTAO DE ESTOQUE -----\n\n";
         std::cout << "1 - Consultar estoque\n";
@@ -454,27 +465,28 @@ editarFuncionario:
         std::cout << "4 - Editar item\n";
         std::cout << "5 - Voltar ao menu inicial\n";
         std::cin >> resp5;
-        while (true) {
-            if (isdigit(resp5[0]) && (resp5=="1"||resp5=="2"||resp5=="3"||resp5=="4"||resp5=="5"))
+        while (true)
+        {
+            if (isdigit(resp5[0]) && (resp5 == "1" || resp5 == "2" || resp5 == "3" || resp5 == "4" || resp5 == "5"))
                 break;
-            std :: cout << "Entrada invalida. Digite um numero de 1 a 5.\n";
-            std :: cin >> resp5;
+            std ::cout << "Entrada invalida. Digite um numero de 1 a 5.\n";
+            std ::cin >> resp5;
         }
 
         std ::system("clear");
 
         if (resp5 == "1")
         {
-            std :: string op;
-            //chamando funcao que imprime produtos
+            std ::string op;
+            // chamando funcao que imprime produtos
             gerencia.imprimeProdutos();
 
             std ::cout << "Digite 1 para voltar ao menu anterior.\n\n";
             std ::cin >> op;
 
             std ::system("clear");
-            //opcao de executar novamente mesma acao ou retornar ao menu
-            if (op == "1")    
+            // opcao de executar novamente mesma acao ou retornar ao menu
+            if (op == "1")
             {
                 goto menuEstoque;
             }
@@ -490,17 +502,18 @@ editarFuncionario:
             gerencia.novoProduto(nomeProduto, preco, quantidade);
 
             std ::system("clear");
-            //opcao de executar novamente mesma acao ou retornar ao menu
+            // opcao de executar novamente mesma acao ou retornar ao menu
             std ::cout << "O que deseja fazer agora?\n\n";
             std ::cout << "1 - Adicionar outro produto\n";
             std ::cout << "2 - Voltar ao menu anterior\n";
-            std :: string comando;
+            std ::string comando;
             std::cin >> comando;
-             while (true) {
-                if (isdigit(comando[0]) && (comando=="1"||comando=="2"))
+            while (true)
+            {
+                if (isdigit(comando[0]) && (comando == "1" || comando == "2"))
                     break;
-                std :: cout << "Entrada invalida. Digite os numeros 1 ou 2.\n";
-                std :: cin >> comando;
+                std ::cout << "Entrada invalida. Digite os numeros 1 ou 2.\n";
+                std ::cin >> comando;
             }
 
             std ::system("clear");
@@ -516,8 +529,8 @@ editarFuncionario:
         }
         else if (resp5 == "3") // deixar pra fazer por ultimo
         {
-            // remover produto;
-            
+            int idProduto;
+            gerencia.removerProduto(idProduto);
         }
 
         else if (resp5 == "4")
@@ -528,21 +541,22 @@ editarFuncionario:
             std::string nomeProduto;
             double preco;
             int quantidade;
-            //chamando funcao editar produto
+            // chamando funcao editar produto
             gerencia.editarEstoque(idProduto, nomeProduto, preco, quantidade);
 
             std ::system("clear");
-            //opcao de executar novamente mesma acao ou retornar ao menu
+            // opcao de executar novamente mesma acao ou retornar ao menu
             std ::cout << "O que deseja fazer agora?\n\n";
             std ::cout << "1 - Editar outro item\n";
             std ::cout << "2 - Voltar ao menu anterior\n";
-            std :: string comando;
+            std ::string comando;
             std ::cin >> comando;
-            while (true) {
-                if (isdigit(comando[0]) && (comando=="1"||comando=="2"))
+            while (true)
+            {
+                if (isdigit(comando[0]) && (comando == "1" || comando == "2"))
                     break;
-                std :: cout << "Entrada invalida. Digite os numeros 1 ou 2.\n";
-                std :: cin >> comando;
+                std ::cout << "Entrada invalida. Digite os numeros 1 ou 2.\n";
+                std ::cin >> comando;
             }
 
             std ::system("clear");

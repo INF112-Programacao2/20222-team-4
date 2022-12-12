@@ -94,6 +94,7 @@ void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string
     std ::system("clear");
 
     venda.setDocumentoCliente(documentoCliente);
+addproduto:
     std::cout << "----- PRODUTOS -----";
     std::cout << "\nInsira os produtos no carrinho:\n";
 
@@ -106,10 +107,12 @@ void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string
     }
     // validando os ids
     std::cout << "\nPara fechar o carrinho digite -1\n";
-    while (idProduto != -1)
+    while (true)
     {
         std::cout << "\nDigite o ID do produto: ";
         std::cin >> idProduto;
+        if (idProduto == -1)
+            break;
 
         // validacao de id
         bool isValid;
@@ -123,29 +126,27 @@ void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string
                     break;
                 }
                 else
-                    isValid = false;
+                {
+                    if (idProduto == -1)
+                        break;
+                    else
+                        isValid = false;
+                }
             }
 
             if (!isValid)
             {
-                if (idProduto == -1)
-                {
-                    break;
-                }
-                else
-                {
-                    std::cout << "Erro! ID invalido. Tente novamente: \n";
-                    std::cin >> idProduto;
-                }
+
+                std::cout << "Erro! ID invalido. Tente novamente: \n";
+                std::cin >> idProduto;
             }
             else
                 break;
         }
 
-        if (idProduto == -1)
-            break;
         std::cout << "\nDigite a quantidade do produto: ";
         std::cin >> quantidade;
+
         while (quantidade <= 0)
         {
             std::cout << "\nQuantidade invalida. Digite apenas numeros maiores que 0.\n";
@@ -155,21 +156,35 @@ void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string
 
         for (int i = 0; i < Estoque::listaProdutos.size(); i++)
         {
+
             if (idProduto == Estoque::listaProdutos[i].getId())
             {
                 // Consulta no estoque a quantidade de produtos
-                if (Estoque::consultaEstoque(listaProdutos[i]) > 0)
+                if (Estoque::consultaEstoque(Estoque::listaProdutos[i]) > 0)
                 {
+
+                    if (Estoque::listaProdutos[i].getQuantidade() < quantidade)
+                    {
+                        std::cout << "\nErro! No momento ha somente " << Estoque::listaProdutos[i].getQuantidade() << " itens no estoque. Tente novamente!";
+                        goto addproduto;
+                    }
                     // adiciona o produto ao vector novo carrinho
+                    else
+                    {
+                        for (int j = 0; j < listaProdutos.size(); j++)
+                        {
+                            if (idProduto == listaProdutos[j].getId())
+                            {
+                                Produto produto = listaProdutos[j];
+                                ItemCarrinho item(produto, quantidade);
+                                venda.novoCarrinho(item);
+                            }
+                        }
 
-                    Produto produto = estoque.lerListaProdutos()[idProduto];
-                    ItemCarrinho item(produto, quantidade);
-
-                    venda.novoCarrinho(item);
-
-                    // tira 1 da quantidade do produto no estoque
-                    quantidadeEstoque = listaProdutos[i].getQuantidade() - 1;
-                    listaProdutos[i].setQuantidade(quantidadeEstoque);
+                        // tira 1 da quantidade do produto no estoque
+                        quantidadeEstoque = Estoque::listaProdutos[i].getQuantidade() - 1;
+                        Estoque::listaProdutos[i].setQuantidade(quantidadeEstoque);
+                    }
                 }
                 else
                 {
@@ -421,13 +436,15 @@ void Gerencia::editarGerente(int idFuncionario, std::string nome, long long int 
             std::cout << "3 - Porcentagem comissao\n";
             std::cout << "4 - Salario base (por hora)\n";
             std::cout << "5 - Horas semanais\n";
-            while(true)
+            while (true)
             {
                 std::cin >> op;
-                if(op<1||op>5){
+                if (op < 1 || op > 5)
+                {
                     std::cout << "Operacao invalida, insira o numero de uma operacao valida" << std::endl;
                 }
-                else{
+                else
+                {
                     break;
                 }
             }
@@ -547,13 +564,15 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int
             std::cout << "3 - Porcentagem comissao\n";
             std::cout << "4 - Salario base (por hora)\n";
             std::cout << "5 - Horas semanais\n";
-            while(true)
+            while (true)
             {
                 std::cin >> op;
-                if(op<1||op>5){
+                if (op < 1 || op > 5)
+                {
                     std::cout << "Operacao invalida, insira o numero de uma operacao valida" << std::endl;
                 }
-                else{
+                else
+                {
                     break;
                 }
             }
@@ -627,33 +646,37 @@ void Gerencia::novoProduto(std::string nomeProduto, double preco, int quantidade
 {
     // perguntando o nome, preco e quantidade do novo produto para cadastro
 
-    bool condicao=0;
-    while(condicao==0){
-        condicao=1;
-    std::cout << " ----- ADICIONAR PRODUTO ----- \n\n";
-    std::cout << "Digite o nome do produto: ";
-    std::cin.ignore();
-    getline(std::cin, nomeProduto);
-    std ::cout << std ::endl;
-    std::cout << "Digite o preco do produto: ";
-    std::cin >> preco;
-    std ::cout << std ::endl;
-    if(preco<=0){
-        std::cout<< "Erro! Nao ha como cadastrar produtos com preco menor ou igual a 0.00, tente novamente!" << std::endl;
-        condicao=false;
-        std::cout << std::endl;
-    }
-    
-    if(condicao==1){
-    std::cout << "Digite a quantidade do produto: ";
-    std::cin >> quantidade;
-    std ::cout << std ::endl;
-    if(quantidade<0){
-        std::cout<< "Erro! Nao ha como cadastrar quantidade menor que zero, tente novamente!" << std::endl;
-        condicao=false;
-        std::cout << std::endl;
-    }
-    }
+    bool condicao = 0;
+    while (condicao == 0)
+    {
+        condicao = 1;
+        std::cout << " ----- ADICIONAR PRODUTO ----- \n\n";
+        std::cout << "Digite o nome do produto: ";
+        std::cin.ignore();
+        getline(std::cin, nomeProduto);
+        std ::cout << std ::endl;
+        std::cout << "Digite o preco do produto: ";
+        std::cin >> preco;
+        std ::cout << std ::endl;
+        if (preco <= 0)
+        {
+            std::cout << "Erro! Nao ha como cadastrar produtos com preco menor ou igual a 0.00, tente novamente!" << std::endl;
+            condicao = false;
+            std::cout << std::endl;
+        }
+
+        if (condicao == 1)
+        {
+            std::cout << "Digite a quantidade do produto: ";
+            std::cin >> quantidade;
+            std ::cout << std ::endl;
+            if (quantidade < 0)
+            {
+                std::cout << "Erro! Nao ha como cadastrar quantidade menor que zero, tente novamente!" << std::endl;
+                condicao = false;
+                std::cout << std::endl;
+            }
+        }
     }
 
     // chamando funcao do estoque para adcionar novo produto ao estoque
@@ -736,13 +759,15 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
                 std ::cout << "(Produto esgotado)." << std ::endl;
             else
                 std ::cout << "(" << listaProdutos[i].getQuantidade() << " unidades restantes)." << std ::endl;
-            while(true)
+            while (true)
             {
                 std::cin >> op;
-                if(op<1||op>3){
+                if (op < 1 || op > 3)
+                {
                     std::cout << "Operacao invalida, insira o numero de uma operacao valida" << std::endl;
                 }
-                else{
+                else
+                {
                     break;
                 }
             }
@@ -764,14 +789,17 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
             if (op == 2)
             {
                 std::cout << "Preco atual: " << Estoque::listaProdutos[i].getPreco() << std::endl;
-                while(true){
+                while (true)
+                {
                     std::cout << "\nDigite o novo preco: ";
                     std::cin >> preco;
                     Estoque::listaProdutos[i].setPreco(preco);
-                    if(preco<=0){
+                    if (preco <= 0)
+                    {
                         std::cout << "Erro! O preco nao pode ser menor ou igual a 0.00, tente novamente com outro valor" << std::endl;
                     }
-                    else{
+                    else
+                    {
                         break;
                     }
                 }
@@ -783,7 +811,7 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
             if (op == 3)
             {
                 int adicionarQuantidade;
-                
+
                 std::cout << "Quantidade atual: " << Estoque::listaProdutos[i].getQuantidade() << std::endl;
 
                 std::cout << "\nDigite a quantidade que deseja adicionar: ";
@@ -810,16 +838,18 @@ void Gerencia::calculaPagamento(int idFuncionario, double horasSemanais, double 
     std::cout << "\nVamos registrar um novo pagamento. Escolha abaixo o cargo do funcionario: \n";
     std::cout << "1 - Gerente\n";
     std::cout << "2 - Vendedor\n";
-    while(true)
-            {
-                std::cin >> op;
-                if(op<1||op>2){
-                    std::cout << "Operacao invalida, insira o numero de uma operacao valida" << std::endl;
-                }
-                else{
-                    break;
-                }
-            }
+    while (true)
+    {
+        std::cin >> op;
+        if (op < 1 || op > 2)
+        {
+            std::cout << "Operacao invalida, insira o numero de uma operacao valida" << std::endl;
+        }
+        else
+        {
+            break;
+        }
+    }
 
     std ::system("clear");
 
@@ -1037,45 +1067,158 @@ void Gerencia::novoPagamento(const Pagamento &pagamento)
     Gerencia::listaPagamentos.push_back(pagamento);
 }
 
-// FUNCOES PARA BUSCAR - nao mexer
-
-int Gerencia::buscarItem(Vendedor vendedor)
+void Gerencia::apagaProduto(int i)
 {
+    Estoque::listaProdutos.erase(listaProdutos.begin() + i);
+}
+
+void Gerencia::apagaVendedor(int i)
+{
+    Gerencia::listaVendedores.erase(listaVendedores.begin() + i);
+}
+
+void Gerencia::apagaGerente(int i)
+{
+    Gerencia::listaGerentes.erase(listaGerentes.begin() + i);
+}
+
+
+void Gerencia::removerGerente(int idGerente)
+{
+    std::cout << "----- REMOVER GERENTE ----- \n";
+    for (int i = 0; i < Gerencia::listaGerentes.size(); i++)
+    {
+        std::cout << "ID - " << Gerencia::listaGerentes[i].getId() << std::endl;
+        std::cout << "NOME - " << Gerencia::listaGerentes[i].getNome() << std::endl;
+        std::cout << "---------------------\n";
+    }
+    std::cout << "Digite o id do vendedor que deseja remover: ";
+    std::cin >> idGerente;
+
+    // validando os ids
+    bool isValid;
+    while (true)
+    {
+        for (int i = 0; i < Gerencia::listaGerentes.size(); i++)
+        {
+            if (idGerente == listaGerentes[i].getId())
+            {
+                isValid = true;
+                break;
+            }
+            else
+                isValid = false;
+        }
+
+        if (!isValid)
+        {
+            std::cout << "Erro! ID invalido. Tente novamente: \n";
+            std::cin >> idGerente;
+        }
+        else
+            break;
+    }
+
+    for (int i = 0; i < Gerencia::listaGerentes.size(); i++)
+    {
+        if (idGerente == Gerencia::listaGerentes[i].getId())
+        {
+            Gerencia::apagaGerente(i);
+            std::cout << "Gerente removido com sucesso! \n";
+        }
+    }
+}
+
+void Gerencia::removerVendedor(int idVendedor)
+{
+    std::cout << "----- REMOVER VENDEDOR ----- \n";
     for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
     {
-        if (Gerencia::listaVendedores[i].getId() == vendedor.getId())
+        std::cout << "ID - " << Gerencia::listaVendedores[i].getId() << std::endl;
+        std::cout << "NOME - " << Gerencia::listaVendedores[i].getNome() << std::endl;
+        std::cout << "---------------------\n";
+    }
+    std::cout << "Digite o id do vendedor que deseja remover: ";
+    std::cin >> idVendedor;
+
+    // validando os ids
+    bool isValid;
+    while (true)
+    {
+        for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
         {
-            return i;
+            if (idVendedor == listaVendedores[i].getId())
+            {
+                isValid = true;
+                break;
+            }
+            else
+                isValid = false;
         }
+
+        if (!isValid)
+        {
+            std::cout << "Erro! ID invalido. Tente novamente: \n";
+            std::cin >> idVendedor;
+        }
+        else
+            break;
     }
 
-    return -1;
+    for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
+    {
+        if (idVendedor == Gerencia::listaVendedores[i].getId())
+        {
+            Gerencia::apagaVendedor(i);
+            std::cout << "Vendedor removido com sucesso! \n";
+        }
+    }
 }
 
-int Gerencia::buscarItem(Gerente gerente)
+void Gerencia::removerProduto(int idProduto)
 {
-    for (int i = 0; i < Gerencia::listaGerentes.size(); i++)
+    std::cout << "----- REMOVER PRODUTO ----- \n";
+    for (int i = 0; i < Estoque::listaProdutos.size(); i++)
     {
-        if (Gerencia::listaGerentes[i].getId() == gerente.getId())
+        std::cout << "ID - " << Estoque::listaProdutos[i].getId() << std::endl;
+        std::cout << "NOME - " << Estoque::listaProdutos[i].getNome() << std::endl;
+        std::cout << "---------------------\n";
+    }
+    std::cout << "Digite o id do vendedor que deseja remover: ";
+    std::cin >> idProduto;
+
+    // validando os ids
+    bool isValid;
+    while (true)
+    {
+        for (int i = 0; i < Estoque::listaProdutos.size(); i++)
         {
-            return i;
+            if (idProduto == Estoque::listaProdutos[i].getId())
+            {
+                isValid = true;
+                break;
+            }
+            else
+                isValid = false;
         }
+
+        if (!isValid)
+        {
+            std::cout << "Erro! ID invalido. Tente novamente: \n";
+            std::cin >>idProduto;
+        }
+        else
+            break;
     }
 
-    return -1;
-}
-
-int Gerencia::buscarItem(std::vector<Produto> carrinhoCompras)
-{
-    for (int i = 0; i < Gerencia::listaGerentes.size(); i++)
+    for (int i = 0; i < Estoque::listaProdutos.size(); i++)
     {
-        if (Gerencia::carrinhoCompras[i].getId() == carrinhoCompras[i].getId())
+        if (idProduto == Estoque::listaProdutos[i].getId())
         {
-            return i;
+            Gerencia::apagaProduto(i);
+            std::cout << "Produto removido com sucesso! \n";
         }
     }
-
-    return -1;
 }
 
 // destrutor

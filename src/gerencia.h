@@ -19,9 +19,7 @@ private:
     static std::vector<Vendas> listaVendas;         //lista para armazenar as vendas e os dados de cada venda
 
     // Prototipo de funcoes para buscar itens
-    int buscarItem(Vendedor vendedor);  
-    int buscarItem(Gerente gerente);
-    int buscarItem(std::vector<Produto> carrinhoCompras);
+
 
 public:
     Gerencia();
@@ -32,6 +30,13 @@ public:
     void cadastrarVenda(const Vendas &venda);
     void novoCarrinho(const Produto &produto);
     void novoPagamento(const Pagamento &pagamento);
+    void apagaProduto(int i);
+    void apagaVendedor(int i);
+    void apagaGerente(int i);
+
+    void removerGerente(int idGerente);
+    void removerVendedor(int idVendedor);
+    void removerProduto(int idProduto);
 
     // Prototipo de funcoes de criar e editar cadastros
     void novaVenda(int idFuncionario, std::string nomeCliente, std::string documentoCliente, int idProduto, double desconto, double valorTotal);
