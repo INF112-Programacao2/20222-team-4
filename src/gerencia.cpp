@@ -93,7 +93,7 @@ novavenda:
 
     venda.setFuncionario(idFuncionario); // registrando na venda o id dos funcionarios
 
-    // tratar a excessao da entrada
+    // tratar a EXCECAO da entrada
 
     std ::system("clear");
 
@@ -250,7 +250,7 @@ addproduto:
     }
 
 desconto:
-    // tratar a excessao da entrada
+    // tratar a EXCECAO da entrada
     std ::system("clear");
 
     std::cout << "===== DESCONTO =====\n";
@@ -300,7 +300,7 @@ pagamento:
 
     venda.setValorTotal(valorTotal);
 
-    // tratar a excessao da entrada
+    // tratar a EXCECAO da entrada
 
     if (resposta == 's' || resposta == 'S')
     {
@@ -419,16 +419,37 @@ void Gerencia::novoVendedor(std::string nome, long long int documento, double po
     std::cout << "\nDigite o nome do vendedor: ";
     std::cin.ignore();
     getline(std::cin, nome);
-    // tratar a excessao da entrada
+    // tratar a EXCECAO da entrada
 
     std::cout << "\nDigite o CPF do vendedor (Apenas numeros): ";
     std::cin >> documento;
 
-    std::cout << "\nDigite o valor do salario por hora: ";
-    std::cin >> salarioBase;
+   salary:
+        std::cout << "\nDigite o valor do salario por hora: ";
+        std::cin >> salarioBase;
+        //TRATAMENTO DE EXCECAO
+        try{
+            if(salarioBase<=0)
+                throw 0;
+            }
+        catch(int x){
+                    std::cout << "Erro: Salario base nao pode ser menor ou igual a zero. " << std::endl;
+                    goto salary;
+                }
 
-    std::cout << "\nDigite a quantidade de horas semanais: ";
-    std::cin >> horasSemanais;
+    
+        quant:
+            std::cout << "\nDigite a quantidade de horas semanais: ";
+            std::cin >> horasSemanais;
+            //TRATAMENTO DE EXCECAO
+            try{
+                if(horasSemanais<=0)
+                    throw 0;
+            }
+            catch(int x){
+                    std::cout << "Erro: Horas semanais nao podem ser menor ou igual a zero. " << std::endl;
+                    goto quant;
+                }
 
     this->cadastrarItem(Vendedor(nome, documento, porcentagemComissao, salarioBase, horasSemanais));
 
@@ -448,16 +469,36 @@ void Gerencia::novoGerente(std::string nome, long long int documento, double por
     std::cout << "\nDigite o nome do gerente: ";
     std::cin.ignore();
     getline(std::cin, nome);
-    // tratar a excessao da entrada
+    // tratar a EXCECAO da entrada
 
     std::cout << "\nDigite o CPF do gerente (Apenas numeros): ";
     std::cin >> documento;
 
-    std::cout << "\nDigite o valor do salario por hora: ";
-    std::cin >> salarioBase;
+    salary:
+        std::cout << "\nDigite o valor do salario por hora: ";
+        std::cin >> salarioBase;
+        //TRATAMENTO DE EXCECAO
+        try{
+            if(salarioBase<=0)
+                throw 0;
+            }
+        catch(int x){
+            std::cout << "Erro: Salario base nao pode ser menor ou igual a zero. " << std::endl;
+            goto salary;
+        }
 
-    std::cout << "\nDigite a quantidade de horas semanais: ";
-    std::cin >> horasSemanais;
+    quant:
+        std::cout << "\nDigite a quantidade de horas semanais: ";
+        std::cin >> horasSemanais;
+        //TRATAMENTO DE EXCECAO
+                try{
+                    if(horasSemanais<=0)
+                    throw 0;
+                }
+                catch(int y){
+                    std::cout << "Erro: Horas semanais nao podem ser menor ou igual a zero" << std::endl;
+                    goto quant;
+                }
 
     this->cadastrarItem(Gerente(nome, documento, porcentagemComissao, salarioBase, horasSemanais));
 
@@ -573,32 +614,59 @@ void Gerencia::editarGerente(int idFuncionario, std::string nome, long long int 
 
             // edicao de percentual de comissao
             if (op == 3)
-            {
+            {   comissao:
                 std::cout << "Digite a nova porcentagem de comissao: ";
                 std::cin >> porcentagemComissao;
-                Gerencia::listaGerentes[i].setPorcentagemComissao(porcentagemComissao);
-
-                std ::system("clear");
+                //TRATAMENTO DE EXCECAO
+                try{
+                    if(porcentagemComissao<=0)
+                    throw 0;
+                    Gerencia::listaGerentes[i].setPorcentagemComissao(porcentagemComissao);
+                }
+                catch(int z){
+                    std::cout << "Erro: comissao nao pode ser menor ou igual a zero porcento. "<< std::endl;
+                    goto comissao;
+                }
+                    std ::system("clear");
             }
 
             // edicao de salario base
-            if (op == 4)
-            {
-                std::cout << "Digite o novo salario base (por hora): ";
-                std::cin >> salarioBase;
-                Gerencia::listaGerentes[i].setSalarioBase(salarioBase);
+            
 
+            if (op == 4)
+            {   salario:
+                    std::cout << "Digite o novo salario base (por hora): ";
+                    std::cin >> salarioBase;
+                //TRATAMENTO DE EXCECAO
+                try{
+                    if(salarioBase<=0)
+                    throw 0;
+                    Gerencia::listaGerentes[i].setSalarioBase(salarioBase);
+                    std::cout << "Gerente editado com sucesso!\n";
+                }
+                catch(int x){
+                        std::cout << "Erro: Salario base nao pode ser menor ou igual a zero. " << std::endl;
+                        goto salario;
+                }
                 std ::system("clear");
             }
 
             // edicao de carga horaria semanal
             if (op == 5)
-            {
+            {   quantidade:
                 std::cout << "Digite a nova quantidade de horas semanais: ";
                 std::cin >> horasSemanais;
-                Gerencia::listaGerentes[i].setHorasSemanais(horasSemanais);
-
-                std ::system("clear");
+                //TRATAMENTO DE EXCECAO
+                try{
+                    if(horasSemanais<=0)
+                    throw 0;
+                    Gerencia::listaGerentes[i].setHorasSemanais(horasSemanais);
+                    std::cout << "Gerente editado com sucesso!\n";
+                }
+                catch(int y){
+                    std::cout << "Erro: Horas semanais nao podem ser menor ou igual a zero" << std::endl;
+                    goto quantidade;
+                }
             }
         }
     }
@@ -712,31 +780,60 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int
             // edicao de percentual de comissao
             if (op == 3)
             {
+                comissao:
                 std::cout << "Digite a nova porcentagem de comissao: ";
                 std::cin >> porcentagemComissao;
-                Gerencia::listaVendedores[i].setPorcentagemComissao(porcentagemComissao);
-
-                std ::system("clear");
+                //TRATAMENTO DE EXCECAO
+                try{
+                    if(porcentagemComissao<=0)
+                    throw 0;
+                    Gerencia::listaVendedores[i].setPorcentagemComissao(porcentagemComissao);
+                }
+                catch(int z){
+                    std::cout << "Erro: comissao nao pode ser menor ou igual a zero porcento. " << std::endl;
+                    goto comissao;
+                }
+                    std ::system("clear");
             }
 
             // edicao de salario base
             if (op == 4)
             {
-                std::cout << "Digite o novo salario base (por hora): ";
-                std::cin >> salarioBase;
-                Gerencia::listaVendedores[i].setSalarioBase(salarioBase);
-
-                std ::system("clear");
+                salario:
+                    std::cout << "Digite o novo salario base (por hora): ";
+                    std::cin >> salarioBase;
+                //TRATAMENTO DE EXCECAO
+                try{
+                    if(salarioBase<=0)
+                    throw 0;
+                    Gerencia::listaVendedores[i].setSalarioBase(salarioBase);
+                    std::cout << "Vendedor editado com sucesso!\n";
+                }
+                catch(int x){
+                        std::cout << "Erro: Salario base nao pode ser menor ou igual a zero. " << std::endl;
+                        goto salario;
+                }
+			
+			    std ::system("clear");
             }
 
             // edicao de carga horaria semanal
             if (op == 5)
             {
+                 quantidade:
                 std::cout << "Digite a nova quantidade de horas semanais: ";
                 std::cin >> horasSemanais;
-                Gerencia::listaVendedores[i].setHorasSemanais(horasSemanais);
-
-                std ::system("clear");
+                //TRATAMENTO DE EXCECAO
+                try{
+                    if(horasSemanais<=0)
+                    throw 0;
+                    Gerencia::listaVendedores[i].setHorasSemanais(horasSemanais);
+                    std::cout << "Vendedor editado com sucesso!\n";
+                }
+                catch(int y){
+                    std::cout << "Erro: Horas semanais nao podem ser menor ou igual a zero" << std::endl;
+                    goto quantidade;
+                }
             }
         }
     }
@@ -751,42 +848,45 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int
 
 // cadastro de novo produto
 
+// cadastro de novo produto
+
 void Gerencia::novoProduto(std::string nomeProduto, double preco, int quantidade)
 {
     // perguntando o nome, preco e quantidade do novo produto para cadastro
 
-    bool condicao = 0;
-    while (condicao == 0)
-    {
-        condicao = 1;
+    
         std::cout << " ----- ADICIONAR PRODUTO ----- \n\n";
         std::cout << "Digite o nome do produto: ";
         std::cin.ignore();
         getline(std::cin, nomeProduto);
         std ::cout << std ::endl;
+        ret1:
         std::cout << "Digite o preco do produto: ";
         std::cin >> preco;
         std ::cout << std ::endl;
+        try{
         if (preco <= 0)
         {
-            std::cout << "Erro! Nao ha como cadastrar produtos com preco menor ou igual a 0.00, tente novamente!" << std::endl;
-            condicao = false;
-            std::cout << std::endl;
-        }
-
-        if (condicao == 1)
-        {
+            throw 0;
+        }   ret2:
             std::cout << "Digite a quantidade do produto: ";
             std::cin >> quantidade;
-            std ::cout << std ::endl;
-            if (quantidade < 0)
-            {
+            try{
+                std ::cout << std ::endl;
+                if (quantidade < 0)
+                {
+                throw 0;
+                }
+            }
+            catch(int y){
                 std::cout << "Erro! Nao ha como cadastrar quantidade menor que zero, tente novamente!" << std::endl;
-                condicao = false;
-                std::cout << std::endl;
+                goto ret2;
             }
         }
-    }
+        catch(int x){
+            std::cout << "Erro! Nao ha como cadastrar produtos com preco menor ou igual a 0.00, tente novamente!" << std::endl;
+            goto ret1;
+        }
 
     // chamando funcao do estoque para adcionar novo produto ao estoque
 
