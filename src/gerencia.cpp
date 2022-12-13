@@ -38,7 +38,7 @@ novavenda:
     std::vector<int> produtosComprados;
     std::vector<int> quantidadeInicial;
 
-    std::system ("clear");
+    std::system("clear");
     std::cout << "----- CADASTRO DE VENDAS -----\n\n";
     std::cout << "Vamos cadastrar uma nova venda!\n\n";
     std::cout << "Insira os dados abaixo: \n\n";
@@ -57,7 +57,6 @@ novavenda:
 
     while (true)
     {
-        // LEMBRAR QUE PRECISA CRIAR AS VARIAVEIS EM STRING PARA SUBSTITUIR (APAGAR ESSE COMENTARIO DEPOIS DE FAZER PFV)
         std::cout << "\nDigite o ID do vendedor: ";
         std::cin >> idFunc;
         try
@@ -475,6 +474,8 @@ void Gerencia::novoGerente(std::string nome, long long int documento, double por
 
 void Gerencia::editarGerente(int idFuncionario, std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais)
 {
+    std::string idFunc;
+
     std::cout << " ----- EDITAR GERENTE ----- \n";
     // Listando gerentes
     for (int i = 0; i < Gerencia::listaGerentes.size(); i++)
@@ -485,30 +486,39 @@ void Gerencia::editarGerente(int idFuncionario, std::string nome, long long int 
     }
 
     // validando os ids
-    std::cout << "Digite o id do gerente que voce deseja editar: ";
-    std::cin >> idFuncionario;
 
-    bool isValid;
     while (true)
     {
-        for (int i = 0; i < Gerencia::listaGerentes.size(); i++)
+        std::cout << "Digite o id do gerente que voce deseja editar: ";
+        std::cin >> idFunc;
+        try
         {
-            if (idFuncionario == listaGerentes[i].getId())
+            int cont = 0;
+            idFuncionario = std::stoi(idFunc, NULL, 10);
+
+            for (int i = 0; i < Gerencia::listaGerentes.size(); i++)
             {
-                isValid = true;
-                break;
+                if (idFuncionario == listaGerentes[i].getId())
+                {
+                    cont++;
+                }
+            }
+            if (cont == 0)
+            {
+                throw std::invalid_argument("Erro! ID invalido. Tente novamente: \n");
+            }
+        }
+        catch (const std::invalid_argument &e)
+        {
+            if (std::string(e.what()) == "stoi")
+            {
+                std::cerr << "Erro! Digite apenas numeros \n";
             }
             else
-                isValid = false;
+                std::cerr << e.what();
+            continue;
         }
-
-        if (!isValid)
-        {
-            std::cout << "Erro! ID invalido. Tente novamente: \n";
-            std::cin >> idFuncionario;
-        }
-        else
-            break;
+        break;
     }
 
     std ::system("clear");
@@ -603,6 +613,7 @@ void Gerencia::editarGerente(int idFuncionario, std::string nome, long long int 
 
 void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais)
 {
+    std::string idFunc;
 
     std::cout << " ----- EDITAR VENDEDOR ----- \n";
     // Listando vendedores
@@ -614,30 +625,39 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int
     }
 
     // validando os ids
-    std::cout << "Digite o id do vendedor que voce deseja editar: ";
-    std::cin >> idFuncionario;
 
-    bool isValid;
     while (true)
     {
-        for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
+        std::cout << "Digite o id do vendedor que voce deseja editar: ";
+        std::cin >> idFunc;
+        try
         {
-            if (idFuncionario == listaVendedores[i].getId())
+            int cont = 0;
+            idFuncionario = std::stoi(idFunc, NULL, 10);
+
+            for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
             {
-                isValid = true;
-                break;
+                if (idFuncionario == listaVendedores[i].getId())
+                {
+                    cont++;
+                }
+            }
+            if (cont == 0)
+            {
+                throw std::invalid_argument("Erro! ID invalido. Tente novamente: \n");
+            }
+        }
+        catch (const std::invalid_argument &e)
+        {
+            if (std::string(e.what()) == "stoi")
+            {
+                std::cerr << "Erro! Digite apenas numeros \n";
             }
             else
-                isValid = false;
+                std::cerr << e.what();
+            continue;
         }
-
-        if (!isValid)
-        {
-            std::cout << "Erro! ID invalido. Tente novamente: \n";
-            std::cin >> idFuncionario;
-        }
-        else
-            break;
+        break;
     }
 
     std ::system("clear");
@@ -807,32 +827,40 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
     }
 
     // validando os ids
-    std::cout << "Digite o id do produto que voce deseja editar: ";
-    std::cin >> idProduto;
-    bool isValid;
+    std::string idProd;
     while (true)
     {
-        for (int i = 0; i < Estoque::listaProdutos.size(); i++)
+        std::cout << "Digite o id do produto que voce deseja editar: ";
+        std::cin >> idProd;
+        try
         {
-            if (idProduto == Estoque::listaProdutos[i].getId())
+            int cont = 0;
+            idProduto = std::stoi(idProd, NULL, 10);
+
+            for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
             {
-                isValid = true;
-                break;
+                if (idProduto == listaVendedores[i].getId())
+                {
+                    cont++;
+                }
+            }
+            if (cont == 0)
+            {
+                throw std::invalid_argument("Erro! ID invalido. Tente novamente: \n");
+            }
+        }
+        catch (const std::invalid_argument &e)
+        {
+            if (std::string(e.what()) == "stoi")
+            {
+                std::cerr << "Erro! Digite apenas numeros \n";
             }
             else
-                isValid = false;
+                std::cerr << e.what();
+            continue;
         }
-
-        if (!isValid)
-        {
-
-            std::cout << "Erro! ID invalido. Tente novamente: \n";
-            std::cin >> idProduto;
-        }
-        else
-            break;
+        break;
     }
-
     std ::system("clear");
 
     for (int i = 0; i < Estoque::listaProdutos.size(); i++)
@@ -923,6 +951,7 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
 
 void Gerencia::calculaPagamento(int idFuncionario, double horasSemanais, double horasExtras, double vendasTotais, double comissao, double salarioBase)
 {
+
     double salario;
     int op;
     std::cout << " ----- NOVO PAGAMENTO ----- \n";
@@ -956,30 +985,40 @@ void Gerencia::calculaPagamento(int idFuncionario, double horasSemanais, double 
             std::cout << "---------------------\n";
         }
         // validando os ids
-        std::cout << "Digite o id do gerente: ";
-        std::cin >> idFuncionario;
 
-        bool isValid;
+        std::string idFunc;
         while (true)
         {
-            for (int i = 0; i < Gerencia::listaGerentes.size(); i++)
+            std::cout << "Digite o id do gerente: ";
+            std::cin >> idFunc;
+            try
             {
-                if (idFuncionario == listaGerentes[i].getId())
+                int cont = 0;
+                idFuncionario = std::stoi(idFunc, NULL, 10);
+
+                for (int i = 0; i < Gerencia::listaGerentes.size(); i++)
                 {
-                    isValid = true;
-                    break;
+                    if (idFuncionario == listaGerentes[i].getId())
+                    {
+                        cont++;
+                    }
+                }
+                if (cont == 0)
+                {
+                    throw std::invalid_argument("Erro! ID invalido. Tente novamente: \n");
+                }
+            }
+            catch (const std::invalid_argument &e)
+            {
+                if (std::string(e.what()) == "stoi")
+                {
+                    std::cerr << "Erro! Digite apenas numeros \n";
                 }
                 else
-                    isValid = false;
+                    std::cerr << e.what();
+                continue;
             }
-
-            if (!isValid)
-            {
-                std::cout << "Erro! ID invalido. Tente novamente: \n";
-                std::cin >> idFuncionario;
-            }
-            else
-                break;
+            break;
         }
 
         std ::system("clear");
@@ -1010,31 +1049,40 @@ void Gerencia::calculaPagamento(int idFuncionario, double horasSemanais, double 
             std::cout << "NOME - " << Gerencia::listaVendedores[i].getNome() << std::endl;
             std::cout << "---------------------\n";
         }
-        std::cout << "Digite o id do vendedor: ";
-        std::cin >> idFuncionario;
 
-        // validando os ids
-        bool isValid;
+        std::string idFunc;
         while (true)
         {
-            for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
+            std::cout << "\nDigite o ID do vendedor: ";
+            std::cin >> idFunc;
+            try
             {
-                if (idFuncionario == listaVendedores[i].getId())
+                int cont = 0;
+                idFuncionario = std::stoi(idFunc, NULL, 10);
+
+                for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
                 {
-                    isValid = true;
-                    break;
+                    if (idFuncionario == listaVendedores[i].getId())
+                    {
+                        cont++;
+                    }
+                }
+                if (cont == 0)
+                {
+                    throw std::invalid_argument("Erro! ID invalido. Tente novamente: \n");
+                }
+            }
+            catch (const std::invalid_argument &e)
+            {
+                if (std::string(e.what()) == "stoi")
+                {
+                    std::cerr << "Erro! Digite apenas numeros \n";
                 }
                 else
-                    isValid = false;
+                    std::cerr << e.what();
+                continue;
             }
-
-            if (!isValid)
-            {
-                std::cout << "Erro! ID invalido. Tente novamente: \n";
-                std::cin >> idFuncionario;
-            }
-            else
-                break;
+            break;
         }
 
         std ::system("clear");
@@ -1119,31 +1167,40 @@ void Gerencia::imprimeGerentes(int idGerente)
         std::cout << "NOME - " << Gerencia::listaGerentes[i].getNome() << std::endl;
         std::cout << "---------------------\n";
     }
-    std::cout << "Digite o id do gerente que voce deseja ver: ";
-    std::cin >> idGerente;
+    std::string idFunc;
 
-    // validando os ids
-    bool isValid;
     while (true)
     {
-        for (int i = 0; i < Gerencia::listaGerentes.size(); i++)
+        std::cout << "Digite o id do gerente que voce deseja ver: ";
+        std::cin >> idFunc;
+        try
         {
-            if (idGerente == listaGerentes[i].getId())
+            int cont = 0;
+            idGerente = std::stoi(idFunc, NULL, 10);
+
+            for (int i = 0; i < Gerencia::listaGerentes.size(); i++)
             {
-                isValid = true;
-                break;
+                if (idGerente == listaGerentes[i].getId())
+                {
+                    cont++;
+                }
+            }
+            if (cont == 0)
+            {
+                throw std::invalid_argument("Erro! ID invalido. Tente novamente: \n");
+            }
+        }
+        catch (const std::invalid_argument &e)
+        {
+            if (std::string(e.what()) == "stoi")
+            {
+                std::cerr << "Erro! Digite apenas numeros \n";
             }
             else
-                isValid = false;
+                std::cerr << e.what();
+            continue;
         }
-
-        if (!isValid)
-        {
-            std::cout << "Erro! ID invalido. Tente novamente: \n";
-            std::cin >> idGerente;
-        }
-        else
-            break;
+        break;
     }
 
     std ::system("clear");
@@ -1170,29 +1227,41 @@ void Gerencia::imprimeVendedores(int idVendedor)
         std::cout << "NOME - " << Gerencia::listaVendedores[i].getNome() << std::endl;
         std::cout << "---------------------\n";
     }
-    std::cout << "Digite o id do vendedor que voce deseja ver: ";
-    std::cin >> idVendedor;
-    bool isValid;
+
+    std::string idFunc;
+
     while (true)
     {
-        for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
+        std::cout << "Digite o id do vendedor que voce deseja ver: ";
+        std::cin >> idFunc;
+        try
         {
-            if (idVendedor == Gerencia::listaVendedores[i].getId())
+            int cont = 0;
+            idVendedor = std::stoi(idFunc, NULL, 10);
+
+            for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
             {
-                isValid = true;
-                break;
+                if (idVendedor == listaVendedores[i].getId())
+                {
+                    cont++;
+                }
+            }
+            if (cont == 0)
+            {
+                throw std::invalid_argument("Erro! ID invalido. Tente novamente: \n");
+            }
+        }
+        catch (const std::invalid_argument &e)
+        {
+            if (std::string(e.what()) == "stoi")
+            {
+                std::cerr << "Erro! Digite apenas numeros \n";
             }
             else
-                isValid = false;
+                std::cerr << e.what();
+            continue;
         }
-
-        if (!isValid)
-        {
-            std::cout << "Erro! ID invalido. Tente novamente: \n";
-            std::cin >> idVendedor;
-        }
-        else
-            break;
+        break;
     }
 
     std ::system("clear");
@@ -1278,33 +1347,41 @@ void Gerencia::removerGerente(int idGerente)
         std::cout << "NOME - " << Gerencia::listaGerentes[i].getNome() << std::endl;
         std::cout << "---------------------\n";
     }
-    std::cout << "Digite o id do vendedor que deseja remover: ";
-    std::cin >> idGerente;
 
-    std ::system("clear");
+    std::string idFunc;
 
-    // validando os ids
-    bool isValid;
     while (true)
     {
-        for (int i = 0; i < Gerencia::listaGerentes.size(); i++)
+        std::cout << "Digite o id do gerente que deseja remover: ";
+        std::cin >> idFunc;
+        try
         {
-            if (idGerente == listaGerentes[i].getId())
+            int cont = 0;
+            idGerente = std::stoi(idFunc, NULL, 10);
+
+            for (int i = 0; i < Gerencia::listaGerentes.size(); i++)
             {
-                isValid = true;
-                break;
+                if (idGerente == listaGerentes[i].getId())
+                {
+                    cont++;
+                }
+            }
+            if (cont == 0)
+            {
+                throw std::invalid_argument("Erro! ID invalido. Tente novamente: \n");
+            }
+        }
+        catch (const std::invalid_argument &e)
+        {
+            if (std::string(e.what()) == "stoi")
+            {
+                std::cerr << "Erro! Digite apenas numeros \n";
             }
             else
-                isValid = false;
+                std::cerr << e.what();
+            continue;
         }
-
-        if (!isValid)
-        {
-            std::cout << "Erro! ID invalido. Tente novamente: \n";
-            std::cin >> idGerente;
-        }
-        else
-            break;
+        break;
     }
 
     for (int i = 0; i < Gerencia::listaGerentes.size(); i++)
@@ -1327,33 +1404,39 @@ void Gerencia::removerVendedor(int idVendedor)
         std::cout << "NOME - " << Gerencia::listaVendedores[i].getNome() << std::endl;
         std::cout << "---------------------\n";
     }
-    std::cout << "Digite o id do vendedor que deseja remover: ";
-    std::cin >> idVendedor;
-
-    std ::system("clear");
-
-    // validando os ids
-    bool isValid;
+    std::string idFunc;
     while (true)
     {
-        for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
+        std::cout << "Digite o id do vendedor que deseja remover: ";
+        std::cin >> idFunc;
+        try
         {
-            if (idVendedor == listaVendedores[i].getId())
+            int cont = 0;
+            idVendedor = std::stoi(idFunc, NULL, 10);
+
+            for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
             {
-                isValid = true;
-                break;
+                if (idVendedor == listaVendedores[i].getId())
+                {
+                    cont++;
+                }
+            }
+            if (cont == 0)
+            {
+                throw std::invalid_argument("Erro! ID invalido. Tente novamente: \n");
+            }
+        }
+        catch (const std::invalid_argument &e)
+        {
+            if (std::string(e.what()) == "stoi")
+            {
+                std::cerr << "Erro! Digite apenas numeros \n";
             }
             else
-                isValid = false;
+                std::cerr << e.what();
+            continue;
         }
-
-        if (!isValid)
-        {
-            std::cout << "Erro! ID invalido. Tente novamente: \n";
-            std::cin >> idVendedor;
-        }
-        else
-            break;
+        break;
     }
 
     for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
@@ -1379,31 +1462,41 @@ void Gerencia::removerProduto(int idProduto)
 
         std::cout << "---------------------\n";
     }
-    std::cout << "Digite o id do produto que deseja remover: ";
-    std::cin >> idProduto;
-
+    
     // validando os ids
-    bool isValid;
+    std::string idProd;
     while (true)
     {
-        for (int i = 0; i < Estoque::listaProdutos.size(); i++)
+        std::cout << "Digite o id do produto que deseja remover: ";
+        std::cin >> idProd;
+        try
         {
-            if (idProduto == Estoque::listaProdutos[i].getId())
+            int cont = 0;
+            idProduto = std::stoi(idProd, NULL, 10);
+
+            for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
             {
-                isValid = true;
-                break;
+                if (idProduto == listaVendedores[i].getId())
+                {
+                    cont++;
+                }
+            }
+            if (cont == 0)
+            {
+                throw std::invalid_argument("Erro! ID invalido. Tente novamente: \n");
+            }
+        }
+        catch (const std::invalid_argument &e)
+        {
+            if (std::string(e.what()) == "stoi")
+            {
+                std::cerr << "Erro! Digite apenas numeros \n";
             }
             else
-                isValid = false;
+                std::cerr << e.what();
+            continue;
         }
-
-        if (!isValid)
-        {
-            std::cout << "Erro! ID invalido. Tente novamente: \n";
-            std::cin >> idProduto;
-        }
-        else
-            break;
+        break;
     }
 
     for (int i = 0; i < Estoque::listaProdutos.size(); i++)
