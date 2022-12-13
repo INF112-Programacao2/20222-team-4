@@ -528,30 +528,29 @@ void Gerencia::editarGerente(int idFuncionario, std::string nome, long long int 
         if (Gerencia::listaGerentes[i].getId() == idFuncionario)
         {
             // Selecao do dado que deseja modificar
-            int op;
+            std :: string op;
             std::cout << "O que deseja editar? \n\n";
             std::cout << "1 - Nome\n";
             std::cout << "2 - Documento\n";
             std::cout << "3 - Porcentagem comissao\n";
             std::cout << "4 - Salario base (por hora)\n";
             std::cout << "5 - Horas semanais\n";
-            while (true)
-            {
-                std::cin >> op;
-                if (op < 1 || op > 5)
-                {
-                    std::cout << "Operacao invalida, insira o numero de uma operacao valida" << std::endl;
-                }
-                else
-                {
-                    break;
-                }
-            }
 
+            excecao27:
+            std:: cin >> op;
+            try {
+
+                    if ((isdigit(op[0]) && (op == "1" || op == "2" || op == "3" || op == "4" || op == "5"))==false)
+                        throw op;
+                } catch (std::string str) {
+                            
+                    std ::cout << "Entrada invalida. Digite um numero de 1 a 5.\n";
+                    goto excecao27;
+                }
             std ::system("clear");
 
             // edicao de nome
-            if (op == 1)
+            if (op == "1")
             {
                 std::cout << "Digite o novo nome: ";
                 std::cin.ignore();
@@ -562,7 +561,7 @@ void Gerencia::editarGerente(int idFuncionario, std::string nome, long long int 
             }
 
             // edicao de documento
-            if (op == 2)
+            else if (op == "2")
             {
                 std::cout << "Digite o novo documento: ";
                 std::cin >> documento;
@@ -572,7 +571,7 @@ void Gerencia::editarGerente(int idFuncionario, std::string nome, long long int 
             }
 
             // edicao de percentual de comissao
-            if (op == 3)
+            else if (op == "3")
             {
                 std::cout << "Digite a nova porcentagem de comissao: ";
                 std::cin >> porcentagemComissao;
@@ -582,7 +581,7 @@ void Gerencia::editarGerente(int idFuncionario, std::string nome, long long int 
             }
 
             // edicao de salario base
-            if (op == 4)
+            else if (op == "4")
             {
                 std::cout << "Digite o novo salario base (por hora): ";
                 std::cin >> salarioBase;
@@ -592,7 +591,7 @@ void Gerencia::editarGerente(int idFuncionario, std::string nome, long long int 
             }
 
             // edicao de carga horaria semanal
-            if (op == 5)
+            else if (op == "5")
             {
                 std::cout << "Digite a nova quantidade de horas semanais: ";
                 std::cin >> horasSemanais;
@@ -666,30 +665,30 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int
     {
         if (Gerencia::listaVendedores[i].getId() == idFuncionario)
         {
-            int op;
+            std::string op;
             std::cout << "O que deseja editar?: \n\n";
             std::cout << "1 - Nome\n";
             std::cout << "2 - Documento\n";
             std::cout << "3 - Porcentagem comissao\n";
             std::cout << "4 - Salario base (por hora)\n";
             std::cout << "5 - Horas semanais\n";
-            while (true)
-            {
-                std::cin >> op;
-                if (op < 1 || op > 5)
-                {
-                    std::cout << "Operacao invalida, insira o numero de uma operacao valida" << std::endl;
+            
+            excecao28:
+            std:: cin >> op;
+            try {
+
+                    if ((isdigit(op[0]) && (op == "1" || op == "2" || op == "3" || op == "4" || op == "5"))==false)
+                        throw op;
+                } catch (std::string str) {
+                            
+                    std ::cout << "Entrada invalida. Digite um numero de 1 a 5.\n";
+                    goto excecao28;
                 }
-                else
-                {
-                    break;
-                }
-            }
 
             std ::system("clear");
 
             // edicao de nome
-            if (op == 1)
+            if (op == "1")
             {
                 std::cout << "Digite o novo nome: ";
                 std::cin.ignore();
@@ -700,7 +699,7 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int
             }
 
             // edicao de documento
-            if (op == 2)
+            if (op == "2")
             {
                 std::cout << "Digite o novo documento: ";
                 std::cin >> documento;
@@ -710,7 +709,7 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int
             }
 
             // edicao de percentual de comissao
-            if (op == 3)
+            if (op == "3")
             {
                 std::cout << "Digite a nova porcentagem de comissao: ";
                 std::cin >> porcentagemComissao;
@@ -720,7 +719,7 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int
             }
 
             // edicao de salario base
-            if (op == 4)
+            if (op == "4")
             {
                 std::cout << "Digite o novo salario base (por hora): ";
                 std::cin >> salarioBase;
@@ -730,7 +729,7 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int
             }
 
             // edicao de carga horaria semanal
-            if (op == 5)
+            if (op == "5")
             {
                 std::cout << "Digite a nova quantidade de horas semanais: ";
                 std::cin >> horasSemanais;
@@ -867,7 +866,7 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
     {
         if (Estoque::listaProdutos[i].getId() == idProduto)
         {
-            int op;
+            std:: string op;
             std::cout << "O que deseja editar? \n\n";
             std::cout << "1 - Nome\n";
             std::cout << "2 - Preco\n";
@@ -878,23 +877,24 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
                 std ::cout << "(Produto esgotado)." << std ::endl;
             else
                 std ::cout << "(" << listaProdutos[i].getQuantidade() << " unidades restantes)." << std ::endl;
-            while (true)
-            {
-                std::cin >> op;
-                if (op < 1 || op > 3)
-                {
-                    std::cout << "Operacao invalida, insira o numero de uma operacao valida" << std::endl;
+
+            excecao29:
+            std:: cin >> op;
+            try {
+
+                    if ((isdigit(op[0]) && (op == "1" || op == "2" || op == "3"))==false)
+                        throw op;
+                } catch (std::string str) {
+                            
+                    std ::cout << "Entrada invalida. Digite um numero de 1 a 3.\n";
+                    goto excecao29;
                 }
-                else
-                {
-                    break;
-                }
-            }
+            
 
             std ::system("clear");
 
             // Edicao do nome
-            if (op == 1)
+            if (op == "1")
             {
                 std::cout << "Digite o novo nome: ";
                 std::cin.ignore();
@@ -905,7 +905,7 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
             }
 
             // Edicao do preco
-            if (op == 2)
+            if (op == "2")
             {
                 std::cout << "Preco atual: " << Estoque::listaProdutos[i].getPreco() << std::endl;
                 while (true)
@@ -927,7 +927,7 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
             }
 
             // Edicao da quantidade
-            if (op == 3)
+            if (op == "3")
             {
                 int adicionarQuantidade;
 
@@ -953,28 +953,28 @@ void Gerencia::calculaPagamento(int idFuncionario, double horasSemanais, double 
 {
 
     double salario;
-    int op;
+    std::string op;
     std::cout << " ----- NOVO PAGAMENTO ----- \n";
     std::cout << "\nVamos registrar um novo pagamento. Escolha abaixo o cargo do funcionario: \n";
     std::cout << "1 - Gerente\n";
     std::cout << "2 - Vendedor\n";
-    while (true)
-    {
-        std::cin >> op;
-        if (op < 1 || op > 2)
-        {
-            std::cout << "Operacao invalida, insira o numero de uma operacao valida" << std::endl;
-        }
-        else
-        {
-            break;
-        }
+
+    excecao30:
+    std::cin>>op;
+    try {
+
+        if ((isdigit(op[0]) && (op == "1" || op == "2"))==false)
+            throw op;
+    } catch (std::string str) {
+            
+        std ::cout << "Entrada invalida. Digite os numeros 1 ou 2\n";
+        goto excecao30;
     }
 
     std ::system("clear");
 
     // se for gerente
-    if (op == 1)
+    if (op == "1")
     {
         // imprime a lista de gerentes pro usuario escolher
 
@@ -1039,7 +1039,7 @@ void Gerencia::calculaPagamento(int idFuncionario, double horasSemanais, double 
     }
 
     // se for vendedor
-    else if (op == 2)
+    else if (op == "2")
     {
         // imprime a lista de vendedores pro usuario escolher
 
