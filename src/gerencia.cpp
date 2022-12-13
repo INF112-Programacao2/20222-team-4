@@ -147,11 +147,16 @@ addproduto:
         std::cout << "\nDigite a quantidade do produto: ";
         std::cin >> quantidade;
 
-        while (quantidade <= 0)
-        {
+        while (true)
+        {   if (quantidade>0)
+                break;
+            else if (quantidade==-1)
+                goto desconto;
+            else {
             std::cout << "\nQuantidade invalida. Digite apenas numeros maiores que 0.\n";
             std::cout << "\nDigite a quantidade do produto: ";
             std::cin >> quantidade;
+            }
         }
 
         for (int i = 0; i < Estoque::listaProdutos.size(); i++)
@@ -197,7 +202,7 @@ addproduto:
     }
 
     // tratar a excessao da entrada
-
+    desconto:
     std ::system("clear");
 
     std::cout << "===== DESCONTO =====\n";
