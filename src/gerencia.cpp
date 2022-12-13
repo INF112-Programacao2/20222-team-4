@@ -11,19 +11,24 @@ std::vector<Vendas> Gerencia::listaVendas = std::vector<Vendas>();
 Gerencia::Gerencia() : Estoque()
 {
     // banco de dados fake
-    this->cadastrarGerente(Gerente("Matheus", 16688877763, 10, 18.75, 40));
-    this->cadastrarGerente(Gerente("Vitoria", 15566678822, 10, 18.75, 40));
-    this->cadastrarGerente(Gerente("Rafael", 25533655822, 10, 18.75, 40));
+    this->cadastrarItem(Gerente("Matheus", 16688877763, 10, 18.75, 40));
+    this->cadastrarItem(Gerente("Vitoria", 15566678822, 10, 18.75, 40));
+    this->cadastrarItem(Gerente("Rafael", 25533655822, 10, 18.75, 40));
 
-    this->cadastrarVendedor(Vendedor("Bianca", 15199952233, 10, 9.375, 40));
-    this->cadastrarVendedor(Vendedor("Julia", 33355544488, 10, 9.375, 40));
-    this->cadastrarVendedor(Vendedor("Pedro", 6666666, 10, 9.375, 40));
+    this->cadastrarItem(Vendedor("Bianca", 15199952233, 10, 9.375, 40));
+    this->cadastrarItem(Vendedor("Julia", 33355544488, 10, 9.375, 40));
+    this->cadastrarItem(Vendedor("Pedro", 6666666, 10, 9.375, 40));
 }
 
 // VENDAS
 
 void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string documentoCliente, int idProduto, double desconto, double valorTotal)
 {
+novavenda:
+    // variaveis para o tratamento de excessoes
+    std::string idFunc, idProd, desc, quant;
+
+    int comprou = 0;
     Vendas venda;          // variavel que guarda as informacoes da venda
     Estoque estoque;       // variavel que guarda as informacoes do estoque
     char resposta;         // resposta do menu
@@ -32,6 +37,8 @@ void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string
     int quantidade;        // quantidade do produto que o cliente comprou
     std::vector<int> produtosComprados;
     std::vector<int> quantidadeInicial;
+
+    std::system ("clear");
     std::cout << "----- CADASTRO DE VENDAS -----\n\n";
     std::cout << "Vamos cadastrar uma nova venda!\n\n";
     std::cout << "Insira os dados abaixo: \n\n";
@@ -45,34 +52,45 @@ void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string
         std::cout << "NOME - " << Gerencia::listaVendedores[i].getNome() << std::endl;
         std::cout << "---------------------\n";
     }
-    // validando os ids
-    std::cout << "\nDigite o ID do vendedor: ";
-    std::cin >> idFuncionario;
 
     // validacao de ids
 
-    bool isValid;
     while (true)
     {
-        for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
+        // LEMBRAR QUE PRECISA CRIAR AS VARIAVEIS EM STRING PARA SUBSTITUIR (APAGAR ESSE COMENTARIO DEPOIS DE FAZER PFV)
+        std::cout << "\nDigite o ID do vendedor: ";
+        std::cin >> idFunc;
+        try
         {
-            if (idFuncionario == listaVendedores[i].getId())
+            int cont = 0;
+            idFuncionario = std::stoi(idFunc, NULL, 10);
+
+            for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
             {
-                isValid = true;
-                break;
+                if (idFuncionario == listaVendedores[i].getId())
+                {
+                    cont++;
+                }
+            }
+            if (cont == 0)
+            {
+                throw std::invalid_argument("Erro! ID invalido. Tente novamente: \n");
+            }
+        }
+        catch (const std::invalid_argument &e)
+        {
+            if (std::string(e.what()) == "stoi")
+            {
+                std::cerr << "Erro! Digite apenas numeros \n";
             }
             else
-                isValid = false;
+                std::cerr << e.what();
+            continue;
         }
-
-        if (!isValid)
-        {
-            std::cout << "Erro! ID invalido. Tente novamente: \n";
-            std::cin >> idFuncionario;
-        }
-        else
-            break;
+        break;
     }
+
+    // acaba aqui o tratamento
 
     venda.setFuncionario(idFuncionario); // registrando na venda o id dos funcionarios
 
@@ -85,15 +103,15 @@ void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string
     std::cout << "\nDigite o nome do cliente: ";
     std::cin.ignore();
     getline(std::cin, nomeCliente);
-    // tratar a excessao da entrada
     venda.setNomeCliente(nomeCliente);
-
     std::cout << "\nDigite o CPF do cliente (Apenas numeros): ";
     std::getline(std::cin, documentoCliente);
 
     std ::system("clear");
 
     venda.setDocumentoCliente(documentoCliente);
+
+    // produtos
 addproduto:
     std::cout << "----- PRODUTOS -----";
     std::cout << "\nInsira os produtos no carrinho:\n";
@@ -109,54 +127,84 @@ addproduto:
     std::cout << "\nPara fechar o carrinho digite -1\n";
     while (true)
     {
-        std::cout << "\nDigite o ID do produto: ";
-        std::cin >> idProduto;
-        if (idProduto == -1)
-            break;
-
-        // validacao de id
-        bool isValid;
         while (true)
         {
-            for (int i = 0; i < Estoque::listaProdutos.size(); i++)
+            std::cout << "\nDigite o ID do produto: ";
+            std::cin >> idProd;
+            try
             {
-                if (idProduto == Estoque::listaProdutos[i].getId())
+                int cont = 0;
+                idProduto = std::stoi(idProd, NULL, 10);
+
+                if (idProduto == -1)
                 {
-                    isValid = true;
-                    break;
+                    if (comprou == 0)
+                    {
+                        std::cout << "\nERRO! Carrinho vazio. Venda cancelada\n";
+                        sleep(1.5);
+                        goto novavenda;
+                    }
+                    else
+                        goto desconto;
+                }
+
+                for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
+                {
+                    if (idProduto == Estoque::listaProdutos[i].getId())
+                    {
+                        cont++;
+                    }
+                }
+                if (cont == 0)
+                {
+                    throw std::invalid_argument("Erro! ID invalido. Tente novamente: \n");
+                }
+            }
+            catch (const std::invalid_argument &e)
+            {
+                if (std::string(e.what()) == "stoi")
+                {
+                    std::cerr << "Erro! Digite apenas numeros \n";
                 }
                 else
-                {
-                    if (idProduto == -1)
-                        break;
-                    else
-                        isValid = false;
-                }
+                    std::cerr << e.what();
+                continue;
             }
-
-            if (!isValid)
-            {
-
-                std::cout << "Erro! ID invalido. Tente novamente: \n";
-                std::cin >> idProduto;
-            }
-            else
-                break;
+            break;
         }
 
-        std::cout << "\nDigite a quantidade do produto: ";
-        std::cin >> quantidade;
-
         while (true)
-        {   if (quantidade>0)
-                break;
-            else if (quantidade==-1)
-                goto desconto;
-            else {
-            std::cout << "\nQuantidade invalida. Digite apenas numeros maiores que 0.\n";
+        {
             std::cout << "\nDigite a quantidade do produto: ";
-            std::cin >> quantidade;
+            std::cin >> quant;
+            try
+            {
+                quantidade = std::stoi(quant, NULL, 10);
+                if (quantidade == -1)
+                {
+                    if (comprou == 0)
+                    {
+                        std::cout << "\nERRO! Carrinho vazio. Venda cancelada\n";
+                        sleep(1.5);
+                        goto novavenda;
+                    }
+                    else
+                        goto desconto;
+                }
+                else if (quantidade <= 0)
+                    throw std::invalid_argument("\nQuantidade invalida. Digite apenas numeros maiores que 0.\n");
             }
+            catch (const std::invalid_argument &e)
+            {
+                if (std::string(e.what()) == "stoi")
+                {
+                    std::cerr << "Erro! Digite apenas numeros \n";
+                }
+                else
+                    std::cerr << e.what();
+                continue;
+            }
+            break;
         }
 
         for (int i = 0; i < Estoque::listaProdutos.size(); i++)
@@ -186,6 +234,7 @@ addproduto:
                                 int inicial = Estoque::listaProdutos[j].getQuantidade();
                                 quantidadeInicial.push_back(inicial);
                                 produtosComprados.push_back(idProduto);
+                                comprou++;
                             }
                         }
                         // tira 1 da quantidade do produto no estoque
@@ -201,20 +250,36 @@ addproduto:
         }
     }
 
+desconto:
     // tratar a excessao da entrada
-    desconto:
     std ::system("clear");
 
     std::cout << "===== DESCONTO =====\n";
-    std::cout << "% Desconto (digite 0 para nenhum desconto): ";
-    std::cin >> desconto;
 
-    if (desconto < 0 || desconto > 100)
+    while (true)
     {
-        std::cout << "Erro! Desconto invalido, digite um valor entre 0 e 100. Tente novamente: \n";
-        std::cin >> desconto;
+        std::cout << "% Desconto (digite 0 para nenhum desconto): ";
+        std::cin >> desc;
+        try
+        {
+            desconto = stod(desc, NULL);
+            if (desconto < 0 || desconto > 100)
+            {
+                throw std::invalid_argument("Erro! Desconto invalido, digite um valor entre 0 e 100. Tente novamente: \n");
+            }
+        }
+        catch (const std::invalid_argument &e)
+        {
+            if (std::string(e.what()) == "stod")
+            {
+                std::cerr << "Erro! Digite apenas numeros \n";
+            }
+            else
+                std::cerr << e.what();
+            continue;
+        }
+        break;
     }
-    // tratar a excessao da entrada (proibido numeros negativos)
 
     for (int i = 0; i < Vendas::carrinhoCompras.size(); i++)
     {
@@ -241,7 +306,7 @@ pagamento:
     if (resposta == 's' || resposta == 'S')
     {
 
-        this->cadastrarVenda(venda);
+        this->cadastrarItem(venda);
 
         for (int i = 0; i < listaVendedores.size(); i++)
         {
@@ -263,10 +328,14 @@ pagamento:
     }
     else if (resposta == 'n' || resposta == 'N')
     {
+        if (comprou)
+        {
+            venda.deleteCarrinho();
+        }
         std::system("clear");
 
-        //retornando a quantidade de itens para o estoque
-        
+        // retornando a quantidade de itens para o estoque
+
         for (int i = 0; i < Estoque::listaProdutos.size(); i++)
         {
             if (produtosComprados[i] == Estoque::listaProdutos[i].getId())
@@ -362,7 +431,7 @@ void Gerencia::novoVendedor(std::string nome, long long int documento, double po
     std::cout << "\nDigite a quantidade de horas semanais: ";
     std::cin >> horasSemanais;
 
-    this->cadastrarVendedor(Vendedor(nome, documento, porcentagemComissao, salarioBase, horasSemanais));
+    this->cadastrarItem(Vendedor(nome, documento, porcentagemComissao, salarioBase, horasSemanais));
 
     std ::system("clear");
 
@@ -391,7 +460,7 @@ void Gerencia::novoGerente(std::string nome, long long int documento, double por
     std::cout << "\nDigite a quantidade de horas semanais: ";
     std::cin >> horasSemanais;
 
-    this->cadastrarGerente(Gerente(nome, documento, porcentagemComissao, salarioBase, horasSemanais));
+    this->cadastrarItem(Gerente(nome, documento, porcentagemComissao, salarioBase, horasSemanais));
 
     std ::system("clear");
 
@@ -1165,17 +1234,17 @@ const std::vector<Vendas> &Gerencia::lerListaVendas()
 
 // FUNÇÕES QUE CRIAM UM NOVO OBJETO - nao mexer
 
-void Gerencia::cadastrarVendedor(const Vendedor &vendedor)
+void Gerencia::cadastrarItem(const Vendedor &vendedor)
 {
     Gerencia::listaVendedores.push_back(vendedor);
 }
 
-void Gerencia::cadastrarGerente(const Gerente &gerente)
+void Gerencia::cadastrarItem(const Gerente &gerente)
 {
     Gerencia::listaGerentes.push_back(gerente);
 }
 
-void Gerencia::cadastrarVenda(const Vendas &venda)
+void Gerencia::cadastrarItem(const Vendas &venda)
 {
     Gerencia::listaVendas.push_back(venda);
 }

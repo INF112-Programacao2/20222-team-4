@@ -24,9 +24,9 @@ public:
     Gerencia();
 
     // Prototipos das funcoes de cadastro de vendedor, gerente, venda, carrinho e pagamento que serao adcionados em suas respectivas listas
-    void cadastrarVendedor(const Vendedor &vendedor);
-    void cadastrarGerente(const Gerente &gerente);
-    void cadastrarVenda(const Vendas &venda);
+    void cadastrarItem(const Vendedor &vendedor);
+    void cadastrarItem(const Gerente &gerente);
+    void cadastrarItem(const Vendas &venda);
     void novoPagamento(const Pagamento &pagamento);
     void apagaProduto(int i);
     void apagaVendedor(int i);
