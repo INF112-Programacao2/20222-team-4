@@ -1082,22 +1082,22 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
             // Edicao do preco
             else if (op == "2")
             {
-                std::cout << "Preco atual: " << Estoque::listaProdutos[i].getPreco() << std::endl;
-                while (true)
-                {
-                    std::cout << "\nDigite o novo preco: ";
-                    std::cin >> preco;
+            preco:
+            std::cout << "Preco atual: " << Estoque::listaProdutos[i].getPreco() << std::endl;
+                
+                std::cout << "\nDigite o novo preco: ";
+                std::cin >> preco;
+                try{
+                    if(preco<=0){
+                        throw 0;
+                    }
                     Estoque::listaProdutos[i].setPreco(preco);
-                    if (preco <= 0)
-                    {
+                    std::cout << "Estoque editado com sucesso!\n";
+                    }
+                    catch(int x){
                         std::cout << "Erro! O preco nao pode ser menor ou igual a 0.00, tente novamente com outro valor" << std::endl;
+                        goto preco;
                     }
-                    else
-                    {
-                        break;
-                    }
-                }
-
                 std ::system("clear");
             }
 
@@ -1105,20 +1105,30 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
             else if (op == "3")
             {
                 int adicionarQuantidade;
-
+                quant:
                 std::cout << "Quantidade atual: " << Estoque::listaProdutos[i].getQuantidade() << std::endl;
 
                 std::cout << "\nDigite a quantidade que deseja adicionar: ";
                 std::cin >> adicionarQuantidade;
-
+                try{
+                    if(adicionarQuantidade<0){
+                        throw 0;
+                    }
                 quantidade = adicionarQuantidade + Estoque::listaProdutos[i].getQuantidade();
-
                 Estoque::listaProdutos[i].setQuantidade(quantidade);
+                std::cout << "Estoque editado com sucesso!\n";
+                }
+                catch(int z){
+                    std::cout<< "Erro! A quantidade nao pode ser menor que 0. \n" << std::endl;
+                    goto quant;
+                }
 
                 std ::system("clear");
             }
         }
+    
     }
+
     std::cout << "Estoque editado com sucesso!\n";
 }
 
@@ -1275,9 +1285,19 @@ void Gerencia::calculaPagamento(int idFuncionario, double horasSemanais, double 
             }
         }
     }
+    // calcula horas extra
 
+    hExtra:
     std::cout << "\n\nHoras extras do funcionario: ";
     std::cin >> horasExtras;
+    try{
+        if(horasExtras<0)
+        throw 0;
+    }
+    catch(int w){
+        std::cout << "Erro: horas extras devem ser um numero maior que 0." << std::endl;
+        goto hExtra;
+    }
 
     std ::system("clear");
 
