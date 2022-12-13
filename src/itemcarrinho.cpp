@@ -8,6 +8,16 @@ ItemCarrinho::ItemCarrinho(Produto produto, int quantidade)
     this->quantidade = quantidade;
 }
 
+void ItemCarrinho::setProduto(Produto produto)
+{
+    this->produto = produto;
+}
+
+void ItemCarrinho::setQuantidade(int quantidade)
+{
+    this->quantidade = quantidade;
+}
+
 // pega o nome do item para adicionar ao carrinho e retorna o nome
 std::string ItemCarrinho::getNome()
 {

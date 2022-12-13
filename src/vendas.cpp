@@ -46,6 +46,8 @@ void Vendas::novoCarrinho(ItemCarrinho &itemCarrinho)
     this->carrinhoCompras.push_back(itemCarrinho);
 }
 // imprime produtos so carrinho
+
+
 void Vendas::imprimeCarrinho()
 {
 

@@ -16,7 +16,10 @@ public:
 
     // construtor
     ItemCarrinho(Produto produto,int quantidade);
-
+    
+    void setProduto(Produto produto);
+    void setQuantidade(int quantidade);
+    
     std::string getNome();  // retornando nome do produto,
     int getQuantidade();    // retornando quantidade do produto
     double getPreco();      // retornando preco 

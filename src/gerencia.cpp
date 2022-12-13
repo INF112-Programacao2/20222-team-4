@@ -30,7 +30,8 @@ void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string
     double total = 0;      // variavel que acumula o preco dos produtos
     int quantidadeEstoque; // variavel que guarda a quantidade do produto X no estoque
     int quantidade;        // quantidade do produto que o cliente comprou
-
+    std::vector<int> produtosComprados;
+    std::vector<int> quantidadeInicial;
     std::cout << "----- CADASTRO DE VENDAS -----\n\n";
     std::cout << "Vamos cadastrar uma nova venda!\n\n";
     std::cout << "Insira os dados abaixo: \n\n";
@@ -164,7 +165,7 @@ addproduto:
 
                     if (Estoque::listaProdutos[i].getQuantidade() < quantidade)
                     {
-                        std::cout << "\nErro! No momento ha somente " << Estoque::listaProdutos[i].getQuantidade() << " itens no estoque. Tente novamente!";
+                        std::cout << "\nErro! No momento ha somente " << Estoque::listaProdutos[i].getQuantidade() << " itens no estoque. Tente novamente!\n\n";
                         goto addproduto;
                     }
                     // adiciona o produto ao vector novo carrinho
@@ -177,11 +178,13 @@ addproduto:
                                 Produto produto = listaProdutos[j];
                                 ItemCarrinho item(produto, quantidade);
                                 venda.novoCarrinho(item);
+                                int inicial = Estoque::listaProdutos[j].getQuantidade();
+                                quantidadeInicial.push_back(inicial);
+                                produtosComprados.push_back(idProduto);
                             }
                         }
-
                         // tira 1 da quantidade do produto no estoque
-                        quantidadeEstoque = Estoque::listaProdutos[i].getQuantidade() - 1;
+                        quantidadeEstoque = Estoque::listaProdutos[i].getQuantidade() - quantidade;
                         Estoque::listaProdutos[i].setQuantidade(quantidadeEstoque);
                     }
                 }
@@ -256,6 +259,17 @@ pagamento:
     else if (resposta == 'n' || resposta == 'N')
     {
         std::system("clear");
+
+        //retornando a quantidade de itens para o estoque
+        
+        for (int i = 0; i < Estoque::listaProdutos.size(); i++)
+        {
+            if (produtosComprados[i] == Estoque::listaProdutos[i].getId())
+            {
+                int quantidade = quantidadeInicial[i];
+                Estoque::listaProdutos[i].setQuantidade(quantidade);
+            }
+        }
 
         std::cout << "Venda cancelada!\n";
         sleep(1.5);
@@ -1063,7 +1077,8 @@ void Gerencia::imprimeGerentes(int idGerente)
     for (int i = 0; i < Gerencia::listaGerentes.size(); i++)
     { // compara o id do funcionario com os ids da lista
         if (Gerencia::listaGerentes[i].getId() == idGerente)
-        {   std :: cout << "------- INFORMACOES DO GERENTE -------" << std :: endl;
+        {
+            std ::cout << "------- INFORMACOES DO GERENTE -------" << std ::endl;
             std::cout << "\nID: " << Gerencia::listaGerentes[i].getId() << std::endl;
             std::cout << "\nNome: " << Gerencia::listaGerentes[i].getNome() << std::endl;
             std::cout << "\nDocumento: " << Gerencia::listaGerentes[i].getDocumento() << std::endl;
@@ -1111,7 +1126,8 @@ void Gerencia::imprimeVendedores(int idVendedor)
     for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
     { // compara o id do funcionario com os ids da lista
         if (Gerencia::listaVendedores[i].getId() == idVendedor)
-        {   std :: cout << "------- INFORMACOES DO VENDEDOR -------" << std :: endl;
+        {
+            std ::cout << "------- INFORMACOES DO VENDEDOR -------" << std ::endl;
             std::cout << "\nID: " << Gerencia::listaVendedores[i].getId() << std::endl;
             std::cout << "\nNome: " << Gerencia::listaVendedores[i].getNome() << std::endl;
             std::cout << "\nDocumento: " << Gerencia::listaVendedores[i].getDocumento() << std::endl;
@@ -1191,7 +1207,7 @@ void Gerencia::removerGerente(int idGerente)
     std::cout << "Digite o id do vendedor que deseja remover: ";
     std::cin >> idGerente;
 
-    std :: system("clear");
+    std ::system("clear");
 
     // validando os ids
     bool isValid;
@@ -1223,7 +1239,7 @@ void Gerencia::removerGerente(int idGerente)
         {
             Gerencia::apagaGerente(i);
             std::cout << "Gerente removido com sucesso! \n";
-            sleep (1.5);
+            sleep(1.5);
         }
     }
 }
@@ -1240,7 +1256,7 @@ void Gerencia::removerVendedor(int idVendedor)
     std::cout << "Digite o id do vendedor que deseja remover: ";
     std::cin >> idVendedor;
 
-    std :: system("clear");
+    std ::system("clear");
 
     // validando os ids
     bool isValid;
@@ -1271,9 +1287,9 @@ void Gerencia::removerVendedor(int idVendedor)
         if (idVendedor == Gerencia::listaVendedores[i].getId())
         {
             Gerencia::apagaVendedor(i);
-            std :: system("clear");
+            std ::system("clear");
             std::cout << "Vendedor removido com sucesso! \n";
-            sleep (1.5);
+            sleep(1.5);
         }
     }
 }
