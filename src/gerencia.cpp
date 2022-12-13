@@ -100,11 +100,36 @@ novavenda:
     std::cout << "----- CLIENTE -----\n";
 
     std::cout << "\nDigite o nome do cliente: ";
+
+    excecao31:
     std::cin.ignore();
     getline(std::cin, nomeCliente);
+    try {
+        for (int i=0; i<nomeCliente.size();i++)
+            if ((isalpha(nomeCliente[i]))==false) {
+                throw nomeCliente;
+                break;
+            }
+    } catch (std::string str) {
+                
+        std ::cout << "Entrada invalida. O nome deve ser composto apenas por letras.\n";
+        goto excecao31;
+    }
     venda.setNomeCliente(nomeCliente);
     std::cout << "\nDigite o CPF do cliente (Apenas numeros): ";
-    std::getline(std::cin, documentoCliente);
+    excecao36:
+    getline(std::cin, documentoCliente);
+    try {
+        for (int i=0; i<documentoCliente.size();i++)
+            if ((isdigit(documentoCliente[i]))==false) {
+                throw documentoCliente;
+                break;
+            }
+    } catch (std::string str) {
+                
+        std ::cout << "Entrada invalida. O documento deve ser composto apenas por numeros.\n";
+        goto excecao36;
+    }
 
     std ::system("clear");
 
@@ -417,8 +442,21 @@ void Gerencia::novoVendedor(std::string nome, long long int documento, double po
     std::cout << "----- VENDEDOR -----\n";
 
     std::cout << "\nDigite o nome do vendedor: ";
+
+    excecao32:
     std::cin.ignore();
     getline(std::cin, nome);
+    try {
+        for (int i=0; i<nome.size();i++)
+            if ((isalpha(nome[i]))==false) {
+                throw nome;
+                break;
+            }
+    } catch (std::string str) {
+                
+        std ::cout << "Entrada invalida. O nome deve ser composto apenas por letras.\n";
+        goto excecao32;
+    }
     // tratar a EXCECAO da entrada
 
     std::cout << "\nDigite o CPF do vendedor (Apenas numeros): ";
@@ -467,8 +505,21 @@ void Gerencia::novoGerente(std::string nome, long long int documento, double por
     std::cout << "----- GERENTE -----\n";
 
     std::cout << "\nDigite o nome do gerente: ";
+
+    excecao33:
     std::cin.ignore();
     getline(std::cin, nome);
+    try {
+        for (int i=0; i<nome.size();i++)
+            if ((isalpha(nome[i]))==false) {
+                throw nome;
+                break;
+            }
+    } catch (std::string str) {
+                
+        std ::cout << "Entrada invalida. O nome deve ser composto apenas por letras.\n";
+        goto excecao33;
+    }
     // tratar a EXCECAO da entrada
 
     std::cout << "\nDigite o CPF do gerente (Apenas numeros): ";
@@ -594,8 +645,20 @@ void Gerencia::editarGerente(int idFuncionario, std::string nome, long long int 
             if (op == "1")
             {
                 std::cout << "Digite o novo nome: ";
+                excecao34:
                 std::cin.ignore();
                 getline(std::cin, nome);
+                try {
+                    for (int i=0; i<nome.size();i++)
+                        if ((isalpha(nome[i]))==false) {
+                            throw nome;
+                            break;
+                        }
+                } catch (std::string str) {
+                            
+                    std ::cout << "Entrada invalida. O nome deve ser composto apenas por letras.\n";
+                    goto excecao34;
+                }
                 Gerencia::listaGerentes[i].setNome(nome);
 
                 std ::system("clear");
@@ -759,8 +822,20 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int
             if (op == "1")
             {
                 std::cout << "Digite o novo nome: ";
+                excecao35:
                 std::cin.ignore();
                 getline(std::cin, nome);
+                try {
+                    for (int i=0; i<nome.size();i++)
+                        if ((isalpha(nome[i]))==false) {
+                            throw nome;
+                            break;
+                        }
+                } catch (std::string str) {
+                
+                    std ::cout << "Entrada invalida. O nome deve ser composto apenas por letras.\n";
+                    goto excecao35;
+                }
                 Gerencia::listaVendedores[i].setNome(nome);
 
                 std ::system("clear");
