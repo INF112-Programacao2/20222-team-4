@@ -25,7 +25,7 @@ Gerencia::Gerencia() : Estoque()
 void Gerencia::novaVenda(int idFuncionario, std::string nomeCliente, std::string documentoCliente, int idProduto, double desconto, double valorTotal)
 {
 novavenda:
-    // variaveis para o tratamento de excessoes
+    // variaveis para o tratamento de excecoes
     std::string idFunc, idProd, desc, quant;
 
     int comprou = 0;
@@ -936,9 +936,9 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
             int cont = 0;
             idProduto = std::stoi(idProd, NULL, 10);
 
-            for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
+            for (int i = 0; i < Gerencia::listaProdutos.size(); i++)
             {
-                if (idProduto == listaVendedores[i].getId())
+                if (idProduto == listaProdutos[i].getId())
                 {
                     cont++;
                 }
