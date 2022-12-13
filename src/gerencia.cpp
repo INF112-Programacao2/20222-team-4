@@ -767,7 +767,7 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int
             }
 
             // edicao de documento
-            if (op == "2")
+            else if (op == "2")
             {
                 std::cout << "Digite o novo documento: ";
                 std::cin >> documento;
@@ -777,7 +777,7 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int
             }
 
             // edicao de percentual de comissao
-            if (op == "3")
+            else if (op == "3")
             {
                 comissao:
                 std::cout << "Digite a nova porcentagem de comissao: ";
@@ -796,7 +796,7 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int
             }
 
             // edicao de salario base
-            if (op == "4")
+            else if (op == "4")
             {
                 salario:
                     std::cout << "Digite o novo salario base (por hora): ";
@@ -817,7 +817,7 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int
             }
 
             // edicao de carga horaria semanal
-            if (op == "5")
+            else if (op == "5")
             {
                  quantidade:
                 std::cout << "Digite a nova quantidade de horas semanais: ";
@@ -1005,7 +1005,7 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
             }
 
             // Edicao do preco
-            if (op == "2")
+            else if (op == "2")
             {
                 std::cout << "Preco atual: " << Estoque::listaProdutos[i].getPreco() << std::endl;
                 while (true)
@@ -1027,7 +1027,7 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
             }
 
             // Edicao da quantidade
-            if (op == "3")
+            else if (op == "3")
             {
                 int adicionarQuantidade;
 
