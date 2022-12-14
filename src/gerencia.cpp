@@ -1300,7 +1300,7 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
                 int adicionarQuantidade;
                 std::cout << "Quantidade atual: " << Estoque::listaProdutos[i].getQuantidade() << std::endl;
                 while (true)
-                {
+                { //tratamento de excecao
                     try
                     {
                         std::cout << "\nDigite a quantidade que deseja adicionar: ";
@@ -1339,6 +1339,7 @@ void Gerencia::calculaPagamento(int idFuncionario, double horasSemanais, double 
     std::cout << "2 - Vendedor\n";
 
     while (true) {
+        //tratamento de excecao
         try {
             std::cin>>op;
             if ((isdigit(op[0]) && (op == "1" || op == "2"))==false)
@@ -1368,7 +1369,7 @@ void Gerencia::calculaPagamento(int idFuncionario, double horasSemanais, double 
 
         std::string idFunc;
         while (true)
-        {
+        {   //tratamento de excecao
             std::cout << "Digite o id do gerente: ";
             std::cin >> idFunc;
             try
@@ -1432,7 +1433,7 @@ void Gerencia::calculaPagamento(int idFuncionario, double horasSemanais, double 
 
         std::string idFunc;
         while (true)
-        {
+        {   //tratamento de excecao
             std::cout << "\nDigite o ID do vendedor: ";
             std::cin >> idFunc;
             try
@@ -1482,7 +1483,7 @@ void Gerencia::calculaPagamento(int idFuncionario, double horasSemanais, double 
     }
     // calcula horas extra
     while (true)
-    {
+    {   //tratamento de excecao
         try
         {
             std::cout << "\n\nHoras extras do funcionario (Apenas numeros): ";
@@ -1563,7 +1564,7 @@ void Gerencia::imprimeGerentes(int idGerente)
     std::string idFunc;
 
     while (true)
-    {
+    {   //tratamento de excecao
         std::cout << "Digite o id do gerente que voce deseja ver: ";
         std::cin >> idFunc;
         try
@@ -1624,7 +1625,7 @@ void Gerencia::imprimeVendedores(int idVendedor)
     std::string idFunc;
 
     while (true)
-    {
+    {   //tratamento de excecao
         std::cout << "Digite o id do vendedor que voce deseja ver: ";
         std::cin >> idFunc;
         try
@@ -1694,7 +1695,7 @@ const std::vector<Vendas> &Gerencia::lerListaVendas()
     return Gerencia::listaVendas;
 }
 
-// FUNÇÕES QUE CRIAM UM NOVO OBJETO - nao mexer
+// FUNÇÕES QUE CRIAM UM NOVO OBJETO
 
 void Gerencia::cadastrarItem(const Vendedor &vendedor)
 {
@@ -1744,7 +1745,7 @@ void Gerencia::removerGerente(int idGerente)
     std::string idFunc;
 
     while (true)
-    {
+    {   //tratamento de excecao
         std::cout << "Digite o id do gerente que deseja remover: ";
         std::cin >> idFunc;
         try
@@ -1778,7 +1779,7 @@ void Gerencia::removerGerente(int idGerente)
     }
 
     for (int i = 0; i < Gerencia::listaGerentes.size(); i++)
-    {
+    {   //remover gerentes
         if (idGerente == Gerencia::listaGerentes[i].getId())
         {
             Gerencia::apagaGerente(i);
@@ -1799,7 +1800,7 @@ void Gerencia::removerVendedor(int idVendedor)
     }
     std::string idFunc;
     while (true)
-    {
+    {   //tratamento de excecao
         std::cout << "Digite o id do vendedor que deseja remover: ";
         std::cin >> idFunc;
         try
@@ -1835,7 +1836,7 @@ void Gerencia::removerVendedor(int idVendedor)
     for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
     {
         if (idVendedor == Gerencia::listaVendedores[i].getId())
-        {
+        {   //remover vendedor
             Gerencia::apagaVendedor(i);
             std ::system("clear");
             std::cout << "Vendedor removido com sucesso! \n";
@@ -1859,7 +1860,7 @@ void Gerencia::removerProduto(int idProduto)
     // validando os ids
     std::string idProd;
     while (true)
-    {
+    {   //tratamento de excecao
         std::cout << "Digite o id do produto que deseja remover: ";
         std::cin >> idProd;
         try
@@ -1891,7 +1892,7 @@ void Gerencia::removerProduto(int idProduto)
         }
         break;
     }
-
+    //remover produto
     for (int i = 0; i < Estoque::listaProdutos.size(); i++)
     {
         if (idProduto == Estoque::listaProdutos[i].getId())
