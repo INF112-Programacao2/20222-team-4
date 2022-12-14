@@ -1024,37 +1024,43 @@ void Gerencia::novoProduto(std::string nomeProduto, double preco, int quantidade
         std::cin.ignore();
         getline(std::cin, nomeProduto);
         std ::cout << std ::endl;
-        ret1:
-        std::cout << "Digite o preco do produto: ";
-        std::cin >> preco;
-        std ::cout << std ::endl;
-        try{
-        if (preco <= 0)
+        while(true)
         {
-            throw 0;
-        }   ret2:
-            std::cout << "Digite a quantidade do produto: ";
-            std::cin >> quantidade;
+        try{
+            std::cout << "Digite o preco do produto: ";
+            std::cin >> preco;
+            std::cout << std::endl;
+            if (preco <= 0)
+            {
+            throw std::invalid_argument("Erro! Nao ha como cadastrar produtos com preco menor ou igual a 0.00, tente novamente!");
+            } 
+            break;
+        } 
+        catch(const std::invalid_argument &e){
+                std::cerr << e.what() << std::endl;
+            }
+        }
+
+        while(true){
             try{
+                std::cout << "Digite a quantidade do produto: ";
+                std::cin >> quantidade;
                 std ::cout << std ::endl;
                 if (quantidade < 0)
                 {
-                throw 0;
+                throw std::invalid_argument("Erro! Nao ha como cadastrar quantidade menor que zero, tente novamente!");
                 }
+                break;
             }
-            catch(int y){
-                std::cout << "Erro! Nao ha como cadastrar quantidade menor que zero, tente novamente!" << std::endl;
-                goto ret2;
+            catch(const std::invalid_argument &e){
+                std::cerr << e.what() << std::endl;
             }
-        }
-        catch(int x){
-            std::cout << "Erro! Nao ha como cadastrar produtos com preco menor ou igual a 0.00, tente novamente!" << std::endl;
-            goto ret1;
         }
 
     // chamando funcao do estoque para adcionar novo produto ao estoque
 
     Estoque::adicionarProduto(Produto(nomeProduto, preco, quantidade));
+    std::cout << "Produto cadastrado com sucesso!" << std::endl;
 }
 
 // imprime produtos do estoque com a quantidade
@@ -1172,45 +1178,46 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
             // Edicao do preco
             else if (op == "2")
             {
-            preco:
             std::cout << "Preco atual: " << Estoque::listaProdutos[i].getPreco() << std::endl;
-                
-                std::cout << "\nDigite o novo preco: ";
-                std::cin >> preco;
+            while (true){
                 try{
+                    std::cout << "\nDigite o novo preco: ";
+                    std::cin >> preco;
                     if(preco<=0){
-                        throw 0;
+                        throw std::invalid_argument("Erro! O preco do produto nao pode ser menor ou igual a zero");
                     }
                     Estoque::listaProdutos[i].setPreco(preco);
                     std::cout << "Estoque editado com sucesso!\n";
+                    break;
                     }
-                    catch(int x){
-                        std::cout << "Erro! O preco nao pode ser menor ou igual a 0.00, tente novamente com outro valor" << std::endl;
-                        goto preco;
+                    catch(const std::invalid_argument &e){
+                        std::cerr << e.what() << std::endl;
                     }
+            }
                 std ::system("clear");
+            
             }
 
             // Edicao da quantidade
             else if (op == "3")
             {
                 int adicionarQuantidade;
-                quant:
                 std::cout << "Quantidade atual: " << Estoque::listaProdutos[i].getQuantidade() << std::endl;
-
-                std::cout << "\nDigite a quantidade que deseja adicionar: ";
-                std::cin >> adicionarQuantidade;
+                while(true){
                 try{
-                    if(adicionarQuantidade<0){
-                        throw 0;
-                    }
-                quantidade = adicionarQuantidade + Estoque::listaProdutos[i].getQuantidade();
-                Estoque::listaProdutos[i].setQuantidade(quantidade);
-                std::cout << "Estoque editado com sucesso!\n";
+                    std::cout << "\nDigite a quantidade que deseja adicionar: ";
+                    std::cin >> adicionarQuantidade;
+                        if(adicionarQuantidade<0){
+                            throw std::invalid_argument("Erro! A quantidade nao pode ser menor que 0. \n");
+                        }
+                        quantidade = adicionarQuantidade + Estoque::listaProdutos[i].getQuantidade();
+                        Estoque::listaProdutos[i].setQuantidade(quantidade);
+                        std::cout << "Estoque editado com sucesso!\n";
+                        break;
                 }
-                catch(int z){
-                    std::cout<< "Erro! A quantidade nao pode ser menor que 0. \n" << std::endl;
-                    goto quant;
+                catch(const std::invalid_argument &e){
+                    std::cerr << e.what() << std::endl;
+                }
                 }
 
                 std ::system("clear");
@@ -1219,7 +1226,6 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
     
     }
 
-    std::cout << "Estoque editado com sucesso!\n";
 }
 
 // PAGAMENTO
@@ -1376,21 +1382,21 @@ void Gerencia::calculaPagamento(int idFuncionario, double horasSemanais, double 
         }
     }
     // calcula horas extra
-
-    hExtra:
-    std::cout << "\n\nHoras extras do funcionario: ";
-    std::cin >> horasExtras;
+    while(true){
     try{
+        std::cout << "\n\nHoras extras do funcionario: ";
+        std::cin >> horasExtras;
         if(horasExtras<0)
-        throw 0;
+        throw std::invalid_argument("Erro: horas extras devem ser um numero maior ou igual a 0.");
+        break;
     }
-    catch(int w){
-        std::cout << "Erro: horas extras devem ser um numero maior que 0." << std::endl;
-        goto hExtra;
+
+    catch(const std::invalid_argument &e){
+        std::cerr << e.what() << std::endl;
+    }
     }
 
     std ::system("clear");
-
     // calculo do salario mensal
 
     salario = (salarioBase) * ((horasSemanais * 4) + horasExtras) + (vendasTotais * (comissao / 100.0));
