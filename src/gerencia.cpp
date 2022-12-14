@@ -54,7 +54,7 @@ novavenda:
     }
 
     // validacao de ids
-
+    //tratamento de excecoes
     while (true)
     {
         try
@@ -177,10 +177,10 @@ addproduto:
                     {
                         std::cout << "\nERRO! Carrinho vazio. Venda cancelada\n";
                         sleep(1.5);
-                        goto novavenda;
+                        goto novavenda; //ir para novavenda
                     }
                     else
-                        goto desconto;
+                        goto desconto;  //ir para desconto
                 }
 
                 for (int i = 0; i < Gerencia::listaVendedores.size(); i++)
@@ -935,7 +935,7 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, std::string d
             std::cout << "5 - Horas semanais\n";
 
             while (true)
-            {
+            {//tratamento de excecao
                 try
                 {
                     std::cin >> op;
@@ -954,7 +954,7 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, std::string d
 
             // edicao de nome
             if (op == "1")
-            {
+            {//tratamento de excecao
                 while (true)
                 {
                     try
@@ -984,7 +984,7 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, std::string d
             else if (op == "2")
             {
                 while (true)
-                {
+                {//tratamento de excecao
                     try
                     {
                         std::cout << "\nDigite o novo documento: ";
@@ -1013,7 +1013,7 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, std::string d
             else if (op == "3")
             {
                 while (true)
-                {
+                {//tratamento de excecao
                     try
                     {
                         std::cout << "\nDigite a nova porcentagem de comissao: ";
@@ -1036,9 +1036,9 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, std::string d
             }
 
             // edicao de salario base
-
+            
             else if (op == "4")
-            {
+            {   //tratamento de excecao
                 while (true)
                 {
                     try
@@ -1112,7 +1112,7 @@ void Gerencia::novoProduto(std::string nomeProduto, double preco, int quantidade
     getline(std::cin, nomeProduto);
     std ::cout << std ::endl;
     while (true)
-    {
+    {   //tratamento de excecao
         try
         {
             std::cout << "Digite o preco do produto (Apenas numeros): ";
@@ -1131,7 +1131,7 @@ void Gerencia::novoProduto(std::string nomeProduto, double preco, int quantidade
     }
 
     while (true)
-    {
+    {   //tratamento de excecao
         try
         {
             std::cout << "Digite a quantidade do produto (Apenas numeros): ";
@@ -1191,7 +1191,7 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
     // validando os ids
     std::string idProd;
     while (true)
-    {
+    {   //tratamento de excecao
         std::cout << "Digite o id do produto que voce deseja editar: ";
         std::cin >> idProd;
         try
@@ -1243,6 +1243,7 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
 
         excecao29:
             std::cin >> op;
+            //tratamento de excecao
             try
             {
 
@@ -1274,7 +1275,7 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
             {
                 std::cout << "Preco atual: " << Estoque::listaProdutos[i].getPreco() << std::endl;
                 while (true)
-                {
+                {   //tratamento de excecao
                     try
                     {
                         std::cout << "\nDigite o novo preco (Apenas numeros): ";
@@ -1297,7 +1298,7 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
 
             // Edicao da quantidade
             else if (op == "3")
-            {
+            {   //tratamento de excecao
                 int adicionarQuantidade;
                 std::cout << "Quantidade atual: " << Estoque::listaProdutos[i].getQuantidade() << std::endl;
                 while (true)

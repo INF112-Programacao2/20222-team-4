@@ -42,7 +42,8 @@ inicio:
     std::cout << "6 - Encerrar programa\n";
     std::cout << "\nInforme o numero: ";
 
-    // tratamento de excecoes
+    
+    //Tratamento de excecao das opcoes do MENU
     while (true)
     {
         try
@@ -97,14 +98,14 @@ inicio:
         }
 
         std ::system("clear");
-        // opcao de executar novamente mesma acao ou retornar ao menu
+        // opcao de executar novamente a mesma acao ou retornar ao menu
         if (selecao2 == "1")
         {
-            goto novaVenda;
+            goto novaVenda; //voltar ao menu nova venda
         }
         else if (selecao2 == "2")
         {
-            goto inicio;
+            goto inicio;    //voltar menu inicial
         }
     }
     else if (selecao == "2")
@@ -200,11 +201,11 @@ inicio:
                 // opcao de executar novamente mesma acao ou retornar ao menu
                 if (selecao2 == "1")
                 {
-                    goto cadastro;
+                    goto cadastro;  //retornar ao menu cadastro de funcionarios
                 }
                 else if (selecao2 == "2")
                 {
-                    goto menuFuncionarios;
+                    goto menuFuncionarios;  //voltar ao menu funcionarios
                 }
             }
             else if (resp2 == "2")
@@ -240,11 +241,11 @@ inicio:
 
                 if (selecao2 == "1")
                 {
-                    goto cadastro;
+                    goto cadastro;  //voltar para o menu cadastro de funcionarios
                 }
                 else if (selecao2 == "2")
                 {
-                    goto menuFuncionarios;
+                    goto menuFuncionarios;  //voltar ao menu funcionarios
                 }
             }
         }
@@ -312,11 +313,11 @@ inicio:
 
                 if (op == "1")
                 {
-                    goto editarFuncionario;
+                    goto editarFuncionario; //retornar ao menu editar funcionarios
                 }
                 else if (op == "2")
                 {
-                    goto menuFuncionarios;
+                    goto menuFuncionarios;  //voltar ao menu funcionarios
                 }
             }
             else if (resp2 == "2")
@@ -354,11 +355,11 @@ inicio:
 
                 if (op == "1")
                 {
-                    goto editarFuncionario;
+                    goto editarFuncionario; //voltar ao menu editar funcionarios
                 }
                 else if (op == "2")
                 {
-                    goto menuFuncionarios;
+                    goto menuFuncionarios;  //retornar ao menu funcionarios
                 }
             }
         }
@@ -425,11 +426,11 @@ inicio:
 
                 if (op == "1")
                 {
-                    goto menuremover;
+                    goto menuremover;   //retornar ao menu remover funcionarios
                 }
                 else if (op == "2")
                 {
-                    goto menuFuncionarios;
+                    goto menuFuncionarios; //voltar ao menu funcionarios
                 }
             }
             else if (resp2 == "2")
@@ -465,11 +466,11 @@ inicio:
 
                 if (op == "1")
                 {
-                    goto menuremover;
+                    goto menuremover;   //voltar ao menu remover funcionarios
                 }
                 else if (op == "2")
                 {
-                    goto menuFuncionarios;
+                    goto menuFuncionarios;  //voltar ao menu funcionarios
                 }
             }
         }
@@ -530,11 +531,11 @@ inicio:
 
                 if (op == "1")
                 {
-                    goto menuvisualizar;
+                    goto menuvisualizar;    //retornar ao menu visualizar funcionarios
                 }
                 else if (op == "2")
                 {
-                    goto menuFuncionarios;
+                    goto menuFuncionarios;  //voltar ao menu funcionarios
                 }
             }
             else if (resp2 == "2")
@@ -567,11 +568,11 @@ inicio:
 
                 if (op == "1")
                 {
-                    goto menuvisualizar;
+                    goto menuvisualizar;    //retornar ao menu de vizualizar funcionarios
                 }
                 else if (op == "2")
                 {
-                    goto menuFuncionarios;
+                    goto menuFuncionarios;  //retornar ao menu de funcionarios
                 }
             }
         }
@@ -614,7 +615,7 @@ inicio:
         { // chamando funcao para imprimir vendas
             gerencia.imprimeVendas();
             std ::cout << "\nDigite 1 para voltar ao menu anterior.\n\n";
-
+            //tratamento de excecao
             while (true)
             {
                 try
@@ -635,7 +636,7 @@ inicio:
             // opcao de executar novamente mesma acao ou retornar ao menu
             if (op == "1")
             {
-                goto gestaoVendas;
+                goto gestaoVendas; //voltar ao menu de gestao de vendas
             }
         }
 
@@ -667,7 +668,7 @@ inicio:
 
             if (op == "1")
             {
-                goto gestaoVendas;
+                goto gestaoVendas; //voltar a gestao de vendas
             }
         }
         else if (resp3 == "3")
@@ -745,12 +746,12 @@ inicio:
 
             if (comando3 == "1")
             {
-                goto pagar;
+                goto pagar; //voltar ao menu de pagamento de funcionarios
             }
 
             if (comando3 == "2")
             {
-                goto menuPagamento;
+                goto menuPagamento;  //voltar ao menu de financas
             }
         }
         else if (resp4 == "2")
@@ -781,7 +782,7 @@ inicio:
             // opcao de executar novamente mesma acao ou retornar ao menu
             if (op == "1")
             {
-                goto menuPagamento;
+                goto menuPagamento;  //voltar menu de pagamento
             }
         }
 
@@ -849,7 +850,7 @@ inicio:
             // opcao de executar novamente mesma acao ou retornar ao menu
             if (op == "1")
             {
-                goto menuEstoque;
+                goto menuEstoque; //voltar ao menu do estoque
             }
         }
         else if (resp5 == "2")
@@ -890,11 +891,11 @@ inicio:
 
             if (comando == "1")
             {
-                goto addProduto;
+                goto addProduto; //voltar ao menu de adicionar produto
             }
             else if (comando == "2")
             {
-                goto menuEstoque;
+                goto menuEstoque; //retornar ao estoque
             }
         }
         else if (resp5 == "3")
@@ -931,11 +932,11 @@ inicio:
 
             if (comando == "1")
             {
-                goto menuremoverprod;
+                goto menuremoverprod; //voltar ao menu de remocao do produto
             }
             else if (comando == "2")
             {
-                goto menuEstoque;
+                goto menuEstoque; //voltar ao menu do estoque
             }
         }
 
@@ -978,11 +979,11 @@ inicio:
 
             if (comando == "1")
             {
-                goto editProd;
+                goto editProd; // voltar ao menu de edicao de produto
             }
             else if (comando == "2")
             {
-                goto menuEstoque;
+                goto menuEstoque; //voltar ao menu de estoque
             }
         }
 
