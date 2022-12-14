@@ -1241,20 +1241,18 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
             else
                 std ::cout << "(" << listaProdutos[i].getQuantidade() << " unidades restantes)." << std ::endl;
 
-        excecao29:
-            std::cin >> op;
             //tratamento de excecao
-            try
-            {
-
-                if ((isdigit(op[0]) && (op == "1" || op == "2" || op == "3")) == false)
-                    throw op;
-            }
-            catch (std::string str)
-            {
-
-                std ::cout << "Entrada invalida. Digite um numero de 1 a 3.\n";
-                goto excecao29;
+            while (true) {
+                try {
+                    std::cin>>op;
+                    if ((isdigit(op[0]) && (op == "1" || op == "2" || op == "3"))==false)
+                            throw std::invalid_argument("Entrada invalida. Escolha um numero de 1 a 3.");               
+                    break;
+                        
+                } catch (const std::invalid_argument &e) {
+                            
+                    std ::cerr << e.what() << std::endl;
+                }
             }
 
             std ::system("clear");
@@ -1340,19 +1338,17 @@ void Gerencia::calculaPagamento(int idFuncionario, double horasSemanais, double 
     std::cout << "1 - Gerente\n";
     std::cout << "2 - Vendedor\n";
 
-excecao30:
-    std::cin >> op;
-    try
-    {
-
-        if ((isdigit(op[0]) && (op == "1" || op == "2")) == false)
-            throw op;
-    }
-    catch (std::string str)
-    {
-
-        std ::cout << "Entrada invalida. Digite os numeros 1 ou 2\n";
-        goto excecao30;
+    while (true) {
+        try {
+            std::cin>>op;
+            if ((isdigit(op[0]) && (op == "1" || op == "2"))==false)
+                    throw std::invalid_argument("Entrada invalida. Escolha os numeros 1 ou 2.");               
+            break;
+                
+        } catch (const std::invalid_argument &e) {
+                    
+            std ::cerr << e.what() << std::endl;
+        }
     }
 
     std ::system("clear");
