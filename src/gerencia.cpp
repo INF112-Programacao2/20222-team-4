@@ -760,7 +760,7 @@ void Gerencia::editarGerente(int idFuncionario, std::string nome, std::string do
                 {
                     try
                     {
-                        std::cout << "\nDigite o novo documento (Apenas numeros): ";
+                        std::cout << "\nDigite o novo documento: ";
                         getline(std::cin, documento);
                         for (int i = 0; i < documento.size(); i++)
                             if ((isdigit(documento[i])) == false)
@@ -987,7 +987,7 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, std::string d
                 {
                     try
                     {
-                        std::cout << "\nDigite o novo documento (Apenas numeros): ";
+                        std::cout << "\nDigite o novo documento: ";
                         getline(std::cin, documento);
                         for (int i = 0; i < documento.size(); i++)
                             if ((isdigit(documento[i])) == false)
