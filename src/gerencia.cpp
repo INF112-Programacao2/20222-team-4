@@ -124,7 +124,7 @@ novavenda:
     {
         try
         {
-            std::cout << "\nDigite o CPF do cliente (Apenas numeros): ";
+            std::cout << "\nDigite o CPF do cliente: ";
             getline(std::cin, documentoCliente);
             for (int i = 0; i < documentoCliente.size(); i++)
                 if ((isdigit(documentoCliente[i])) == false)
@@ -478,7 +478,7 @@ void Gerencia::novoVendedor(std::string nome, std::string documento, double porc
     {
         try
         {
-            std::cout << "\nDigite o CPF do vendedor (Apenas numeros): ";
+            std::cout << "\nDigite o CPF do vendedor: ";
             getline(std::cin, documento);
             for (int i = 0; i < documento.size(); i++)
                 if ((isdigit(documento[i])) == false)
@@ -500,7 +500,7 @@ void Gerencia::novoVendedor(std::string nome, std::string documento, double porc
     {
         try
         {
-            std::cout << "\nDigite o valor do salario por hora: ";
+            std::cout << "\nDigite o valor do salario por hora (Apenas numeros): ";
             std::cin >> salarioBase;
             if (salarioBase <= 0)
             {
@@ -519,7 +519,7 @@ void Gerencia::novoVendedor(std::string nome, std::string documento, double porc
     {
         try
         {
-            std::cout << "\nDigite a quantidade de horas semanais: ";
+            std::cout << "\nDigite a quantidade de horas semanais (Apenas numeros): ";
             std::cin >> horasSemanais;
             if (horasSemanais <= 0)
             {
@@ -575,7 +575,7 @@ void Gerencia::novoGerente(std::string nome, std::string documento, double porce
     {
         try
         {
-            std::cout << "\nDigite o CPF do vendedor (Apenas numeros): ";
+            std::cout << "\nDigite o CPF do vendedor: ";
             getline(std::cin, documento);
             for (int i = 0; i < documento.size(); i++)
                 if ((isdigit(documento[i])) == false)
@@ -597,7 +597,7 @@ void Gerencia::novoGerente(std::string nome, std::string documento, double porce
     {
         try
         {
-            std::cout << "\nDigite o valor do salario por hora: ";
+            std::cout << "\nDigite o valor do salario por hora (Apenas numeros): ";
             std::cin >> salarioBase;
             if (salarioBase <= 0)
             {
@@ -616,7 +616,7 @@ void Gerencia::novoGerente(std::string nome, std::string documento, double porce
     {
         try
         {
-            std::cout << "\nDigite a quantidade de horas semanais: ";
+            std::cout << "\nDigite a quantidade de horas semanais (Apenas numeros): ";
             std::cin >> horasSemanais;
             if (horasSemanais <= 0)
             {
@@ -816,7 +816,7 @@ void Gerencia::editarGerente(int idFuncionario, std::string nome, std::string do
                 {
                     try
                     {
-                        std::cout << "\nDigite o novo salario por hora: ";
+                        std::cout << "\nDigite o novo salario por hora (Apenas numeros): ";
                         std::cin >> salarioBase;
                         if (salarioBase <= 0)
                         {
@@ -842,7 +842,7 @@ void Gerencia::editarGerente(int idFuncionario, std::string nome, std::string do
                 {
                     try
                     {
-                        std::cout << "\nDigite a nova quantidade de horas semanais: ";
+                        std::cout << "\nDigite a nova quantidade de horas semanais (Apenas numeros): ";
                         std::cin >> horasSemanais;
                         if (horasSemanais <= 0)
                         {
@@ -1069,7 +1069,7 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, std::string d
                 {
                     try
                     {
-                        std::cout << "\nDigite a nova quantidade de horas semanais: ";
+                        std::cout << "\nDigite a nova quantidade de horas semanais (Apenas numeros): ";
                         std::cin >> horasSemanais;
                         if (horasSemanais <= 0)
                         {
@@ -1488,7 +1488,7 @@ excecao30:
     {
         try
         {
-            std::cout << "\n\nHoras extras do funcionario: ";
+            std::cout << "\n\nHoras extras do funcionario (Apenas numeros): ";
             std::cin >> horasExtras;
             if (horasExtras < 0)
                 throw std::invalid_argument("Erro: horas extras devem ser um numero maior ou igual a 0.");
