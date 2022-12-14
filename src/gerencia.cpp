@@ -210,7 +210,7 @@ addproduto:
 
         while (true)
         {
-            std::cout << "\nDigite a quantidade do produto: ";
+            std::cout << "\nDigite a quantidade do produto (Apenas numeros): ";
             std::cin >> quant;
             try
             {
@@ -1115,7 +1115,7 @@ void Gerencia::novoProduto(std::string nomeProduto, double preco, int quantidade
     {
         try
         {
-            std::cout << "Digite o preco do produto: ";
+            std::cout << "Digite o preco do produto (Apenas numeros): ";
             std::cin >> preco;
             std::cout << std::endl;
             if (preco <= 0)
@@ -1134,7 +1134,7 @@ void Gerencia::novoProduto(std::string nomeProduto, double preco, int quantidade
     {
         try
         {
-            std::cout << "Digite a quantidade do produto: ";
+            std::cout << "Digite a quantidade do produto (Apenas numeros): ";
             std::cin >> quantidade;
             std ::cout << std ::endl;
             if (quantidade < 0)
@@ -1277,7 +1277,7 @@ void Gerencia::editarEstoque(int idProduto, std::string nomeProduto, double prec
                 {
                     try
                     {
-                        std::cout << "\nDigite o novo preco: ";
+                        std::cout << "\nDigite o novo preco (Apenas numeros): ";
                         std::cin >> preco;
                         if (preco <= 0)
                         {
