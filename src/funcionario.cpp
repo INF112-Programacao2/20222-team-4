@@ -4,7 +4,7 @@
 int Funcionario::generateId = 1;
 double Funcionario::totalVendas = 0;
     //construtor
-Funcionario::Funcionario(std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais)
+Funcionario::Funcionario(std::string nome, std::string documento, double porcentagemComissao, double salarioBase, double horasSemanais)
 {
     this->nome = nome;
     this->documento = documento;
@@ -23,7 +23,7 @@ void Funcionario::setNome(std::string nome)
 }
 
     // definindo documento do funcionario
-void Funcionario::setDocumento(long long int documento)
+void Funcionario::setDocumento(std::string documento)
 {
     this->documento = documento;
 }
@@ -58,7 +58,7 @@ std::string Funcionario::getNome()
     return this->nome;
 }
     // retornando documento
-long long int Funcionario::getDocumento()
+std::string Funcionario::getDocumento()
 {
     return this->documento;
 }

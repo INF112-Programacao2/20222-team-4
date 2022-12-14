@@ -11,13 +11,13 @@ std::vector<Vendas> Gerencia::listaVendas = std::vector<Vendas>();
 Gerencia::Gerencia() : Estoque()
 {
     // banco de dados fake
-    this->cadastrarItem(Gerente("Matheus", 16688877763, 10, 18.75, 40));
-    this->cadastrarItem(Gerente("Vitoria", 15566678822, 10, 18.75, 40));
-    this->cadastrarItem(Gerente("Rafael", 25533655822, 10, 18.75, 40));
+    this->cadastrarItem(Gerente("Matheus", "16688877763", 10, 18.75, 40));
+    this->cadastrarItem(Gerente("Vitoria", "15566678822", 10, 18.75, 40));
+    this->cadastrarItem(Gerente("Rafael", "25533655822", 10, 18.75, 40));
 
-    this->cadastrarItem(Vendedor("Bianca", 15199952233, 10, 9.375, 40));
-    this->cadastrarItem(Vendedor("Julia", 33355544488, 10, 9.375, 40));
-    this->cadastrarItem(Vendedor("Pedro", 6666666, 10, 9.375, 40));
+    this->cadastrarItem(Vendedor("Bianca", "15199952233", 10, 9.375, 40));
+    this->cadastrarItem(Vendedor("Julia", "33355544488", 10, 9.375, 40));
+    this->cadastrarItem(Vendedor("Pedro", "6666666", 10, 9.375, 40));
 }
 
 // VENDAS
@@ -57,10 +57,10 @@ novavenda:
 
     while (true)
     {
-        std::cout << "\nDigite o ID do vendedor: ";
-        std::cin >> idFunc;
         try
         {
+            std::cout << "\nDigite o ID do vendedor: ";
+            std::cin >> idFunc;
             int cont = 0;
             idFuncionario = std::stoi(idFunc, NULL, 10);
 
@@ -99,36 +99,38 @@ novavenda:
 
     std::cout << "----- CLIENTE -----\n";
 
-    std::cout << "\nDigite o nome do cliente: ";
-
-    excecao31:
-    std::cin.ignore();
-    getline(std::cin, nomeCliente);
-    try {
-        for (int i=0; i<nomeCliente.size();i++)
-            if ((isalpha(nomeCliente[i]))==false) {
-                throw nomeCliente;
-                break;
-            }
-    } catch (std::string str) {
-                
-        std ::cout << "Entrada invalida. O nome deve ser composto apenas por letras.\n";
-        goto excecao31;
+    while (true) {
+        try {
+            std::cout << "\nDigite o nome do cliente: ";
+            std::cin.ignore();
+            getline(std::cin, nomeCliente);
+            for (int i=0; i<nomeCliente.size();i++)
+                if ((isalpha(nomeCliente[i]))==false) {
+                    throw std::invalid_argument("Entrada invalida. O nome deve ser composto apenas por letras.");
+                }
+        break;
+        } catch (const std::invalid_argument &e) {
+                    
+            std ::cerr << e.what() << std::endl;
+        }
     }
     venda.setNomeCliente(nomeCliente);
-    std::cout << "\nDigite o CPF do cliente (Apenas numeros): ";
-    excecao36:
-    getline(std::cin, documentoCliente);
-    try {
-        for (int i=0; i<documentoCliente.size();i++)
-            if ((isdigit(documentoCliente[i]))==false) {
-                throw documentoCliente;
-                break;
-            }
-    } catch (std::string str) {
+    while (true) {
+        try {
+            std::cout << "\nDigite o CPF do cliente (Apenas numeros): ";
+            getline(std::cin, documentoCliente);
+            for (int i=0; i<documentoCliente.size();i++)
+                if ((isdigit(documentoCliente[i]))==false) {
+                    throw std::invalid_argument("Entrada invalida. O documento deve ser composto apenas por numeros.");
+                }
+            if (documentoCliente.size()!=11)
+                throw std::invalid_argument("Entrada invalida. O documento deve ser composto por 11 digitos.");
+            break;
                 
-        std ::cout << "Entrada invalida. O documento deve ser composto apenas por numeros.\n";
-        goto excecao36;
+        } catch (const std::invalid_argument &e) {
+                    
+            std ::cerr << e.what() << std::endl;
+        }
     }
 
     std ::system("clear");
@@ -437,57 +439,75 @@ void Gerencia::relatorioFaturamento()
 }
 
 // Funcao para adicao de novo vendedor
-void Gerencia::novoVendedor(std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais)
+void Gerencia::novoVendedor(std::string nome, std::string documento, double porcentagemComissao, double salarioBase, double horasSemanais)
 {
     std::cout << "----- VENDEDOR -----\n";
 
-    std::cout << "\nDigite o nome do vendedor: ";
 
-    excecao32:
-    std::cin.ignore();
-    getline(std::cin, nome);
-    try {
-        for (int i=0; i<nome.size();i++)
-            if ((isalpha(nome[i]))==false) {
-                throw nome;
-                break;
-            }
-    } catch (std::string str) {
-                
-        std ::cout << "Entrada invalida. O nome deve ser composto apenas por letras.\n";
-        goto excecao32;
+    while (true) {
+        try {
+            std::cout << "\nDigite o nome do vendedor: ";
+            std::cin.ignore();
+            getline(std::cin, nome);
+            for (int i=0; i<nome.size();i++)
+                if ((isalpha(nome[i]))==false) {
+                    throw std::invalid_argument("Entrada invalida. O nome deve ser composto apenas por letras.");
+                }
+        break;
+        } catch (const std::invalid_argument &e) {
+                    
+            std ::cerr << e.what() << std::endl;
+        }
     }
     // tratar a EXCECAO da entrada
 
-    std::cout << "\nDigite o CPF do vendedor (Apenas numeros): ";
-    std::cin >> documento;
-
-   salary:
-        std::cout << "\nDigite o valor do salario por hora: ";
-        std::cin >> salarioBase;
-        //TRATAMENTO DE EXCECAO
-        try{
-            if(salarioBase<=0)
-                throw 0;
-            }
-        catch(int x){
-                    std::cout << "Erro: Salario base nao pode ser menor ou igual a zero. " << std::endl;
-                    goto salary;
+    while (true) {
+        try {
+            std::cout << "\nDigite o CPF do vendedor (Apenas numeros): ";
+            getline(std::cin, documento);
+            for (int i=0; i<documento.size();i++)
+                if ((isdigit(documento[i]))==false) {
+                    throw std::invalid_argument("Entrada invalida. O documento deve ser composto apenas por numeros.");
                 }
+            if (documento.size()!=11)
+                throw std::invalid_argument("Entrada invalida. O documento deve ser composto por 11 digitos.");
+            break;
+                
+        } catch (const std::invalid_argument &e) {
+                    
+            std ::cerr << e.what() << std::endl;
+        }
+    }
 
+    while (true) {
+        try {
+            std::cout << "\nDigite o valor do salario por hora: ";
+            std::cin>> salarioBase;
+            if (salarioBase<=0) {
+                    throw std::invalid_argument("Entrada invalida. O salario deve ser maior que 0.");
+                }
+            break;
+                
+        } catch (const std::invalid_argument &e) {
+                    
+            std ::cerr << e.what() << std::endl;
+        }
+    }
     
-        quant:
+    while (true) {
+        try {
             std::cout << "\nDigite a quantidade de horas semanais: ";
-            std::cin >> horasSemanais;
-            //TRATAMENTO DE EXCECAO
-            try{
-                if(horasSemanais<=0)
-                    throw 0;
-            }
-            catch(int x){
-                    std::cout << "Erro: Horas semanais nao podem ser menor ou igual a zero. " << std::endl;
-                    goto quant;
+            std::cin>> horasSemanais;
+            if (horasSemanais<=0) {
+                    throw std::invalid_argument("Entrada invalida. As horas semanais devem ser maiores que 0.");
                 }
+            break;
+                
+        } catch (const std::invalid_argument &e) {
+                    
+            std ::cerr << e.what() << std::endl;
+        }
+    }
 
     this->cadastrarItem(Vendedor(nome, documento, porcentagemComissao, salarioBase, horasSemanais));
 
@@ -500,56 +520,74 @@ void Gerencia::novoVendedor(std::string nome, long long int documento, double po
     std ::system("clear");
 }
 // funcao para adicao de novo gerente
-void Gerencia::novoGerente(std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais)
+void Gerencia::novoGerente(std::string nome, std::string documento, double porcentagemComissao, double salarioBase, double horasSemanais)
 {
     std::cout << "----- GERENTE -----\n";
 
-    std::cout << "\nDigite o nome do gerente: ";
-
-    excecao33:
-    std::cin.ignore();
-    getline(std::cin, nome);
-    try {
-        for (int i=0; i<nome.size();i++)
-            if ((isalpha(nome[i]))==false) {
-                throw nome;
-                break;
-            }
-    } catch (std::string str) {
-                
-        std ::cout << "Entrada invalida. O nome deve ser composto apenas por letras.\n";
-        goto excecao33;
+        while (true) {
+        try {
+            std::cout << "\nDigite o nome do gerente: ";
+            std::cin.ignore();
+            getline(std::cin, nome);
+            for (int i=0; i<nome.size();i++)
+                if ((isalpha(nome[i]))==false) {
+                    throw std::invalid_argument("Entrada invalida. O nome deve ser composto apenas por letras.");
+                }
+        break;
+        } catch (const std::invalid_argument &e) {
+                    
+            std ::cerr << e.what() << std::endl;
+        }
     }
     // tratar a EXCECAO da entrada
 
-    std::cout << "\nDigite o CPF do gerente (Apenas numeros): ";
-    std::cin >> documento;
-
-    salary:
-        std::cout << "\nDigite o valor do salario por hora: ";
-        std::cin >> salarioBase;
-        //TRATAMENTO DE EXCECAO
-        try{
-            if(salarioBase<=0)
-                throw 0;
-            }
-        catch(int x){
-            std::cout << "Erro: Salario base nao pode ser menor ou igual a zero. " << std::endl;
-            goto salary;
+    while (true) {
+        try {
+            std::cout << "\nDigite o CPF do vendedor (Apenas numeros): ";
+            getline(std::cin, documento);
+            for (int i=0; i<documento.size();i++)
+                if ((isdigit(documento[i]))==false) {
+                    throw std::invalid_argument("Entrada invalida. O documento deve ser composto apenas por numeros.");
+                }
+            if (documento.size()!=11)
+                throw std::invalid_argument("Entrada invalida. O documento deve ser composto por 11 digitos.");
+            break;
+                
+        } catch (const std::invalid_argument &e) {
+                    
+            std ::cerr << e.what() << std::endl;
         }
+    }
 
-    quant:
-        std::cout << "\nDigite a quantidade de horas semanais: ";
-        std::cin >> horasSemanais;
-        //TRATAMENTO DE EXCECAO
-                try{
-                    if(horasSemanais<=0)
-                    throw 0;
+    while (true) {
+        try {
+            std::cout << "\nDigite o valor do salario por hora: ";
+            std::cin>> salarioBase;
+            if (salarioBase<=0) {
+                    throw std::invalid_argument("Entrada invalida. O salario deve ser maior que 0.");
                 }
-                catch(int y){
-                    std::cout << "Erro: Horas semanais nao podem ser menor ou igual a zero" << std::endl;
-                    goto quant;
+            break;
+                
+        } catch (const std::invalid_argument &e) {
+                    
+            std ::cerr << e.what() << std::endl;
+        }
+    }
+
+    while (true) {
+        try {
+            std::cout << "\nDigite a quantidade de horas semanais: ";
+            std::cin>> horasSemanais;
+            if (horasSemanais<=0) {
+                    throw std::invalid_argument("Entrada invalida. As horas semanais devem ser maiores que 0.");
                 }
+            break;
+                
+        } catch (const std::invalid_argument &e) {
+                    
+            std ::cerr << e.what() << std::endl;
+        }
+    }
 
     this->cadastrarItem(Gerente(nome, documento, porcentagemComissao, salarioBase, horasSemanais));
 
@@ -564,7 +602,7 @@ void Gerencia::novoGerente(std::string nome, long long int documento, double por
 
 // EDITAR GERENTE
 
-void Gerencia::editarGerente(int idFuncionario, std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais)
+void Gerencia::editarGerente(int idFuncionario, std::string nome, std::string documento, double porcentagemComissao, double salarioBase, double horasSemanais)
 {
     std::string idFunc;
 
@@ -628,36 +666,37 @@ void Gerencia::editarGerente(int idFuncionario, std::string nome, long long int 
             std::cout << "4 - Salario base (por hora)\n";
             std::cout << "5 - Horas semanais\n";
 
-            excecao27:
-            std:: cin >> op;
-            try {
-
+            while (true) {
+                try {
+                    std::cin>>op;
                     if ((isdigit(op[0]) && (op == "1" || op == "2" || op == "3" || op == "4" || op == "5"))==false)
-                        throw op;
-                } catch (std::string str) {
+                            throw std::invalid_argument("Entrada invalida. Escolha um numero de 1 a 5.");               
+                    break;
+                        
+                } catch (const std::invalid_argument &e) {
                             
-                    std ::cout << "Entrada invalida. Digite um numero de 1 a 5.\n";
-                    goto excecao27;
+                    std ::cerr << e.what() << std::endl;
                 }
+            }
             std ::system("clear");
 
             // edicao de nome
             if (op == "1")
             {
-                std::cout << "Digite o novo nome: ";
-                excecao34:
-                std::cin.ignore();
-                getline(std::cin, nome);
-                try {
-                    for (int i=0; i<nome.size();i++)
-                        if ((isalpha(nome[i]))==false) {
-                            throw nome;
-                            break;
-                        }
-                } catch (std::string str) {
-                            
-                    std ::cout << "Entrada invalida. O nome deve ser composto apenas por letras.\n";
-                    goto excecao34;
+                while (true) {
+                    try {
+                        std::cout << "\nDigite o novo nome: ";
+                        std::cin.ignore();
+                        getline(std::cin, nome);
+                        for (int i=0; i<nome.size();i++)
+                            if ((isalpha(nome[i]))==false) {
+                                throw std::invalid_argument("Entrada invalida. O nome deve ser composto apenas por letras.");
+                            }
+                        break;
+                    } catch (const std::invalid_argument &e) {
+                                
+                        std ::cerr << e.what() << std::endl;
+                    }
                 }
                 Gerencia::listaGerentes[i].setNome(nome);
 
@@ -667,8 +706,23 @@ void Gerencia::editarGerente(int idFuncionario, std::string nome, long long int 
             // edicao de documento
             else if (op == "2")
             {
-                std::cout << "Digite o novo documento: ";
-                std::cin >> documento;
+                while (true) {
+                    try {
+                        std::cout << "\nDigite o novo documento (Apenas numeros): ";
+                        getline(std::cin, documento);
+                        for (int i=0; i<documento.size();i++)
+                            if ((isdigit(documento[i]))==false) {
+                                throw std::invalid_argument("Entrada invalida. O documento deve ser composto apenas por numeros.");
+                            }
+                        if (documento.size()!=11)
+                            throw std::invalid_argument("Entrada invalida. O documento deve ser composto por 11 digitos.");
+                        break;
+                            
+                    } catch (const std::invalid_argument &e) {
+                                
+                        std ::cerr << e.what() << std::endl;
+                    }
+                }
                 Gerencia::listaGerentes[i].setDocumento(documento);
 
                 std ::system("clear");
@@ -676,59 +730,70 @@ void Gerencia::editarGerente(int idFuncionario, std::string nome, long long int 
 
             // edicao de percentual de comissao
             else if (op == "3")
-            {   comissao:
-                std::cout << "Digite a nova porcentagem de comissao: ";
-                std::cin >> porcentagemComissao;
-                //TRATAMENTO DE EXCECAO
-                try{
-                    if(porcentagemComissao<=0)
-                    throw 0;
+            {       
+                while (true) {
+                    try {
+                        std::cout << "\nDigite a nova porcentagem de comissao: ";
+                        std::cin>> porcentagemComissao;
+                        if (porcentagemComissao<=0) {
+                                throw std::invalid_argument("Entrada invalida. A porcentagem de comissao deve ser maior que 0.");
+                            }
+                        break;
+                            
+                        } catch (const std::invalid_argument &e) {
+                                
+                        std ::cerr << e.what() << std::endl;
+                        }
+                    }
                     Gerencia::listaGerentes[i].setPorcentagemComissao(porcentagemComissao);
-                }
-                catch(int z){
-                    std::cout << "Erro: comissao nao pode ser menor ou igual a zero porcento. "<< std::endl;
-                    goto comissao;
-                }
+
                     std ::system("clear");
-            }
+                }
 
             // edicao de salario base
             
 
             else if (op == "4")
-            {   salario:
-                    std::cout << "Digite o novo salario base (por hora): ";
-                    std::cin >> salarioBase;
-                //TRATAMENTO DE EXCECAO
-                try{
-                    if(salarioBase<=0)
-                    throw 0;
-                    Gerencia::listaGerentes[i].setSalarioBase(salarioBase);
-                    std::cout << "Gerente editado com sucesso!\n";
+            {       
+                while (true) {
+                    try {
+                        std::cout << "\nDigite o novo salario por hora: ";
+                        std::cin>> salarioBase;
+                        if (salarioBase<=0) {
+                                throw std::invalid_argument("Entrada invalida. O salario deve ser maior que 0.");
+                            }
+                        break;
+                            
+                    } catch (const std::invalid_argument &e) {
+                                
+                        std ::cerr << e.what() << std::endl;
+                    }
                 }
-                catch(int x){
-                        std::cout << "Erro: Salario base nao pode ser menor ou igual a zero. " << std::endl;
-                        goto salario;
-                }
+                Gerencia::listaGerentes[i].setSalarioBase(salarioBase);
+
                 std ::system("clear");
             }
 
             // edicao de carga horaria semanal
             else if (op == "5")
-            {   quantidade:
-                std::cout << "Digite a nova quantidade de horas semanais: ";
-                std::cin >> horasSemanais;
-                //TRATAMENTO DE EXCECAO
-                try{
-                    if(horasSemanais<=0)
-                    throw 0;
-                    Gerencia::listaGerentes[i].setHorasSemanais(horasSemanais);
-                    std::cout << "Gerente editado com sucesso!\n";
+            {       
+                while (true) {
+                    try {
+                        std::cout << "\nDigite a nova quantidade de horas semanais: ";
+                        std::cin>> horasSemanais;
+                        if (horasSemanais<=0) {
+                                throw std::invalid_argument("Entrada invalida. As horas semanais devem ser maiores que 0.");
+                            }
+                        break;
+                            
+                    } catch (const std::invalid_argument &e) {
+                                
+                        std ::cerr << e.what() << std::endl;
+                    }
                 }
-                catch(int y){
-                    std::cout << "Erro: Horas semanais nao podem ser menor ou igual a zero" << std::endl;
-                    goto quantidade;
-                }
+                Gerencia::listaGerentes[i].setHorasSemanais(horasSemanais);
+
+                std ::system("clear");
             }
         }
     }
@@ -741,7 +806,7 @@ void Gerencia::editarGerente(int idFuncionario, std::string nome, long long int 
 
 // EDITAR VENDEDOR
 
-void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais)
+void Gerencia::editarVendedor(int idFuncionario, std::string nome, std::string documento, double porcentagemComissao, double salarioBase, double horasSemanais)
 {
     std::string idFunc;
 
@@ -804,37 +869,38 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int
             std::cout << "4 - Salario base (por hora)\n";
             std::cout << "5 - Horas semanais\n";
             
-            excecao28:
-            std:: cin >> op;
+        while (true) {
             try {
-
-                    if ((isdigit(op[0]) && (op == "1" || op == "2" || op == "3" || op == "4" || op == "5"))==false)
-                        throw op;
-                } catch (std::string str) {
-                            
-                    std ::cout << "Entrada invalida. Digite um numero de 1 a 5.\n";
-                    goto excecao28;
-                }
+                std::cin>>op;
+                if ((isdigit(op[0]) && (op == "1" || op == "2" || op == "3" || op == "4" || op == "5"))==false)
+                        throw std::invalid_argument("Entrada invalida. Escolha um numero de 1 a 5.");               
+                break;
+                    
+            } catch (const std::invalid_argument &e) {
+                        
+                std ::cerr << e.what() << std::endl;
+            }
+        }
 
             std ::system("clear");
 
             // edicao de nome
             if (op == "1")
             {
-                std::cout << "Digite o novo nome: ";
-                excecao35:
-                std::cin.ignore();
-                getline(std::cin, nome);
-                try {
-                    for (int i=0; i<nome.size();i++)
-                        if ((isalpha(nome[i]))==false) {
-                            throw nome;
-                            break;
-                        }
-                } catch (std::string str) {
-                
-                    std ::cout << "Entrada invalida. O nome deve ser composto apenas por letras.\n";
-                    goto excecao35;
+                while (true) {
+                    try {
+                        std::cout << "\nDigite o novo nome: ";
+                        std::cin.ignore();
+                        getline(std::cin, nome);
+                        for (int i=0; i<nome.size();i++)
+                            if ((isalpha(nome[i]))==false) {
+                                throw std::invalid_argument("Entrada invalida. O nome deve ser composto apenas por letras.");
+                            }
+                        break;
+                    } catch (const std::invalid_argument &e) {
+                                
+                        std ::cerr << e.what() << std::endl;
+                    }
                 }
                 Gerencia::listaVendedores[i].setNome(nome);
 
@@ -844,8 +910,23 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int
             // edicao de documento
             else if (op == "2")
             {
-                std::cout << "Digite o novo documento: ";
-                std::cin >> documento;
+                while (true) {
+                    try {
+                        std::cout << "\nDigite o novo documento (Apenas numeros): ";
+                        getline(std::cin, documento);
+                        for (int i=0; i<documento.size();i++)
+                            if ((isdigit(documento[i]))==false) {
+                                throw std::invalid_argument("Entrada invalida. O documento deve ser composto apenas por numeros.");
+                            }
+                        if (documento.size()!=11)
+                            throw std::invalid_argument("Entrada invalida. O documento deve ser composto por 11 digitos.");
+                        break;
+                            
+                    } catch (const std::invalid_argument &e) {
+                                
+                        std ::cerr << e.what() << std::endl;
+                    }
+                }
                 Gerencia::listaVendedores[i].setDocumento(documento);
 
                 std ::system("clear");
@@ -853,61 +934,70 @@ void Gerencia::editarVendedor(int idFuncionario, std::string nome, long long int
 
             // edicao de percentual de comissao
             else if (op == "3")
-            {
-                comissao:
-                std::cout << "Digite a nova porcentagem de comissao: ";
-                std::cin >> porcentagemComissao;
-                //TRATAMENTO DE EXCECAO
-                try{
-                    if(porcentagemComissao<=0)
-                    throw 0;
-                    Gerencia::listaVendedores[i].setPorcentagemComissao(porcentagemComissao);
+            {       
+                while (true) {
+                    try {
+                        std::cout << "\nDigite a nova porcentagem de comissao: ";
+                        std::cin>> porcentagemComissao;
+                        if (porcentagemComissao<=0) {
+                                throw std::invalid_argument("Entrada invalida. A porcentagem de comissao deve ser maior que 0.");
+                            }
+                        break;
+                            
+                        } catch (const std::invalid_argument &e) {
+                                
+                        std ::cerr << e.what() << std::endl;
+                        }
+                    }
+                Gerencia::listaVendedores[i].setPorcentagemComissao(porcentagemComissao);
+
+                std ::system("clear");
                 }
-                catch(int z){
-                    std::cout << "Erro: comissao nao pode ser menor ou igual a zero porcento. " << std::endl;
-                    goto comissao;
-                }
-                    std ::system("clear");
-            }
 
             // edicao de salario base
+            
+
             else if (op == "4")
-            {
-                salario:
-                    std::cout << "Digite o novo salario base (por hora): ";
-                    std::cin >> salarioBase;
-                //TRATAMENTO DE EXCECAO
-                try{
-                    if(salarioBase<=0)
-                    throw 0;
-                    Gerencia::listaVendedores[i].setSalarioBase(salarioBase);
-                    std::cout << "Vendedor editado com sucesso!\n";
+            {       
+                while (true) {
+                    try {
+                        std::cout << "\nDigite o novo salario por hora: ";
+                        std::cin>> salarioBase;
+                        if (salarioBase<=0) {
+                                throw std::invalid_argument("Entrada invalida. O salario deve ser maior que 0.");
+                            }
+                        break;
+                            
+                    } catch (const std::invalid_argument &e) {
+                                
+                        std ::cerr << e.what() << std::endl;
+                    }
                 }
-                catch(int x){
-                        std::cout << "Erro: Salario base nao pode ser menor ou igual a zero. " << std::endl;
-                        goto salario;
-                }
-			
-			    std ::system("clear");
+                Gerencia::listaVendedores[i].setSalarioBase(salarioBase);
+
+                std ::system("clear");
             }
 
             // edicao de carga horaria semanal
             else if (op == "5")
-            {
-                 quantidade:
-                std::cout << "Digite a nova quantidade de horas semanais: ";
-                std::cin >> horasSemanais;
-                //TRATAMENTO DE EXCECAO
-                try{
-                    if(horasSemanais<=0)
-                    throw 0;
-                    Gerencia::listaVendedores[i].setHorasSemanais(horasSemanais);
-                    std::cout << "Vendedor editado com sucesso!\n";
+            {       
+                while (true) {
+                    try {
+                        std::cout << "\nDigite a nova quantidade de horas semanais: ";
+                        std::cin>> horasSemanais;
+                        if (horasSemanais<=0) {
+                                throw std::invalid_argument("Entrada invalida. As horas semanais devem ser maiores que 0.");
+                            }
+                        break;
+                            
+                    } catch (const std::invalid_argument &e) {
+                                
+                        std ::cerr << e.what() << std::endl;
+                    }
                 }
-                catch(int y){
-                    std::cout << "Erro: Horas semanais nao podem ser menor ou igual a zero" << std::endl;
-                    goto quantidade;
-                }
+                Gerencia::listaVendedores[i].setHorasSemanais(horasSemanais);
+
+                std ::system("clear");
             }
         }
     }

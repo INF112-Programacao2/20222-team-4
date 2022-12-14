@@ -11,18 +11,18 @@ private:
 
 protected:
     std::string nome;
-    long long int documento;
+    std::string documento;
     double porcentagemComissao; // define a porcentagem de comissao (ex 3%)
     double salarioBase;         // salario base (por hora);
     double horasSemanais;       // quantidade de horas trabalhadas por semana;
     static double totalVendas;         // valor total de vendas que esse funcionario fez;
 
 public:
-    Funcionario(std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais); // construtor
+    Funcionario(std::string nome, std::string documento, double porcentagemComissao, double salarioBase, double horasSemanais); // construtor
 
     //prototipos de funcoes que definem diversos dados do funcionario
     void setNome(std::string nome); 
-    void setDocumento(long long int documento); 
+    void setDocumento(std::string documento); 
     void setPorcentagemComissao(double porcentagemComissao); 
     void setSalarioBase(double salarioBase);
     void setHorasSemanais(double horasSemanais);
@@ -30,7 +30,7 @@ public:
 
     // prototipos de funcoes que retornam diversos dados dos funcionarios
     std::string getNome();
-    long long int getDocumento();
+    std::string getDocumento();
     double getPorcentagemComissao();
     double getSalarioBase();
     double getHorasSemanais();

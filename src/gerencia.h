@@ -39,13 +39,13 @@ public:
     // Prototipo de funcoes de criar e editar cadastros
     void novaVenda(int idFuncionario, std::string nomeCliente, std::string documentoCliente, int idProduto, double desconto, double valorTotal);
 
-    void editarVendedor(int idFuncionario, std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais);
+    void editarVendedor(int idFuncionario, std::string nome, std::string documento, double porcentagemComissao, double salarioBase, double horasSemanais);
 
-    void editarGerente(int idFuncionario, std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais);
+    void editarGerente(int idFuncionario, std::string nome, std::string documento, double porcentagemComissao, double salarioBase, double horasSemanais);
 
-    void novoVendedor(std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais);
+    void novoVendedor(std::string nome, std::string documento, double porcentagemComissao, double salarioBase, double horasSemanais);
 
-    void novoGerente(std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais);
+    void novoGerente(std::string nome, std::string documento, double porcentagemComissao, double salarioBase, double horasSemanais);
 
     void novoProduto(std::string nomeProduto, double preco, int quantidade);
 

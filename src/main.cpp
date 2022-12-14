@@ -107,7 +107,7 @@ inicio:
     menuFuncionarios:
         std ::string resp, resp2;
         std::string nome;
-        long long int documento;
+        std::string documento;
         double porcentagemComissao;
         double salarioBase;
         double horasSemanais;
@@ -254,7 +254,7 @@ inicio:
             {
                 std::string nome;
                 int idGerente;
-                long long int documento;
+                std::string documento;
                 double porcentagemComissao, salarioBase, horasSemanais;
                 std ::string op;
 
@@ -293,7 +293,7 @@ inicio:
             {
                 std::string nome;
                 int idVendedor;
-                long long int documento;
+                std::string documento;
                 double porcentagemComissao, salarioBase, horasSemanais;
                 std ::string op;
                 // chamando funcao para editar vendedor

@@ -9,7 +9,7 @@ class Vendedor : public Funcionario
 private:
 public:
     // construtor
-    Vendedor(std::string nome, long long int documento, double porcentagemComissao, double salarioBase, double horasSemanais);
+    Vendedor(std::string nome, std::string documento, double porcentagemComissao, double salarioBase, double horasSemanais);
     
     // destrutor
     ~Vendedor();
