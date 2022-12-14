@@ -12,13 +12,12 @@
 class Gerencia : public Estoque
 {
 private:
-    static std::vector<Vendedor> listaVendedores;   //lista de vendedores para guardar o cadastro dos vendedores e seus atributos
-    static std::vector<Gerente> listaGerentes;      //lista de gerentes para guardar o cadastro dos gerentes e seus atributos
-    static std::vector<Pagamento> listaPagamentos;  //lista para armazenar pagamentos dos funcionarios
-    static std::vector<Vendas> listaVendas;         //lista para armazenar as vendas e os dados de cada venda
+    static std::vector<Vendedor> listaVendedores;  // lista de vendedores para guardar o cadastro dos vendedores e seus atributos
+    static std::vector<Gerente> listaGerentes;     // lista de gerentes para guardar o cadastro dos gerentes e seus atributos
+    static std::vector<Pagamento> listaPagamentos; // lista para armazenar pagamentos dos funcionarios
+    static std::vector<Vendas> listaVendas;        // lista para armazenar as vendas e os dados de cada venda
 
     // Prototipo de funcoes para buscar itens
-
 
 public:
     Gerencia();
@@ -57,7 +56,7 @@ public:
     void imprimeVendas();
     // relatorio do faturamento
     void relatorioFaturamento();
-    //prototipo da funcao que calcula pagamento
+    // prototipo da funcao que calcula pagamento
     void calculaPagamento(int idFuncionario, double horasSemanais, double horasExtras, double vendasTotais, double comissao, double salarioBase); // vou fazer ainda
     // impressao de lista de pagamentos
     void imprimePagamentos();

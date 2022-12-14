@@ -15,15 +15,15 @@ protected:
     double porcentagemComissao; // define a porcentagem de comissao (ex 3%)
     double salarioBase;         // salario base (por hora);
     double horasSemanais;       // quantidade de horas trabalhadas por semana;
-    static double totalVendas;         // valor total de vendas que esse funcionario fez;
+    static double totalVendas;  // valor total de vendas que esse funcionario fez;
 
 public:
     Funcionario(std::string nome, std::string documento, double porcentagemComissao, double salarioBase, double horasSemanais); // construtor
 
-    //prototipos de funcoes que definem diversos dados do funcionario
-    void setNome(std::string nome); 
-    void setDocumento(std::string documento); 
-    void setPorcentagemComissao(double porcentagemComissao); 
+    // prototipos de funcoes que definem diversos dados do funcionario
+    void setNome(std::string nome);
+    void setDocumento(std::string documento);
+    void setPorcentagemComissao(double porcentagemComissao);
     void setSalarioBase(double salarioBase);
     void setHorasSemanais(double horasSemanais);
     void setTotalVendas(double totalVendas);

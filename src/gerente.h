@@ -8,15 +8,12 @@ class Gerente : public Funcionario
 {
 
 private:
-
-
 public:
-// construtor
+    // construtor
     Gerente(std::string nome, std::string documento, double porcentagemComissao, double salarioBase, double horasSemanais);
-    
-// destrutor
+
+    // destrutor
     ~Gerente();
-    
 };
 
 #endif

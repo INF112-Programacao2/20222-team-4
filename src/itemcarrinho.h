@@ -10,27 +10,22 @@ class ItemCarrinho
 private:
     Produto produto;
     int quantidade;
-    
+
 public:
-            // ----CARRINHO----
+    // ----CARRINHO----
 
     // construtor
-    ItemCarrinho(Produto produto,int quantidade);
-    
+    ItemCarrinho(Produto produto, int quantidade);
+
     void setProduto(Produto produto);
     void setQuantidade(int quantidade);
-    
-    std::string getNome();  // retornando nome do produto,
-    int getQuantidade();    // retornando quantidade do produto
-    double getPreco();      // retornando preco 
 
-    //destrutor
-    ~ItemCarrinho();    
+    std::string getNome(); // retornando nome do produto,
+    int getQuantidade();   // retornando quantidade do produto
+    double getPreco();     // retornando preco
+
+    // destrutor
+    ~ItemCarrinho();
 };
 
-
-
-
 #endif
-
-

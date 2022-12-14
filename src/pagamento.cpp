@@ -20,7 +20,7 @@ void Pagamento::setPagamento(double pagamento)
     this->pagamento = pagamento;
 }
 
-//pegando funcionario e retornando
+// pegando funcionario e retornando
 int Pagamento::getFuncionario()
 {
     return this->idFuncionario;

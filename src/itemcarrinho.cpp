@@ -1,7 +1,7 @@
 
 #include "itemcarrinho.h"
 
-//construtor
+// construtor
 ItemCarrinho::ItemCarrinho(Produto produto, int quantidade)
 {
     this->produto = produto;
@@ -24,7 +24,7 @@ std::string ItemCarrinho::getNome()
     return this->produto.getNome();
 }
 
-//pega a quantidade do item para adcionar ao carrinho e retorna a quantidade
+// pega a quantidade do item para adcionar ao carrinho e retorna a quantidade
 int ItemCarrinho::getQuantidade()
 {
     return this->quantidade;
@@ -37,7 +37,7 @@ double ItemCarrinho::getPreco()
     return preco * quantidade;
 }
 
-//destrutor
+// destrutor
 ItemCarrinho::~ItemCarrinho()
 {
 }

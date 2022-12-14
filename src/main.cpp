@@ -42,20 +42,23 @@ inicio:
     std::cout << "6 - Encerrar programa\n";
     std::cout << "\nInforme o numero: ";
 
-    //tratamento de excecoes
-    while (true) {
-        try {
-            std::cin>>selecao;
-            if ((isdigit(selecao[0]) && (selecao == "1" || selecao == "2" || selecao == "3" || selecao == "4" || selecao == "5"|| selecao == "6"))==false)
-                    throw std::invalid_argument("Entrada invalida. Escolha um numero de 1 a 6.");               
+    // tratamento de excecoes
+    while (true)
+    {
+        try
+        {
+            std::cin >> selecao;
+            if ((isdigit(selecao[0]) && (selecao == "1" || selecao == "2" || selecao == "3" || selecao == "4" || selecao == "5" || selecao == "6")) == false)
+                throw std::invalid_argument("Entrada invalida. Escolha um numero de 1 a 6.");
             break;
-                
-        } catch (const std::invalid_argument &e) {
-                    
+        }
+        catch (const std::invalid_argument &e)
+        {
+
             std ::cerr << e.what() << std::endl;
         }
     }
-    
+
     std::system("clear");
 
     // Selecao da area do sistema que deseja acessar
@@ -76,16 +79,19 @@ inicio:
         std ::cout << "1 - Cadastrar outra venda\n";
         std ::cout << "2 - Voltar ao menu inicial\n";
 
-        //tratamento de excecoes
-        while (true) {
-            try {
-                std::cin>>selecao2;
-                if ((isdigit(selecao2[0]) && (selecao2 == "1" || selecao2 == "2"))==false)
-                        throw std::invalid_argument("Entrada invalida. Escolha os numeros 1 ou 2.");               
+        // tratamento de excecoes
+        while (true)
+        {
+            try
+            {
+                std::cin >> selecao2;
+                if ((isdigit(selecao2[0]) && (selecao2 == "1" || selecao2 == "2")) == false)
+                    throw std::invalid_argument("Entrada invalida. Escolha os numeros 1 ou 2.");
                 break;
-                    
-            } catch (const std::invalid_argument &e) {
-                        
+            }
+            catch (const std::invalid_argument &e)
+            {
+
                 std ::cerr << e.what() << std::endl;
             }
         }
@@ -118,16 +124,19 @@ inicio:
         std::cout << "4 - Ver informacoes de funcionarios\n";
         std::cout << "5 - Voltar ao menu inicial\n";
 
-        //tratamento de excecoes
-        while (true) {
-            try {
-                std::cin>>resp;
-                if ((isdigit(resp[0]) && (resp == "1" || resp == "2" || resp == "3" || resp == "4" || resp == "5"))==false)
-                        throw std::invalid_argument("Entrada invalida. Escolha um numero de 1 a 5.");               
+        // tratamento de excecoes
+        while (true)
+        {
+            try
+            {
+                std::cin >> resp;
+                if ((isdigit(resp[0]) && (resp == "1" || resp == "2" || resp == "3" || resp == "4" || resp == "5")) == false)
+                    throw std::invalid_argument("Entrada invalida. Escolha um numero de 1 a 5.");
                 break;
-                    
-            } catch (const std::invalid_argument &e) {
-                        
+            }
+            catch (const std::invalid_argument &e)
+            {
+
                 std ::cerr << e.what() << std::endl;
             }
         }
@@ -141,16 +150,19 @@ inicio:
             std ::cout << "1 - Gerente\n";
             std ::cout << "2 - Vendedor\n";
 
-            //tratamento de excecoes
-            while (true) {
-                try {
-                    std::cin>>resp2;
-                    if ((isdigit(resp2[0]) && (resp2 == "1" || resp2 == "2"))==false)
-                            throw std::invalid_argument("Entrada invalida. Escolha os numeros 1 ou 2.");               
+            // tratamento de excecoes
+            while (true)
+            {
+                try
+                {
+                    std::cin >> resp2;
+                    if ((isdigit(resp2[0]) && (resp2 == "1" || resp2 == "2")) == false)
+                        throw std::invalid_argument("Entrada invalida. Escolha os numeros 1 ou 2.");
                     break;
-                        
-                } catch (const std::invalid_argument &e) {
-                            
+                }
+                catch (const std::invalid_argument &e)
+                {
+
                     std ::cerr << e.what() << std::endl;
                 }
             }
@@ -167,16 +179,19 @@ inicio:
                 std ::cout << "1 - Cadastrar outro funcionario\n";
                 std ::cout << "2 - Voltar ao menu anterior\n";
 
-                //tratamento de excecoes
-                while (true) {
-                    try {
-                        std::cin>>selecao2;
-                        if ((isdigit(selecao2[0]) && (selecao2 == "1" || selecao2 == "2"))==false)
-                                throw std::invalid_argument("Entrada invalida. Escolha os numeros 1 ou 2.");               
+                // tratamento de excecoes
+                while (true)
+                {
+                    try
+                    {
+                        std::cin >> selecao2;
+                        if ((isdigit(selecao2[0]) && (selecao2 == "1" || selecao2 == "2")) == false)
+                            throw std::invalid_argument("Entrada invalida. Escolha os numeros 1 ou 2.");
                         break;
-                            
-                    } catch (const std::invalid_argument &e) {
-                                
+                    }
+                    catch (const std::invalid_argument &e)
+                    {
+
                         std ::cerr << e.what() << std::endl;
                     }
                 }
@@ -203,17 +218,20 @@ inicio:
                 std ::cout << "O que deseja fazer agora?\n\n";
                 std ::cout << "1 - Cadastrar outro funcionario\n";
                 std ::cout << "2 - Voltar ao menu anterior\n";
-                
-                //tratamento de excecoes
-                while (true) {
-                    try {
-                        std::cin>>selecao2;
-                        if ((isdigit(selecao2[0]) && (selecao2 == "1" || selecao2 == "2"))==false)
-                                throw std::invalid_argument("Entrada invalida. Escolha os numeros 1 ou 2.");               
+
+                // tratamento de excecoes
+                while (true)
+                {
+                    try
+                    {
+                        std::cin >> selecao2;
+                        if ((isdigit(selecao2[0]) && (selecao2 == "1" || selecao2 == "2")) == false)
+                            throw std::invalid_argument("Entrada invalida. Escolha os numeros 1 ou 2.");
                         break;
-                            
-                    } catch (const std::invalid_argument &e) {
-                                
+                    }
+                    catch (const std::invalid_argument &e)
+                    {
+
                         std ::cerr << e.what() << std::endl;
                     }
                 }
@@ -239,16 +257,19 @@ inicio:
             std::cout << "1 - Gerente\n";
             std::cout << "2 - Vendedor\n";
 
-            //tratamento de excecoes
-            while (true) {
-                try {
-                    std::cin>>resp2;
-                    if ((isdigit(resp2[0]) && (resp2 == "1" || resp2 == "2"))==false)
-                            throw std::invalid_argument("Entrada invalida. Escolha os numeros 1 ou 2.");               
+            // tratamento de excecoes
+            while (true)
+            {
+                try
+                {
+                    std::cin >> resp2;
+                    if ((isdigit(resp2[0]) && (resp2 == "1" || resp2 == "2")) == false)
+                        throw std::invalid_argument("Entrada invalida. Escolha os numeros 1 ou 2.");
                     break;
-                        
-                } catch (const std::invalid_argument &e) {
-                            
+                }
+                catch (const std::invalid_argument &e)
+                {
+
                     std ::cerr << e.what() << std::endl;
                 }
             }
@@ -270,16 +291,19 @@ inicio:
                 std ::cout << "1 - Editar outro funcionario\n";
                 std ::cout << "2 - Voltar ao menu anterior\n";
 
-                //tratamento de excecoes
-                while (true) {
-                    try {
-                        std::cin>>op;
-                        if ((isdigit(op[0]) && (op == "1" || op == "2"))==false)
-                                throw std::invalid_argument("Entrada invalida. Escolha os numeros 1 ou 2.");               
+                // tratamento de excecoes
+                while (true)
+                {
+                    try
+                    {
+                        std::cin >> op;
+                        if ((isdigit(op[0]) && (op == "1" || op == "2")) == false)
+                            throw std::invalid_argument("Entrada invalida. Escolha os numeros 1 ou 2.");
                         break;
-                            
-                    } catch (const std::invalid_argument &e) {
-                                
+                    }
+                    catch (const std::invalid_argument &e)
+                    {
+
                         std ::cerr << e.what() << std::endl;
                     }
                 }
@@ -309,16 +333,19 @@ inicio:
                 std ::cout << "1 - Editar outro funcionario\n";
                 std ::cout << "2 - Voltar ao menu anterior\n";
 
-                //tratamento de excecoes
-                while (true) {
-                    try {
-                        std::cin>>op;
-                        if ((isdigit(op[0]) && (op == "1" || op == "2"))==false)
-                                throw std::invalid_argument("Entrada invalida. Escolha os numeros 1 ou 2.");               
+                // tratamento de excecoes
+                while (true)
+                {
+                    try
+                    {
+                        std::cin >> op;
+                        if ((isdigit(op[0]) && (op == "1" || op == "2")) == false)
+                            throw std::invalid_argument("Entrada invalida. Escolha os numeros 1 ou 2.");
                         break;
-                            
-                    } catch (const std::invalid_argument &e) {
-                                
+                    }
+                    catch (const std::invalid_argument &e)
+                    {
+
                         std ::cerr << e.what() << std::endl;
                     }
                 }
@@ -337,28 +364,31 @@ inicio:
         }
 
         else if (resp == "3")
-        {   
-            // menu de escolha de remocao de funcionario
-            menuremover:
+        {
+        // menu de escolha de remocao de funcionario
+        menuremover:
             std::cout << "Qual o cargo do funcionario que deseja remover? \n\n";
             std::cout << "1 - Gerente\n";
             std::cout << "2 - Vendedor\n";
 
-            //tratamento de excecoes
-            while (true) {
-                try {
-                    std::cin>>resp2;
-                    if ((isdigit(resp2[0]) && (resp2 == "1" || resp2 == "2"))==false)
-                            throw std::invalid_argument("Entrada invalida. Escolha os numeros 1 ou 2.");               
+            // tratamento de excecoes
+            while (true)
+            {
+                try
+                {
+                    std::cin >> resp2;
+                    if ((isdigit(resp2[0]) && (resp2 == "1" || resp2 == "2")) == false)
+                        throw std::invalid_argument("Entrada invalida. Escolha os numeros 1 ou 2.");
                     break;
-                        
-                } catch (const std::invalid_argument &e) {
-                            
+                }
+                catch (const std::invalid_argument &e)
+                {
+
                     std ::cerr << e.what() << std::endl;
                 }
             }
 
-            std :: system("clear");
+            std ::system("clear");
 
             if (resp2 == "1")
             {
@@ -367,23 +397,26 @@ inicio:
                 // chamando funcao para remover gerente
                 gerencia.removerGerente(idGerente);
 
-                std :: system("clear");
+                std ::system("clear");
 
-                std :: string op;
+                std ::string op;
                 std ::cout << "O que deseja fazer agora?\n\n";
                 std ::cout << "1 - Remover outro funcionario\n";
                 std ::cout << "2 - Voltar ao menu anterior\n";
 
-                //tratamento de excecoes
-                while (true) {
-                    try {
-                        std::cin>>op;
-                        if ((isdigit(op[0]) && (op == "1" || op == "2"))==false)
-                                throw std::invalid_argument("Entrada invalida. Escolha os numeros 1 ou 2.");               
+                // tratamento de excecoes
+                while (true)
+                {
+                    try
+                    {
+                        std::cin >> op;
+                        if ((isdigit(op[0]) && (op == "1" || op == "2")) == false)
+                            throw std::invalid_argument("Entrada invalida. Escolha os numeros 1 ou 2.");
                         break;
-                            
-                    } catch (const std::invalid_argument &e) {
-                                
+                    }
+                    catch (const std::invalid_argument &e)
+                    {
+
                         std ::cerr << e.what() << std::endl;
                     }
                 }
@@ -398,32 +431,32 @@ inicio:
                 {
                     goto menuFuncionarios;
                 }
-
-
-                
             }
             else if (resp2 == "2")
-            {   
+            {
                 int idVendedor;
                 gerencia.removerVendedor(idVendedor);
 
-                std :: system("clear");
+                std ::system("clear");
 
-                std :: string op;
+                std ::string op;
                 std ::cout << "O que deseja fazer agora?\n\n";
                 std ::cout << "1 - Remover outro funcionario\n";
                 std ::cout << "2 - Voltar ao menu anterior\n";
 
-                //tratamento de excecoes
-                while (true) {
-                    try {
-                        std::cin>>op;
-                        if ((isdigit(op[0]) && (op == "1" || op == "2"))==false)
-                                throw std::invalid_argument("Entrada invalida. Escolha os numeros 1 ou 2.");               
+                // tratamento de excecoes
+                while (true)
+                {
+                    try
+                    {
+                        std::cin >> op;
+                        if ((isdigit(op[0]) && (op == "1" || op == "2")) == false)
+                            throw std::invalid_argument("Entrada invalida. Escolha os numeros 1 ou 2.");
                         break;
-                            
-                    } catch (const std::invalid_argument &e) {
-                                
+                    }
+                    catch (const std::invalid_argument &e)
+                    {
+
                         std ::cerr << e.what() << std::endl;
                     }
                 }
@@ -438,50 +471,57 @@ inicio:
                 {
                     goto menuFuncionarios;
                 }
-
             }
         }
-        else if (resp == "4"){
-            menuvisualizar:
+        else if (resp == "4")
+        {
+        menuvisualizar:
             std ::cout << "Qual o cargo do funcionario que deseja visualizar as informacoes? \n\n";
             std ::cout << "1 - Gerente\n";
             std ::cout << "2 - Vendedor\n";
 
-            //tratamento de excecoes
-            while (true) {
-                try {
-                    std::cin>>resp2;
-                    if ((isdigit(resp2[0]) && (resp2 == "1" || resp2 == "2"))==false)
-                            throw std::invalid_argument("Entrada invalida. Escolha os numeros 1 ou 2.");               
+            // tratamento de excecoes
+            while (true)
+            {
+                try
+                {
+                    std::cin >> resp2;
+                    if ((isdigit(resp2[0]) && (resp2 == "1" || resp2 == "2")) == false)
+                        throw std::invalid_argument("Entrada invalida. Escolha os numeros 1 ou 2.");
                     break;
-                        
-                } catch (const std::invalid_argument &e) {
-                            
+                }
+                catch (const std::invalid_argument &e)
+                {
+
                     std ::cerr << e.what() << std::endl;
                 }
             }
 
             std ::system("clear");
 
-            if (resp2 == "1") { 
-                
+            if (resp2 == "1")
+            {
+
                 int idGerente;
                 gerencia.imprimeGerentes(idGerente);
-                std :: string op;
+                std ::string op;
                 std ::cout << "O que deseja fazer agora?\n\n";
                 std ::cout << "1 - Visualizar informacoes de outro funcionario\n";
                 std ::cout << "2 - Voltar ao menu anterior\n";
 
-                //tratamento de excecoes
-                while (true) {
-                    try {
-                        std::cin>>op;
-                        if ((isdigit(op[0]) && (op == "1" || op == "2"))==false)
-                                throw std::invalid_argument("Entrada invalida. Escolha os numeros 1 ou 2.");               
+                // tratamento de excecoes
+                while (true)
+                {
+                    try
+                    {
+                        std::cin >> op;
+                        if ((isdigit(op[0]) && (op == "1" || op == "2")) == false)
+                            throw std::invalid_argument("Entrada invalida. Escolha os numeros 1 ou 2.");
                         break;
-                            
-                    } catch (const std::invalid_argument &e) {
-                                
+                    }
+                    catch (const std::invalid_argument &e)
+                    {
+
                         std ::cerr << e.what() << std::endl;
                     }
                 }
@@ -497,24 +537,28 @@ inicio:
                     goto menuFuncionarios;
                 }
             }
-            else if (resp2 == "2") {
+            else if (resp2 == "2")
+            {
                 int idVendedor;
-                gerencia.imprimeVendedores (idVendedor);
-                std :: string op;
+                gerencia.imprimeVendedores(idVendedor);
+                std ::string op;
                 std ::cout << "O que deseja fazer agora?\n\n";
                 std ::cout << "1 - Visualizar informacoes de outro funcionario\n";
                 std ::cout << "2 - Voltar ao menu anterior\n";
 
-                //tratamento de excecoes
-                while (true) {
-                    try {
-                        std::cin>>op;
-                        if ((isdigit(op[0]) && (op == "1" || op == "2"))==false)
-                                throw std::invalid_argument("Entrada invalida. Escolha os numeros 1 ou 2.");               
+                // tratamento de excecoes
+                while (true)
+                {
+                    try
+                    {
+                        std::cin >> op;
+                        if ((isdigit(op[0]) && (op == "1" || op == "2")) == false)
+                            throw std::invalid_argument("Entrada invalida. Escolha os numeros 1 ou 2.");
                         break;
-                            
-                    } catch (const std::invalid_argument &e) {
-                                
+                    }
+                    catch (const std::invalid_argument &e)
+                    {
+
                         std ::cerr << e.what() << std::endl;
                     }
                 }
@@ -547,16 +591,19 @@ inicio:
         std::cout << "2 - Gerar relatorio de faturamentos\n";
         std::cout << "3 - Voltar ao menu inicial\n";
 
-        //tratamento de excecoes
-        while (true) {
-            try {
-                std::cin>>resp3;
-                if ((isdigit(resp3[0]) && (resp3 == "1" || resp3 == "2" || resp3 == "3"))==false)
-                        throw std::invalid_argument("Entrada invalida. Escolha um numero de 1 a 3.");               
+        // tratamento de excecoes
+        while (true)
+        {
+            try
+            {
+                std::cin >> resp3;
+                if ((isdigit(resp3[0]) && (resp3 == "1" || resp3 == "2" || resp3 == "3")) == false)
+                    throw std::invalid_argument("Entrada invalida. Escolha um numero de 1 a 3.");
                 break;
-                    
-            } catch (const std::invalid_argument &e) {
-                        
+            }
+            catch (const std::invalid_argument &e)
+            {
+
                 std ::cerr << e.what() << std::endl;
             }
         }
@@ -568,15 +615,18 @@ inicio:
             gerencia.imprimeVendas();
             std ::cout << "\nDigite 1 para voltar ao menu anterior.\n\n";
 
-            while (true) {
-                try {
-                    std::cin>>op;
-                    if ((isdigit(op[0]) && (op == "1"))==false)
-                            throw std::invalid_argument("Entrada invalida. Digite 1 para voltar ao menu anterior.");               
+            while (true)
+            {
+                try
+                {
+                    std::cin >> op;
+                    if ((isdigit(op[0]) && (op == "1")) == false)
+                        throw std::invalid_argument("Entrada invalida. Digite 1 para voltar ao menu anterior.");
                     break;
-                        
-                } catch (const std::invalid_argument &e) {
-                            
+                }
+                catch (const std::invalid_argument &e)
+                {
+
                     std ::cerr << e.what() << std::endl;
                 }
             }
@@ -597,15 +647,18 @@ inicio:
             // opcao de executar novamente mesma acao ou retornar ao menu
             std ::cout << "\nDigite 1 para voltar ao menu anterior.\n\n";
 
-            while (true) {
-                try {
-                    std::cin>>op;
-                    if ((isdigit(op[0]) && (op == "1"))==false)
-                            throw std::invalid_argument("Entrada invalida. Digite 1 para voltar ao menu anterior.");               
+            while (true)
+            {
+                try
+                {
+                    std::cin >> op;
+                    if ((isdigit(op[0]) && (op == "1")) == false)
+                        throw std::invalid_argument("Entrada invalida. Digite 1 para voltar ao menu anterior.");
                     break;
-                        
-                } catch (const std::invalid_argument &e) {
-                            
+                }
+                catch (const std::invalid_argument &e)
+                {
+
                     std ::cerr << e.what() << std::endl;
                 }
             }
@@ -633,16 +686,19 @@ inicio:
         std::cout << "2 - Ver pagamentos\n";
         std::cout << "3 - Voltar ao menu inicial\n";
 
-        //tratamento de excecoes
-        while (true) {
-            try {
-                std::cin>>resp4;
-                if ((isdigit(resp4[0]) && (resp4 == "1" || resp4 == "2" || resp4 == "3"))==false)
-                        throw std::invalid_argument("Entrada invalida. Escolha um numero de 1 a 3.");               
+        // tratamento de excecoes
+        while (true)
+        {
+            try
+            {
+                std::cin >> resp4;
+                if ((isdigit(resp4[0]) && (resp4 == "1" || resp4 == "2" || resp4 == "3")) == false)
+                    throw std::invalid_argument("Entrada invalida. Escolha um numero de 1 a 3.");
                 break;
-                    
-            } catch (const std::invalid_argument &e) {
-                        
+            }
+            catch (const std::invalid_argument &e)
+            {
+
                 std ::cerr << e.what() << std::endl;
             }
         }
@@ -668,16 +724,19 @@ inicio:
 
             std ::string comando3;
 
-            //tratamento de excecoes
-            while (true) {
-                try {
-                    std::cin>>comando3;
-                    if ((isdigit(comando3[0]) && (comando3 == "1" || comando3 == "2"))==false)
-                            throw std::invalid_argument("Entrada invalida. Escolha os numeros 1 ou 2.");               
+            // tratamento de excecoes
+            while (true)
+            {
+                try
+                {
+                    std::cin >> comando3;
+                    if ((isdigit(comando3[0]) && (comando3 == "1" || comando3 == "2")) == false)
+                        throw std::invalid_argument("Entrada invalida. Escolha os numeros 1 ou 2.");
                     break;
-                        
-                } catch (const std::invalid_argument &e) {
-                            
+                }
+                catch (const std::invalid_argument &e)
+                {
+
                     std ::cerr << e.what() << std::endl;
                 }
             }
@@ -702,15 +761,18 @@ inicio:
 
             std ::cout << "Digite 1 para voltar ao menu anterior.\n\n";
 
-            while (true) {
-                try {
-                    std::cin>>op;
-                    if ((isdigit(op[0]) && (op == "1"))==false)
-                            throw std::invalid_argument("Entrada invalida. Digite 1 para voltar ao menu anterior.");               
+            while (true)
+            {
+                try
+                {
+                    std::cin >> op;
+                    if ((isdigit(op[0]) && (op == "1")) == false)
+                        throw std::invalid_argument("Entrada invalida. Digite 1 para voltar ao menu anterior.");
                     break;
-                        
-                } catch (const std::invalid_argument &e) {
-                            
+                }
+                catch (const std::invalid_argument &e)
+                {
+
                     std ::cerr << e.what() << std::endl;
                 }
             }
@@ -740,16 +802,19 @@ inicio:
         std::cout << "4 - Editar produto\n";
         std::cout << "5 - Voltar ao menu inicial\n";
 
-        //tratamento de excecoes
-        while (true) {
-            try {
-                std::cin>>resp5;
-                if ((isdigit(resp5[0]) && (resp5 == "1" || resp5 == "2" || resp5 == "3" || resp5 == "4" || resp5 == "5"))==false)
-                        throw std::invalid_argument("Entrada invalida. Escolha um numero de 1 a 5.");               
+        // tratamento de excecoes
+        while (true)
+        {
+            try
+            {
+                std::cin >> resp5;
+                if ((isdigit(resp5[0]) && (resp5 == "1" || resp5 == "2" || resp5 == "3" || resp5 == "4" || resp5 == "5")) == false)
+                    throw std::invalid_argument("Entrada invalida. Escolha um numero de 1 a 5.");
                 break;
-                    
-            } catch (const std::invalid_argument &e) {
-                        
+            }
+            catch (const std::invalid_argument &e)
+            {
+
                 std ::cerr << e.what() << std::endl;
             }
         }
@@ -764,15 +829,18 @@ inicio:
 
             std ::cout << "Digite 1 para voltar ao menu anterior.\n\n";
 
-            while (true) {
-                try {
-                    std::cin>>op;
-                    if ((isdigit(op[0]) && (op == "1"))==false)
-                            throw std::invalid_argument("Entrada invalida. Digite 1 para voltar ao menu anterior.");               
+            while (true)
+            {
+                try
+                {
+                    std::cin >> op;
+                    if ((isdigit(op[0]) && (op == "1")) == false)
+                        throw std::invalid_argument("Entrada invalida. Digite 1 para voltar ao menu anterior.");
                     break;
-                        
-                } catch (const std::invalid_argument &e) {
-                            
+                }
+                catch (const std::invalid_argument &e)
+                {
+
                     std ::cerr << e.what() << std::endl;
                 }
             }
@@ -801,16 +869,19 @@ inicio:
             std ::cout << "2 - Voltar ao menu anterior\n";
             std ::string comando;
 
-            //tratamento de excecoes
-            while (true) {
-                try {
-                    std::cin>>comando;
-                    if ((isdigit(comando[0]) && (comando == "1" || comando == "2"))==false)
-                            throw std::invalid_argument("Entrada invalida. Escolha os numeros 1 ou 2.");               
+            // tratamento de excecoes
+            while (true)
+            {
+                try
+                {
+                    std::cin >> comando;
+                    if ((isdigit(comando[0]) && (comando == "1" || comando == "2")) == false)
+                        throw std::invalid_argument("Entrada invalida. Escolha os numeros 1 ou 2.");
                     break;
-                        
-                } catch (const std::invalid_argument &e) {
-                            
+                }
+                catch (const std::invalid_argument &e)
+                {
+
                     std ::cerr << e.what() << std::endl;
                 }
             }
@@ -826,28 +897,32 @@ inicio:
                 goto menuEstoque;
             }
         }
-        else if (resp5 == "3")  
-        {   menuremoverprod:
+        else if (resp5 == "3")
+        {
+        menuremoverprod:
             int idProduto;
             gerencia.removerProduto(idProduto);
 
-            std :: system("clear");
-                        
+            std ::system("clear");
+
             std ::cout << "O que deseja fazer agora?\n\n";
             std ::cout << "1 - Remover outro produto\n";
             std ::cout << "2 - Voltar ao menu anterior\n";
             std ::string comando;
 
-            //tratamento de excecoes
-            while (true) {
-                try {
-                    std::cin>>comando;
-                    if ((isdigit(comando[0]) && (comando == "1" || comando == "2"))==false)
-                            throw std::invalid_argument("Entrada invalida. Escolha os numeros 1 ou 2.");               
+            // tratamento de excecoes
+            while (true)
+            {
+                try
+                {
+                    std::cin >> comando;
+                    if ((isdigit(comando[0]) && (comando == "1" || comando == "2")) == false)
+                        throw std::invalid_argument("Entrada invalida. Escolha os numeros 1 ou 2.");
                     break;
-                        
-                } catch (const std::invalid_argument &e) {
-                            
+                }
+                catch (const std::invalid_argument &e)
+                {
+
                     std ::cerr << e.what() << std::endl;
                 }
             }
@@ -862,7 +937,6 @@ inicio:
             {
                 goto menuEstoque;
             }
-
         }
 
         else if (resp5 == "4")
@@ -883,16 +957,19 @@ inicio:
             std ::cout << "2 - Voltar ao menu anterior\n";
             std ::string comando;
 
-            //tratamento de excecoes
-            while (true) {
-                try {
-                    std::cin>>comando;
-                    if ((isdigit(comando[0]) && (comando == "1" || comando == "2"))==false)
-                            throw std::invalid_argument("Entrada invalida. Escolha os numeros 1 ou 2.");               
+            // tratamento de excecoes
+            while (true)
+            {
+                try
+                {
+                    std::cin >> comando;
+                    if ((isdigit(comando[0]) && (comando == "1" || comando == "2")) == false)
+                        throw std::invalid_argument("Entrada invalida. Escolha os numeros 1 ou 2.");
                     break;
-                        
-                } catch (const std::invalid_argument &e) {
-                            
+                }
+                catch (const std::invalid_argument &e)
+                {
+
                     std ::cerr << e.what() << std::endl;
                 }
             }

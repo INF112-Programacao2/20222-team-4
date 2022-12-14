@@ -47,7 +47,6 @@ void Vendas::novoCarrinho(ItemCarrinho &itemCarrinho)
 }
 // imprime produtos so carrinho
 
-
 void Vendas::imprimeCarrinho()
 {
 
@@ -55,8 +54,8 @@ void Vendas::imprimeCarrinho()
     for (int i = 0; i < carrinhoCompras.size(); i++)
     {
         // imprime nome e quantidade dos produtos no carrinho
-        std::cout << "PRODUTO: "<< carrinhoCompras[i].getNome()<<std::endl;
-        std::cout << "QUANTIDADE: " << carrinhoCompras[i].getQuantidade()<<std::endl;
+        std::cout << "PRODUTO: " << carrinhoCompras[i].getNome() << std::endl;
+        std::cout << "QUANTIDADE: " << carrinhoCompras[i].getQuantidade() << std::endl;
         std::cout << "-------------------------------\n";
     }
 }
@@ -90,7 +89,7 @@ std::string Vendas::getDocumentoCliente()
     return this->documentoCliente;
 }
 
- // destrutor
+// destrutor
 Vendas::~Vendas()
 {
 }

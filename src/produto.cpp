@@ -2,17 +2,17 @@
 // gerador de Ids
 int Produto::generateIds = 1;
 
-//construtor
+// construtor
 Produto::Produto(std::string nomeProduto, double preco, int quantidade)
 {
     this->nomeProduto = nomeProduto;
     this->preco = preco;
     this->quantidade = quantidade;
-    this-> id = Produto::generateIds;
+    this->id = Produto::generateIds;
 
     Produto::generateIds++;
 }
-//construtor
+// construtor
 Produto::Produto()
 {
 }
@@ -31,7 +31,7 @@ void Produto::setPreco(double preco)
     this->preco = preco;
 }
 
-//definindo quantidade do produto
+// definindo quantidade do produto
 void Produto::setQuantidade(int quantidade)
 {
     this->quantidade = quantidade;
